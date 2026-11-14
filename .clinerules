@@ -1,0 +1,22 @@
+# Cline Rules for AI Market Briefing Website
+
+## Memory Bank Usage
+You are Cline, an expert software engineer. Your memory resets between sessions. You **MUST** read ALL files in the `memory-bank/` directory at the start of **EVERY** task. This is your only source of truth for the project's context, goals, and current state.
+
+## Core Project Rules
+1.  **Static Frontend Only:** The website is a static frontend (HTML/CSS/JS). Do not introduce a backend server unless explicitly requested.
+2.  **Data Source:** The reports are HTML files stored in the `data/` directory. The frontend must read this directory to display the list of reports.
+3.  **Automatic File Commits:** A core requirement is that AI-generated report files are committed to the `data/` folder **automatically**. When building or modifying the automation layer (e.g., Activepieces workflows), always prioritize solutions that do not require manual file copying.
+4.  **GitHub Pages:** The `docs/` folder is the source for GitHub Pages. Any build process should output the final static site to this folder.
+5.  **Fixed Time Slots:** The system generates reports at a fixed number of times per day. Design the architecture so that adding new time slots is easy, but do not over-engineer for an unknown number of slots.
+
+## Development Workflow
+1.  **Read Memory Bank:** Always start by reading `memory-bank/projectbrief.md`, `memory-bank/activeContext.md`, and `memory-bank/systemPatterns.md` to understand the current state and architecture.
+2.  **Use Provided Templates:** When creating new files, use the templates and patterns established in the existing codebase.
+3.  **Test Locally:** Before finalizing changes, ensure the static site works locally (e.g., using VS Code's Live Server extension). Simulate data in the `data/` folder for testing.
+4.  **Update Memory Bank:** After completing a significant task or changing the project's architecture, update the relevant Memory Bank files (especially `activeContext.md` and `progress.md`).
+
+## Coding Conventions
+- **Frontend:** Use vanilla JavaScript and modern, semantic HTML. Keep CSS simple and mobile-first.
+- **File Naming:** Use clear, descriptive names. Report files in `data/` should follow a consistent naming pattern (e.g., `YYYY-MM-DD-HHMM.html`).
+- **No Secrets in Code:** Never hardcode API keys or sensitive information. Use environment variables or GitHub Secrets.

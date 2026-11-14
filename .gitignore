@@ -1,0 +1,15 @@
+# Käyttöjärjestelmän ja editorin tiedostot
+Thumbs.db
+Desktop.ini
+.DS_Store
+*.log
+
+# Paikalliset väliaikaistiedostot (esim. testiskriptit)
+tmp-*
+tmp_*
+
+# Salaisuudet – älä koskaan committoi näitä
+.env
+.env.*
+*.key
+secrets.json

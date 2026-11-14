@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Markkinatilanne – AI-generoidut markkinakatsaukset</title>
+<meta name="description" content="Suomenkielinen arkisto AI-generoiduista markkinakatsauksista. Raportit uusimmasta vanhimpaan.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Siirry sisältöön</a>
+
+  <button class="menu-toggle" id="menu-toggle" type="button"
+          aria-controls="sidebar" aria-expanded="false" aria-label="Avaa raporttilista">
+    <span class="menu-toggle__bars" aria-hidden="true"></span>
+    <span class="menu-toggle__text">Raportit</span>
+  </button>
+
+  <div class="layout">
+    <aside class="sidebar" id="sidebar" aria-label="Raporttilista">
+      <div class="sidebar__inner">
+        <header class="sidebar__head">
+          <h1 class="brand">Markkinatilanne</h1>
+          <p class="brand__sub">AI-generoidut markkinakatsaukset</p>
+        </header>
+
+        <div class="sidebar__actions">
+          <button class="btn btn--ghost" id="refresh-btn" type="button" title="Hae raporttilista uudelleen">Päivitä lista</button>
+        </div>
+
+        <p class="sidebar__status" id="list-status" role="status" aria-live="polite"></p>
+
+        <nav class="report-nav" id="report-list" aria-label="Raportit uusimmasta vanhimpaan"></nav>
+
+        <footer class="sidebar__foot">
+          <p>Raportit tallennetaan <code>data/</code>-kansioon ja ne haetaan GitHubista.</p>
+          <p id="last-updated" class="muted"></p>
+        </footer>
+      </div>
+    </aside>
+
+    <div class="backdrop" id="backdrop" hidden></div>
+
+    <main class="content" id="main-content">
+      <header class="content__head">
+        <div class="content__head-text">
+          <h2 class="report-title" id="report-title">Markkinatilanne</h2>
+          <p class="report-meta" id="report-meta">Valitse raportti vasemmalta listalta.</p>
+        </div>
+        <div class="content__head-actions">
+          <button class="btn btn--ghost" id="open-new-tab" type="button" disabled>Avaa uudessa välilehdessä</button>
+          <button class="btn btn--ghost" id="print-btn" type="button" disabled>Tulosta</button>
+        </div>
+      </header>
+
+      <div class="viewer" id="viewer">
+        <div class="viewer__placeholder" id="viewer-placeholder">
+          <p class="viewer__icon" aria-hidden="true">📈</p>
+          <h3>Ei valittua raporttia</h3>
+          <p>Valitse raportti vasemman reunan listasta. Uusin raportti avautuu automaattisesti.</p>
+        </div>
+        <iframe class="viewer__frame" id="report-frame" title="Valittu markkinakatsaus"
+                sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-forms"
+                referrerpolicy="no-referrer" hidden></iframe>
+      </div>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
