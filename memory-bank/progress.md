@@ -29,4 +29,16 @@
 - `git init` + create and push the public GitHub repository.
 - Enable GitHub Pages (branch `main`, folder `/docs`) and verify the live site.
 - Build the first Activepieces workflow (morning report) and run a test commit.
+## 2026-11-14 – Repository Published and GitHub Pages Enabled
+**Done:**
+- Verified and completed the git setup: branch `main`, all project files staged, first commit created as `c9fa1a0` (15 files, 1432 insertions).
+- Added `.gitignore` (OS/editor junk, `tmp-*` scratch files, secret patterns).
+- Ran a secret scan on the staged content with `git grep` – no API keys or tokens found.
+- Set a **repository-local** git identity `Jarno1965 <124132330+Jarno1965@users.noreply.github.com>`, because the global config contained the placeholder `you@example.com`.
+- Pushed to https://github.com/Jarno1965/MarkkinaTilanne (public, `main`, upstream tracked). The commit message was amended to proper Finnish UTF-8 and force-pushed with `--force-with-lease` while the repo was still brand new.
+- Enabled GitHub Pages: source branch `main`, folder `/docs`. Live: https://jarno1965.github.io/MarkkinaTilanne/
+- Verified the production assumptions: the Pages site, `style.css` and `app.js` all return HTTP 200; the public Contents API lists `data/` with `download_url` values; raw report URLs return `text/plain; charset=utf-8` with `access-control-allow-origin: *`; the Pages site returns 404 for `/data/...`, exactly as the architecture expects.
+
+**Next:**
+- Build the Activepieces workflow for the 06:00 morning report and run a test commit.
 - Create `prompts/` and move the three prompts there.
