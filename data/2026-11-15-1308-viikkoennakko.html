@@ -1,0 +1,299 @@
+Value<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Viikkoennakko ja markkinakatsaus – sunnuntai 15.11.</title>
+<style>
+  :root {
+    --bg: #f5f7fa;
+    --card: #ffffff;
+    --text: #1f2933;
+    --muted: #616e7c;
+    --accent: #0b4f8a;
+    --accent-light: #e6f0fa;
+    --warn-bg: #fff4e0;
+    --warn-border: #e8890c;
+    --border: #d9e2ec;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 17px;
+    line-height: 1.65;
+  }
+  .wrapper {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 24px 16px 48px;
+  }
+  header.top {
+    border-bottom: 3px solid var(--accent);
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+  }
+  .kicker {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: bold;
+  }
+  h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+    margin: 6px 0 8px;
+  }
+  .lead {
+    color: var(--muted);
+    font-size: 1.05rem;
+    margin: 0;
+  }
+  h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.4rem;
+    color: var(--accent);
+    margin: 0 0 12px;
+  }
+  h3 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.05rem;
+    margin: 18px 0 6px;
+  }
+  section, .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 22px;
+    margin-bottom: 20px;
+  }
+  .highlight {
+    background: var(--warn-bg);
+    border: 1px solid var(--warn-border);
+    border-left: 8px solid var(--warn-border);
+    border-radius: 8px;
+    padding: 20px 22px;
+    margin-bottom: 24px;
+  }
+  .highlight .label {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #a35c00;
+  }
+  .highlight h2 {
+    color: var(--text);
+    margin: 4px 0 10px;
+    font-size: 1.5rem;
+  }
+  .highlight p { margin: 0 0 10px; }
+  .highlight ul { margin: 8px 0 0; padding-left: 20px; }
+  ul { padding-left: 22px; margin: 8px 0; }
+  li { margin-bottom: 6px; }
+  .tag {
+    display: inline-block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.75rem;
+    background: var(--accent-light);
+    color: var(--accent);
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-weight: bold;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+  .stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 16px 0 4px;
+  }
+  .stat {
+    flex: 1 1 150px;
+    background: var(--accent-light);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .stat .v { font-size: 1.3rem; font-weight: bold; color: var(--accent); display: block; }
+  .stat .d { font-size: 0.8rem; color: var(--muted); }
+  .table-wrap { overflow-x: auto; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.93rem;
+    min-width: 560px;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  th { background: var(--accent-light); color: var(--accent); }
+  .note {
+    font-size: 0.88rem;
+    color: var(--muted);
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 12px;
+  }
+  footer {
+    font-size: 0.82rem;
+    color: var(--muted);
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    margin-top: 28px;
+  }
+  @media (max-width: 600px) {
+    body { font-size: 16px; }
+    h1 { font-size: 1.55rem; }
+    section, .card, .highlight { padding: 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <header class="top">
+    <div class="kicker">Sunnuntain viikkoennakko &amp; markkinakatsaus</div>
+    <h1>Lähi-idän jännite ja öljyn hinta sävyttävät viikon avausta</h1>
+    <p class="lead">Brent-öljy pysyttelee yli 100 dollarissa, inflaatiohuolet palaavat ja avaus näyttää varovaiselta erityisesti Euroopassa ja Aasiassa.</p>
+  </header>
+
+  <div class="highlight" role="note">
+    <div class="label">Maanantain avauksen tärkein ajuri</div>
+    <h2>Lähi-idän kärjistyminen ja öljyn hintariski</h2>
+    <p>Viikonlopun uutisten mukaan Israelin ja Iranin välinen konflikti on roihahtanut uudelleen ja Yhdysvallat on osallisena. Se on lisännyt huolta öljyn tarjonnasta ja merireittien häiriöistä. <strong>Brent-raakaöljy on pysynyt yli 100 dollarissa tynnyriltä.</strong></p>
+    <p>Korkeampi energian hinta nostaa lyhyen aikavälin inflaatio-odotuksia, tukee korkoja ja vaikeuttaa keskuspankkien mahdollisuuksia lieventää rahapolitiikkaa. Heikentynyt kryptomarkkinoiden tunnelma vahvistaa puolustautuvaa avausasetelmaa.</p>
+    <ul>
+      <li><strong>Herkimmät kohteet:</strong> öljyä tuovien maiden valuutat, eurooppalaiset osakkeet, kuljetusosakkeet, inflaatiosidonnaiset joukkovelkakirjat ja korkoherkät kasvuosakkeet.</li>
+      <li><strong>Suhteellisesti tuettuna:</strong> energiantuottajat.</li>
+    </ul>
+  </div>
+
+  <section>
+    <h2>Viikonlopun uutiset ja geopolitiikka</h2>
+    <ul>
+      <li><span class="tag">Lähi-itä</span>Israelin ja Iranin vihollisuudet ovat uusiutuneet ja raporttien mukaan Yhdysvallat on mukana sotilaallisesti. Geopoliittinen riski on kasvanut ja sijoittajat hakeutuvat turvaan.</li>
+      <li><span class="tag">Energia</span>Brent on kaupankäynnissä yli 100 dollarissa. Pääpelko on Lähi-idän tuotannon ja merireittien häiriintyminen.</li>
+      <li><span class="tag">Inflaatio</span>Öljysokki on herättänyt huolen siitä, että korkeat energiakustannukset pitkittävät inflaatiota ja viivästyttävät suurten keskuspankkien kevennyksiä.</li>
+      <li><span class="tag">Kiina</span>Kiinan keskuspankki PBOC on raporttien mukaan nostanut valuuttatalletusten vähimmäisvarantovaatimusta 2 prosenttiyksikköä, 4 prosentista 6 prosenttiin. Muutos tulee voimaan 15. marraskuuta ja liittyy juanin likviditeettiin ja laajemmin Kiinan valuuttapolitiikkaan.</li>
+      <li><span class="tag">Kryptot</span>Bitcoin heikkeni viikonloppuna haukkamaisten Fed-odotusten ja jatkuneiden ETF-ulosvirtausten vuoksi.</li>
+      <li><span class="tag">Yritykset</span>Saatavilla olevassa aineistossa ei havaittu viikonlopun yhtiöuutisia, jotka olisivat olleet markkinavaikutukseltaan Lähi-itää ja energiaa merkittävämpiä.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Alueelliset katsaukset</h2>
+
+    <h3>🇺🇸 Yhdysvallat</h3>
+    <ul>
+      <li><strong>Fedin odotukset:</strong> Markkinoiden huomio on siinä, pitääkö sitkeä inflaatio Fedin kireällä linjalla pidempään. Viimeaikainen inflaatio- ja työmarkkinadata on raporttien mukaan lisännyt odotuksia jopa lisäkiristyksistä.</li>
+      <li><strong>Maanantain ajurit:</strong>
+        <ul>
+          <li>Öljyn hinta ja sen vaikutus Yhdysvaltain inflaatio-odotuksiin</li>
+          <li>Yhdysvaltain valtion lainojen tuotot ja dollari turvasatamina</li>
+          <li>Marraskuun Empire State -teollisuuskysely</li>
+          <li>Fedin puheenjohtaja Kevin Warshin puhe Productivity and Jobs Task Force -konferenssissa</li>
+        </ul>
+      </li>
+      <li><strong>Herkkyys:</strong> Odotettua vahvempi teollisuusluku yhdessä korkean öljyn hinnan kanssa korostaisi inflaatiota ja kireää rahapolitiikkaa. Heikko luku siirtäisi huomion kasvuriskeihin.</li>
+    </ul>
+
+    <h3>🇪🇺 Eurooppa</h3>
+    <ul>
+      <li><strong>EKP:</strong> Markkinoiden odotusten mukaan EKP nostaa ohjauskorkoa viikon aikana ja säilyttää kiristysvinouman, ellei inflaatio helpota.</li>
+      <li><strong>Haavoittuvuus:</strong> Eurooppa on erityisen altis energiavetoiselle inflaatiosokille. Tuonnin kallistuminen voi heikentää kasvua ja samalla nostaa hintapaineita.</li>
+      <li><strong>Maanantain painopiste:</strong> Osake- ja korkomarkkinat hinnoittelevat avauksessa viikonlopun öljy- ja geopolitiikkauutiset. Energiantuottajat saavat suhteellista tukea, kun taas kuljetus-, kulutus- ja korkoherkät sektorit ovat alttiita polttoainekustannusten ja korkojen nousulle.</li>
+      <li><strong>Keskeinen riski:</strong> Merireitteihin tai energiainfrastruktuuriin kohdistuva kärjistyminen vahvistaisi alueelle kielteistä kasvun ja inflaation yhdistelmää.</li>
+    </ul>
+
+    <h3>🌏 Aasia ja Tyynenmeri</h3>
+    <ul>
+      <li><strong>Kiina:</strong> PBOC:n valuuttavarantovaatimuksen nosto (voimaan 15.11.) on viikonlopun keskeisin Kiinaan liittyvä politiikkauutinen.</li>
+      <li><strong>Japani:</strong> Maanantain kalenterissa on lokakuun tarkistettu teollisuustuotanto. Edellinen lukema oli +2,2 % kuukausitasolla.</li>
+      <li><strong>Viikon data:</strong> Kiinan vähittäismyynti, teollisuustuotanto ja kiinteät investoinnit sekä Japanin BKT ja teollisuustuotanto.</li>
+      <li><strong>Riskit:</strong> Aasian markkinat reagoivat herkästi öljyn hintaan, dollariin, Yhdysvaltain korkoihin ja Lähi-idän merikuljetusten heikkenemiseen. Öljyä tuovat taloudet ja alueen valuutat ovat pitkittyneessä energiasokissa erityisen alttiita.</li>
+      <li><strong>Etelä-Korea:</strong> Finanssivalvonnan (FSC) puheenjohtaja vierailee 15.–21.11. Sveitsissä, Saksassa ja Isossa-Britanniassa. Matkalla edistetään muun muassa pankkivalvonnan yhteisymmärryspöytäkirjaa EKP:n kanssa.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Kryptot ja viikonlopun tunnelma</h2>
+    <div class="stats">
+      <div class="stat"><span class="v">≈ 62 000 $</span><span class="d">Bitcoinin viikonlopun pohja</span></div>
+      <div class="stat"><span class="v">≈ 69 000 $</span><span class="d">Taso lauantaina</span></div>
+      <div class="stat"><span class="v">≈ 87 000 $</span><span class="d">Viimeaikainen huippu</span></div>
+      <div class="stat"><span class="v">−1,2 %</span><span class="d">Sunnuntain yksi päivitys</span></div>
+    </div>
+    <ul>
+      <li><strong>Paineen syyt:</strong> Haukkamaiset Fed-odotukset ja Yhdysvaltain spot-bitcoin-ETF:ien ulosvirtaukset.</li>
+      <li><strong>Tulkinta:</strong> Kryptojen lasku sopii heikentyneeseen spekulatiiviseen riskinhalukkuuteen ja herkkyyteen reaalikorko-odotusten nousulle. Koska kryptomarkkina käy jatkuvasti, se kertoo, että sijoittajat ovat puolustautuvalla kannalla ennen perinteisten markkinoiden avautumista.</li>
+      <li><strong>Maanantain muuttujat:</strong> Pysyykö Bitcoin vakaana, dollarin suunta, Yhdysvaltain korot ja jatkaako öljy nousuaan.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Tulevan viikon tärkeimmät julkistukset</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Ajankohta</th><th>Julkistus / tapahtuma</th><th>Merkitys ja odotukset</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Ma 16.11.</td>
+            <td>Kanada: lokakuun kuluttajahinnat (CPI)</td>
+            <td>Viikkoennakko odottaa noin +0,3 % kuukausitasolla ja +3,2 % vuositasolla.</td>
+          </tr>
+          <tr>
+            <td>Ma 16.11.</td>
+            <td>USA: marraskuun Empire State -teollisuuskysely</td>
+            <td>Maanantain tärkein yhdysvaltalainen ensimmäisen luokan julkistus.</td>
+          </tr>
+          <tr>
+            <td>Ma 16.11.</td>
+            <td>Fedin puheenjohtaja Kevin Warsh: avauspuheenvuoro (Productivity and Jobs Task Force Conference)</td>
+            <td>Tärkeä signaali rahapolitiikan suunnasta öljysokin ja inflaatiohuolten keskellä.</td>
+          </tr>
+          <tr>
+            <td>Ma 16.11.</td>
+            <td>Japani: lokakuun tarkistettu teollisuustuotanto</td>
+            <td>Edellinen lukema +2,2 % kuukausitasolla.</td>
+          </tr>
+          <tr>
+            <td>Viikon aikana</td>
+            <td>Kiina: vähittäismyynti, teollisuustuotanto, kiinteät investoinnit</td>
+            <td>Mittaavat kotimaisen kysynnän tilaa ja kasvuvauhtia.</td>
+          </tr>
+          <tr>
+            <td>Viikon aikana</td>
+            <td>Japani: BKT ja teollisuustuotanto</td>
+            <td>Vaikuttavat Japanin pankin odotuksiin ja jenin herkkyyteen globaalin korko- ja energiasokin keskellä.</td>
+          </tr>
+          <tr>
+            <td>Viikon aikana</td>
+            <td>EKP: odotettu koronnosto</td>
+            <td>Markkinat odottavat nostoa ja kiristysvinouman säilyttämistä, jos inflaatio ei hellitä.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Kalenteri voi muuttua. Joidenkin tapahtumien ajankohdat ovat vielä alustavia tai ennusteet puuttuvat, esimerkiksi maanantain Clevelandin Fedin inflaatio-odotukset -julkistuksen osalta.</p>
+  </section>
+
+  <footer>
+    Katsaus perustuu viikonlopun markkinauutisiin ja saatavilla olleisiin talouskalentereihin. Sisältö ei ole sijoitusneuvontaa.
+  </footer>
+
+</div>
+</body>
+</html>
