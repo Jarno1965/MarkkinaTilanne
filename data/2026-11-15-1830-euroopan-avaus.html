@@ -1,0 +1,326 @@
+Value<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Euroopan avaus ja Helsingin pörssi (klo 11.00) – maanantai 16.11.2026</title>
+<style>
+  :root {
+    --bg: #f5f7fa;
+    --card: #ffffff;
+    --text: #1d2733;
+    --muted: #5f6b7a;
+    --border: #dde3ea;
+    --accent: #0b3d6e;
+    --accent-light: #e8f0f9;
+    --pos: #12803c;
+    --neg: #c62828;
+    --warn-bg: #fff6e0;
+    --warn-border: #f0b429;
+    --warn-text: #6b4a00;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .wrapper { max-width: 960px; margin: 0 auto; padding: 16px; }
+  header.page-header {
+    background: var(--accent);
+    color: #fff;
+    padding: 28px 20px;
+    border-radius: 0 0 12px 12px;
+  }
+  header.page-header .inner { max-width: 960px; margin: 0 auto; }
+  header.page-header h1 { margin: 0 0 6px; font-size: 1.75rem; line-height: 1.25; }
+  header.page-header p { margin: 0; opacity: .9; font-size: .98rem; }
+  .notice {
+    background: var(--warn-bg);
+    border: 1px solid var(--warn-border);
+    border-left: 6px solid var(--warn-border);
+    color: var(--warn-text);
+    padding: 14px 16px;
+    border-radius: 8px;
+    margin: 20px 0;
+  }
+  .notice strong { display: block; margin-bottom: 4px; }
+  section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+  }
+  section.highlight {
+    border: 2px solid var(--accent);
+    background: linear-gradient(180deg, var(--accent-light) 0, #fff 120px);
+    box-shadow: 0 2px 10px rgba(11, 61, 110, .12);
+  }
+  h2 { margin: 0 0 12px; font-size: 1.4rem; color: var(--accent); line-height: 1.3; }
+  section.highlight h2 { font-size: 1.55rem; }
+  h3 { margin: 22px 0 8px; font-size: 1.1rem; }
+  .tag {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: .75rem;
+    font-weight: 600;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    padding: 2px 9px;
+    border-radius: 20px;
+    margin-bottom: 8px;
+  }
+  .table-wrap { overflow-x: auto; margin: 10px 0; -webkit-overflow-scrolling: touch; }
+  table { width: 100%; border-collapse: collapse; min-width: 480px; font-size: .96rem; }
+  th, td { padding: 9px 10px; text-align: left; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { background: #eef2f6; font-weight: 600; font-size: .88rem; color: var(--muted); }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .pos { color: var(--pos); font-weight: 700; }
+  .neg { color: var(--neg); font-weight: 700; }
+  .na { color: var(--muted); font-style: italic; }
+  .small { font-size: .88rem; color: var(--muted); }
+  ul { padding-left: 20px; margin: 8px 0; }
+  li { margin-bottom: 6px; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin: 14px 0; }
+  .card { border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; background: #fff; }
+  .card .label { font-size: .8rem; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+  .card .value { font-size: 1.05rem; font-weight: 600; margin-top: 4px; }
+  .stale {
+    border: 1px dashed var(--warn-border);
+    background: #fffdf5;
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin: 12px 0;
+  }
+  .stale-label { font-weight: 700; color: var(--warn-text); font-size: .9rem; margin-bottom: 6px; }
+  footer { font-size: .85rem; color: var(--muted); padding: 10px 4px 30px; }
+  @media (max-width: 600px) {
+    body { font-size: 15px; }
+    header.page-header h1 { font-size: 1.4rem; }
+    section { padding: 16px 14px; }
+    h2, section.highlight h2 { font-size: 1.25rem; }
+    .wrapper { padding: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="page-header">
+  <div class="inner">
+    <h1>Euroopan avaus ja Helsingin pörssi (klo 11.00)</h1>
+    <p>Markkinakatsaus maanantaille 16.11.2026</p>
+  </div>
+</header>
+
+<div class="wrapper">
+
+  <div class="notice" role="note">
+    <strong>Tärkeä huomautus aineiston luotettavuudesta</strong>
+    Katsauksen laatimiseen käytettävissä ollut markkinadata oli puutteellista eikä sisältänyt vahvistettuja lukuja 16.11.2026 aamulta. Ajantasaisia kurssitasoja ei ole saatu Euroopan, Aasian tai USA:n osakeindekseistä, USA:n futuureista, valtionlainojen koroista, EUR/SEK- ja USD/JPY-kursseista eikä Bitcoinista. Tässä katsauksessa ei siksi esitetä arvauksia tai arvioita avauksen suunnasta. Mukana on vain lähteistä vahvistettavissa olevat tiedot. Puuttuvat tiedot on merkitty selvästi.
+  </div>
+
+  <!-- 1. HELSINGIN PÖRSSI -->
+  <section class="highlight" id="helsinki">
+    <span class="tag">Pääosio</span>
+    <h2>Helsingin pörssin aamu ja suomalaiset yhtiöt</h2>
+
+    <h3>OMXH25-kehitys</h3>
+    <div class="cards">
+      <div class="card">
+        <div class="label">OMX Helsinki 25</div>
+        <div class="value na">Ei vahvistettua tasoa eikä muutosta</div>
+      </div>
+      <div class="card">
+        <div class="label">Avauksen suunta</div>
+        <div class="value na">Ei arvioitavissa ilman vahvistettua dataa</div>
+      </div>
+    </div>
+    <p>Lähdeaineistosta ei löytynyt ajantasaista tietoa Helsingin pörssin kehityksestä maanantaiaamuna. Yksittäistä yön markkinatapahtumaa ei voida luotettavasti nimetä STOXX 600 -, DAX- tai OMXH25-indeksin ensisijaiseksi liikuttajaksi.</p>
+
+    <h3>Aamun tulosjulkistukset ja yhtiöuutiset</h3>
+    <p>Haetuissa lähteissä ei ole vahvistettu uutta maanantaiaamun tulosjulkistusta, tulosvaroitusta, suurta tilausta tai viranomaistiedotetta seuraavilta yhtiöiltä: Nordea, Nokia, Kone, UPM, Stora Enso, Neste, Fortum, Sampo, Wärtsilä, Metso, Kesko ja Orion.</p>
+    <p>Seuraavat tuoreet yhtiötapahtumat on vahvistettu. Aineiston perusteella ne eivät ole maanantaiaamun uusia tiedotteita.</p>
+    <ul>
+      <li><strong>UPM:</strong> yhtiö on tiedottanut osittaisjakautumisensa rekisteröinnistä. WISA Group Oyj listataan Nasdaq Helsingissä.</li>
+      <li><strong>Kesko:</strong> sijoittajasivuston mukaan osakeanti on käynnissä <strong>12.–26.11.2026</strong>.</li>
+      <li><strong>Kesko:</strong> sivustolla mainitaan myös tekniseen kauppaan liittyvät yritysostot: Dahlin liiketoiminnot Ruotsissa sekä Brødrene Dahlin liiketoiminnot Norjassa ja Tanskassa.</li>
+      <li><strong>Kesko:</strong> johdon liiketoimi julkistettiin <strong>13.11.2026 klo 16.09</strong>.</li>
+    </ul>
+
+    <h3>Kurssiliikkeet</h3>
+    <p class="na">Yksittäisten osakkeiden vahvistettuja aamun kurssiliikkeitä ei ollut saatavilla, joten nousijoita ja laskijoita ei voida nimetä.</p>
+
+    <h3>Analyytikkosuositukset</h3>
+    <p class="na">Lähdeaineistossa ei ollut vahvistettuja uusia analyytikkosuosituksia tai tavoitehintamuutoksia suomalaisille yhtiöille.</p>
+
+    <h3>Suomalaisyhtiöiden herkkyydet (ei ennuste)</h3>
+    <p class="small">Alla kuvataan, mihin tekijöihin yhtiöiden kurssit yleensä reagoivat. Kyse ei ole kurssiennusteesta tai havaitusta liikkeestä.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Ryhmä</th><th>Yhtiöt</th><th>Keskeiset herkkyystekijät</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Metsä ja paperi</td><td>UPM, Stora Enso</td><td>Sellun, paperin ja sahatavaran hinnat, rahtikustannukset, valuuttakurssit</td></tr>
+          <tr><td>Jalostus ja kemia</td><td>Neste</td><td>Brent-raakaöljy, jalostusmarginaalit, uusiutuvien raaka-aineiden hintaerot</td></tr>
+          <tr><td>Pankit ja vakuutus</td><td>Nordea, Sampo</td><td>Valtionlainojen tuotot, swap-korot, luottoriskimarginaalit, euron kurssikehitys</td></tr>
+          <tr><td>Teollisuus</td><td>Kone, Wärtsilä, Metso</td><td>Aasian teollisuuskysyntä, Kiinan luvut, suhdanneherkkä osakemarkkinatunnelma</td></tr>
+          <tr><td>Teknologia</td><td>Nokia</td><td>Telekommunikaatiolaitteiden globaali tunnelma, puolijohde- ja tekoälylaitteistoteemat</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 2. EUROOPAN PÄÄINDEKSIT -->
+  <section id="indeksit">
+    <h2>Euroopan pääindeksit</h2>
+    <p>Euroopan avauksen indeksitasoja ei ollut saatavilla vahvistettuina. Katsauksessa ei esitetä arvioita avauksen suunnasta.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Indeksi</th><th class="num">Taso</th><th class="num">Muutos</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>OMX Helsinki 25</td><td class="num na">Ei vahvistettu</td><td class="num na">–</td></tr>
+          <tr><td>STOXX Europe 600</td><td class="num na">Ei vahvistettu</td><td class="num na">–</td></tr>
+          <tr><td>DAX</td><td class="num na">Ei vahvistettu</td><td class="num na">–</td></tr>
+          <tr><td>Muut Euroopan pääindeksit</td><td class="num na">Ei vahvistettu</td><td class="num na">–</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 3. UUTISET JA MAKROLUVUT -->
+  <section id="uutiset">
+    <h2>Tuoreimmat aamupäivän uutiset ja makroluvut</h2>
+
+    <h3>Aasian markkinat</h3>
+    <p>Aasian pörssien ajantasaisia lukemia 16.11.2026 ei ollut vahvistettavissa.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Markkina</th><th class="num">Taso</th><th class="num">Muutos</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Nikkei 225</td><td class="num na">Ei vahvistettu</td><td class="num na">–</td></tr>
+          <tr><td>Hang Seng</td><td class="num na">Ei vahvistettu</td><td class="num na">–</td></tr>
+          <tr><td>Shanghai Composite / CSI 300</td><td class="num na">Ei vahvistettu</td><td class="num na">–</td></tr>
+          <tr><td>KOSPI</td><td class="num na">Ei vahvistettu</td><td class="num na">–</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="stale">
+      <div class="stale-label">⚠ Vanhentunut tilannekuva, päivätty 30.9.2026. Ei käytettävissä maanantain avauksen arviointiin.</div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Indeksi</th><th class="num">Taso</th><th class="num">Muutos</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Nikkei 225</td><td class="num">66 318,81</td><td class="num pos">▲ +837,54 (+1,28 %)</td></tr>
+            <tr><td>Hang Seng</td><td class="num">24 536,33</td><td class="num pos">▲ +12,76 (+0,05 %)</td></tr>
+            <tr><td>Shanghai Composite</td><td class="num">3 843,82</td><td class="num pos">▲ +13,37 (+0,35 %)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <h3>Aasian yön makrokalenteri</h3>
+    <ul>
+      <li><strong>Japani:</strong> kolmannen neljänneksen BKT:n ennakkotieto klo 00.50. Toteutunutta lukua ei ollut saatavilla.</li>
+      <li><strong>Kiina:</strong> lokakuun teollisuustuotanto klo 03.00. Kalenterin ennuste on <strong>+5,3 %</strong> vuodentakaisesta.</li>
+      <li><strong>Kiina:</strong> lokakuun vähittäismyynti klo 03.00. Kalenterin ennuste on <strong>+0,8 %</strong> vuodentakaisesta.</li>
+    </ul>
+    <p class="small">Kiinan luvut ovat kalenterin ennusteita, eivät toteutuneita tuloksia. Kiinan lokakuun kiinteän pääoman bruttomuodostuksen julkistus on myös ajoitettu Aasian istuntoon.</p>
+
+    <h3>Maanantain kalenteri</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Aika (lähteen mukaan)</th><th>Tapahtuma</th><th>Konsensus / edellinen</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>10.00 CET</td><td>EKP: Financial Stability Review -ennakkojulkaisu "Decoding the cyber-AI nexus"</td><td class="na">–</td></tr>
+          <tr><td>11.00</td><td>Euroalue: syyskuun teollisuustuotanto</td><td>Konsensus +0,9 % kk / edellinen +0,5 %</td></tr>
+          <tr><td>12.00</td><td>EKP: kansainvälisten reservien ja valuuttalikviditeetin raportointipohjat</td><td class="na">–</td></tr>
+          <tr><td>14.30</td><td>USA: marraskuun Empire State -teollisuuskysely</td><td>Konsensus 19,0 / edellinen 30,0</td></tr>
+          <tr><td>18.00</td><td>Fed: puheenjohtaja Warshin puhe (lähteen mukaan)</td><td class="na">–</td></tr>
+          <tr><td>Päivän aikana</td><td>Fed: Williamsin, Wallerin ja Cookin puheenvuoroja viikko-ohjelman mukaan</td><td class="na">–</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small">Kalenterin aikojen aikavyöhyke ei ollut kaikissa lähteissä yksiselitteinen. Tarkista ajat ennen päätöksentekoa. Suomen Pankin puheenvuoroja tai tapahtumia ei löytynyt haetusta aineistosta. Luotettavaa luetteloa maanantain merkittävimmistä suomalaisista, eurooppalaisista tai yhdysvaltalaisista tulosjulkistuksista ei ollut saatavilla.</p>
+  </section>
+
+  <!-- 4. TOIMIALALIIKKEET -->
+  <section id="toimialat">
+    <h2>Toimialaliikkeet</h2>
+    <p>Toimialakohtaisia kurssiliikkeitä ei voida kvantifioida, koska vahvistettuja yön tai aamun hintatietoja ei ollut saatavilla. Seuraavat toimialat on syytä pitää silmällä, kun tuoreet tiedot ovat saatavilla.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Toimiala</th><th class="num">Muutos</th><th>Seurattavat tekijät</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Pankit</td><td class="num na">Ei vahvistettu</td><td>Korkotaso, luottoriskimarginaalit</td></tr>
+          <tr><td>Energia</td><td class="num na">Ei vahvistettu</td><td>Brent-raakaöljyn hinta, jalostusmarginaalit</td></tr>
+          <tr><td>Teollisuus</td><td class="num na">Ei vahvistettu</td><td>Kiinan data, euroalueen teollisuustuotanto klo 11.00</td></tr>
+          <tr><td>Teknologia</td><td class="num na">Ei vahvistettu</td><td>Puolijohde- ja tekoälylaitteistoteemat</td></tr>
+          <tr><td>Metsäteollisuus</td><td class="num na">Ei vahvistettu</td><td>Selluhinnat, rahti, valuutat</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 5. KOROT, VALUUTAT, FUTUURIT -->
+  <section id="korot">
+    <h2>Korot, valuutat ja USA-futuurit</h2>
+
+    <h3>USA:n futuurit ja perjantain Wall Street</h3>
+    <p class="na">Luotettavia lukuja ei ollut saatavilla S&amp;P 500- tai Nasdaq 100 -futuureista, perjantain S&amp;P 500-, Nasdaq Composite- tai Dow Jones -päätöksistä eikä USA:n 10 vuoden valtionlainan tuotosta. Lukuja ei esitetä, jotta vältetään virheellinen tieto.</p>
+
+    <h3>Valuutat, raaka-aineet ja kryptovaluutat</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Kohde</th><th class="num">Taso</th><th class="num">Muutos</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>EUR/SEK</td><td class="num na">Ei vahvistettu</td><td class="num na">–</td></tr>
+          <tr><td>USD/JPY</td><td class="num na">Ei vahvistettu</td><td class="num na">–</td></tr>
+          <tr><td>Bitcoin</td><td class="num na">Ei vahvistettu</td><td class="num na">–</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="stale">
+      <div class="stale-label">⚠ Vanhentunut tilannekuva, päivätty 30.9.2026. Ei ole 16.11.2026 -hintoja.</div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Kohde</th><th class="num">Taso</th><th class="num">Muutos</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Brent-raakaöljy</td><td class="num">103,26</td><td class="num pos">▲ +0,65 %</td></tr>
+            <tr><td>Kulta</td><td class="num">4 182,90</td><td class="num pos">▲ +0,85 %</td></tr>
+            <tr><td>EUR/USD</td><td class="num">1,1338</td><td class="num neg">▼ −0,04 %</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p><strong>Lähde- ja vastuuvapauslauseke:</strong> Katsaus perustuu automaattisesti haettuun englanninkieliseen markkinadataan, joka oli osin puutteellista ja ristiriitaista. Vihreä väri tarkoittaa positiivista ja punainen negatiivista kurssimuutosta. Värit on käytetty vain vanhentuneessa 30.9.2026 päivätyssä tilannekuvassa, joka ei kuvaa maanantain 16.11.2026 markkinatilannetta. Katsaus ei ole sijoitusneuvontaa.</p>
+  </footer>
+
+</div>
+</body>
+</html>
