@@ -1,0 +1,275 @@
+Value<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maanantaiaamun markkinakatsaus 16.11.2026</title>
+<style>
+  :root {
+    --bg: #f5f7fa;
+    --card: #ffffff;
+    --text: #1d2733;
+    --muted: #5d6b7a;
+    --line: #dde3ea;
+    --green: #0a8f3c;
+    --green-bg: #e6f6ec;
+    --red: #c62828;
+    --red-bg: #fdeaea;
+    --accent: #12426b;
+    --warn-bg: #fff6df;
+    --warn-line: #e5b84a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    font-size: 17px;
+  }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 16px; }
+  header { padding: 24px 0 8px; border-bottom: 3px solid var(--accent); margin-bottom: 20px; }
+  header h1 { margin: 0 0 4px; font-size: 1.8rem; color: var(--accent); line-height: 1.25; }
+  header .meta { color: var(--muted); font-size: 0.95rem; }
+  .driver {
+    background: #eaf2fb;
+    border: 2px solid var(--accent);
+    border-left-width: 10px;
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin: 20px 0 24px;
+  }
+  .driver .label {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .driver h2 { margin: 4px 0 10px; font-size: 1.4rem; color: var(--accent); }
+  .driver p { margin: 8px 0; }
+  .driver ul { margin: 8px 0 0; padding-left: 20px; }
+  section {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin-bottom: 20px;
+  }
+  section h2 {
+    margin: 0 0 12px;
+    font-size: 1.3rem;
+    color: var(--accent);
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 8px;
+  }
+  h3 { font-size: 1.05rem; margin: 18px 0 6px; }
+  p { margin: 8px 0; }
+  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 0.97rem; }
+  th, td { padding: 9px 10px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+  th { background: #eef2f6; font-weight: 600; white-space: nowrap; }
+  td.num, th.num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .pos { color: var(--green); font-weight: 700; }
+  .neg { color: var(--red); font-weight: 700; }
+  .badge-pos, .badge-neg {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 0.92rem;
+    white-space: nowrap;
+  }
+  .badge-pos { color: var(--green); background: var(--green-bg); }
+  .badge-neg { color: var(--red); background: var(--red-bg); }
+  .na { color: var(--muted); font-style: italic; }
+  .note {
+    background: var(--warn-bg);
+    border: 1px solid var(--warn-line);
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 0.93rem;
+    margin: 12px 0;
+  }
+  .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; margin: 12px 0; }
+  .kpi { border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; background: #fafbfc; }
+  .kpi .name { font-size: 0.85rem; color: var(--muted); }
+  .kpi .val { font-size: 1.35rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .kpi .chg { font-size: 1rem; font-weight: 700; }
+  .kpi.up { border-left: 5px solid var(--green); }
+  .kpi.down { border-left: 5px solid var(--red); }
+  ul { padding-left: 20px; }
+  li { margin: 4px 0; }
+  footer { color: var(--muted); font-size: 0.85rem; padding: 8px 0 28px; }
+  @media (max-width: 600px) {
+    body { font-size: 16px; }
+    header h1 { font-size: 1.45rem; }
+    .wrap { padding: 10px; }
+    section, .driver { padding: 14px; }
+    th, td { padding: 7px 6px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>Maanantaiaamun markkinakatsaus</h1>
+  <div class="meta">Maanantai 16.11.2026 · klo 06.00 · Aasia, Yhdysvallat, raaka-aineet ja päivän kalenteri</div>
+</header>
+
+<div class="driver" role="note">
+  <div class="label">Euroopan avauksen tärkein ajuri</div>
+  <h2>Yhdysvaltain korkojen ja dollarin nousu jarruttaa, Aasian kuva on kahtiajakautunut</h2>
+  <p>
+    Yhdysvaltain 10 vuoden valtionlainan korko on noin <strong>5,15 %</strong> ja dollari on 18 kuukauden huipuilla.
+    Se on tällä hetkellä keskeisin globaali vastatuuli riskisijoituksille. Samalla <strong>kulta ja bitcoin ovat paineessa</strong>.
+  </p>
+  <p>Aasian kuva on ristiriitainen:</p>
+  <ul>
+    <li><span class="pos">Nikkei 225 +4,03 %</span> ja <span class="pos">KOSPI +4,56 %</span>. Vahva teknologia- ja puolijohdevetoinen nousu tukee syklistä sentimenttiä.</li>
+    <li><span class="neg">Hang Seng −3,45 %</span> ja <span class="neg">Shanghai Composite −0,72 %</span>. Kiinan ja Hongkongin heikkous lisää epävarmuutta Aasian kysynnästä.</li>
+  </ul>
+  <p>
+    <strong>Johtopäätös:</strong> Nousevat korot ja vahva dollari rajoittavat nousupotentiaalia, vaikka Japanin ja Korean osakkeet vetävät.
+    Yksittäistä selkeää signaalia OMX Helsinki 25:n avaukseen ei ole. STOXX 600:n, DAXin ja OMXH25:n tarkkaa ennakkosuuntaa ei voi vahvistaa käytettävissä olevalla aineistolla.
+  </p>
+</div>
+
+<div class="note">
+  <strong>Huomio datan luotettavuudesta:</strong> Aineiston lähteet eivät riitä vahvistamaan kaikkia reaaliaikaisia tasoja.
+  Aasian indeksiluvut ovat lähteen ilmoittamia yön tilannekuvia, joiden aikaleima ei vastaa täsmälleen tämän katsauksen ajankohtaa.
+  Puuttuvia lukuja ei ole arvioitu, vaan ne on merkitty tekstillä <em>”Data ei vahvistettavissa”</em>.
+</div>
+
+<section id="aasia">
+  <h2>1. Aasian pörssit juuri nyt</h2>
+
+  <div class="kpi-grid">
+    <div class="kpi up"><div class="name">Nikkei 225</div><div class="val">61 142,35</div><div class="chg pos">▲ +4,03 %</div></div>
+    <div class="kpi up"><div class="name">KOSPI</div><div class="val">5 290,53</div><div class="chg pos">▲ +4,56 %</div></div>
+    <div class="kpi down"><div class="name">Hang Seng</div><div class="val">23 637,60</div><div class="chg neg">▼ −3,45 %</div></div>
+    <div class="kpi down"><div class="name">Shanghai Composite</div><div class="val">3 634,35</div><div class="chg neg">▼ −0,72 %</div></div>
+  </div>
+
+  <div class="table-scroll">
+  <table>
+    <thead><tr><th>Indeksi</th><th class="num">Taso</th><th class="num">Muutos</th></tr></thead>
+    <tbody>
+      <tr><td>Nikkei 225</td><td class="num">61 142,35</td><td class="num pos">+4,03 %</td></tr>
+      <tr><td>KOSPI</td><td class="num">5 290,53</td><td class="num pos">+4,56 %</td></tr>
+      <tr><td>Hang Seng</td><td class="num">23 637,60</td><td class="num neg">−3,45 %</td></tr>
+      <tr><td>Shanghai Composite</td><td class="num">3 634,35</td><td class="num neg">−0,72 %</td></tr>
+      <tr><td>CSI 300</td><td class="num na" colspan="2">Data ei vahvistettavissa</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>Keskeiset ajurit</h3>
+  <ul>
+    <li><strong>Teknologia ja puolijohteet:</strong> alueellinen teknologia- ja puolijohdesentimentti tukee Japanin ja Korean nousua.</li>
+    <li><strong>Kiinan data:</strong> vähittäismyynti ja teollisuustuotanto ovat mainittuja ajureita.</li>
+    <li><strong>Japanin kasvu:</strong> kolmannen neljänneksen BKT on mainittu ajurina.</li>
+    <li>Aineisto ei vahvista näiden julkaisujen toteutuneita lukuja. Se ei myöskään osoita, mikä yksittäinen uutinen selitti indeksien liikkeet.</li>
+  </ul>
+</section>
+
+<section id="usa">
+  <h2>2. Yhdysvaltojen osakefutuurit ja perjantain päätöstunnelmat</h2>
+
+  <div class="table-scroll">
+  <table>
+    <thead><tr><th>Kohde</th><th class="num">Taso</th><th>Kommentti</th></tr></thead>
+    <tbody>
+      <tr><td>S&amp;P 500 -futuurit</td><td class="num na">Data ei vahvistettavissa</td><td>–</td></tr>
+      <tr><td>Nasdaq 100 -futuurit</td><td class="num na">Data ei vahvistettavissa</td><td>–</td></tr>
+      <tr><td>S&amp;P 500, edellinen päätös</td><td class="num">7 561,67</td><td>Lähteen kuvaus päivän muutoksesta on ristiriitainen, joten prosenttimuutosta ei esitetä.</td></tr>
+      <tr><td>Nasdaq Composite, edellinen päätös</td><td class="num">25 136,27</td><td>Päivän muutosta ei voi luotettavasti vahvistaa. Aineistossa ei ole Nasdaq 100 -päätöstä.</td></tr>
+      <tr><td>USA:n 10 v valtionlainan korko</td><td class="num"><span class="badge-neg">≈ 5,15 %</span></td><td>Korkotaso on korkea ja painaa riskinottoa. Tämän päivän intraday-tuottoa ei voi vahvistaa.</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>
+    <strong>Tunnelma:</strong> korkea korkotaso ja vahva dollari pitävät tunnelman varovaisena. Korkea korko painaa erityisesti pitkän duration kasvuosakkeiden arvostuksia.
+    Yksittäisten osakkeiden pre-market ei ole vielä käynnissä, vaan se alkaa myöhemmin.
+  </p>
+</section>
+
+<section id="raaka-aineet">
+  <h2>3. Raaka-aineet, valuutat ja kryptot</h2>
+
+  <div class="table-scroll">
+  <table>
+    <thead><tr><th>Instrumentti</th><th class="num">Taso</th><th>Huomio</th></tr></thead>
+    <tbody>
+      <tr><td>Brent-öljy</td><td class="num na">Data ei vahvistettavissa</td><td>WTI ja Shanghai INE -öljy: data ei vahvistettavissa</td></tr>
+      <tr><td>Kulta</td><td class="num na">Taso: data ei vahvistettavissa</td><td><span class="badge-neg">▼ Paineessa</span> vahvan dollarin ja nousevien korkojen vuoksi</td></tr>
+      <tr><td>Kupari, SHFE/TOCOM-metallit, SGX-rautamalmi</td><td class="num na">Data ei vahvistettavissa</td><td>–</td></tr>
+      <tr><td>EUR/USD</td><td class="num">≈ 1,10</td><td>Markkinakatsauksen arvio, ei vahvistettu live-noteeraus</td></tr>
+      <tr><td>USD/JPY</td><td class="num">≈ 160,00</td><td>Yön analyysin arvio, ei vahvistettu live-noteeraus</td></tr>
+      <tr><td>Dollari yleisesti</td><td class="num"><span class="badge-pos">18 kk huipuilla</span></td><td>Tukee dollaria, painaa kultaa ja kryptoja</td></tr>
+      <tr><td>EUR/SEK, USD/CNH</td><td class="num na">Data ei vahvistettavissa</td><td>–</td></tr>
+      <tr><td>Bitcoin</td><td class="num">≈ 69 000 USD</td><td><span class="badge-neg">▼ Paineessa</span>. Nykyistä hintaa ja prosenttimuutosta ei voi vahvistaa.</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>
+    <strong>Yön asetelma:</strong> dollarimyönteinen ja korkoja nostava. Se on painanut kultaa ja bitcoinia.
+    Öljyn ja jalostusmarginaalien yön hintojen puuttuessa Nesteen avaussuuntaa ei voi arvioida.
+  </p>
+
+  <h3>Helsingin pörssin sektorinäkymä (suuntaa-antava)</h3>
+  <div class="table-scroll">
+  <table>
+    <thead><tr><th>Sektori / yhtiöt</th><th>Arvio</th></tr></thead>
+    <tbody>
+      <tr><td>Teknologia (Nokia)</td><td>Japanin ja Korean vahvuus tukee puolijohde- ja teknologiasentimenttiä. Korkea korko painaa arvostuksia.</td></tr>
+      <tr><td>Pankit ja vakuutus (Nordea, Sampo)</td><td>Korkea korkotaso tukee korkokatetta, mutta jyrkkä nousu lisää luottoriskiä ja kasvuhuolta. Kurssireaktiota ei voi ennakoida.</td></tr>
+      <tr><td>Metsä (UPM, Stora Enso)</td><td>Kiinan ja Hongkongin heikkous lisää epävarmuutta kysynnästä. Sellun, paperin ja puutuotteiden yön hinnat eivät ole tiedossa.</td></tr>
+      <tr><td>Teollisuus (Kone, Wärtsilä, Metso, Valmet)</td><td>Korean vahvuus voi tukea vientisentimenttiä, mutta korkea korko on vastatuuli investointikysynnälle.</td></tr>
+      <tr><td>Energia (Neste, Fortum)</td><td>Öljyn, jalostusmarginaalien sekä sähkön ja kaasun hintadata puuttuu. Avaussuuntaa ei määritellä.</td></tr>
+      <tr><td>Defensiiviset (Kesko, Orion)</td><td>Voivat suhteellisesti hyötyä epävarmasta markkinasta. Yhtiöuutisia ei ole vahvistettu.</td></tr>
+      <tr><td>Outokumpu</td><td>Teräksen ja Kiinan teollisuuskysynnän suuntaa ei voi vahvistaa.</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="na">
+    Yhtiökohtaiset pörssitiedotteet (Nordea, Nokia, Kone, UPM, Stora Enso, Neste, Fortum, Sampo, Wärtsilä, Metso, Kesko, Orion, Valmet, Outokumpu): data ei vahvistettavissa.
+  </p>
+</section>
+
+<section id="kalenteri">
+  <h2>4. Tämän päivän tärkeimmät talousjulkistukset ja tapahtumat</h2>
+
+  <div class="table-scroll">
+  <table>
+    <thead><tr><th>Aika (EET)</th><th>Tapahtuma</th><th>Lisätiedot</th></tr></thead>
+    <tbody>
+      <tr><td>≈ 15.30</td><td>Yhdysvallat: Empire State Manufacturing Index</td><td>Ennuste 17,6, edellinen 25,5. Toteutunutta lukua ei vielä ole.</td></tr>
+      <tr><td>≈ 16.05</td><td>New York Fedin presidentti John Williamsin puhe</td><td>Korkoodotusten kannalta tärkeä</td></tr>
+      <tr><td>≈ 18.30</td><td>Yhdysvaltain 3 ja 6 kuukauden velkasitoumusten huutokaupat</td><td>Seurataan korkotason osalta</td></tr>
+      <tr><td>≈ 22.30</td><td>CFTC:n spekulatiiviset positiot</td><td>Kulta, öljy, kupari ja jeni</td></tr>
+      <tr><td>Aika ei tiedossa</td><td>Euroalueen teollisuustuotanto</td><td>Julkistusaikaa ja konsensusta ei voi varmistaa</td></tr>
+      <tr><td>Suomi / euroalue / Bank of Finland</td><td class="na" colspan="2">Vahvistetut puheet ja julkaisut: data ei vahvistettavissa</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>Viikon myöhemmät kohokohdat</h3>
+  <ul>
+    <li>FOMC-pöytäkirja</li>
+    <li>Yhdysvaltain vähittäismyynti</li>
+    <li>Nvidian tulos</li>
+  </ul>
+</section>
+
+<footer>
+  Katsaus perustuu käytettävissä olleeseen markkina-aineistoon. Se ei ole sijoitusneuvontaa. Vihreä väri = positiivinen muutos, punainen = negatiivinen muutos.
+</footer>
+
+</div>
+</body>
+</html>
