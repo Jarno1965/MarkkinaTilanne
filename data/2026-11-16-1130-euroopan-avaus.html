@@ -1,0 +1,211 @@
+Value<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pörssikatsaus klo 11.00: Euroopan ja Helsingin pörssit</title>
+<style>
+  :root {
+    --bg: #f5f7fa;
+    --card: #ffffff;
+    --text: #1d2733;
+    --muted: #5d6b7a;
+    --border: #dde3ea;
+    --pos: #12803c;
+    --neg: #c62828;
+    --accent: #1f4e79;
+    --highlight-bg: #eaf2fb;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 24px 16px 48px;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.65;
+    font-size: 17px;
+  }
+  .wrap { max-width: 900px; margin: 0 auto; }
+  header { border-bottom: 3px solid var(--accent); padding-bottom: 12px; margin-bottom: 24px; }
+  header .kicker {
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    font-size: 13px;
+    color: var(--accent);
+    font-weight: bold;
+  }
+  h1 { margin: 4px 0 6px; font-size: 32px; line-height: 1.2; }
+  header .meta { font-family: Arial, Helvetica, sans-serif; font-size: 14px; color: var(--muted); }
+  h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 22px;
+    color: var(--accent);
+    margin: 36px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+  .driver {
+    background: var(--highlight-bg);
+    border-left: 6px solid var(--accent);
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin: 0 0 8px;
+  }
+  .driver h2 { margin: 0 0 8px; border: none; padding: 0; font-size: 20px; }
+  .driver p { margin: 0 0 8px; }
+  .driver p:last-child { margin-bottom: 0; }
+  .notice {
+    background: #fff8e6;
+    border-left: 6px solid #e0a800;
+    border-radius: 6px;
+    padding: 12px 18px;
+    margin: 16px 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--card);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 12px 0;
+  }
+  th, td { padding: 9px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+  th { background: #e9eef4; font-size: 13px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  tr.group td {
+    background: #f0f4f8;
+    font-weight: bold;
+    color: var(--accent);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+  }
+  tr.hl td { background: #fbfdff; }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px dotted var(--accent); }
+  a:hover { background: #dbe8f5; }
+  .pos { color: var(--pos); font-weight: bold; }
+  .neg { color: var(--neg); font-weight: bold; }
+  ul { padding-left: 22px; }
+  li { margin-bottom: 6px; }
+  .note { font-family: Arial, Helvetica, sans-serif; font-size: 13px; color: var(--muted); margin-top: 8px; }
+  footer {
+    margin-top: 40px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  @media (max-width: 600px) {
+    body { font-size: 16px; }
+    h1 { font-size: 25px; }
+    th, td { padding: 7px 6px; font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="kicker">Pörssikatsaus klo 11.00</div>
+  <h1>Euroopan pörssit sekakuvassa, Helsingissä laskua</h1>
+  <div class="meta">Maanantai 16. marraskuuta · Lukuina kuluvan päivän aamupäivän kurssit (Yahoo Finance)</div>
+</header>
+
+<div class="driver">
+  <h2>Aamupäivän tärkein markkina-ajuri</h2>
+  <p>Euroopan pörssit ovat kaupankäynnin ensimmäisen tunnin jälkeen jakautuneet: STOXX Europe 600 -indeksi on noussut <span class="pos">0,12 %</span> tasolle 664,96, ja Lontoon FTSE 100 johtaa nousijoita <span class="pos">+0,62 %</span>. Saksan DAX on lähes ennallaan (<span class="neg">−0,05 %</span>). Helsingin OMX Helsinki 25 on laskenut <span class="neg">0,38 %</span> tasolle 6 308,782 ja jää koko Euroopan kehityksestä noin puoli prosenttiyksikköä.</p>
+  <p>Varovaista tunnelmaa selittävät ennen kaikkea <strong>korkea USA:n 10 vuoden valtionlainan tuotto (5,154 %, muutos +1,00 %)</strong> ja <strong>USA:n markkinoiden heikko ennakkotunnelma</strong>: S&amp;P 500 on <span class="neg">−0,76 %</span> ja Nasdaq Composite <span class="neg">−1,30 %</span>. Teknologiapainotteisuus korostuu, mikä painaa erityisesti korkean arvostuksen kasvuosakkeita. Helsingin laskulle ei ole löytynyt yksittäistä yhtiökohtaista syytä.</p>
+</div>
+
+<h2>Euroopan ja Helsingin pörssi-indeksit</h2>
+<p>Taulukossa ovat aamupäivän kurssit Euroopan indekseistä, USA:n markkinoiden ennakkotunnelmasta, raaka-aineista, koroista ja valuutoista. Nimestä pääsee tarkistamaan reaaliaikaisen kurssin Yahoo Financesta.</p>
+
+<table>
+  <thead>
+    <tr><th>Kohde</th><th class="num">Taso</th><th class="num">Muutos</th></tr>
+  </thead>
+  <tbody>
+    <tr class="group"><td colspan="3">Euroopan indeksit</td></tr>
+    <tr><td><a href="https://finance.yahoo.com/quote/%5ESTOXX/" target="_blank" rel="noopener noreferrer">STOXX Europe 600</a></td><td class="num">664,96</td><td class="num pos">+0,12 %</td></tr>
+    <tr><td><a href="https://finance.yahoo.com/quote/%5EGDAXI/" target="_blank" rel="noopener noreferrer">DAX (Saksa)</a></td><td class="num">26 757,21</td><td class="num neg">−0,05 %</td></tr>
+    <tr><td><a href="https://finance.yahoo.com/quote/%5EFTSE/" target="_blank" rel="noopener noreferrer">FTSE 100 (Iso-Britannia)</a></td><td class="num">10 930,73</td><td class="num pos">+0,62 %</td></tr>
+    <tr class="hl"><td><a href="https://finance.yahoo.com/quote/%5EOMXH25/" target="_blank" rel="noopener noreferrer">OMX Helsinki 25</a></td><td class="num">6 308,782</td><td class="num neg">−0,38 %</td></tr>
+    <tr><td><a href="https://finance.yahoo.com/quote/%5EOMX/" target="_blank" rel="noopener noreferrer">OMX Stockholm 30</a></td><td class="num">3 350,3242</td><td class="num neg">−0,19 %</td></tr>
+
+    <tr class="group"><td colspan="3">USA:n markkinat (ennakkotunnelma)</td></tr>
+    <tr><td><a href="https://finance.yahoo.com/quote/%5EGSPC/" target="_blank" rel="noopener noreferrer">S&amp;P 500</a></td><td class="num">7 561,67</td><td class="num neg">−0,76 %</td></tr>
+    <tr><td><a href="https://finance.yahoo.com/quote/%5EIXIC/" target="_blank" rel="noopener noreferrer">Nasdaq Composite</a></td><td class="num">25 136,273</td><td class="num neg">−1,30 %</td></tr>
+    <tr><td><a href="https://finance.yahoo.com/quote/%5EDJI/" target="_blank" rel="noopener noreferrer">Dow Jones</a></td><td class="num">52 347,55</td><td class="num neg">−0,26 %</td></tr>
+
+    <tr class="group"><td colspan="3">Korot</td></tr>
+    <tr><td><a href="https://finance.yahoo.com/quote/%5ETNX/" target="_blank" rel="noopener noreferrer">USA:n 10 vuoden valtionlainan tuotto</a></td><td class="num">5,154</td><td class="num pos">+1,00 %</td></tr>
+
+    <tr class="group"><td colspan="3">Raaka-aineet</td></tr>
+    <tr><td><a href="https://finance.yahoo.com/quote/BZ%3DF/" target="_blank" rel="noopener noreferrer">Brent-raakaöljy</a></td><td class="num">92,45</td><td class="num neg">−0,62 %</td></tr>
+    <tr><td><a href="https://finance.yahoo.com/quote/CL%3DF/" target="_blank" rel="noopener noreferrer">WTI-raakaöljy</a></td><td class="num">88,15</td><td class="num neg">−0,46 %</td></tr>
+    <tr><td><a href="https://finance.yahoo.com/quote/GC%3DF/" target="_blank" rel="noopener noreferrer">Kulta (futuuri)</a></td><td class="num">3 866,60</td><td class="num neg">−0,51 %</td></tr>
+
+    <tr class="group"><td colspan="3">Valuutat ja kryptovaluutat</td></tr>
+    <tr><td><a href="https://finance.yahoo.com/quote/EURUSD%3DX/" target="_blank" rel="noopener noreferrer">EUR/USD</a></td><td class="num">1,1018</td><td class="num neg">−0,29 %</td></tr>
+    <tr><td><a href="https://finance.yahoo.com/quote/EURSEK%3DX/" target="_blank" rel="noopener noreferrer">EUR/SEK</a></td><td class="num">11,0943</td><td class="num pos">+0,08 %</td></tr>
+    <tr><td><a href="https://finance.yahoo.com/quote/USDJPY%3DX/" target="_blank" rel="noopener noreferrer">USD/JPY</a></td><td class="num">159,465</td><td class="num neg">−0,26 %</td></tr>
+    <tr><td><a href="https://finance.yahoo.com/quote/BTC-USD/" target="_blank" rel="noopener noreferrer">Bitcoin (USD)</a></td><td class="num">64 273,54</td><td class="num neg">−1,58 %</td></tr>
+  </tbody>
+</table>
+
+<p>Euroopan pörssien ensimmäinen kauppatunti on ollut varovainen. Lontoo on saanut selvästi parempaa tukea kuin muut markkinat, kun taas Saksan ja Pohjoismaiden indeksit ovat joko lähellä nollaa tai laskussa. DAX liikkuu edelleen korkealla tasolla, ja sen lähes muuttumaton kehitys viittaa voitonottoon sekä herkkyyteen koron nousulle.</p>
+
+<h2>Helsingin pörssin uutiset, pörssitiedotteet ja osakeliikkeet</h2>
+
+<div class="notice">
+  <strong>Ei vahvistettuja merkittäviä kotimaisia yhtiötiedotteita.</strong> Käytettävissä olleiden tietojen perusteella aamun aikana ei ole havaittu vahvistettua uutta tulosvaroitusta, tulosjulkistusta, suurta tilausta, sisäpiirikauppaa tai analyytikon tavoitehinnan muutosta suomalaisissa suuryhtiöissä.
+</div>
+
+<p>Tarkastelu kattoi muun muassa Nordean, Nokian, Konen, UPM:n, Stora Enson, Neste, Fortumin, Sampon, Wärtsilän, Metson, Keskon, Orionin, Valmetin, Outokummun, Cargotecin, Kalmarin, Mandatumin ja Tietoevryn. Yhdestäkään ei löytynyt vahvistettua aamun tiedotetta, joka selittäisi indeksin liikettä.</p>
+
+<p>Pohjoismaisissa pörssitiedotteissa oli esillä Coffee Stain Groupin sopimus <em>Chronicles: Medieval</em> -pelin immateriaalioikeuksien ostosta. Yhtiö ei kuitenkaan kuulu OMXH25-indeksiin, eikä uutinen selitä Helsingin pörssin liikkeitä.</p>
+
+<p>OMX Helsinki 25 on laskenut 0,38 % ja jää STOXX Europe 600 -indeksistä noin 0,5 prosenttiyksikköä. Lasku näyttää siis johtuvan pikemmin yleisestä markkinatunnelmasta ja sijoittajien riskinotosta kuin yksittäisestä yhtiöuutisesta. Yksittäisten nousijoiden ja laskijoiden listaa tai tarkkoja osakekursseja ei ollut käytettävissä, joten yksittäisiä osakeliikkeitä ei nimetä, eikä niille esitetä syitä.</p>
+
+<h2>Muu Eurooppa ja makrouutiset</h2>
+<ul>
+  <li><strong>Korkea korkotaso:</strong> USA:n 10 vuoden valtionlainan tuotto on 5,154 % (muutos +1,00 %). Korkea tuottotaso on yleensä vastatuulta pitkän aikavälin kasvuodotuksiin nojaaville ja korkeasti arvostetuille teknologiaosakkeille.</li>
+  <li><strong>Varovainen globaali tunnelma:</strong> USA:n markkinoiden ennakkotunnelma on heikko, ja Nasdaq Composite (−1,30 %) on painuneena selvemmin kuin S&amp;P 500 (−0,76 %) tai Dow Jones (−0,26 %).</li>
+  <li><strong>Kevyt talouskalenteri:</strong> Viikon aikana julkaistaan euroalueen ja Ison-Britannian inflaatioon liittyviä tietoja, työmarkkinatilastoja ja muita talouden aktiivisuutta kuvaavia indikaattoreita. EKP:n kalenterissa on maanantaina rahoitusvakausaiheinen tilaisuus, joka käsittelee kyberturvallisuuden ja tekoälyn yhteyttä. Lisäksi EKP:n edustajia on ohjelmassa puhumassa.</li>
+  <li><strong>Ei vahvistettuja suuria yhtiöuutisia:</strong> Saksasta, Ranskasta, Isosta-Britanniasta tai Ruotsista ei ole vahvistettu uutta merkittävää tuloslukua tai yrityskauppaa ensimmäiseltä kauppatunnilta. Myöskään euroalueen inflaatio-, teollisuustuotanto- tai ulkomaankauppatietoa, joka selittäisi markkinoiden liikkeitä, ei ole julkaistu.</li>
+</ul>
+
+<h2>Raaka-aineet, valuutat ja USA:n ennakkotunnelmat</h2>
+
+<h3 style="font-family:Arial,Helvetica,sans-serif;font-size:17px;margin-bottom:6px;">Raaka-aineet</h3>
+<ul>
+  <li><a href="https://finance.yahoo.com/quote/BZ%3DF/" target="_blank" rel="noopener noreferrer">Brent-raakaöljy</a> maksaa 92,45 dollaria (<span class="neg">−0,62 %</span>) ja <a href="https://finance.yahoo.com/quote/CL%3DF/" target="_blank" rel="noopener noreferrer">WTI</a> 88,15 dollaria (<span class="neg">−0,46 %</span>). Öljyn hinnan lasku keventää kustannuspaineita kuljetus- ja energiaintensiivisillä aloilla, mutta voi painaa öljyntuottajien ja niihin liittyvien yhtiöiden osakkeita.</li>
+  <li><a href="https://finance.yahoo.com/quote/GC%3DF/" target="_blank" rel="noopener noreferrer">Kullan futuuri</a> on 3 866,60 dollarissa (<span class="neg">−0,51 %</span>).</li>
+</ul>
+
+<h3 style="font-family:Arial,Helvetica,sans-serif;font-size:17px;margin-bottom:6px;">Valuutat</h3>
+<ul>
+  <li><a href="https://finance.yahoo.com/quote/EURUSD%3DX/" target="_blank" rel="noopener noreferrer">EUR/USD</a> on 1,1018 (<span class="neg">−0,29 %</span>), eli euro on heikentynyt dollariin nähden.</li>
+  <li><a href="https://finance.yahoo.com/quote/EURSEK%3DX/" target="_blank" rel="noopener noreferrer">EUR/SEK</a> on 11,0943 (<span class="pos">+0,08 %</span>), joten euro on vahvistunut hieman Ruotsin kruunuun nähden.</li>
+  <li><a href="https://finance.yahoo.com/quote/USDJPY%3DX/" target="_blank" rel="noopener noreferrer">USD/JPY</a> on 159,465 (<span class="neg">−0,26 %</span>), eli dollari on heikentynyt jeniin nähden. Dollarin vahvistuminen ei siis ole yksiselitteistä: se näkyy euroa vastaan mutta ei jeniä vastaan.</li>
+  <li><a href="https://finance.yahoo.com/quote/BTC-USD/" target="_blank" rel="noopener noreferrer">Bitcoin</a> on 64 273,54 dollarissa (<span class="neg">−1,58 %</span>), mikä kertoo samasta varovaisesta riskinotosta kuin teknologiaosakkeiden heikkous.</li>
+</ul>
+
+<h3 style="font-family:Arial,Helvetica,sans-serif;font-size:17px;margin-bottom:6px;">USA:n ennakkotunnelmat</h3>
+<p>USA:n pörssit avautuvat vasta Euroopan iltapäivällä, ja ennakkotunnelma on laskusuuntainen. <a href="https://finance.yahoo.com/quote/%5EGSPC/" target="_blank" rel="noopener noreferrer">S&amp;P 500</a> on 7 561,67 (<span class="neg">−0,76 %</span>), <a href="https://finance.yahoo.com/quote/%5EIXIC/" target="_blank" rel="noopener noreferrer">Nasdaq Composite</a> 25 136,273 (<span class="neg">−1,30 %</span>) ja <a href="https://finance.yahoo.com/quote/%5EDJI/" target="_blank" rel="noopener noreferrer">Dow Jones</a> 52 347,55 (<span class="neg">−0,26 %</span>). Heikoin kehitys on teknologiapainotteisessa Nasdaqissa, mikä on syy pysyä varovaisena erityisesti korkean betan teknologia- ja teollisuusosakkeissa.</p>
+
+<footer>
+  Tiedot: Yahoo Finance, aamupäivän kurssit klo 11.00 Suomen aikaa. Katsaus on informatiivinen eikä ole sijoitusneuvontaa. Tarkista reaaliaikaiset kurssit taulukon linkeistä.
+</footer>
+
+</div>
+</body>
+</html>
