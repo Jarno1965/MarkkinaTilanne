@@ -1,0 +1,358 @@
+Value<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aamun markkinakatsaus – Teknologialaskku painaa Aasian pörssejä</title>
+<style>
+  :root {
+    --bg: #f5f7fa;
+    --card: #ffffff;
+    --text: #1c2430;
+    --muted: #5d6b7c;
+    --line: #e1e6ed;
+    --green: #0b8a42;
+    --green-bg: #e7f6ed;
+    --red: #c62828;
+    --red-bg: #fdecec;
+    --accent: #12324f;
+    --warn: #8a5a00;
+    --warn-bg: #fff6df;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    font-size: 17px;
+  }
+  header {
+    background: var(--accent);
+    color: #fff;
+    padding: 28px 20px 24px;
+  }
+  header .wrap, main { max-width: 900px; margin: 0 auto; }
+  header h1 { margin: 0 0 6px; font-size: 1.8rem; line-height: 1.25; }
+  header p { margin: 0; color: #cfdbe8; font-size: 0.98rem; }
+  main { padding: 20px 16px 48px; }
+  section {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 22px 22px 18px;
+    margin-bottom: 20px;
+  }
+  h2 {
+    margin: 0 0 12px;
+    font-size: 1.35rem;
+    color: var(--accent);
+    border-bottom: 2px solid var(--line);
+    padding-bottom: 8px;
+  }
+  h3 { margin: 20px 0 8px; font-size: 1.05rem; color: var(--accent); }
+  p { margin: 0 0 12px; }
+  ul { margin: 0 0 12px; padding-left: 20px; }
+  li { margin-bottom: 8px; }
+
+  .driver {
+    background: #fff;
+    border: 1px solid #f0c9c9;
+    border-left: 8px solid var(--red);
+    border-radius: 12px;
+    padding: 20px 22px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(198, 40, 40, 0.08);
+  }
+  .driver .label {
+    display: inline-block;
+    background: var(--red);
+    color: #fff;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 999px;
+    margin-bottom: 10px;
+  }
+  .driver h2 { border: none; padding: 0; margin: 0 0 8px; color: var(--text); font-size: 1.35rem; }
+
+  .kpis {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 10px;
+    margin: 14px 0 6px;
+  }
+  .kpi {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 10px 12px;
+  }
+  .kpi .name { font-size: 0.82rem; color: var(--muted); }
+  .kpi .val { font-size: 1.1rem; font-weight: 700; }
+  .kpi .chg { font-size: 0.95rem; font-weight: 700; }
+
+  .pos { color: var(--green); font-weight: 700; }
+  .neg { color: var(--red); font-weight: 700; }
+
+  table { width: 100%; border-collapse: collapse; margin: 8px 0 14px; font-size: 0.98rem; }
+  th, td { padding: 9px 10px; border-bottom: 1px solid var(--line); text-align: left; }
+  th { background: var(--bg); font-size: 0.85rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+  td.num, th.num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+
+  .note {
+    background: var(--warn-bg);
+    border-left: 5px solid #e0a100;
+    color: var(--warn);
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin: 10px 0 14px;
+    font-size: 0.97rem;
+  }
+  .info {
+    background: #eaf2fb;
+    border-left: 5px solid #2f6db3;
+    color: #1d3f66;
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin: 10px 0 14px;
+    font-size: 0.97rem;
+  }
+  .nodata {
+    display: inline-block;
+    background: var(--warn-bg);
+    color: var(--warn);
+    border: 1px solid #ecd28a;
+    border-radius: 6px;
+    padding: 1px 8px;
+    font-size: 0.88rem;
+    font-weight: 600;
+  }
+  .bias {
+    background: var(--red-bg);
+    border: 1px solid #f3c1c1;
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin-top: 10px;
+  }
+  footer { text-align: center; color: var(--muted); font-size: 0.85rem; padding: 0 16px 30px; max-width: 900px; margin: 0 auto; }
+
+  @media (max-width: 600px) {
+    body { font-size: 16px; }
+    header h1 { font-size: 1.45rem; }
+    section { padding: 16px 14px 12px; }
+    th, td { padding: 8px 6px; font-size: 0.92rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <h1>Aamun markkinakatsaus</h1>
+    <p>Teknologiavetoinen myyntiaalto painaa Aasian pörssejä, ja USA:n futuurit ennakoivat heikkoa avausta Eurooppaan</p>
+  </div>
+</header>
+
+<main>
+
+  <div class="driver">
+    <span class="label">Aamun tärkein markkina-ajuri</span>
+    <h2>Aasian teknologiaosakkeiden jyrkkä myyntiaalto</h2>
+    <p>
+      Yön ylivoimaisesti merkittävin teema on teknologiavetoinen osakemyynti Aasiassa. Sitä vahvistavat huoli Yhdysvaltain inflaatiosta ja tekoälyosakkeiden korkeat arvostustasot. Alueellisen uutisoinnin mukaan sijoittajat odottavat Nvidiaan liittyviä uutisia ja uusia Yhdysvaltain talousindikaattoreita. Japanin ja Etelä-Korean osakkeet laskivat selvästi.
+    </p>
+    <p>
+      Euroopan kannalta signaali on negatiivinen. Nasdaq 100 -futuurit laskevat selvästi S&amp;P 500 -futuureja enemmän, mikä viittaa erityisesti kasvu- ja puolijohdeosakkeisiin kohdistuvaan myyntipaineeseen.
+    </p>
+    <div class="kpis">
+      <div class="kpi"><div class="name">KOSPI</div><div class="val">5&nbsp;100,50</div><div class="chg neg">−4,53 %</div></div>
+      <div class="kpi"><div class="name">Nikkei 225</div><div class="val">59&nbsp;662,02</div><div class="chg neg">−2,42 %</div></div>
+      <div class="kpi"><div class="name">Nasdaq 100 -futuuri</div><div class="val">27&nbsp;761,25</div><div class="chg neg">−0,98 %</div></div>
+      <div class="kpi"><div class="name">S&amp;P 500 -futuuri</div><div class="val">7&nbsp;551</div><div class="chg neg">−0,42 %</div></div>
+    </div>
+    <p style="margin-top:10px;">
+      Liike ei ole yleinen makrovetoinen myyntiaalto: raakaöljyn hinta nousee hieman ja euro heikkenee dollaria vastaan. Sijoittajat näyttävät siis pääosin vähentävän riskiä teknologia- ja kasvuosakkeissa. Energian kysynnän romahtamisesta ei ole merkkejä.
+    </p>
+  </div>
+
+  <section>
+    <h2>Helsingin pörssi ja kotimaiset yhtiöt</h2>
+
+    <div class="info">
+      <strong>Huomio avausajankohdasta:</strong> Helsingin pörssi aukeaa vasta klo 10.00. Alla oleva OMX Helsinki 25 -luku on <strong>edellisen pörssipäivän päätösluku</strong>, ei tämän aamun avausennuste.
+    </div>
+
+    <table>
+      <thead>
+        <tr><th>Indeksi</th><th class="num">Edellisen päivän päätös</th><th class="num">Muutos edellisenä päivänä</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>OMX Helsinki 25</td><td class="num">6&nbsp;332,693</td><td class="num neg">−0,14 %</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Yhtiötiedotteet</h3>
+    <p>
+      Käytettävissä olevasta aineistosta ei ole vahvistettavissa yhtiökohtaista listaa tämän aamun Nasdaq Helsingin tiedotteista. Tämä koskee Nordeaa, Nokiaa, Konetta, UPM:ää, Stora Ensoa, Nestettä, Fortumia, Sampoa, Wärtsilää, Metsoa, Keskoa, Orionia, Valmetia ja Outokumpua.
+    </p>
+    <p>
+      <span class="nodata">Data ei vahvistettavissa</span> uudesta tulosjulkistuksesta, tulosvaroituksesta, suuresta tilauksesta tai muusta kurssiin vaikuttavasta pörssitiedotteesta näissä OMXH25-yhtiöissä. Yksittäistä yhtiöuutista ei siksi pidä tulkita aamun avauksen pääasialliseksi liikuttajaksi, ellei sitä vahvisteta suoraan Nasdaq Nordicin tiedotevirrasta.
+    </p>
+
+    <h3>Toimialakohtaiset vaikutukset</h3>
+    <ul>
+      <li><strong>Nokia:</strong> Altistuu eniten teknologiasektorin laajalle arvostuslaskulle tunnelman ja arvostuksen kautta. Yhtiön verkkoliiketoiminta on vähemmän suoraan sidoksissa tekoälypuolijohteiden hinnoitteluun kuin aasialaiset sirunvalmistajat. Nasdaq 100 -futuurin lähes prosentin lasku on silti negatiivinen avaussignaali.</li>
+      <li><strong>Kone, Wärtsilä, Metso ja Valmet:</strong> Syklinen teollisuus kohtaa aiempaa heikomman riskiympäristön. Heikko tunnelma Aasian osakemarkkinoilla voi painaa arvostuskertoimia avauksessa, vaikka yön data ei osoita loppumarkkinoiden tilauskannan heikentyneen.</li>
+      <li><strong>UPM ja Stora Enso:</strong> Metsäyhtiöt voivat saada suhteellista tukea defensiivisistä ja reaalivarapiirteistään, mutta heikentynyt kasvutunnelma on vastapaino. Vahvistettua tietoa yön aikaisesta sellun hintaliikkeestä ei ole.</li>
+      <li><strong>Neste:</strong> Raakaöljyn hinta on hieman nousussa: WTI <span class="pos">88,83 (+0,30 %)</span> ja Brent <span class="pos">95,93 (+0,09 %)</span>. Suunta tukee energiasektorin tunnelmaa, mutta raakaöljyn hinta ei yksin ratkaise Nesteen jalostusmarginaaleja eikä tulosnäkymää.</li>
+      <li><strong>Fortum:</strong> Raakaöljyn vahvistumisella ei ole suoraa vaikutusta pohjoismaisiin sähkön hintoihin. Fortumin kurssiin vaikuttavat todennäköisemmin Euroopan korkonäkymät, sähkömarkkinoiden odotukset ja defensiivinen asemointi.</li>
+      <li><strong>Nordea ja Sampo:</strong> Heikko osakemarkkina voi tukea defensiivisten yhtiöiden suhteellista kehitystä. Koska Yhdysvaltain 10 vuoden valtionlainan tuottoa ei ole vahvistettu, korkovaikutusta ei voi arvioida tarkasti.</li>
+      <li><strong>Kesko:</strong> On kotimarkkinoihin nojaavana yhtiönä vientisyklisiä defensiivisempi, mutta kuluttaja- ja kauppasektorin osakkeisiin voivat silti vaikuttaa Euroopan kasvuodotukset.</li>
+      <li><strong>Orion:</strong> Terveydenhuoltosektorin defensiivisyys voi näyttää suhteellisesti houkuttelevammalta, jos teknologiamyynti laajenee. Yhtiökohtaiset uutiset voivat kuitenkin ratkaista.</li>
+      <li><strong>Outokumpu:</strong> Teollisuus- ja metallisektorin tunnelma on negatiivinen, ja kuparifutuuri on <span class="neg">6,0325 (−0,95 %)</span>. Kupari ei kuitenkaan ole suora mittari ruostumattoman teräksen hinnalle.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Aasian pörssit</h2>
+    <table>
+      <thead>
+        <tr><th>Indeksi</th><th class="num">Taso</th><th class="num">Muutos</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Nikkei 225</td><td class="num">59&nbsp;662,02</td><td class="num neg">−2,42 %</td></tr>
+        <tr><td>KOSPI</td><td class="num">5&nbsp;100,50</td><td class="num neg">−4,53 %</td></tr>
+        <tr><td>Hang Seng</td><td class="num">23&nbsp;740,80</td><td class="num neg">−1,12 %</td></tr>
+        <tr><td>Shanghai Composite</td><td class="num">3&nbsp;602,57</td><td class="num neg">−0,87 %</td></tr>
+        <tr><td>CSI 300</td><td class="num">3&nbsp;979,8035</td><td class="num neg">−0,91 %</td></tr>
+      </tbody>
+    </table>
+    <p>
+      Nikkei ja KOSPI ovat tarkasteltujen pääindeksien heikoimpia. KOSPIn jyrkkä lasku on Euroopan tunnelman kannalta erityisen merkittävä, sillä Etelä-Korea on yksi maailman keskeisistä puolijohde- ja teknologiamarkkinoista.
+    </p>
+    <p>Alueellisen uutisoinnin mukaan heikkouden taustalla ovat:</p>
+    <ul>
+      <li>edellisillan teknologiaosakkeiden heikkous Yhdysvalloissa</li>
+      <li>huoli tekoälyosakkeiden arvostuksista</li>
+      <li>Nvidiaan liittyvät tapahtumat ja odotukset</li>
+      <li>herkkyys Yhdysvaltain inflaatio- ja korkosignaaleille</li>
+    </ul>
+    <p>
+      Hongkongin ja Manner-Kiinan markkinat laskevat myös, mutta selvästi KOSPIa vähemmän. Aineistossa ei ole vahvistettua tuoretta Kiinan makrotilastoa, jota voisi pitää laskun ratkaisevana selittäjänä. Kiinaan liittyvä yksittäinen selitys olisi siksi spekulatiivinen.
+    </p>
+  </section>
+
+  <section>
+    <h2>USA:n futuurit ja Wall Street</h2>
+    <table>
+      <thead>
+        <tr><th>Futuuri</th><th class="num">Taso</th><th class="num">Muutos</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>S&amp;P 500 -futuuri</td><td class="num">7&nbsp;551</td><td class="num neg">−0,42 %</td></tr>
+        <tr><td>Nasdaq 100 -futuuri</td><td class="num">27&nbsp;761,25</td><td class="num neg">−0,98 %</td></tr>
+      </tbody>
+    </table>
+    <p>
+      Nasdaq-futuurit laskevat S&amp;P 500 -futuureja selvästi enemmän. Tämä viittaa siihen, että myyntipaine kohdistuu erityisesti kasvuosakkeisiin ja puolijohdesektoriin. Euroopassa paine näkyy todennäköisimmin teknologia-, investointitavara- ja arvostuksiltaan korkeissa syklisissä osakkeissa.
+    </p>
+    <ul>
+      <li><strong>Wall Streetin edellinen päätös:</strong> <span class="nodata">Data ei vahvistettavissa</span> S&amp;P 500- ja Nasdaq 100 -indeksien edellisen kaupankäyntipäivän päätöstasoista.</li>
+      <li><strong>Yhdysvaltain 10 vuoden valtionlainan korkotuotto:</strong> <span class="nodata">Data ei vahvistettavissa</span>. Ilman tuottolukua on vaikea erottaa, johtuuko osakeheikkous reaalikorkojen noususta, inflaatio-odotuksista vai teknologiasektorin arvostuslaskusta.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Raaka-aineet (Aasian johdannaispörssit ja Globex)</h2>
+
+    <h3>Energia</h3>
+    <table>
+      <thead>
+        <tr><th>Hyödyke</th><th class="num">Taso</th><th class="num">Muutos</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>WTI-raakaöljyfutuuri</td><td class="num">88,83</td><td class="num pos">+0,30 %</td></tr>
+        <tr><td>Brent-raakaöljy</td><td class="num">95,93</td><td class="num pos">+0,09 %</td></tr>
+      </tbody>
+    </table>
+    <p>
+      Öljyn hinta on hieman vahvempi ja tukee energiasektorin tunnelmaa. Nousu on kuitenkin liian pieni kumotakseen Aasian osakemarkkinoiden ja Nasdaq-futuurien negatiivisen signaalin. Shanghain INE-raakaöljyfutuuria ja muita Brent-sähköisiä noteerauksia ei ole erikseen vahvistettu.
+    </p>
+
+    <h3>Metallit</h3>
+    <table>
+      <thead>
+        <tr><th>Hyödyke</th><th class="num">Taso</th><th class="num">Muutos</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Kultafutuuri</td><td class="num">3&nbsp;860,40</td><td class="num neg">−0,67 %</td></tr>
+        <tr><td>Kuparifutuuri</td><td class="num">6,0325</td><td class="num neg">−0,95 %</td></tr>
+      </tbody>
+    </table>
+    <p>
+      Kuparin lasku sopii heikentyneeseen syklisten alojen ja teollisuuden tunnelmaan. Myös kulta on laskussa, joten yön liike ei ole synnyttänyt selvää pakoa jalometalleihin.
+    </p>
+    <p>
+      <strong>Rautamalmifutuuri:</strong> <span class="nodata">Data ei vahvistettavissa</span>. Tuoretta SHFE-, TOCOM- tai Singaporen pörssin rautamalmin noteerausta ei ollut saatavilla.
+    </p>
+  </section>
+
+  <section>
+    <h2>Valuutat ja päivän talouskalenteri</h2>
+
+    <h3>Valuutat ja kryptovaluutat</h3>
+    <table>
+      <thead>
+        <tr><th>Kohde</th><th class="num">Taso</th><th class="num">Muutos</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>EUR/USD</td><td class="num">1,1022</td><td class="num neg">−0,25 %</td></tr>
+        <tr><td>EUR/SEK</td><td class="num">11,101</td><td class="num pos">+0,15 %</td></tr>
+        <tr><td>USD/JPY</td><td class="num">159,406</td><td class="num neg">−0,29 %</td></tr>
+        <tr><td>Bitcoin (USD)</td><td class="num">64&nbsp;921,86</td><td class="num neg">−0,59 %</td></tr>
+      </tbody>
+    </table>
+    <p>
+      Euro on heikentynyt dollariin nähden, ja euro on vahvistunut hieman Ruotsin kruunuun nähden. Heikompi EUR/USD ja korkeampi EUR/SEK tukevat jossain määrin joidenkin pohjoismaisten viejien euromääräisiä tuloksia. Välitön markkinavaikutus määräytyy kuitenkin todennäköisesti globaalin riskinoton vähenemisen mukaan.
+    </p>
+    <p>
+      <strong>USD/CNH:</strong> <span class="nodata">Data ei vahvistettavissa</span> tämänhetkisestä tasosta ja prosenttimuutoksesta.
+    </p>
+
+    <h3>Päivän talouskalenteri</h3>
+    <p>Kellonajat ovat Suomen aikaa (EET).</p>
+    <ul>
+      <li><strong>11.00 (10.00 CET):</strong> EKP:n rahoitusvakausraportin ennakkojulkaisu otsikolla ”Decoding the cyber-AI nexus”. Samaan aikaan on listattu myös euroalueen rahoitusvälittäjä- ja sijoitusrahastotilastot.</li>
+      <li><strong>13.00 (12.00 CET):</strong> EKP:n kansainvälisten reservien ja valuuttalikviditeetin tilastot.</li>
+      <li><strong>Keskuspankkipuheenvuorot:</strong> EKP:n johtokunnan ja Eurosysteemin edustajia Frankfurtissa sekä muita EKP:n puhujia Euro Finance Weekin yhteydessä. Lisäksi puhuvat New Yorkin Fedin pääjohtaja John Williams (avauspuheenvuoro) sekä Fedin kuvernöörit Christopher Waller, Kevin Warsh ja Lisa Cook.</li>
+      <li><strong>Euroalueen teollisuustuotanto (syyskuu):</strong> kalenterilähteen mukaan odotus on <span class="neg">−0,5 % kuukausitasolla</span> ja <span class="neg">−1,1 % vuositasolla</span>.</li>
+    </ul>
+    <div class="note">
+      Teollisuustuotannon julkistusajankohtaa ja konsensusennustetta ei ole vahvistettu virallisesta tilastolähteestä. Lukuja tulee pitää kalenteriarviona, ei vahvistettuna tietona.
+    </div>
+
+    <h3>Mihin markkina kiinnittää huomiota</h3>
+    <ol>
+      <li>Siirtyykö Aasian teknologiamyynti Euroopan puolijohde- ja investointitavaraosakkeisiin.</li>
+      <li>Millainen sävy Euroopan rahoitusvakausviestinnässä on.</li>
+      <li>Mitä keskuspankkien puheenvuorot kertovat inflaatiosta, tuottavuudesta, tekoälyinvestoinneista ja rahoitusolosuhteista.</li>
+      <li>Jatkuuko öljyn vahvistuminen ilman laajempaa syklistä elpymistä.</li>
+    </ol>
+
+    <div class="bias">
+      <strong>Avaussuunta:</strong> Euroopan pörsseille, myös STOXX 600:lle, DAXille ja Helsingille, odotetaan negatiivista avausta. Paine on todennäköisesti suurinta teknologia- ja syklisissä teollisuusosakkeissa. Suomalaiset defensiiviset yhtiöt, pankit ja jotkin energiayhtiöt voivat pärjätä suhteellisesti paremmin. Vahvistettua yhtiökohtaista Helsingin pörssin tiedotetta, joka ohittaisi globaalin riskinoton signaalin, ei kuitenkaan ole.
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  Katsaus perustuu vahvistettuun markkinadataan. Jos tietoa ei ole voitu vahvistaa, se on merkitty tekstissä. Katsaus ei ole sijoitusneuvontaa.
+</footer>
+
+</body>
+</html>
