@@ -1,0 +1,260 @@
+Value<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pörssikatsaus klo 11.00 – Eurooppa ja Helsinki – 16.11.2026</title>
+<style>
+  :root {
+    --bg: #f5f7fa;
+    --card: #ffffff;
+    --text: #1d2733;
+    --muted: #5f6b7a;
+    --border: #dde3ea;
+    --accent: #12355b;
+    --pos: #12803c;
+    --pos-bg: #e8f6ed;
+    --neg: #c62828;
+    --neg-bg: #fdecec;
+    --neutral-bg: #eef2f7;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.65;
+    font-size: 17px;
+  }
+  .wrapper { max-width: 920px; margin: 0 auto; padding: 24px 18px 48px; }
+  header { border-bottom: 3px solid var(--accent); padding-bottom: 14px; margin-bottom: 24px; }
+  header .kicker {
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+  h1 { font-size: 2rem; line-height: 1.2; margin: 6px 0 6px; color: var(--accent); }
+  header .meta { font-family: Arial, Helvetica, sans-serif; font-size: 0.9rem; color: var(--muted); }
+  h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.35rem;
+    color: var(--accent);
+    margin: 38px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+  h3 { font-family: Arial, Helvetica, sans-serif; font-size: 1.05rem; margin: 22px 0 6px; color: var(--text); }
+  p { margin: 0 0 14px; }
+  .highlight {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-left: 8px solid var(--accent);
+    border-radius: 6px;
+    padding: 18px 22px;
+    margin-bottom: 26px;
+    box-shadow: 0 2px 6px rgba(18, 53, 91, 0.08);
+  }
+  .highlight .label {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.8rem;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .highlight p:last-child { margin-bottom: 0; }
+  .pos { color: var(--pos); font-weight: bold; }
+  .neg { color: var(--neg); font-weight: bold; }
+  .table-wrap { overflow-x: auto; background: var(--card); border: 1px solid var(--border); border-radius: 6px; }
+  table { width: 100%; border-collapse: collapse; font-family: Arial, Helvetica, sans-serif; font-size: 0.95rem; }
+  th, td { padding: 9px 14px; text-align: left; border-bottom: 1px solid var(--border); }
+  th { background: var(--accent); color: #fff; font-weight: 600; }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  tr.group td {
+    background: var(--neutral-bg);
+    font-weight: bold;
+    color: var(--accent);
+    text-transform: uppercase;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+  }
+  td.pos-cell { color: var(--pos); font-weight: bold; background: var(--pos-bg); }
+  td.neg-cell { color: var(--neg); font-weight: bold; background: var(--neg-bg); }
+  tr:last-child td { border-bottom: none; }
+  .note { font-family: Arial, Helvetica, sans-serif; font-size: 0.85rem; color: var(--muted); margin-top: 8px; }
+  .notice {
+    background: #fff8e1;
+    border: 1px solid #f0dc9a;
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin: 14px 0 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.95rem;
+  }
+  .cards { display: flex; flex-wrap: wrap; gap: 12px; margin: 14px 0 20px; }
+  .card {
+    flex: 1 1 200px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 12px 16px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .card .name { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+  .card .value { font-size: 1.4rem; font-weight: bold; margin: 2px 0; }
+  .card .chg { font-size: 0.95rem; }
+  .card.up { border-top: 4px solid var(--pos); }
+  .card.down { border-top: 4px solid var(--neg); }
+  ul { padding-left: 22px; margin: 0 0 16px; }
+  li { margin-bottom: 8px; }
+  footer {
+    margin-top: 44px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+  @media (max-width: 600px) {
+    body { font-size: 16px; }
+    h1 { font-size: 1.6rem; }
+  }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+<header>
+  <div class="kicker">Pörssikatsaus · klo 11.00</div>
+  <h1>Eurooppa ja Helsinki: Pörssit sekaisin, Brent painui jyrkästi</h1>
+  <div class="meta">Maanantai 16.11.2026 · Kurssitiedot klo 10.39 Suomen aikaa · Lähde: Yahoo Finance</div>
+</header>
+
+<div class="highlight">
+  <div class="label">Aamupäivän tärkein markkina-ajuri</div>
+  <p><strong>Pörssien aamupäivän tunnelma on sekava, eikä selvää riskinottosuuntaa ole.</strong> Euroopan ja Helsingin pörssit avautuivat kello 10.00 eri suuntiin. Lontoo (FTSE 100 <span class="pos">+0,52 %</span>) ja Pariisi (CAC 40 <span class="pos">+0,28 %</span>) ovat plussalla. Frankfurt (DAX <span class="neg">−0,12 %</span>), Tukholma (OMX Stockholm 30 <span class="neg">−0,10 %</span>) ja Helsinki (OMX Helsinki 25 <span class="neg">−0,25 %</span>) ovat miinuksella. Koko Euroopan STOXX Europe 600 on lähes paikallaan (<span class="pos">+0,05 %</span>).</p>
+  <p>Aamupäivän selvimmät liikkeet nähdään muilla markkinoilla. Brent-raakaöljy on laskenut <span class="neg">3,01 %</span> ja Nasdaq 100 -futuurit <span class="neg">0,73 %</span>. Teknologiafutuurien heikkous painaa todennäköisesti eurooppalaisten teknologia- ja kasvuosakkeiden tunnelmaa ennen USA:n kaupankäynnin alkua. Helsingin pörssin laskua ei voi yhdistää yksittäiseen yhtiötiedotteeseen.</p>
+</div>
+
+<h2>1. Euroopan ja Helsingin pörssi-indeksit sekä muut markkinat</h2>
+
+<div class="cards">
+  <div class="card down">
+    <div class="name">OMX Helsinki 25</div>
+    <div class="value">6 316,59</div>
+    <div class="chg neg">−0,25 %</div>
+  </div>
+  <div class="card up">
+    <div class="name">STOXX Europe 600</div>
+    <div class="value">664,49</div>
+    <div class="chg pos">+0,05 %</div>
+  </div>
+  <div class="card down">
+    <div class="name">Brent-raakaöljy</div>
+    <div class="value">92,96 $</div>
+    <div class="chg neg">−3,01 %</div>
+  </div>
+</div>
+
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr><th>Instrumentti</th><th class="num">Taso</th><th class="num">Muutos</th></tr>
+  </thead>
+  <tbody>
+    <tr class="group"><td colspan="3">Pohjoismaat</td></tr>
+    <tr><td>OMX Helsinki 25</td><td class="num">6 316,59</td><td class="num neg-cell">−0,25 %</td></tr>
+    <tr><td>OMX Stockholm 30</td><td class="num">3 353,36</td><td class="num neg-cell">−0,10 %</td></tr>
+
+    <tr class="group"><td colspan="3">Eurooppa</td></tr>
+    <tr><td>STOXX Europe 600</td><td class="num">664,49</td><td class="num pos-cell">+0,05 %</td></tr>
+    <tr><td>DAX (Saksa)</td><td class="num">26 739,64</td><td class="num neg-cell">−0,12 %</td></tr>
+    <tr><td>FTSE 100 (Britannia)</td><td class="num">10 919,49</td><td class="num pos-cell">+0,52 %</td></tr>
+    <tr><td>CAC 40 (Ranska)</td><td class="num">8 392,72</td><td class="num pos-cell">+0,28 %</td></tr>
+
+    <tr class="group"><td colspan="3">USA:n futuurit</td></tr>
+    <tr><td>S&amp;P 500 -futuurit</td><td class="num">7 563</td><td class="num neg-cell">−0,26 %</td></tr>
+    <tr><td>Nasdaq 100 -futuurit</td><td class="num">27 829</td><td class="num neg-cell">−0,73 %</td></tr>
+
+    <tr class="group"><td colspan="3">Raaka-aineet</td></tr>
+    <tr><td>Brent-raakaöljy</td><td class="num">92,96 $</td><td class="num neg-cell">−3,01 %</td></tr>
+    <tr><td>WTI-raakaöljy</td><td class="num">88,61 $</td><td class="num pos-cell">+0,06 %</td></tr>
+    <tr><td>Kulta (futuuri)</td><td class="num">3 861,8</td><td class="num neg-cell">−0,63 %</td></tr>
+    <tr><td>Kupari (futuuri)</td><td class="num">6,038</td><td class="num neg-cell">−0,86 %</td></tr>
+
+    <tr class="group"><td colspan="3">Valuutat ja kryptovaluutat</td></tr>
+    <tr><td>EUR/USD</td><td class="num">1,1028</td><td class="num neg-cell">−0,20 %</td></tr>
+    <tr><td>EUR/SEK</td><td class="num">11,0993</td><td class="num pos-cell">+0,13 %</td></tr>
+    <tr><td>USD/JPY</td><td class="num">159,38</td><td class="num neg-cell">−0,31 %</td></tr>
+    <tr><td>Bitcoin (USD)</td><td class="num">64 520,58 $</td><td class="num neg-cell">−1,20 %</td></tr>
+  </tbody>
+</table>
+</div>
+<p class="note">Kurssit ovat pörssipäivän aamupäivän noteerauksia klo 10.39 Suomen aikaa. Vihreä väri osoittaa nousua ja punainen laskua.</p>
+
+<p style="margin-top:18px;">Aamupäivän kuvassa on piirteitä <strong>defensiivisestä ja alueellisesta rotaatiosta</strong>, mutta ei laajaa riskinottoa. Lontoo ja Pariisi pärjäävät Frankfurtia ja Pohjoismaita paremmin. Saksan DAX nousi hiljattain ensimmäistä kertaa yli 27 000 pisteen, ja nyt indeksi vetäytyy lievästi tämän tason alapuolelle. Se viittaa pikemminkin voitonottoon kuin kääntyneeseen trendiin. Indeksiin kuuluu paljon teollisuus-, teknologia- ja syklisiä yhtiöitä, joihin USA:n teknologiafutuurien lasku todennäköisesti heijastuu.</p>
+
+<h2>2. Helsingin pörssin uutiset, pörssitiedotteet ja osakeliikkeet</h2>
+
+<div class="notice">
+  <strong>Merkittäviä kotimaisia yhtiötiedotteita ei ole havaittu.</strong> Aamupäivän käytettävissä olevassa aineistossa ei ole vahvistettua uutta 16.11. julkaistua pörssitiedotetta, tulosvaroitusta, tulosjulkistusta, suurtilausta, sisäpiirikauppaa eikä analyytikon suositus- tai tavoitehintamuutosta OMXH25-yhtiöille tai suomalaisille keskisuurille yhtiöille.
+</div>
+
+<p>OMX Helsinki 25 on laskenut <span class="neg">0,25 %</span> tasolle 6 316,59, eli Helsinki on hieman heikompi kuin Tukholma (<span class="neg">−0,10 %</span>) ja koko Eurooppa. Laskua ei voi perustella yksittäisellä yhtiöuutisella. Uskottavin selitys on yleinen markkinatunnelma: heikko teollisuus- ja teknologiasentimentti sekä öljyn hinnan jyrkkä lasku.</p>
+
+<h3>Viimeaikaiset yhtiöuutiset ja ajoitus</h3>
+<ul>
+  <li><strong>Nokia:</strong> Viimeisin merkittävä strateginen uutinen on Nokian ja NVIDIAn yhteistyö, joka julkistettiin perjantaina 13.11. Nokian osake oli hakutuloksen mukaan jo kyseisen päivän loppuhetkillä noin 4,5 % laskussa. Tämä ei siis ole uusi maanantaiaamun kurssiajuri.</li>
+  <li><strong>UPM:</strong> Viimeisin tunnistettu merkittävä yhtiötapahtuma on osittaisjakautumisen rekisteröinti ja WISA Groupin suunniteltu listautuminen, jotka ajoittuvat 31.10. Tämä ei ole tämän aamun tiedote.</li>
+  <li><strong>Nordea:</strong> Pankin pörssitiedotesivu oli saatavilla, mutta uutta tämän aamun tiedotetta ei havaittu.</li>
+  <li><strong>Nasdaq Nordic:</strong> Pörssin tiedotekeskuksesta ei löytynyt uutta Helsinki-kohtaista tiedotetta 16.11.</li>
+</ul>
+
+<p>Yksittäisten osakkeiden aamupäivän nousijoista ja laskijoista ei ole käytettävissä luotettavaa osakekohtaista dataa. Siksi katsaus ei nimeä OMXH25-indeksin tai STOXX 600:n yksittäisiä sektorivoittajia tai -häviäjiä.</p>
+
+<h2>3. Muu Eurooppa ja makrouutiset</h2>
+
+<p>Markkinoiden laajempi taustatekijä on edelleen herkkyys tekoälyyn ja teknologiasektoriin liittyvälle tunnelmalle. DAX ylitti hiljattain 27 000 pistettä tekoälyoptimismin ja yritystulosten tukemana. Tämän vuoksi tämän aamun pieni lasku sopii voitonottoon, eikä se vielä osoita suunnan muutosta.</p>
+
+<ul>
+  <li><strong>EKP:</strong> Keskuspankin vakausraportin (Financial Stability Review) kyberturvallisuuden ja tekoälyn yhteyttä käsittelevä ennakkojulkaisu on aikataulussa kello 11.00 Suomen aikaa. Sen sisällöstä ei ole vielä käytettävissä markkinoita koskevia johtopäätöksiä.</li>
+  <li><strong>EKP:n tilastot:</strong> Maanantain julkaisuaikataulussa ovat euroalueen sijoitusrahastotilastot ja rahoitusvälineyhtiöiden (FVC) tilastot. Ne eivät yksinään ole inflaatio- tai teollisuustuotantolukujen kaltaisia merkittäviä markkinaliikkujia.</li>
+  <li><strong>Makrodata:</strong> Uutta euroalueen inflaatio-, teollisuustuotanto- tai kauppatase-julkistusta ei ole havaittu. Tuoretta EKP:n rahapolitiikkaa koskevaa signaalia ei myöskään ole tunnistettu.</li>
+  <li><strong>Pohjoismaat:</strong> OMX Stockholm 30 on laskenut <span class="neg">0,10 %</span>. Euro on vahvistunut hieman Ruotsin kruunuun nähden (EUR/SEK <span class="pos">+0,13 %</span> tasolle 11,0993), mikä viittaa hieman pehmeämpään tunnelmaan ruotsalaisissa kohteissa.</li>
+</ul>
+
+<h2>4. Raaka-aineet, valuutat ja USA:n ennakkotunnelmat</h2>
+
+<h3>Raaka-aineet</h3>
+<ul>
+  <li><strong>Brent-raakaöljy:</strong> 92,96 dollaria, <span class="neg">−3,01 %</span>. Aamupäivän selvin yksittäinen liike eri omaisuuslajeissa. Halvempi öljy keventää polttoaineintensiivisten toimialojen ja kuluttajien kustannuksia, mutta painaa energiayhtiöiden osakkeita ja öljyyn sidottuja tulosodotuksia. Se on myös haitta FTSE 100 -indeksin öljytuottajille, vaikka Lontoo on silti plussalla.</li>
+  <li><strong>WTI-raakaöljy:</strong> 88,61 dollaria, <span class="pos">+0,06 %</span>. Poikkeaa selvästi Brentin kehityksestä.</li>
+  <li><strong>Kulta:</strong> futuuri 3 861,8, <span class="neg">−0,63 %</span>. Perinteiselle turvasatamalle ei näy välitöntä kysyntää.</li>
+  <li><strong>Kupari:</strong> futuuri 6,038, <span class="neg">−0,86 %</span>. Heikentyvä kupari on negatiivinen signaali kaivos-, metalli- ja teollisuustoimittajayhtiöille sekä kasvuherkille materiaaleille.</li>
+</ul>
+
+<h3>Valuutat ja kryptovaluutat</h3>
+<ul>
+  <li><strong>EUR/USD:</strong> 1,1028, <span class="neg">−0,20 %</span>. Euron heikkeneminen tukee euroalueen viejiä, mutta voi kertoa myös dollarin vahvistumisesta ja varovaisesta riskitunnelmasta.</li>
+  <li><strong>EUR/SEK:</strong> 11,0993, <span class="pos">+0,13 %</span>.</li>
+  <li><strong>USD/JPY:</strong> 159,38, <span class="neg">−0,31 %</span>.</li>
+  <li><strong>Bitcoin:</strong> 64 520,58 dollaria, <span class="neg">−1,20 %</span>. Vahvistaa varovaista tunnelmaa volatiileissa omaisuuslajeissa.</li>
+</ul>
+
+<h3>USA:n ennakkotunnelmat</h3>
+<p>USA:n osakefutuurit osoittavat heikkoa avausta ennen Wall Streetin kaupankäynnin alkua. S&amp;P 500 -futuurit ovat laskeneet <span class="neg">0,26 %</span> tasolle 7 563 ja Nasdaq 100 -futuurit <span class="neg">0,73 %</span> tasolle 27 829. Teknologiafutuurien selvästi suurempi lasku on todennäköinen painetekijä eurooppalaisille teknologia- ja kasvuosakkeille.</p>
+
+<h3>Yhteenveto</h3>
+<p>Kello 11.00 tilanne on seuraava: eurooppalaiset osakkeet ovat sekaisin, Britannia pärjää suhteellisesti parhaiten, Saksa konsolidoi ennätystasojensa lähellä, Pohjoismaat ovat lievästi heikkoja, öljyn hinta on laskenut jyrkästi ja USA:n teknologiafutuureihin kohdistuu painetta. Helsingin pörssin yksittäisiä osakeliikkeitä ei voi yhdistää tuoreisiin yhtiöuutisiin käytettävissä olevan tiedon perusteella.</p>
+
+<footer>
+  Katsaus perustuu Yahoo Financen kurssitietoihin klo 10.39 Suomen aikaa sekä aamupäivän uutishakuun. Se ei ole sijoitusneuvontaa. Kurssit muuttuvat päivän aikana.
+</footer>
+
+</div>
+</body>
+</html>
