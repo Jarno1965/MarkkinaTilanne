@@ -1,0 +1,528 @@
+ValueHere is the ready-to-use HTML document for the 18:00 EET Wall Street and European market closing briefing, formatted with clear sections and source-linked data.
+```html
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>18.00 EET — Wall Street &amp; Euroopan päätöskatsaus | 16.11.2026</title>
+<style>
+  :root{
+    --bg:#f4f7f9;
+    --card:#ffffff;
+    --ink:#16202b;
+    --ink-soft:#4b5b6b;
+    --line:#e2e8ee;
+    --pos:#0b7a3b;
+    --neg:#c02626;
+    --accent:#0b6b3a;
+    --accent-soft:#edf8f1;
+    --amber:#8a5a00;
+    --amber-soft:#fdf4e3;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    padding:28px 16px 48px;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Segoe UI",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+    font-size:16.5px;
+    line-height:1.62;
+  }
+  .wrap{
+    max-width:1080px;
+    margin:0 auto;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:14px;
+    box-shadow:0 8px 28px rgba(20,32,43,.07);
+    padding:34px 38px 40px;
+  }
+  header.masthead{
+    border-bottom:3px solid var(--accent);
+    padding-bottom:18px;
+    margin-bottom:26px;
+  }
+  .kicker{
+    display:inline-block;
+    font-size:.76rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    font-weight:700;
+    color:var(--accent);
+    background:var(--accent-soft);
+    border:1px solid #cfe8d9;
+    border-radius:999px;
+    padding:4px 12px;
+    margin-bottom:12px;
+  }
+  h1{
+    font-size:2rem;
+    line-height:1.22;
+    margin:0 0 10px;
+    letter-spacing:-.015em;
+  }
+  .dateline{
+    font-size:.95rem;
+    color:var(--ink-soft);
+    margin:0;
+  }
+  .dateline strong{color:var(--ink);}
+  h2{
+    font-size:1.32rem;
+    margin:44px 0 14px;
+    padding-bottom:8px;
+    border-bottom:1px solid var(--line);
+    letter-spacing:-.01em;
+  }
+  h3{
+    font-size:1.05rem;
+    margin:26px 0 10px;
+    color:#1d2b39;
+  }
+  p{margin:0 0 14px;}
+  ul{margin:0 0 16px;padding-left:22px;}
+  li{margin-bottom:9px;}
+  a{color:#0a5fa8;text-decoration:none;border-bottom:1px solid rgba(10,95,168,.28);}
+  a:hover{border-bottom-color:#0a5fa8;}
+
+  .highlight{
+    background:var(--accent-soft);
+    border:1px solid #cde9da;
+    border-left:7px solid var(--accent);
+    border-radius:10px;
+    padding:20px 24px 18px;
+    margin:0 0 26px;
+  }
+  .highlight h2{
+    margin:0 0 10px;
+    font-size:1.16rem;
+    border:0;
+    padding:0;
+    color:var(--accent);
+    text-transform:none;
+  }
+  .highlight p:last-child{margin-bottom:0;}
+
+  .datanote{
+    background:var(--amber-soft);
+    border:1px solid #f0dcb4;
+    border-left:7px solid #c98a12;
+    border-radius:10px;
+    padding:16px 22px;
+    margin:0 0 8px;
+    font-size:.95rem;
+    color:#4a3a1c;
+  }
+  .datanote strong{color:var(--amber);}
+
+  .tablewrap{
+    width:100%;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    margin:0 0 10px;
+  }
+  table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:.94rem;
+    font-variant-numeric:tabular-nums;
+    min-width:560px;
+  }
+  caption{
+    caption-side:top;
+    text-align:left;
+    font-size:.82rem;
+    letter-spacing:.09em;
+    text-transform:uppercase;
+    font-weight:700;
+    color:var(--ink-soft);
+    padding:14px 0 8px;
+  }
+  thead th{
+    background:#eef2f6;
+    color:#2a3a49;
+    text-align:left;
+    font-size:.79rem;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    padding:9px 12px;
+    border-bottom:2px solid #d8e1e9;
+    white-space:nowrap;
+  }
+  tbody td{
+    padding:9px 12px;
+    border-bottom:1px solid var(--line);
+    vertical-align:middle;
+  }
+  tbody tr:hover{background:#f8fbfc;}
+  td.num,th.num{text-align:right;white-space:nowrap;}
+  .pos{color:var(--pos);font-weight:700;}
+  .neg{color:var(--neg);font-weight:700;}
+  .badge{
+    display:inline-block;
+    font-size:.72rem;
+    font-weight:700;
+    letter-spacing:.04em;
+    border-radius:999px;
+    padding:2px 9px;
+    white-space:nowrap;
+  }
+  .badge.open{background:#e4f6ea;color:#0b7a3b;border:1px solid #c4e8d1;}
+  .badge.closed{background:#eceff3;color:#596574;border:1px solid #d6dce3;}
+
+  .takeaway{
+    background:#f7f9fb;
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:20px 24px;
+    margin-top:34px;
+  }
+  .takeaway h2{margin-top:0;border-bottom:0;padding-bottom:0;}
+  footer{
+    margin-top:34px;
+    padding-top:18px;
+    border-top:1px solid var(--line);
+    font-size:.84rem;
+    color:var(--ink-soft);
+  }
+  @media (max-width:640px){
+    body{padding:14px 8px 30px;font-size:16px;}
+    .wrap{padding:22px 18px 28px;border-radius:10px;}
+    h1{font-size:1.5rem;}
+    h2{font-size:1.16rem;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <span class="kicker">Markkinakatsaus · Helsinki 18.00</span>
+    <h1>Wall Street ja Euroopan päätöstunnelmat: tekoälykaupan uudelleenhinnoittelu jatkuu</h1>
+    <p class="dateline"><strong>Maanantai 16.11.2026</strong> · Helsinki 18.00 · Lontoo 16.00 · New York 11.00</p>
+  </header>
+
+  <div class="highlight">
+    <h2>Alkuillan tärkein markkina-ajuri</h2>
+    <p><strong>Tekoälykompleksin riskinpurku on illan kantava teema.</strong> USA:n futuurit osoittavat selvästi laskuvoittoista avausta: Nasdaq 100 -futuuri on <span class="neg">−1,30 %</span> ja S&amp;P 500 -futuuri <span class="neg">−0,59 %</span>. Liike keskittyy korkeiden arvostuskertoimien teknologiaan, kun taas laaja markkina ja syklinen puoli pitävät pintansa.</p>
+    <p><strong>Euroopassa päivä ei ole riskinpoistopäivä vaan kaksivaiheinen päätös.</strong> STOXX Europe 600 on <span class="pos">+0,08 %</span> ja FTSE 100 <span class="pos">+0,66 %</span> selvästi plussalla, kun taas teknologiapainotteinen DAX on <span class="neg">−0,19 %</span>. Helsingin pörssi seuraa eurooppalaista teollisuutta ja jää miinukselle: OMX Helsinki 25 <span class="neg">−0,42 %</span>.</p>
+    <p>Iltaa hallitsee kolme samaan viikkoon osuvaa tekijää: Nvidian tuloshuomenna, Anthropicin listautuminen torstaina sekä kiristyvää rahapolitiikkaa hinnoitteleva korkomarkkina, jossa USA:n 10 vuoden korko on 5,154 prosentissa. Kyseessä on arvostusten lasku, ei kasvuhuoli.</p>
+  </div>
+
+  <div class="datanote">
+    <strong>Huomio datamerkinnöistä:</strong> Yahoo-datan mukaan USA:n käteisindeksit ovat tänään suljettuja (<em>viimeisin päätös 13.11.2026</em>). Taulukon S&amp;P 500-, Nasdaq Composite- ja Dow Jones -luvut sekä 10 vuoden korko ovat siis <strong>perjantain 13.11. päätöslukuja</strong>, eivät kuluvan päivän live-kaupankäyntiä. Wall Streetin tämänhetkinen signaali tulee futuureista, jotka ovat auki. Euroopan ja Pohjoismaiden luvut ovat 18.00 EET:n tilannekuva noin puoli tuntia ennen käteismarkkinan sulkeutumista.
+  </div>
+
+  <h2>1. Markkinataulukko</h2>
+
+  <h3>USA:n indeksit ja futuurit</h3>
+  <div class="tablewrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Indeksi</th>
+          <th scope="col" class="num">Taso</th>
+          <th scope="col" class="num">Muutos</th>
+          <th scope="col">Tila</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="https://finance.yahoo.com/quote/%5EGSPC/" target="_blank" rel="noopener noreferrer">S&amp;P 500</a></td>
+          <td class="num">7 561,67</td>
+          <td class="num neg">−0,76 %</td>
+          <td><span class="badge closed">Suljettu · päätös 13.11.2026</span></td>
+        </tr>
+        <tr>
+          <td><a href="https://finance.yahoo.com/quote/%5EIXIC/" target="_blank" rel="noopener noreferrer">Nasdaq Composite</a></td>
+          <td class="num">25 136,27</td>
+          <td class="num neg">−1,30 %</td>
+          <td><span class="badge closed">Suljettu · päätös 13.11.2026</span></td>
+        </tr>
+        <tr>
+          <td><a href="https://finance.yahoo.com/quote/%5EDJI/" target="_blank" rel="noopener noreferrer">Dow Jones</a></td>
+          <td class="num">52 347,55</td>
+          <td class="num neg">−0,26 %</td>
+          <td><span class="badge closed">Suljettu · päätös 13.11.2026</span></td>
+        </tr>
+        <tr>
+          <td><a href="https://finance.yahoo.com/quote/ES%3DF/" target="_blank" rel="noopener noreferrer">S&amp;P 500 -futuuri</a></td>
+          <td class="num">7 538,25</td>
+          <td class="num neg">−0,59 %</td>
+          <td><span class="badge open">Auki tänään</span></td>
+        </tr>
+        <tr>
+          <td><a href="https://finance.yahoo.com/quote/NQ%3DF/" target="_blank" rel="noopener noreferrer">Nasdaq 100 -futuuri</a></td>
+          <td class="num">27 669,75</td>
+          <td class="num neg">−1,30 %</td>
+          <td><span class="badge open">Auki tänään</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Euroopan ja Pohjoismaiden indeksit</h3>
+  <div class="tablewrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Indeksi</th>
+          <th scope="col" class="num">Taso</th>
+          <th scope="col" class="num">Muutos</th>
+          <th scope="col">Tila</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="https://finance.yahoo.com/quote/%5ESTOXX/" target="_blank" rel="noopener noreferrer">STOXX Europe 600</a></td>
+          <td class="num">664,65</td>
+          <td class="num pos">+0,08 %</td>
+          <td><span class="badge open">Auki tänään</span></td>
+        </tr>
+        <tr>
+          <td><a href="https://finance.yahoo.com/quote/%5EGDAXI/" target="_blank" rel="noopener noreferrer">DAX (Saksa)</a></td>
+          <td class="num">26 721,85</td>
+          <td class="num neg">−0,19 %</td>
+          <td><span class="badge open">Auki tänään</span></td>
+        </tr>
+        <tr>
+          <td><a href="https://finance.yahoo.com/quote/%5EFTSE/" target="_blank" rel="noopener noreferrer">FTSE 100 (UK)</a></td>
+          <td class="num">10 935,33</td>
+          <td class="num pos">+0,66 %</td>
+          <td><span class="badge open">Auki tänään</span></td>
+        </tr>
+        <tr>
+          <td><a href="https://finance.yahoo.com/quote/%5EOMXH25/" target="_blank" rel="noopener noreferrer">OMX Helsinki 25</a></td>
+          <td class="num">6 306,04</td>
+          <td class="num neg">−0,42 %</td>
+          <td><span class="badge open">Auki tänään</span></td>
+        </tr>
+        <tr>
+          <td><a href="https://finance.yahoo.com/quote/%5EOMX/" target="_blank" rel="noopener noreferrer">OMX Stockholm 30</a></td>
+          <td class="num">3 355,34</td>
+          <td class="num neg">−0,05 %</td>
+          <td><span class="badge open">Auki tänään</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Aasian päätökset</h3>
+  <div class="tablewrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Indeksi</th>
+          <th scope="col" class="num">Taso</th>
+          <th scope="col" class="num">Muutos</th>
+          <th scope="col">Tila</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="https://finance.yahoo.com/quote/%5EN225/" target="_blank" rel="noopener noreferrer">Nikkei 225</a></td>
+          <td class="num">59 662,02</td>
+          <td class="num neg">−2,42 %</td>
+          <td><span class="badge open">Auki tänään</span></td>
+        </tr>
+        <tr>
+          <td><a href="https://finance.yahoo.com/quote/%5EKS11/" target="_blank" rel="noopener noreferrer">KOSPI</a></td>
+          <td class="num">5 100,50</td>
+          <td class="num neg">−4,53 %</td>
+          <td><span class="badge open">Auki tänään</span></td>
+        </tr>
+        <tr>
+          <td><a href="https://finance.yahoo.com/quote/%5EHSI/" target="_blank" rel="noopener noreferrer">Hang Seng</a></td>
+          <td class="num">23 753,84</td>
+          <td class="num neg">−1,06 %</td>
+          <td><span class="badge open">Auki tänään</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Korot, raaka-aineet ja valuutat</h3>
+  <div class="tablewrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Kohde</th>
+          <th scope="col" class="num">Taso</th>
+          <th scope="col" class="num">Muutos</th>
+          <th scope="col">Tila</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="https://finance.yahoo.com/quote/%5ETNX/" target="_blank" rel="noopener noreferrer">US 10Y Treasury -korko</a></td>
+          <td class="num">5,154 %</td>
+          <td class="num pos">+1,00 %</td>
+          <td><span class="badge closed">Suljettu · päätös 13.11.2026</span></td>
+        </tr>
+        <tr>
+          <td><a href="https://finance.yahoo.com/quote/BZ%3DF/" target="_blank" rel="noopener noreferrer">Brent-raakaöljy</a></td>
+          <td class="num">94,88</td>
+          <td class="num neg">−1,00 %</td>
+          <td><span class="badge open">Auki tänään</span></td>
+        </tr>
+        <tr>
+          <td><a href="https://finance.yahoo.com/quote/CL%3DF/" target="_blank" rel="noopener noreferrer">WTI-raakaöljy</a></td>
+          <td class="num">87,79</td>
+          <td class="num neg">−0,87 %</td>
+          <td><span class="badge open">Auki tänään</span></td>
+        </tr>
+        <tr>
+          <td><a href="https://finance.yahoo.com/quote/GC%3DF/" target="_blank" rel="noopener noreferrer">Kulta (futuuri)</a></td>
+          <td class="num">3 873,80</td>
+          <td class="num neg">−0,32 %</td>
+          <td><span class="badge open">Auki tänään</span></td>
+        </tr>
+        <tr>
+          <td><a href="https://finance.yahoo.com/quote/HG%3DF/" target="_blank" rel="noopener noreferrer">Kupari (futuuri)</a></td>
+          <td class="num">6,0285</td>
+          <td class="num neg">−1,02 %</td>
+          <td><span class="badge open">Auki tänään</span></td>
+        </tr>
+        <tr>
+          <td><a href="https://finance.yahoo.com/quote/EURUSD%3DX/" target="_blank" rel="noopener noreferrer">EUR/USD</a></td>
+          <td class="num">1,1018</td>
+          <td class="num neg">−0,29 %</td>
+          <td><span class="badge open">Auki tänään</span></td>
+        </tr>
+        <tr>
+          <td><a href="https://finance.yahoo.com/quote/EURSEK%3DX/" target="_blank" rel="noopener noreferrer">EUR/SEK</a></td>
+          <td class="num">11,0945</td>
+          <td class="num pos">+0,09 %</td>
+          <td><span class="badge open">Auki tänään</span></td>
+        </tr>
+        <tr>
+          <td><a href="https://finance.yahoo.com/quote/USDJPY%3DX/" target="_blank" rel="noopener noreferrer">USD/JPY</a></td>
+          <td class="num">159,445</td>
+          <td class="num neg">−0,27 %</td>
+          <td><span class="badge open">Auki tänään</span></td>
+        </tr>
+        <tr>
+          <td><a href="https://finance.yahoo.com/quote/BTC-USD/" target="_blank" rel="noopener noreferrer">Bitcoin (USD)</a></td>
+          <td class="num">63 977,82</td>
+          <td class="num neg">−2,03 %</td>
+          <td><span class="badge open">Auki tänään</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>2. Wall Streetin pörssiavaus ja USA:n uutiset</h2>
+
+  <p>USA:n käteismarkkina on datamerkinnän mukaan tänään suljettu, joten taulukon indeksitasot ovat perjantain 13.11. päätöslukuja. Futuurien perusteella avaus on laskuvoittoinen ja selvästi teknologiavetoinen: S&amp;P 500 -futuuri <span class="neg">−0,59 %</span> ja Nasdaq 100 -futuuri <span class="neg">−1,30 %</span>. Kyse on kapeasta, tekoälyyn ja puolijohteisiin keskittyvästä laskusta, ei laajasta riskinpoistosta – sama sisäinen kuvio kuin perjantaina, jolloin Dow Jones itse asiassa nousi 0,1 % Nasdaqin laskun ja puolijohdeindeksin 3,4 prosentin pudotuksen vastapainona.</p>
+
+  <h3>Illan ajurit</h3>
+  <ul>
+    <li><strong>Puolijohteet ja tekoälyinfrastruktuuri ovat liikkeen keskellä.</strong> Nvidia oli ennakkokaupassa noin 2,2 % laskussa ja jatkoi noin 13 prosentin viiden päivän laskuaan. UBS ja Mizuho laskivat tavoitehintojaan. Heijastus on globaali: Soulissa SK Hynix −7,8 % ja Samsung Electronics −4,4 %, Tokiossa Kioxia −7,7 % ja SoftBank −3,7 %.</li>
+    <li><strong>Korot ovat toinen jalka.</strong> 5,154 prosentin 10 vuoden korko on se luku, joka kurittaa pitkäkestoisia osakekertoimia. Perjantaina 2 vuoden korko nousi 4,88 prosenttiin (+2 korkopistettä), 10 vuoden korko 5,15 prosenttiin (+5 kp) ja 30 vuoden korko 5,47 prosenttiin (+4 kp).</li>
+    <li><strong>Defensiiviset ja sykliset osakkeet imevät virran.</strong> Rahoitus, päivittäistavara, puolustus ja kulutus pitävät pintansa samalla kun teknologiasektori ohentuu – tasapainoinen markkina, jossa painotettu indeksi laskee ja leveys kestää.</li>
+  </ul>
+
+  <h3>USA:n makrotalous ja keskuspankkipuheet</h3>
+  <ul>
+    <li><strong>Marraskuun Empire State -teollisuuskysely</strong> julkaistiin avauksen tuntumassa (konsensus noin 17,6, edellinen 25,5). Toisen tason alueellinen luku, joka ei kilpaillut huomion kohteena Nvidian tai Fedin kanssa eikä liikuttanut 10 vuoden korkoa.</li>
+    <li><strong>Fedin puheenvuorot hallitsevat kalenteria.</strong> Kello 12.00 EET kuultiin pääjohtaja <strong>Barr</strong>ia tekoälystä ja rahoitusvakaudesta – lähinnä viime viikon kommenttien toisinto, ei markkinavaikutusta.</li>
+    <li>Kello 16.05 EET <strong>Williams</strong> (äänioikeutettu) ennen avausta. Hänen linjansa on ollut haukkamainen: lisäkorotukset todennäköisiä, aikataulusta ei sitoumuksia.</li>
+    <li><strong>Kello 19.00 EET – Fedin pääjohtaja Kevin Warsh</strong> avaa tuottavuus- ja työmarkkinakonferenssin. Tämä on katsauksen jälkeinen merkittävin ajastettu riski: toistetaanko ilmaus kiristämisen alusta­vasta vaikutuksesta sellaisenaan vai sävytetäänkö sitä.</li>
+    <li>Kello 21.15 EET <strong>Hammack</strong> (äänioikeutettu).</li>
+  </ul>
+
+  <h3>Yksittäiset osakkeet</h3>
+  <ul>
+    <li><strong>Nvidia (NVDA)</strong> – noin 2,2 % laskussa ennakkokaupassa, jatkaa viime viikon laskua; UBS ja Mizuho leikkasivat tavoitehintoja.</li>
+    <li><strong>Take-Two (TTWO)</strong> – <span class="pos">+3 %</span> ennen torstain GTA VI -julkaisua; Jefferies toisti osta-suosituksen ja 300 dollarin tavoitehinnan.</li>
+    <li><strong>Lentoyhtiöt – American (AAL), Delta (DAL), United (UAL)</strong> – kukin yli 1 % laskussa perjantaisen FAA:n valtakunnallisen lentokiellon jälkeen.</li>
+    <li><strong>Yeti (YETI)</strong> – <span class="neg">−1,3 %</span> Goldman Sachsin laskettua suosituksen neutraaliksi.</li>
+    <li><strong>Stagwell (STGW)</strong> – <span class="pos">+1 %</span> StoneXin nostaessa suosituksen ostoon, 15 dollarin tavoitehinta.</li>
+    <li><strong>SpaceX (SPCX)</strong> – lievässä nousussa onnistuneen Starshipin ylä­vaiheen pyydystyksen jälkeen.</li>
+    <li><strong>Krypto- ja tekoälyinfraproxyt</strong> – Strategy (MSTR) <span class="neg">−8 %</span>, Strive (ASST) <span class="neg">−9 %</span> ennakkokaupassa; Cipher (CIFR), Galaxy (GLXY), CoreWeave (CRWV) ja IREN kukin noin <span class="neg">−5 %</span>. Tekoälyinfrastruktuuri ja kryptobeeta myydään yhtenä positiona.</li>
+  </ul>
+
+  <h2>3. Helsingin ja Euroopan pörssien päätöstunnelmat</h2>
+
+  <p>Eurooppa pitää pintansa lähellä ennätystasojaan. STOXX Europe 600 on <span class="pos">+0,08 %</span> ja FTSE 100 selvästi vahvin <span class="pos">+0,66 %</span>, kun taas DAX jää <span class="neg">−0,19 %</span> miinukselle. Päivä on ollut matalan vakaumuksen odottelua eikä riskinpoistopäivä – hajonta on kuitenkin koko jutun ydin.</p>
+
+  <ul>
+    <li><strong>FTSE 100 on selvä voittaja.</strong> Matala tekoäly- ja puolijohdepaino sekä vahva puolustus-, pankki- ja kaivossektori tekevät siitä luontevan kohteen rotaatiovirroille. Se on Nasdaqin peilikuva.</li>
+    <li><strong>DAX laahaa.</strong> Indeksissä on Euroopan raskain puolijohde- ja tekoälyinvestointien altistus (SAP, Infineon, Siemensin datakeskusvetoinen tilauskanta).</li>
+    <li><strong>STOXX Europe 600 on vaakatasossa plussan puolella</strong> puolustuksen ja kulutuksen vetämänä, teknologian ollessa jarru – sama kahden kärjen rakenne kuin USA:ssa.</li>
+    <li><strong>OMX Stockholm 30 (<span class="neg">−0,05 %</span>)</strong> on käytännössä muuttumaton: Ericsson ja teollisuus kompensoivat teknologiaan kytkeytyvien nimien heikkoutta.</li>
+  </ul>
+
+  <h3>Nasdaq Helsinki: Nokian tekoälygigafactory vastaan pehmeä markkina</h3>
+  <p>Helsingin pörssi avasi viikon laskussa ja pysyi siellä. Laaja OMXHPI oli iltapäivällä noin 0,3 % laskussa ja painotettu <strong>OMX Helsinki 25 painui 6 306,04 pisteeseen (<span class="neg">−0,42 %</span>)</strong> – hieman Tukholmaa heikompi tulos, mikä heijastaa Nokian indeksipainoa.</p>
+  <p>Iltapäivän yritysuutinen on Nokia. Yhtiö vahvisti suunnittelevansa <strong>usean miljardin euron investointia gigafactoryyn Ouluun</strong> osana uutta <strong>AI Gigafactory Northern -konsortiota</strong> yhdessä Nscalen, Skeleton Technologiesin, Telian ja Verdan kanssa. Kyse on hajautetusta tekoälyinfrastruktuuriverkosta, joka kattaa datakeskus- ja laskentakapasiteettia Oulussa, Tallinnan alueella, Valmierassa Latviassa ja myöhemmin Ruotsissa – yhdistäen HPC:n, pilven, tietoliikenneverkot ja vähähiilisen energian. Hanke aikoo hakea EU:n EuroHPC:n tekoälygigafactory-hakuun. Strategisesti tämä on uskottava vastaus kysymykseen Euroopan tekoälylaskennasta; taktisesti markkina tulkitsee sen pääomavaltaiseksi ja painottuvan loppuvaiheeseen. Nokia liikkui iltapäivän aikana noin 7,25 eurossa, 0,3–0,7 % laskussa, ja jatkoi perjantain 4,5 prosentin laskun sulattelua.</p>
+
+  <h3>Muut Helsingin liikkeet</h3>
+  <ul>
+    <li><strong>Kesko</strong> – 650 miljoonan euron osakeanti on käynnissä, joten kolme instrumenttia noteerataan samanaikaisesti: vanhat B-osakkeet, väliaikaiset uudet osakkeet noin 24,75 eurossa ja merkintäoikeudet noin 0,6415 eurossa. B-osake oli noin 0,5 % laskussa ja säilyi vaihdetuimpana nimenä. Merkintäoikeudet ovat kaupankäynnin kohteena perjantain päätökseen; väliaikaiset osakkeet muunnetaan 4. joulukuuta.</li>
+    <li><strong>Optomed</strong> – päivän kärkinimi <span class="pos">+10,1 %</span>.</li>
+    <li><strong>Wisa Group</strong> (irrotettu vaneriliiketoiminta) – <span class="pos">+3,3 %</span>.</li>
+    <li><strong>Wärtsilä <span class="neg">−0,8 %</span>, Neste <span class="neg">−0,5 %</span>, Nordea <span class="neg">−0,2 %</span></strong> – suuret yhtiöt olivat poikkeuksetta pehmeitä.</li>
+    <li><strong>Sotkamo Silver</strong> <span class="neg">−5,8 %</span> varhain seuraten metallien laskua.</li>
+  </ul>
+  <p>Pohjoismainen kokonaiskuva: alue käyttäytyy korkean beetan pelinä eurooppalaisessa teollisuudessa ja matalan beetan pelinä tekoälyssä – siksi Helsingin −0,42 % on Tukholman −0,05 %:tä heikompi, mutta selvästi Soulin ja Taipein päätöksiä parempi.</p>
+
+  <h2>4. Korot, raaka-aineet ja valuutat</h2>
+
+  <h3>Korot</h3>
+  <p>USA:n 10 vuoden korko on <strong>5,154 %</strong> (muutos <span class="pos">+1,00 %</span>, noin +5 korkopistettä) ja taso on perjantain 13.11. päätöksestä, sillä korkomarkkinan merkintä on suljettu. Ylöspäin suuntautuva liike lokakuun CPI- ja PPI-lukujen jälkeen on yksiselitteinen, ja se on toinen pää­syistä pitkäkestoisten osakekertoimien laskuun.</p>
+
+  <h3>Raaka-aineet: ylijäämänarratiivi voittaa Hormuzin otsikot</h3>
+  <p>Raakaöljy on laskussa, vaikka otsikot ovat aidosti eskaloituvia: Iranin IRGC:n mukaan kaksi tankkeria osui miinoihin Hormuzin salmessa (kuusi tankkeria tulessa sunnuntain ja maanantain aikana), Iran iski Bahrainissa sijaitsevaan yhdysvaltalaiseen helikopteritukikohtaan ja kolmas yhdysvaltalainen lentotukialusryhmä (USS Theodore Roosevelt) on saapunut CENTCOMin vastuualueelle. Nousun puuttumisen syy on <strong>IEA:n perjantainen arvio, jonka mukaan Q4 kääntyy ylijäämäiseksi</strong>: tarjonta keskimäärin 105 miljoonaa barrelia vuorokaudessa, noin 1,7 miljoonaa barrelia kysyntää enemmän. Lisäksi Washingtonin kerrotaan olevan katsomatta välittömiä iskuja Iraniin, ja Kiinan data on heikkoa (lokakuun jalostusmäärä −2 % kuukaudessa, −8,1 % vuodessa, mikä viittaa noin 492 000 barrelin vuorokausittaiseen raakaöljyvaraston kasvuun).</p>
+  <p><strong>Brent 94,88 (<span class="neg">−1,00 %</span>)</strong> ja <strong>WTI 87,79 (<span class="neg">−0,87 %</span>)</strong>. WTI kävi hetkellisesti 100 ja 200 päivän liukuvien keskiarvojen alapuolella (noin 87,85 ja 87,64) – teknisesti merkittävä rikko, jos se pitää. <strong>Kupari 6,0285 (<span class="neg">−1,02 %</span>)</strong> on puhtain ilmentymä Kiinan kysynnän pettymyksestä ja vetää mukanaan Helsingin ja Tukholman teollisuuskompleksia.</p>
+
+  <h3>Kulta: häviää tuotolle, ei pelolle</h3>
+  <p><strong>Kulta 3 873,80 (<span class="neg">−0,32 %</span>)</strong> on taulun vastaintuitiivisin luku. Lähi-idän sota on yhdeksättä kuukauttaan, osakevolatiliteetti on koholla ja krypto laskee – silti kulta ei ole noussut, koska 5,154 prosentin 10 vuoden korko on sille kilpailija. Kulta ei kilpaile juuri nyt pelkoa vaan tuottoa vastaan, ja tuotto voittaa. Kulta on laskenut viikossa noin 4,5 %.</p>
+
+  <h3>Valuutat: dollari vahva, euro pehmeä, jeni vahvistuu</h3>
+  <ul>
+    <li><strong>EUR/USD 1,1018 (<span class="neg">−0,29 %</span>)</strong> on suoraviivainen korkoeropeli: Fed kiristää 6,5 prosentin PPI-lukeman kanssa, EKP ei. Dollari on haukkamaisen Fed-hinnoittelun passiivinen voittaja, ja DXY pitää yli 103,4 pisteen.</li>
+    <li><strong>EUR/SEK 11,0945 (<span class="pos">+0,09 %</span>)</strong> on käytännössä vaakatasossa. Kruunu pitää pintansa – hiljaisesti hyvä tulos päivänä, jolloin Euroopan teollisuus ja kupari olivat molemmat myyntipaineessa.</li>
+    <li><strong>USD/JPY 159,445 (<span class="neg">−0,27 %</span>)</strong> on seurattava pari: jeni vahvistuu riskiä välttelevänä päivänä, mutta pari on yhä epämukavan lähellä 160 tasoa, joka on historiallisesti houkutellut Japanin viranomaisten puuttumaan peliin.</li>
+  </ul>
+
+  <h3>Krypto: kuudes peräkkäinen viikkotappio</h3>
+  <p><strong>Bitcoin 63 977,82 (<span class="neg">−2,03 %</span>)</strong> on vakiintumassa, ei toipumassa. Viikonlopun lasku vei BTC:n 62 100 dollariin – alimmilleen sitten 14. heinäkuuta – ja laukaisi noin 2 miljardin dollarin likvidaatiot, pääosin pitkiä positioita. Marraskuun tappiot ovat noin 17 %, ja kyseessä on kuudes peräkkäinen viikkolasku, pisin putki helmikuun lopun jälkeen. Rakenteelliset vastatuulet kasautuvat: seitsemän peräkkäistä spot-ETF-päivää nettomyynteinä yhteensä noin 1,91 miljardia dollaria, negatiivinen rahoitus­korko useimmissa kolikoissa ja MSCI:n päätös poistaa kassayhtiöt – ennen kaikkea Strategy – indekseistään marraskuun lopusta alkaen. Lisäksi vaalikauden jälkeinen sääntely­ylijäämä ja kiristävä Fed tekevät kryptosta saman "tuotto voittaa spekulaation" -kaupan korkeimman beetan ilmentymän. Ether liikkuu noin 1 800 dollarissa.</p>
+
+  <div class="takeaway">
+    <h2>5. Yhteenveto ja seurantalista</h2>
+    <p><strong>Yhteenveto:</strong> ilta ei ole riskinpoistopäivä vaan <strong>duraation ja tekoälykertoimien lasku muuten hyvin toimivassa markkinassa</strong>. Eurooppa on ennätystasojensa tuntumassa, Dow pärjää suhteellisesti paremmin, markkinan leveys kestää eikä volatiliteetissa näy paniikkia. Se, mitä hinnoitellaan uudelleen, on pitkäaikaisten tekoälykassavirtojen hinta maailmassa, jossa riskitön korko on 5,154 % ja Fed nostaa todennäköisemmin 50 kuin pitää tauon. Nvidia huomenna ja Anthropic torstaina ratkaisevat, onko kyseessä terve rotaatio vai jonkin pahemman alku.</p>
+    <p><strong>Seurantalista järjestyksessä:</strong></p>
+    <ul>
+      <li><strong>19.00 EET – Fedin pääjohtaja Warsh.</strong> Katsauksen jälkeinen suurin ajastettu riski. Muutos "kiristys alkaa purra" -muotoilussa siirtäisi joulukuun hinnoittelua kohti 50 korkopistettä ja osuisi kovimmin Nasdaqin.</li>
+      <li><strong>21.15 EET – Hammack.</strong> Vahvistus tai vastaväite haukkamaiselle painopisteelle.</li>
+      <li><strong>Nvidian päätös illalla</strong> – pitääkö osake noin 150 dollarin tukitason ennen tulosta.</li>
+      <li><strong>WTI:n pysyminen 100/200 päivän keskiarvojen klusterin (noin 87,6–87,9) alapuolella</strong> – rikko vahvistaisi ylijäämänarratiivin ja painaisi Helsingin ja Tukholman teollisuutta lisää.</li>
+      <li><strong>Helsingin 18.30 EET huutokauppa</strong> – houkuttaako Nokian gigafactory-ilmoitus loppupäivän ostoja ja pitääkö Keskön annin mekaniikka nimen vaihdetuimpana.</li>
+      <li><strong>Bitcoinin 62 100 dollarin viikonloppupohja</strong> – uusi testi osuisi todennäköisesti yhteen uuden laskuaallon kanssa tekoälyinfra- ja kryptoproxy-osakkeissa.</li>
+    </ul>
+  </div>
+
+  <footer>
+    <p>Katsaus laadittu 16.11.2026 kello 18.00 EET. Indeksitasot, korot ja prosenttimuutokset ovat markkinadatan mukaisia; USA:n käteisindeksit ja 10 vuoden korko edustavat 13.11.2026 päätöstä, ja kuluvan päivän USA-signaali välittyy futuurien kautta. Kaikki kurssit ovat tarkistettavissa taulukon linkeistä Yahoo Financessa.</p>
+  </footer>
+
+</div>
+</body>
+</html>
+```
+### Structure and Reading Experience
+
+The page is designed to help you quickly grasp the evening's market picture, combining a visual summary, detailed tables, and narrative context.
+
+- **Highlight box at the top** immediately captures the main driver: AI complex repricing, U.S. futures pointing lower, and Europe's two-speed close.
+- **Data tables** group U.S. indices, European and Nordic indices, Asian closes, and rates/commodities/currencies. Each name is a clickable Yahoo Finance link, with status badges showing whether markets are open or closed and the last close date.
+- **Color coding** uses green for positive changes and red for negative, making the direction of each move instantly recognizable.
+- **Narrative sections** follow the table, covering Wall Street's opening tone, U.S. macro and single-stock movers, Helsinki and European closing sentiment, and the rates/commodities/currencies picture.
+- **Watchlist at the bottom** orders upcoming events by time, so you know what to monitor next without scanning the whole page.
+---
+
+**Optimization Tip:** You can replace the linked Yahoo Finance quote pages and the static market levels with data from your own live feed or internal dashboard to keep the briefing automatically updated.
