@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aamun markkinakatsaus</title>
+  <style>
+    :root {
+      --bg: #f6f8fa;
+      --card: #ffffff;
+      --text: #1f2933;
+      --muted: #5f6c7b;
+      --border: #d9e2ec;
+      --green: #087f3f;
+      --red: #c62828;
+      --accent: #2e7d32;
+      --accent-soft: #e8f5e9;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.55;
+    }
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.25rem;
+    }
+    header {
+      margin: 0 0 1.25rem;
+      padding: 1.25rem 1.4rem;
+      background: linear-gradient(135deg, #ffffff 0%, #eef7f0 100%);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+    }
+    h1 {
+      margin: 0 0 0.25rem;
+      font-size: clamp(1.65rem, 4vw, 2.35rem);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+    .subtitle {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+    h2 {
+      margin: 1.7rem 0 0.75rem;
+      font-size: clamp(1.25rem, 2.8vw, 1.6rem);
+      line-height: 1.25;
+    }
+    h3 {
+      margin: 1.35rem 0 0.55rem;
+      font-size: 1.1rem;
+    }
+    p {
+      margin: 0 0 0.85rem;
+    }
+    .driver {
+      background: var(--accent-soft);
+      border: 1px solid #b7dfc0;
+      border-left: 6px solid var(--accent);
+      border-radius: 12px;
+      padding: 1rem 1.1rem;
+      margin: 0 0 1.3rem;
+      box-shadow: 0 8px 20px rgba(46, 125, 50, 0.08);
+    }
+    .driver h2 {
+      margin: 0 0 0.45rem;
+      font-size: 1.2rem;
+      color: #145c2a;
+    }
+    .driver p {
+      margin: 0;
+    }
+    .section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1rem 1.1rem 1.15rem;
+      margin-bottom: 1.1rem;
+      box-shadow: 0 4px 14px rgba(31, 41, 51, 0.04);
+    }
+    .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      margin: 0.6rem 0 0.9rem;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 560px;
+      font-size: 0.96rem;
+      background: #ffffff;
+    }
+    th, td {
+      padding: 0.72rem 0.8rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    th {
+      background: #f0f4f8;
+      color: #334e68;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.02em;
+    }
+    tr:last-child td {
+      border-bottom: none;
+    }
+    td.num {
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+    a {
+      color: #0b5cad;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .positive {
+      color: var(--green);
+      font-weight: 700;
+    }
+    .negative {
+      color: var(--red);
+      font-weight: 700;
+    }
+    ul {
+      margin: 0.4rem 0 0;
+      padding-left: 1.25rem;
+    }
+    li {
+      margin-bottom: 0.35rem;
+    }
+    .note {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin: 0;
+    }
+    @media (max-width: 640px) {
+      .page {
+        padding: 0.85rem;
+      }
+      header, .section {
+        border-radius: 12px;
+        padding: 0.9rem;
+      }
+      th, td {
+        padding: 0.62rem 0.65rem;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div style="background:#f1f5f9;border-bottom:1px solid #cbd5e1;color:#475569;font:14px/1.4 Arial,sans-serif;padding:8px 16px;text-align:center;">Raportti luotu: tiistai 17.11.2026 klo 11:18:04</div>
+  <main class="page">
+    <header>
+      <h1>Aamun markkinakatsaus</h1>
+      <p class="subtitle">Helsingin ja Euroopan pörssiavausta ohjaavat teknologiaosakkeiden tunnelmat sekä Nvidiaan liittyvä epävarmuus.</p>
+    </header>
+
+    <div class="driver">
+      <h2>Aamun tärkein markkina-ajuri</h2>
+      <p>Nvidia ja tekoälypuolijohdeteollisuuden epävarmuus ovat keskeisin markkina-ajuri. Saatavilla olevan tiedon mukaan Nvidiaan liittyvä epävarmuus on painanut erityisesti siruvaltaisia Aasian markkinoita, ja Nvidian tulosjulkistusta odotetaan Yhdysvaltain markkinoiden sulkeuduttua. Myös Nvidian toimitusjohtajan lähdön vaikutukset tekoälyekosysteemiin herättävät kysymyksiä. Tämä teema ohjannee Helsingin ja Euroopan pörssiavausta.</p>
+    </div>
+
+    <section class="section">
+      <h2>Helsingin pörssi ja kotimaiset yhtiöt</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Indeksi</th>
+              <th class="num">Taso</th>
+              <th class="num">Muutos</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="https://finance.yahoo.com/quote/%5EOMXH25/" target="_blank" rel="noopener noreferrer">OMX Helsinki 25</a></td>
+              <td class="num">6 201,52</td>
+              <td class="num negative">-1,40 %</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Helsingin pörssin OMX Helsinki 25 -indeksi noteerataan 6 201,52 pisteessä, kun laskua on 1,40 %. Saatavilla olevan tiedon mukaan kotimaisista yhtiöistä ei ole tuoreita yhtiökohtaisia uutisia. Euroopan osalta saatavilla olevan tiedon mukaan Euro Stoxx 50-, DAX- ja FTSE-futuurit laskivat noin 0,6 %. Ylellisyys- ja terveysosakkeet ovat olleet suhteellisesti vahvempia, kun taas teknologia-alaindeksi on ollut heikko Nvidian toimitusjohtajan lähdön jälkeen.</p>
+    </section>
+
+    <section class="section">
+      <h2>Aasian pörssit</h2>
+      <p>Aasian pörssit sulkeutuivat laajalti laskuun. Kospi oli selvästi heikoin, ja myös Nikkei 225 sekä manner-Kiinan indeksit laskivat. Saatavilla olevan tiedon mukaan Kiinan lokakuun talousluvut olivat pettymyksiä, mikä lisäsi painetta manner-Kiinan indekseissä.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Indeksi</th>
+              <th class="num">Taso</th>
+              <th class="num">Muutos</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="https://finance.yahoo.com/quote/%5EN225/" target="_blank" rel="noopener noreferrer">Nikkei 225</a></td>
+              <td class="num">58 860,43</td>
+              <td class="num negative">-1,34 %</td>
+            </tr>
+            <tr>
+              <td><a href="https://finance.yahoo.com/quote/%5EKS11/" target="_blank" rel="noopener noreferrer">KOSPI</a></td>
+              <td class="num">4 968,48</td>
+              <td class="num negative">-6,09 %</td>
+            </tr>
+            <tr>
+              <td><a href="https://finance.yahoo.com/quote/%5EHSI/" target="_blank" rel="noopener noreferrer">Hang Seng</a></td>
+              <td class="num">23 508,17</td>
+              <td class="num negative">-0,55 %</td>
+            </tr>
+            <tr>
+              <td><a href="https://finance.yahoo.com/quote/000001.SS/" target="_blank" rel="noopener noreferrer">Shanghai Composite</a></td>
+              <td class="num">3 584,579</td>
+              <td class="num negative">-0,50 %</td>
+            </tr>
+            <tr>
+              <td><a href="https://finance.yahoo.com/quote/000300.SS/" target="_blank" rel="noopener noreferrer">CSI 300</a></td>
+              <td class="num">3 976,463</td>
+              <td class="num negative">-0,08 %</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>USA:n futuurit ja Wall Street</h2>
+      <p>Yhdysvaltain indeksifutuurit olivat laskussa. Wall Streetin edellinen istunto päättyi laskuun teknologiaosakkeiden johdolla. Nvidian tulosjulkistus on illan keskeinen tapahtuma, ja saatavilla olevan tiedon mukaan Disney sekä Home Depot julkistavat tuloksensa ennen avausta. Lokakuun vähittäismyynti ja tuontihinnat ovat myös seurannassa.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Futuuri</th>
+              <th class="num">Taso</th>
+              <th class="num">Muutos</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="https://finance.yahoo.com/quote/ES%3DF/" target="_blank" rel="noopener noreferrer">S&amp;P 500 Futures</a></td>
+              <td class="num">7 410</td>
+              <td class="num negative">-0,39 %</td>
+            </tr>
+            <tr>
+              <td><a href="https://finance.yahoo.com/quote/NQ%3DF/" target="_blank" rel="noopener noreferrer">Nasdaq 100 Futures</a></td>
+              <td class="num">27 188,25</td>
+              <td class="num negative">-0,35 %</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Raaka-aineet (Aasian johdannaispörssit ja Globex)</h2>
+      <p>Öljyn hinnat olivat lähes ennallaan: WTI laski hieman ja Brent nousi niukasti. Kulta oli nousussa, kun kupari puolestaan laski.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Raaka-aine</th>
+              <th class="num">Taso</th>
+              <th class="num">Muutos</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="https://finance.yahoo.com/quote/CL%3DF/" target="_blank" rel="noopener noreferrer">WTI Crude Oil</a></td>
+              <td class="num">85,69</td>
+              <td class="num negative">-0,03 %</td>
+            </tr>
+            <tr>
+              <td><a href="https://finance.yahoo.com/quote/BZ%3DF/" target="_blank" rel="noopener noreferrer">Brent Crude Oil</a></td>
+              <td class="num">92,51</td>
+              <td class="num positive">+0,08 %</td>
+            </tr>
+            <tr>
+              <td><a href="https://finance.yahoo.com/quote/GC%3DF/" target="_blank" rel="noopener noreferrer">Gold Futures</a></td>
+              <td class="num">3 872,3</td>
+              <td class="num positive">+0,50 %</td>
+            </tr>
+            <tr>
+              <td><a href="https://finance.yahoo.com/quote/HG%3DF/" target="_blank" rel="noopener noreferrer">Copper Futures</a></td>
+              <td class="num">5,98</td>
+              <td class="num negative">-0,29 %</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Valuutat ja päivän talouskalenteri</h2>
+      <p>Valuuttamarkkinoilla euro heikkeni suhteessa dollariin mutta vahvistui hieman suhteessa kruunuun. USD/JPY laski, mikä viittaa jenin vahvistumiseen. Bitcoin oli laskussa.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Valuutta</th>
+              <th class="num">Kurssi</th>
+              <th class="num">Muutos</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="https://finance.yahoo.com/quote/EURUSD%3DX/" target="_blank" rel="noopener noreferrer">EUR/USD</a></td>
+              <td class="num">1,1008</td>
+              <td class="num negative">-0,15 %</td>
+            </tr>
+            <tr>
+              <td><a href="https://finance.yahoo.com/quote/EURSEK%3DX/" target="_blank" rel="noopener noreferrer">EUR/SEK</a></td>
+              <td class="num">11,1069</td>
+              <td class="num positive">+0,03 %</td>
+            </tr>
+            <tr>
+              <td><a href="https://finance.yahoo.com/quote/USDJPY%3DX/" target="_blank" rel="noopener noreferrer">USD/JPY</a></td>
+              <td class="num">158,951</td>
+              <td class="num negative">-0,52 %</td>
+            </tr>
+            <tr>
+              <td><a href="https://finance.yahoo.com/quote/BTC-USD/" target="_blank" rel="noopener noreferrer">Bitcoin USD</a></td>
+              <td class="num">64 177,28</td>
+              <td class="num negative">-1,05 %</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Päivän talouskalenteri</h3>
+      <ul>
+        <li>Yhdysvalloissa julkaistaan lokakuun vähittäismyynti ja tuontihinnat.</li>
+        <li>Tulosjulkistajia: Disney ja Home Depot ennen avausta, Nvidia markkinoiden sulkeuduttua.</li>
+        <li>Viikon kalenterissa ovat esillä myös ECB-puheenvuorot, Ison-Britannian inflaatio- ja työmarkkinatiedot sekä FOMC-pöytäkirjat.</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>
