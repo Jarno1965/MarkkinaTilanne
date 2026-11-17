@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kello 18.00 Wall Street- ja Eurooppa-katsaus – 17.11.2026</title>
+<style>
+    :root {
+        --bg: #f7f9fb;
+        --card: #ffffff;
+        --text: #1f2933;
+        --muted: #5c6b7a;
+        --line: #d9e2ec;
+        --head: #e8eef5;
+        --section: #d9e6f2;
+        --positive: #0a7a3d;
+        --negative: #b00020;
+        --neutral: #6b7280;
+        --accent: #1f6feb;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        line-height: 1.55;
+    }
+
+    .wrap {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 28px 18px 48px;
+    }
+
+    header {
+        margin-bottom: 22px;
+    }
+
+    h1 {
+        margin: 0 0 6px;
+        font-size: clamp(1.7rem, 2.4vw, 2.35rem);
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+        color: var(--muted);
+        font-size: 1rem;
+        margin: 0;
+    }
+
+    .highlight {
+        background: #e8f4ff;
+        border-left: 6px solid var(--accent);
+        border-radius: 10px;
+        padding: 18px 20px;
+        margin: 24px 0 28px;
+        box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
+    }
+
+    .highlight h2 {
+        margin: 0 0 8px;
+        font-size: 1.15rem;
+        color: #0b3b75;
+    }
+
+    .highlight p {
+        margin: 0;
+    }
+
+    section {
+        margin: 30px 0;
+    }
+
+    h2 {
+        font-size: 1.35rem;
+        margin: 0 0 12px;
+        letter-spacing: -0.01em;
+    }
+
+    h3 {
+        font-size: 1.05rem;
+        margin: 20px 0 8px;
+    }
+
+    p {
+        margin: 0 0 12px;
+    }
+
+    .note {
+        background: #fff8e1;
+        border-left: 4px solid #f0ad4e;
+        border-radius: 8px;
+        padding: 12px 14px;
+        color: #5f4b00;
+        margin: 16px 0;
+        font-size: 0.96rem;
+    }
+
+    .table-wrap {
+        overflow-x: auto;
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 720px;
+        font-size: 0.95rem;
+    }
+
+    th,
+    td {
+        padding: 10px 12px;
+        border-bottom: 1px solid var(--line);
+        text-align: left;
+        vertical-align: top;
+    }
+
+    thead th {
+        background: var(--head);
+        font-size: 0.88rem;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: #334e68;
+    }
+
+    tbody tr:last-child td {
+        border-bottom: none;
+    }
+
+    .section-row th {
+        background: var(--section);
+        color: #243b53;
+        font-size: 0.92rem;
+        text-transform: none;
+        letter-spacing: 0;
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
+
+    .num {
+        font-variant-numeric: tabular-nums;
+        white-space: nowrap;
+    }
+
+    .positive {
+        color: var(--positive);
+        font-weight: 700;
+    }
+
+    .negative {
+        color: var(--negative);
+        font-weight: 700;
+    }
+
+    .neutral {
+        color: var(--neutral);
+        font-weight: 700;
+    }
+
+    .status {
+        color: var(--muted);
+        font-size: 0.9rem;
+    }
+
+    a {
+        color: #0b57d0;
+        text-decoration: none;
+        border-bottom: 1px solid rgba(11, 87, 208, 0.25);
+    }
+
+    a:hover {
+        border-bottom-color: #0b57d0;
+    }
+
+    .footer-note {
+        color: var(--muted);
+        font-size: 0.9rem;
+        margin-top: 28px;
+        border-top: 1px solid var(--line);
+        padding-top: 14px;
+    }
+
+    @media (max-width: 640px) {
+        .wrap {
+            padding: 20px 12px 36px;
+        }
+
+        th,
+        td {
+            padding: 9px 10px;
+        }
+
+        .highlight {
+            padding: 16px;
+        }
+    }
+</style>
+</head>
+<body>
+<div class="wrap">
+    <header>
+        <h1>Kello 18.00 Wall Street- ja Eurooppa-katsaus</h1>
+        <p class="subtitle">Tiistai 17.11.2026 · Helsingin aika · Markkinatilanne Yahoo Financen ja Tavily-aineiston pohjalta</p>
+    </header>
+
+    <div class="highlight">
+        <h2>Alkuillan tärkein markkina-ajuri</h2>
+        <p>
+            Teknologia- ja siruosakkeiden paine Nvidiaan kohdistuvan vientisäännön ja yhtiön johdosta koskevien kehityskulkujen vuoksi on keskeinen tunnelman painaja. Yahoo Financen mukaan USA:n kassaosakemarkkinat ovat kuitenkin suljetut, joten Wall Streetin virallista avausta ei noteerata; S&amp;P 500 -futuurit ovat -0.22 % ja Nasdaq 100 -futuurit 0.00 %. Euroopassa lasku on laaja-alaista: DAX -1.42 %, FTSE 100 -0.91 %, STOXX Europe 600 -0.69 % ja OMX Helsinki 25 -1.05 %. Euroopan indeksit ovat Yahoo Financen mukaan yhä auki tänään, joten luvut ovat viimeisimpiä noteerauksia, eivät virallisia päätöslukuja. Sijoittajat odottavat USA:n lokakuun vähittäismyyntiä ja Fedin lokakuun kokouksen pöytäkirjoja.
+        </p>
+    </div>
+
+    <section>
+        <h2>Markkinataulukko</h2>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Markkina</th>
+                        <th>Viimeisin</th>
+                        <th>Muutos</th>
+                        <th>Tila</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="section-row"><th colspan="4">Yhdysvaltain indeksit ja futuurit</th></tr>
+                    <tr>
+                        <td><a href="https://finance.yahoo.com/quote/%5EGSPC/" target="_blank" rel="noopener noreferrer">S&amp;P 500</a></td>
+                        <td class="num">7416.59</td>
+                        <td class="num negative">-2.32 %</td>
+                        <td class="status">SULJETTU (viimeisin päätös 2026-11-16)</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://finance.yahoo.com/quote/%5EIXIC/" target="_blank" rel="noopener noreferrer">Nasdaq Composite</a></td>
+                        <td class="num">24509.758</td>
+                        <td class="num negative">-3.38 %</td>
+                        <td class="status">SULJETTU (viimeisin päätös 2026-11-16)</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://finance.yahoo.com/quote/%5EDJI/" target="_blank" rel="noopener noreferrer">Dow Jones</a></td>
+                        <td class="num">51608.17</td>
+                        <td class="num negative">-1.32 %</td>
+                        <td class="status">SULJETTU (viimeisin päätös 2026-11-16)</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://finance.yahoo.com/quote/ES%3DF/" target="_blank" rel="noopener noreferrer">S&amp;P 500 -futuurit</a></td>
+                        <td class="num">7422.75</td>
+                        <td class="num negative">-0.22 %</td>
+                        <td class="status">AUKI TÄNÄÄN</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://finance.yahoo.com/quote/NQ%3DF/" target="_blank" rel="noopener noreferrer">Nasdaq 100 -futuurit</a></td>
+                        <td class="num">27284.25</td>
+                        <td class="num neutral">0.00 %</td>
+                        <td class="status">AUKI TÄNÄÄN</td>
+                    </tr>
+
+                    <tr class="section-row"><th colspan="4">Euroopan ja Helsingin indeksit</th></tr>
+                    <tr>
+                        <td><a href="https://finance.yahoo.com/quote/%5EOMXH25/" target="_blank" rel="noopener noreferrer">OMX Helsinki 25</a></td>
+                        <td class="num">6223.584</td>
+                        <td class="num negative">-1.05 %</td>
+                        <td class="status">AUKI TÄNÄÄN</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://finance.yahoo.com/quote/%5EOMX/" target="_blank" rel="noopener noreferrer">OMX Stockholm 30</a></td>
+                        <td class="num">3314.8735</td>
+                        <td class="num negative">-0.81 %</td>
+                        <td class="status">AUKI TÄNÄÄN</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://finance.yahoo.com/quote/%5ESTOXX/" target="_blank" rel="noopener noreferrer">STOXX Europe 600</a></td>
+                        <td class="num">657.72</td>
+                        <td class="num negative">-0.69 %</td>
+                        <td class="status">AUKI TÄNÄÄN</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://finance.yahoo.com/quote/%5EGDAXI/" target="_blank" rel="noopener noreferrer">DAX (Saksa)</a></td>
+                        <td class="num">26369.68</td>
+                        <td class="num negative">-1.42 %</td>
+                        <td class="status">AUKI TÄNÄÄN</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://finance.yahoo.com/quote/%5EFTSE/" target="_blank" rel="noopener noreferrer">FTSE 100 (UK)</a></td>
+                        <td class="num">10802.91</td>
+                        <td class="num negative">-0.91 %</td>
+                        <td class="status">AUKI TÄNÄÄN</td>
+                    </tr>
+
+                    <tr class="section-row"><th colspan="4">Aasian indeksit</th></tr>
+                    <tr>
+                        <td><a href="https://finance.yahoo.com/quote/%5EN225/" target="_blank" rel="noopener noreferrer">Nikkei 225</a></td>
+                        <td class="num">58860.43</td>
+                        <td class="num negative">-1.34 %</td>
+                        <td class="status">AUKI TÄNÄÄN</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://finance.yahoo.com/quote/%5EKS11/" target="_blank" rel="noopener noreferrer">KOSPI</a></td>
+                        <td class="num">4968.48</td>
+                        <td class="num negative">-6.09 %</td>
+                        <td class="status">AUKI TÄNÄÄN</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://finance.yahoo.com/quote/%5EHSI/" target="_blank" rel="noopener noreferrer">Hang Seng</a></td>
+                        <td class="num">23508.17</td>
+                        <td class="num negative">-0.55 %</td>
+                        <td class="status">AUKI TÄNÄÄN</td>
+                    </tr>
+
+                    <tr class="section-row"><th colspan="4">Korot</th></tr>
+                    <tr>
+                        <td><a href="https://finance.yahoo.com/quote/%5ETNX/" target="_blank" rel="noopener noreferrer">Yhdysvaltain 10-vuotinen korko</a></td>
+                        <td class="num">5.121</td>
+                        <td class="num negative">-0.64 %</td>
+                        <td class="status">SULJETTU (viimeisin päätös 2026-11-16)</td>
+                    </tr>
+
+                    <tr class="section-row"><th colspan="4">Raaka-aineet</th></tr>
+                    <tr>
+                        <td><a href="https://finance.yahoo.com/quote/BZ%3DF/" target="_blank" rel="noopener noreferrer">Brent-raakaöljy</a></td>
+                        <td class="num">92.16</td>
+                        <td class="num negative">-0.30 %</td>
+                        <td class="status">AUKI TÄNÄÄN</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://finance.yahoo.com/quote/CL%3DF/" target="_blank" rel="noopener noreferrer">WTI-raakaöljy</a></td>
+                        <td class="num">85.45</td>
+                        <td class="num negative">-0.31 %</td>
+                        <td class="status">AUKI TÄNÄÄN</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://finance.yahoo.com/quote/GC%3DF/" target="_blank" rel="noopener noreferrer">Kultafutuurit</a></td>
+                        <td class="num">3866.9</td>
+                        <td class="num positive">+0.36 %</td>
+                        <td class="status">AUKI TÄNÄÄN</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://finance.yahoo.com/quote/HG%3DF/" target="_blank" rel="noopener noreferrer">Kuparifutuurit</a></td>
+                        <td class="num">5.966</td>
+                        <td class="num negative">-0.53 %</td>
+                        <td class="status">AUKI TÄNÄÄN</td>
+                    </tr>
+
+                    <tr class="section-row"><th colspan="4">Valuutat ja kryptot</th></tr>
+                    <tr>
+                        <td><a href="https://finance.yahoo.com/quote/EURUSD%3DX/" target="_blank" rel="noopener noreferrer">EUR/USD</a></td>
+                        <td class="num">1.1005</td>
+                        <td class="num negative">-0.18 %</td>
+                        <td class="status">AUKI TÄNÄÄN</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://finance.yahoo.com/quote/EURSEK%3DX/" target="_blank" rel="noopener noreferrer">EUR/SEK</a></td>
+                        <td class="num">11.1034</td>
+                        <td class="num neutral">-0.00 %</td>
+                        <td class="status">AUKI TÄNÄÄN</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://finance.yahoo.com/quote/USDJPY%3DX/" target="_blank" rel="noopener noreferrer">USD/JPY</a></td>
+                        <td class="num">159.226</td>
+                        <td class="num negative">-0.35 %</td>
+                        <td class="status">AUKI TÄNÄÄN</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://finance.yahoo.com/quote/BTC-USD/" target="_blank" rel="noopener noreferrer">Bitcoin USD</a></td>
+                        <td class="num">64442.75</td>
+                        <td class="num negative">-0.64 %</td>
+                        <td class="status">AUKI TÄNÄÄN</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p class="footer-note">
+            Taulukon kurssiluvut ja suunnat ovat Yahoo Financen antamia. SULJETTU-merkinnällä varustetut markkinat eivät käy kauppaa tässä katsauksessa; niiden luvut ovat viimeisimpiä päätöslukuja.
+        </p>
+    </section>
+
+    <section>
+        <h2>Wall Streetin pörssiavaus ja USA:n uutiset</h2>
+        <p>
+            Yahoo Financen mukaan USA:n kassaosakemarkkinat ovat suljetut tänään 17.11.2026. Siksi Wall Streetin virallista pörssiavausnoteerausta ei ole käytettävissä. Viimeisin päätös on 16.11.2026: S&amp;P 500 oli 7416.59 (-2.32 %), Nasdaq Composite 24509.758 (-3.38 %) ja Dow Jones 51608.17 (-1.32 %). Nämä eivät ole kuluvan päivän live-lukuja.
+        </p>
+        <p>
+            Futuurit ovat sen sijaan auki tänään. S&amp;P 500 -futuurit olivat 7422.75 (-0.22 %) ja Nasdaq 100 -futuurit 27284.25 (0.00 %). Futuurien perusteella tunnelma on varovainen, mutta ei voimakkaasti yksisuuntainen.
+        </p>
+        <p>
+            Tavily-aineiston mukaan Nasdaq 100 painui alimmilleen sitten 9. marraskuuta. Laskua vetivät siruosakkeet, kun Yhdysvaltain vientisääntö kohdistui Nvidiaan ja yhtiön johdosta koskevat kehityskulut painoivat osaketta. Samalla S&amp;P 500 ja Dow Jones Industrial Average laskivat viikon pohjiin.
+        </p>
+        <p>
+            Makrotalouden puolella huomio on tiistain lokakuun vähittäismyynnissä kello 13.30 GMT sekä keskiviikkona kello 19.00 GMT julkaistavissa Fedin 27.–28. lokakuuta pidetyn kokouksen pöytäkirjoissa. Kokouksessa päättäjät äänestivät 10–2 ohjauskoron pitämisestä 3.75 %–4.00 %:ssa. Markkinoilla hinnoitellaan neljännesprosentin koronnostoa 8.–9. joulukuuta pidettävään kokoukseen, joten pöytäkirjat kertovat erityisesti siitä, kuinka moni virkamies oli jo nostamisen kannalla.
+        </p>
+        <p>
+            Tavily-aineistossa kerrotaan myös, että Morgan Stanley nosti globaalit osakkeet maksimipainoon ja asetti S&amp;P 500:n vuoden 2027 lopun tavoitteeksi 8 700 pistettä. Pankki odottaa yritysten tuloskasvun olevan nousun ensisijainen ajuri ja ennustaa S&amp;P 500 -yhtiöiden osakekohtaisen tuloksen nousevan 420 dollariin vuonna 2027 tämän vuoden arvioidusta 369 dollarista. Morgan Stanleyn mukaan korkeat energiahinnat voivat hidastaa kasvua joissakin talouksissa, mutta paineen odotetaan hellittävän vuoden 2027 loppuun mennessä. Inflaatiota ovat vauhdittaneet öljyn hinnannousu, Iranin sota, presidentti Donald Trumpin tuontitullit, vahva kulutuskysyntä ja tekoälyyn liittyvät investoinnit.
+        </p>
+    </section>
+
+    <section>
+        <h2>Helsingin ja Euroopan pörssien päätöstunnelmat</h2>
+        <p>
+            Yahoo Financen mukaan OMX Helsinki 25, OMX Stockholm 30, STOXX Europe 600, DAX ja FTSE 100 ovat auki tänään. Tämän vuoksi alla olevat luvut ovat viimeisimpiä noteerauksia, eivät virallisia päätöslukuja. Helsingin OMX Helsinki 25 oli 6223.584 (-1.05 %) ja Tukholman OMX Stockholm 30 puolestaan 3314.8735 (-0.81 %).
+        </p>
+        <p>
+            Euroopan laajempi kuva oli selvästi heikko. STOXX Europe 600 laski 657.72 tasolle (-0.69 %), Saksan DAX oli 26369.68 (-1.42 %) ja Britannian FTSE 100 puolestaan 10802.91 (-0.91 %). Lasku oli siis laaja-alaista, ja erityisesti DAX otti muita eurooppalaisindeksejä selvemmin osumaa.
+        </p>
+        <div class="note">
+            Tavily-aineistossa ei ollut tälle päivälle Euroopan pörssien päätösuutisia eikä yksittäisiä Helsingin tai Euroopan yhtiöuutisia. Siksi Euroopan tunnelmaa ei voi tässä katsauksessa perustella uutisvirralla, vaan ainoastaan Yahoo Financen kurssiliikkeillä.
+        </div>
+    </section>
+
+    <section>
+        <h2>Korot, raaka-aineet ja valuutat</h2>
+        <p>
+            Yhdysvaltain 10-vuotinen korko oli 5.121 (-0.64 %) ja markkina on Yahoo Financen mukaan suljettu; kyse on viimeisimmästä päätösluvusta 16.11.2026. Korkotaso on edelleen korkea, mikä pitää painetta erityisesti velkavetoisissa kasvuyhtiöissä.
+        </p>
+        <p>
+            Raaka-aineissa Brent-raakaöljy oli 92.16 (-0.30 %) ja WTI-raakaöljy 85.45 (-0.31 %). Molemmat öljylaadut liikkuivat hieman alaspäin. Kultafutuurit sen sijaan nousivat 3866.9 tasolle (+0.36 %), kun taas kuparifutuurit laskivat 5.966 tasolle (-0.53 %).
+        </p>
+        <p>
+            Valuutoissa EUR/USD oli 1.1005 (-0.18 %), eli euro heikkeni hieman suhteessa dollariin. EUR/SEK oli 11.1034 (-0.00 %) eli käytännössä muuttumaton. USD/JPY puolestaan laski 159.226 tasolle (-0.35 %), mikä kertoo dollarin hienoisesta heikkenemisestä suhteessa jeniin. Bitcoin USD oli 64442.75 (-0.64 %) eli kryptovaluutat liikkuivat niin ikään hieman alaspäin.
+        </p>
+    </section>
+
+    <p class="footer-note">
+        Katsaus on koottu annetusta Yahoo Finance -kurssidatasta sekä Tavily-hakudatan uutis- ja tausta-aineistosta. Kaikki kurssiluvut ja prosenttimuutokset ovat Yahoo Financen mukaisia. Uutisissa ja taustoituksessa on käytetty vain Tavily-aineistoa.
+    </p>
+</div>
+</body>
+</html>
