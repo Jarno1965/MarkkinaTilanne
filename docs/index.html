@@ -87,9 +87,15 @@
     const markkinaBtn = document.getElementById('markkina-btn');
     const mediaBtn = document.getElementById('media-btn');
     const refreshBtn = document.getElementById('refresh-btn');
+    const brandSubtitle = document.getElementById('brand-subtitle');
+    const reportTitle = document.getElementById('report-title');
     
     // Markkinakatsaukset - klikkaus avaa suoraan ja päivittää
     markkinaBtn.addEventListener('click', function() {
+      // Päivitä otsikot
+      brandSubtitle.textContent = 'Markkinakatsaukset';
+      reportTitle.textContent = 'Markkinakatsaukset';
+      
       // Ohjaa suoraan ensimmäiseen markkinakatsaukseen ja päivitä lista
       window.location.hash = '#markkina';
       setTimeout(function() {
@@ -101,6 +107,10 @@
     
     // Mediakatsaukset - klikkaus avaa suoraan ja päivittää
     mediaBtn.addEventListener('click', function() {
+      // Päivitä otsikot
+      brandSubtitle.textContent = 'Mediakatsaukset';
+      reportTitle.textContent = 'Mediakatsaukset';
+      
       // Ohjaa suoraan ensimmäiseen mediakatsaukseen ja päivitä lista
       window.location.hash = '#media';
       setTimeout(function() {
