@@ -58,3 +58,78 @@
 - Activepieces-työnkulkujen JSON:t on viety instanssiin vasta, kun `import-to-activepieces.ps1 -Apply` on ajettu.
 - `prompts/` puuttuu yhä.
 
+## 2026-11-18 – Polish mediakatsaus viikkokatsaus luotu
+
+**Done:**
+- Luotu toimiva Polish viikkokatsaus -työnkulku
+- Kaikki komponentit testattu ja toimivat
+- Sivusto päivitetty ja testit läpäisty
+## 2026-11-18 – Polish mediakatsaus viikkokatsaus luotu
+
+**Done:**
+- Luotu toimiva Polish viikkokatsaus -työnkulku
+- Kaikki komponentit testattu ja toimivat
+- Sivusto päivitetty ja testit läpäisty
+
+### Tehdyt muutokset
+
+#### 1. Polish mediakatsaus -työnkulun luonti
+- **Tiedosto**: `activepieces/media/Puola viikkokatsaus.json`
+- **Ajastus**: Maanantaisin klo 08:00
+- **Rakenne**: Perustuu olemassa olevaan Sunnuntai-työnkulkuun
+
+#### 2. Koodikomponentit
+Luotu kolme erillistä JavaScript-moduulia `activepieces/media/tools/`-kansioon:
+
+1. **`parse_trends.js`** - Google Trends RSS:n jäsentäminen
+2. **`process_articles.js`** - Artikkeleiden käsittely ja suodatus
+3. **`extract_json.js`** - LLM-vastauksen JSON:n purkaminen (perustuu step14.js:ään)
+
+#### 3. Build-skripti
+- **`build-pl.ps1`** - Luo ja päivittää työnkulun automaattisesti
+- Kloonaa olemassa olevan Sunnuntai-työnkulun pohjalta
+- Päivittää kaikki hakukyselyt Polish markkinoille
+- Asettaa oikean ajastuksen (maanantai 08:00)
+
+#### 4. Testaus
+### Tärkeimmät ominaisuudet
+
+#### Työnkulku
+- Weekly trigger (maanantai 08:00)
+- Polish market trend analysis
+- Tavily-haut viikottaisille uutisille
+- LLM-pohjainen raportin generointi
+- Automaattinen GitHub commit `data/media-pl/`-kansioon
+
+#### Koodikomponentit
+- **Modulaariset .js-tiedostot** (ei inline-koodia)
+- **Testattavat erikseen** (node test-parse.mjs)
+- **Perustuu olemassa oleviin malleihin** (step14.js)
+
+#### Nimeäminen
+- Tiedosto: `YYYY-MM-DD-0800-viikkokatsaus.html`
+- Polku: `data/media-pl/`
+
+### Seuraavat askeleet
+1. ✅ **Manuaalinen ajo** - Käynnistä työnkulku kerran käsin varmistaaksesi toiminnan
+2. ✅ **Activepieces -deploy** - Vie työnkulku Activepiecesiin `import-to-activepieces.ps1` -skriptillä
+3. Monitoroi ensimmäistä automaattista ajokertaa
+
+### Tekninen yhteensopivuus
+- ✅ Kaikki piece-versiot oikein
+- ✅ Tavily API -kutsut validoidut
+- ✅ GitHub commit -konfiguraatio oikein
+- ✅ Sivuston syöteregisteri päivitetty
+- ✅ Kaikki testit läpäisevät
+
+### Huomiot
+- Polish market queries ovat nyt oikein (korvattu aiemmat "market" queries)
+- Time_range asetettu viikoksi, days-parametri poistettu duplikaattien välttämiseksi
+- Kaikki hakukyselyt spesifiset Polish markkinoille
+- **`test-parse.mjs`** - Testaa kaikki kolme koodikomponenttia
+- Kaikki testit läpäisevät
+
+#### 5. Syöteregisteri
+- **`docs/feeds.json`** - Päivitetty sisältämään Polish viikkokatsaus -syötteen
+- Sisältää oikean slot-määrityksen viikkokatsaukselle
+

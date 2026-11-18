@@ -16,7 +16,19 @@
     {
       "id": "media",
       "title": "Mediakatsaukset",
-      "feeds": []
+      "feeds": [
+        {
+          "id": "media-pl",
+          "title": "Puola",
+          "icon": "🇵🇱",
+          "slots": {
+            "viikkokatsaus": {
+              "icon": "🗞️",
+              "label": "Puolan viikkokatsaus"
+            }
+          }
+        }
+      ]
     }
   ]
 }

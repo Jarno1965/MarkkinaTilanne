@@ -108,7 +108,7 @@ vm.runInContext(code, sandbox);
 await sandbox.start();
 
 check('feeds.json luetaan', urls.includes('feeds.json'), urls.join(' | '));
-check('yksi syöte rekisteristä', sandbox.state.feeds.length === 1, String(sandbox.state.feeds.length));
+check('kaksi syötettä rekisteristä', sandbox.state.feeds.length === 2, String(sandbox.state.feeds.length));
 check('oletussyöte markkina', sandbox.state.activeFeed === 'markkina', sandbox.state.activeFeed);
 check('paikallinen manifesti valittu', urls.includes('../data/markkina/index.json'), urls.join(' | '));
 // Odotettu sisältö luetaan data/markkina/index.json-tiedostosta, jotta testi ei
@@ -133,7 +133,7 @@ await new Promise(resolve => setTimeout(resolve, 50));
 check('iframe ei piilossa', elements['report-frame'].hidden === false);
 check('srcdoc sisältää raportin', /<html/i.test(elements['report-frame'].srcdoc));
 check('srcdoc kieli fi', /lang="fi"/i.test(elements['report-frame'].srcdoc));
-check('valikko piilossa yhdellä syötteellä', elements['feed-list'].hidden === true);
+// Tarkistus poistettu: valikko ei ole piilossa kahdella syötteellä
 check('raportin otsikko asetettu', elements['report-title'].textContent.length > 0,
   elements['report-title'].textContent);
 check('aikaleima päivitetty', /Lista päivitetty klo/.test(elements['last-updated'].textContent),
@@ -142,7 +142,7 @@ check('aikaleima päivitetty', /Lista päivitetty klo/.test(elements['last-updat
 // Kaksi syötettä: valinnan pitää näkyä ja ryhmittyä.
 sandbox.applyFeeds([
   { id: 'markkina', title: 'Markkina-analyysi', feeds: [{ id: 'markkina', title: 'Markkinakatsaukset' }] },
-  { id: 'media', title: 'Mediakatsaukset', feeds: [{ id: 'media-se', title: 'Ruotsi', icon: '🇸🇪' }] }
+  { id: 'media', title: 'Mediakatsaukset', feeds: [{ id: 'media-pl', title: 'Puola', icon: '🇵🇱' }] }
 ], 'markkina');
 sandbox.renderFeeds();
 check('valikko näkyy kahdella syötteellä', elements['feed-list'].hidden === false);
@@ -155,10 +155,10 @@ const parsedLegacy = sandbox.parseHash();
 check('vanha hash tulkitaan oletussyötteeksi',
   parsedLegacy.feed === '' && parsedLegacy.file === '2026-11-13-0600-aamukatsaus.html', JSON.stringify(parsedLegacy));
 
-location.hash = '#media-se/2026-11-13-0600-aamu.html';
+location.hash = '#media-pl/2026-11-13-0800-viikkokatsaus.html';
 const parsedNew = sandbox.parseHash();
 check('uusi hash jäsennetään',
-  parsedNew.feed === 'media-se' && parsedNew.file === '2026-11-13-0600-aamu.html', JSON.stringify(parsedNew));
+  parsedNew.feed === 'media-pl' && parsedNew.file === '2026-11-13-0800-viikkokatsaus.html', JSON.stringify(parsedNew));
 
 // Tuotantotila: Contents API -polun pitää sisältää syöte.
 location.hostname = 'jarno1965.github.io';
