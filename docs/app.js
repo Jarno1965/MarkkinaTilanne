@@ -149,6 +149,17 @@ function applyFeeds(groups, defaultFeed) {
   state.groups = [];
   state.feeds = [];
 
+  // Jos groups on tyhjä (yksinkertainen valikko käytössä), käytä oletusarvoja
+  if (!groups || groups.length === 0) {
+    state.feeds = [
+      { id: 'markkina', title: 'Markkinakatsaukset', icon: '📈', groupTitle: '', slots: null },
+      { id: 'media', title: 'Mediakatsaukset', icon: '📰', groupTitle: '', 
+        slots: { 'viikkokatsaus': { icon: '🗞️', label: 'Viikkokatsaus' } } }
+    ];
+    state.defaultFeed = defaultFeed || CONFIG.defaultFeed;
+    return;
+  }
+
   (groups || []).forEach(function (group) {
     if (!group || !Array.isArray(group.feeds) || group.feeds.length === 0) return;
 

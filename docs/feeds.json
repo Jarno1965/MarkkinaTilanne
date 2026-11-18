@@ -1,34 +1,5 @@
 {
-  "_comment": "Syöterekisteri. Jokainen syöte on oma raporttivirta, jonka tiedostot ovat data/<syöte>/YYYY-MM-DD-HHMM-slug.html. Uusi maa tai aihepiiri lisätään tähän; sivuston koodia ei tarvitse muuttaa. Ryhmä, jossa ei ole syötteitä, ei näy sivustolla.",
+  "_comment": "Syöterekisteri. Yksinkertainen valikko (index.html) korvaa vanhan dynaamisen valikon. Tämä tiedosto määrittelee vain syötteiden ID:t ja asetukset.",
   "defaultFeed": "markkina",
-  "groups": [
-    {
-      "id": "markkina",
-      "title": "Markkina-analyysi",
-      "feeds": [
-        {
-          "id": "markkina",
-          "title": "Markkinakatsaukset",
-          "icon": "📈"
-        }
-      ]
-    },
-    {
-      "id": "media",
-      "title": "Mediakatsaukset",
-      "feeds": [
-        {
-          "id": "media",
-          "title": "Mediakatsaukset",
-          "icon": "📰",
-          "slots": {
-            "viikkokatsaus": {
-              "icon": "🗞️",
-              "label": "Viikkokatsaus"
-            }
-          }
-        }
-      ]
-    }
-  ]
+  "groups": []
 }
