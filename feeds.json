@@ -1,0 +1,62 @@
+{
+  "defaultFeed": "markkina",
+  "groups": [
+    {
+      "id": "primary",
+      "title": "Pääkategoriat",
+      "feeds": [
+        {
+          "id": "markkina",
+          "title": "Markkinakatsaukset",
+          "icon": "📈"
+        },
+        {
+          "id": "media",
+          "title": "Mediakatsaukset",
+          "icon": "📰"
+        }
+      ]
+    },
+    {
+      "id": "markets",
+      "title": "Markkinat",
+      "feeds": [
+        {
+          "id": "markkina",
+          "title": "Markkinat",
+          "icon": "💹",
+          "slots": {
+            "aamukatsaus": { "icon": "🌅", "label": "Aamukatsaus" },
+            "eurooppa-avaus": { "icon": "🇪🇺", "label": "Euroopan avaus" },
+            "paivan-yhteenveto": { "icon": "📊", "label": "Päivän yhteenveto" },
+            "iltakatsaus": { "icon": "🌆", "label": "Iltakatsaus" }
+          }
+        }
+      ]
+    },
+    {
+      "id": "media",
+      "title": "Media",
+      "feeds": [
+        {
+          "id": "media",
+          "title": "Mediaseuranta",
+          "icon": "📰",
+          "slots": {
+            "viikkokatsaus": { "icon": "周刊", "label": "Viikkokatsaus" },
+            "paivan-yhteenveto": { "icon": "📋", "label": "Päivän yhteenveto" }
+          }
+        },
+        {
+          "id": "media/poland",
+          "title": "Puola",
+          "icon": "🇵🇱",
+          "slots": {
+            "viikkokatsaus": { "icon": "🇵🇱", "label": "Puolan viikkokatsaus" },
+            "paivan-yhteenveto": { "icon": "🇵🇱", "label": "Päivittäinen seuranta" }
+          }
+        }
+      ]
+    }
+  ]
+}

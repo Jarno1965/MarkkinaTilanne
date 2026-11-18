@@ -114,7 +114,56 @@ body.nav-open .sidebar { transform: translateX(0); }
 
 /* ------------------------------------------------------------ katsausvalinta */
 
-.feed-nav { display: flex; flex-direction: column; gap: 10px; padding: 0 4px; }
+.feed-nav-simple {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0 4px;
+}
+
+.feed-category-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  text-align: left;
+  padding: 14px 16px;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface-2);
+  color: var(--text);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+
+.feed-category-btn:hover,
+.feed-category-btn:focus {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.feed-category-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.feed-category-btn__icon {
+  font-size: 1.4rem;
+}
+
+.feed-category-btn__text {
+  flex: 1;
+}x;
+/* Vanha valikko */
+.feed-nav { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 10px; 
+  padding: 0 4px; 
+}
 .feed-nav[hidden] { display: none; }
 
 .feed-group { display: flex; flex-direction: column; gap: 4px; }
@@ -135,6 +184,48 @@ body.nav-open .sidebar { transform: translateX(0); }
   width: 100%;
   text-align: left;
   padding: 8px 10px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+}
+.feed-item:hover,
+.feed-item:focus {
+  background: var(--surface-2);
+  color: var(--accent);
+}
+.feed-item:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+.feed-item--selected {
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.feed-item__icon { font-size: 1.1rem; }
+.feed-item__text { flex: 1; text-align: left; }
+
+.feed-item__slots {
+  display: flex;
+  gap: 4px;
+  margin-left: auto;
+}
+
+.feed-item__slot {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: .7rem;
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.feed-item__slot-icon { font-size: .8rem; }
   border: 1px solid transparent;
   border-radius: var(--radius);
   background: transparent;

@@ -13,7 +13,7 @@
   <button class="menu-toggle" id="menu-toggle" type="button"
           aria-controls="sidebar" aria-expanded="false" aria-label="Avaa raporttilista">
     <span class="menu-toggle__bars" aria-hidden="true"></span>
-    <span class="menu-toggle__text">Raportit</span>
+    <span class="menu-toggle__text">Valikko</span>
   </button>
 
   <div class="layout">
@@ -24,6 +24,19 @@
           <p class="brand__sub" id="brand-subtitle">AI-generoidut katsaukset</p>
         </header>
 
+        <!-- YKSINKERTAINEN VALIKKO -->
+        <nav class="feed-nav-simple" id="simple-feed-nav" aria-label="Pääkategoriat">
+          <button class="feed-category-btn" id="markkina-btn" type="button">
+            <span class="feed-category-btn__icon" aria-hidden="true">📈</span>
+            <span class="feed-category-btn__text">Markkinakatsaukset</span>
+          </button>
+          <button class="feed-category-btn" id="media-btn" type="button">
+            <span class="feed-category-btn__icon" aria-hidden="true">📰</span>
+            <span class="feed-category-btn__text">Mediakatsaukset</span>
+          </button>
+        </nav>
+
+        <!-- VANHA VALIKKO (piilotettu) -->
         <nav class="feed-nav" id="feed-list" aria-label="Katsaukset" hidden></nav>
 
         <div class="sidebar__actions">
@@ -67,6 +80,37 @@
       </div>
     </main>
   </div>
+
+  <script>
+  // YKSINKERTAINEN KÄYTTÖLIITTYMÄ
+  document.addEventListener('DOMContentLoaded', function() {
+    const markkinaBtn = document.getElementById('markkina-btn');
+    const mediaBtn = document.getElementById('media-btn');
+    const refreshBtn = document.getElementById('refresh-btn');
+    
+    // Markkinakatsaukset - klikkaus avaa suoraan ja päivittää
+    markkinaBtn.addEventListener('click', function() {
+      // Ohjaa suoraan ensimmäiseen markkinakatsaukseen ja päivitä lista
+      window.location.hash = '#markkina';
+      setTimeout(function() {
+        // Simuloi päivitys klikkaamalla refresh-nappia
+        const event = new MouseEvent('click');
+        refreshBtn.dispatchEvent(event);
+      }, 100);
+    });
+    
+    // Mediakatsaukset - klikkaus avaa suoraan ja päivittää
+    mediaBtn.addEventListener('click', function() {
+      // Ohjaa suoraan ensimmäiseen mediakatsaukseen ja päivitä lista
+      window.location.hash = '#media';
+      setTimeout(function() {
+        // Simuloi päivitys klikkaamalla refresh-nappia
+        const event = new MouseEvent('click');
+        refreshBtn.dispatchEvent(event);
+      }, 100);
+    });
+  });
+  </script>
 
   <script src="app.js"></script>
 </body>

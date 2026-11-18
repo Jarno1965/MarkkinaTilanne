@@ -1,0 +1,95 @@
+{
+  "name": "Polish Media Monitoring",
+  "description": "Monitoroi puolalaisia uutissivustoja ja luo mediakatsauksia",
+  "version": "1.0.0",
+  "trigger": {
+    "type": "cron",
+    "cronExpression": "0 0 8 * * 1-5",
+    "timezone": "Europe/Helsinki"
+  },
+  "tasks": [
+    {
+      "id": "collect_sources",
+      "type": "http_request",
+      "settings": {
+        "method": "GET",
+        "url": "https://raw.githubusercontent.com/your-repo/main/polish-media-sources.json",
+        "responseType": "json"
+      }
+    },
+    {
+      "id": "scrape_articles",
+      "type": "loop",
+      "settings": {
+        "items": "{{collect_sources.response}}",
+        "variableName": "source"
+      },
+      "tasks": [
+        {
+          "id": "fetch_rss",
+          "type": "http_request",
+          "settings": {
+            "method": "GET",
+            "url": "{{source.rss_url}}",
+            "responseType": "text"
+          }
+        },
+        {
+          "id": "parse_rss",
+          "type": "xml_parser",
+          "settings": {
+            "xml": "{{fetch_rss.response}}",
+            "selector": "//item",
+            "fields": {
+              "title": "./title/text()",
+              "link": "./link/text()",
+              "description": "./description/text()",
+              "pubDate": "./pubDate/text()"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "analyze_content",
+      "type": "llm_completion",
+      "settings": {
+        "provider": "openai",
+        "model": "gpt-4",
+        "prompt": "Analysoi seuraavat puolankieliset uutiset ja tee tiivistelmä suomeksi. Korosta erityisesti:\n1. Politiikka ja hallinto\n2. Talous ja työelämä\n3. Turvallisuus ja oikeus\n4. Ympäristö ja energia\n5. Arkielämä ja yhteiskunta\n\n{{scrape_articles.output}}",
+        "temperature": 0.7
+      }
+    },
+    {
+      "id": "format_report",
+      "type": "template",
+      "settings": {
+        "template": "<html><head><meta charset='utf-8'><title>Puolan mediakatsaus {{date}}</title></head><body><h1>Puolan mediakatsaus</h1><h2>{{date}}</h2>{{analyze_content.response}}</body></html>",
+        "variables": {
+          "date": "{{current_date}}"
+        }
+      }
+    },
+    {
+      "id": "save_report",
+      "type": "file_write",
+      "settings": {
+        "path": "data/media/polish-news-{{current_date}}.html",
+        "content": "{{format_report.output}}",
+        "encoding": "utf8"
+      }
+    },
+    {
+      "id": "commit_github",
+      "type": "github_commit_file",
+      "settings": {
+        "owner": "your-username",
+        "repo": "MarkkinaTilanne",
+        "filePath": "data/media/polish-news-{{current_date}}.html",
+        "fileContent": "{{format_report.output}}",
+        "commitMessage": "Lisää Puolan mediakatsaus {{current_date}}",
+        "branch": "main"
+      }
+    }
+  ]
+}

@@ -56,21 +56,33 @@ function parseReportName(name) {
   var match = FILE_PATTERN.exec(name);
   if (!match) return null;
 
-  var time = match[4];
-  var date = new Date(Number(match[1]), Number(match[2]) - 1, Number(match[3]),
-                      Number(time.slice(0, 2)), Number(time.slice(2, 4)));
+  try {
+    var time = match[4];
+    var date = new Date(Number(match[1]), Number(match[2]) - 1, Number(match[3]),
+                        Number(time.slice(0, 2)), Number(time.slice(2, 4)));
+    
+    // Validointi
+    if (isNaN(date.getTime())) {
+      console.warn('Virheellinen päivämäärä tiedostossa:', name);
+      return null;
+    }
 
-  return {
-    file: name,
-    slug: match[5],
-    date: date,
-    dateKey: match[1] + '-' + match[2] + '-' + match[3],
-    time: time.slice(0, 2) + ':' + time.slice(2, 4),
-    sortKey: match[1] + match[2] + match[3] + time
-  };
+    return {
+      file: name,
+      slug: match[5],
+      date: date,
+      dateKey: match[1] + '-' + match[2] + '-' + match[3],
+      time: time.slice(0, 2) + ':' + time.slice(2, 4),
+      sortKey: match[1] + match[2] + match[3] + time
+    };
+  } catch (e) {
+    console.warn('Virhe päivämäärän parsinnassa:', name, e);
+    return null;
+  }
 }
 
 function formatDateLong(date) {
+  if (isNaN(date.getTime())) return 'Virheellinen päivämäärä';
   return new Intl.DateTimeFormat('fi-FI', {
     timeZone: TIME_ZONE, weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'
   }).format(date);
@@ -88,11 +100,20 @@ function dateKeyFor(date) {
 function dayLabel(dateKey, todayKey, yesterdayKey) {
   if (dateKey === todayKey) return 'Tänään';
   if (dateKey === yesterdayKey) return 'Eilen';
-  var parts = dateKey.split('-');
-  var d = new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
-  return new Intl.DateTimeFormat('fi-FI', {
-    timeZone: TIME_ZONE, weekday: 'short', day: 'numeric', month: 'numeric', year: 'numeric'
-  }).format(d);
+  if (dateKey === 'invalid-date') return 'Virheellinen päivä';
+  
+  try {
+    var parts = dateKey.split('-');
+    if (parts.length !== 3) return dateKey;
+    var d = new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
+    if (isNaN(d.getTime())) return dateKey;
+    return new Intl.DateTimeFormat('fi-FI', {
+      timeZone: TIME_ZONE, weekday: 'short', day: 'numeric', 
+      month: 'short'
+    }).format(d);
+  } catch (e) {
+    return dateKey;
+  }
 }
 
 function slotInfo(slug) {
@@ -462,16 +483,20 @@ function escapeHtml(text) {
 }
 
 function showPlaceholder(html) {
+  var frame = $('report-frame');
   var placeholder = $('viewer-placeholder');
-  placeholder.hidden = false;
-  placeholder.innerHTML = html;
-  $('report-frame').hidden = true;
+  
+  if (frame && placeholder) {
+    placeholder.innerHTML = html;
+    placeholder.hidden = false;
+    frame.hidden = true;
+  }
 }
 
-
-function selectReport(file) {
-  var report = state.reports.filter(function (r) { return r.file === file; })[0];
-  if (!report) return;
+function setError(message) {
+  showPlaceholder('<p class="viewer__icon" aria-hidden="true">⚠️</p><h3>Virhe</h3><p>' +
+    escapeHtml(message) + '</p>');
+}
 
   state.selectedId = file;
   var info = slotInfo(report.slug);

@@ -1,0 +1,10 @@
+{
+  "_comment": "Vain paikalliseen kehitykseen. Sisältää data/<syöte>/-kansion tiedostonimet, jotta sivustoa voi testata ennen kuin repositorio on julkaistu GitHubissa. Tämä tiedosto ei ole käytössä tuotannossa. Jokaisella syötteellä on oma index.json.",
+  "files": [
+    "2026-11-18-1200-polish-weekly.html",
+    "2026-11-18-0900-polish-daily.html",
+    "2026-11-17-1200-polish-weekly.html",
+    "2026-11-17-0900-polish-daily.html",
+    "2026-11-16-1200-polish-weekly.html"
+  ]
+}
