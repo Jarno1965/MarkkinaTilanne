@@ -1,0 +1,87 @@
+{
+    "name": "Polish-Media-Monitoring",
+    "type": "SHARED",
+    "summary": "Monitoroi puolalaisia uutissivustoja ja luo viikkokatsauksia",
+    "description": "Scrapaa suoraan puolalaisia uutissivustoja ja luo kattavan viikkoyhteenvedon suomeksi",
+    "tags": ["puola", "media", "viikkokatsaus"],
+    "blogUrl": "",
+    "metadata": {
+        "externalId": "Polish-Media-Monitoring-Weekly"
+    },
+    "author": "Jarno Lönnqvist",
+    "categories": ["media-monitoring"],
+    "pieces": [
+        "@activepieces/piece-schedule",
+        "@activepieces/piece-date-helper",
+        "@activepieces/piece-http",
+        "@activepieces/piece-openai",
+        "@activepieces/piece-github",
+        "@activepieces/piece-file"
+    ],
+    "flows": [
+        {
+            "displayName": "Puola: Viikkokatsaus",
+            "trigger": {
+                "name": "trigger",
+                "valid": true,
+                "displayName": "Every Monday",
+                "nextAction": {
+                    "name": "step_1",
+                    "skip": false,
+                    "type": "PIECE",
+                    "valid": true,
+                    "settings": {
+                        "input": {
+                            "timeZone": "Europe/Helsinki",
+                            "timeFormat": "YYYY-MM-DD"
+                        },
+                        "pieceName": "@activepieces/piece-date-helper",
+                        "actionName": "get_current_date",
+                        "sampleData": {},
+                        "pieceVersion": "0.2.1",
+                        "propertySettings": {
+                            "timeZone": {
+                                "type": "MANUAL"
+                            },
+                            "timeFormat": {
+                                "type": "MANUAL"
+                            }
+                        },
+                        "errorHandlingOptions": {
+                            "retryOnFailure": {
+                                "value": false
+                            },
+                            "continueOnFailure": {
+                                "value": false
+                            }
+                        }
+                    }
+                },
+                "type": "PIECE",
+                "settings": {
+                    "input": {
+                        "cronExpression": "0 0 9 * * 1"
+                    },
+                    "pieceName": "@activepieces/piece-schedule",
+                    "actionName": "cron_schedule",
+                    "sampleData": {},
+                    "pieceVersion": "0.0.7",
+                    "propertySettings": {
+                        "cronExpression": {
+                            "type": "MANUAL"
+                        }
+                    },
+                    "errorHandlingOptions": {
+                        "retryOnFailure": {
+                            "value": false
+                        },
+                        "continueOnFailure": {
+                            "value": false
+                        }
+                    }
+                }
+            }
+        }
+    ],
+    "status": "PUBLISHED"
+}
