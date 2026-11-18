@@ -498,27 +498,6 @@ function setError(message) {
     escapeHtml(message) + '</p>');
 }
 
-  state.selectedId = file;
-  var info = slotInfo(report.slug);
-
-  $('report-title').textContent = info.label;
-  $('report-meta').textContent = formatDateLong(report.date) + ' klo ' + report.time + ' (Suomen aika)';
-  document.title = info.label + ' – ' + feedTitle();
-  $('open-new-tab').disabled = false;
-  $('print-btn').disabled = false;
-  setStatus('');
-
-  renderList();
-  closeNav();
-
-  // Päivitä osoitteen hash, jotta raporttiin voi linkittää suoraan.
-  if (window.location.hash !== '#' + state.activeFeed + '/' + file) {
-    history.replaceState(null, '', '#' + state.activeFeed + '/' + file);
-  }
-
-  loadReportContent(report);
-}
-
 function loadReportContent(report) {
   var frame = $('report-frame');
   showPlaceholder('<p class="viewer__icon" aria-hidden="true">⏳</p><h3>Ladataan raporttia…</h3><p>' +
@@ -580,7 +559,7 @@ function bindEvents() {
 
   $('report-list').addEventListener('click', function (event) {
     var button = event.target.closest('.report-item');
-    if (button) selectReport(button.getAttribute('data-file'));
+    if (button) selectReportFile(button.getAttribute('data-file'));
   });
 
   $('menu-toggle').addEventListener('click', function () {
@@ -618,7 +597,7 @@ function bindEvents() {
       selectFeed(feedId, { file: target.file });
       return;
     }
-    if (target.file && target.file !== state.selectedId) selectReport(target.file);
+    if (target.file && target.file !== state.selectedId) selectReportFile(target.file);
   });
 }
 
@@ -686,7 +665,7 @@ function selectFeed(feedId, options) {
 
       var wanted = opts.file || '';
       var exists = reports.some(function (r) { return r.file === wanted; });
-      selectReport(exists ? wanted : reports[0].file);
+      selectReportFile(exists ? wanted : reports[0].file);
     })
     .catch(function (err) {
       if (state.activeFeed !== feed.id) return;
