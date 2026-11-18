@@ -516,7 +516,92 @@ function setError(message) {
     history.replaceState(null, '', '#' + state.activeFeed + '/' + file);
   }
 
-  loadReportContent(report);
+function selectReportFile(file) {
+  if (!file) return;
+
+  var report = state.reports.find(function (r) { return r.file === file; });
+  if (!report) {
+    setError('Raporttia ei löydy: ' + file);
+    return;
+  }
+
+  state.selectedId = file;
+
+  // Päivitä valittu raportti käyttöliittymässä
+  var items = document.querySelectorAll('.report-item');
+  items.forEach(function (item) {
+    item.classList.toggle('report-item--selected', item.dataset.file === file);
+  });
+
+  // Päivitä URL
+  var hash = state.activeFeed;
+  if (file) hash += '/' + encodeURIComponent(file);
+  if (window.location.hash.slice(1) !== hash) {
+    history.replaceState(null, '', '#' + hash);
+  }
+
+  // Hae ja näytä raportti
+  showPlaceholder('<p class="viewer__icon" aria-hidden="true">⏳</p><h3>Ladataan raporttia…</h3>');
+
+  var localPath = CONFIG.dataPath + '/' + state.activeFeed + '/' + file;
+  var githubPath = 'https://api.github.com/repos/' + CONFIG.owner + '/' + CONFIG.repo + 
+                   '/contents/' + CONFIG.dataPath + '/' + state.activeFeed + '/' + file;
+
+  // Kokeillaan ensin paikallista tiedostoa
+  fetchWithTimeout(localPath, { cache: 'no-store' })
+    .then(function (response) {
+      if (response.ok) return response.text();
+      throw new Error('Paikallinen tiedosto ei ole saatavilla');
+    })
+    .catch(function () {
+      // Jos paikallinen ei toimi, käytetään GitHub API:a
+      return fetchWithTimeout(githubPath)
+        .then(function (response) {
+          if (!response.ok) throw new Error('HTTP ' + response.status);
+          return response.json();
+        })
+        .then(function (data) {
+          // Dekoodaa base64-sisältö
+          return atob(data.content);
+        });
+    })
+    .then(function (content) {
+      // Varmista että sisältö on kelvollista HTML:ää
+      if (typeof content !== 'string' || content.length === 0) {
+        throw new Error('Tyhjä tai virheellinen sisältö');
+      }
+
+      var frame = $('report-frame');
+      var placeholder = $('viewer-placeholder');
+      
+      if (frame && placeholder) {
+        // Lisää lang-attribuutti jos puuttuu
+        var html = content.trim();
+        if (html.indexOf('<html') === -1) {
+          html = '<html lang="fi"><head><meta charset="UTF-8"></head><body>' + html + '</body></html>';
+        } else if (html.indexOf('lang=') === -1) {
+          html = html.replace('<html', '<html lang="fi"');
+        }
+
+        frame.srcdoc = html;
+        frame.hidden = false;
+        placeholder.hidden = true;
+        
+        // Päivitä metatiedot
+        var titleMatch = html.match(/<title[^>]*>([^<]*)<\/title>/i);
+        var title = titleMatch ? titleMatch[1] : 'Raportti';
+        $('report-title').textContent = title;
+        $('report-meta').textContent = formatDateLong(report.date);
+        
+        // Aktivoi napit
+        $('open-new-tab').disabled = false;
+        $('print-btn').disabled = false;
+      }
+    })
+    .catch(function (error) {
+      console.error('Virhe raportin latauksessa:', error);
+      setError('Raporttia ei voitu ladata: ' + error.message);
+    });
 }
 
 function loadReportContent(report) {
@@ -580,7 +665,7 @@ function bindEvents() {
 
   $('report-list').addEventListener('click', function (event) {
     var button = event.target.closest('.report-item');
-    if (button) selectReport(button.getAttribute('data-file'));
+    if (button) selectReportFile(button.getAttribute('data-file'));
   });
 
   $('menu-toggle').addEventListener('click', function () {
@@ -618,7 +703,7 @@ function bindEvents() {
       selectFeed(feedId, { file: target.file });
       return;
     }
-    if (target.file && target.file !== state.selectedId) selectReport(target.file);
+    if (target.file && target.file !== state.selectedId) selectReportFile(target.file);
   });
 }
 
@@ -686,7 +771,7 @@ function selectFeed(feedId, options) {
 
       var wanted = opts.file || '';
       var exists = reports.some(function (r) { return r.file === wanted; });
-      selectReport(exists ? wanted : reports[0].file);
+      selectReportFile(exists ? wanted : reports[0].file);
     })
     .catch(function (err) {
       if (state.activeFeed !== feed.id) return;
