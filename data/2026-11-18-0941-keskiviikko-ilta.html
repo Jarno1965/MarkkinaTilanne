@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Markkinakatsaus – Wall Street ja Eurooppa</title>
+<style>
+  :root{
+    --bg:#f4f7fa;
+    --card:#ffffff;
+    --text:#1b2430;
+    --muted:#5b6b7c;
+    --line:#dfe6ee;
+    --up:#0a7d3c;
+    --down:#c0392b;
+    --accent:#0b4f8a;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    padding:0 16px 48px;
+    background:var(--bg);
+    color:var(--text);
+    font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-size:16px;
+    line-height:1.6;
+  }
+  .wrap{max-width:1000px;margin:0 auto;}
+  header.top{
+    padding:28px 0 12px;
+    border-bottom:3px solid var(--accent);
+    margin-bottom:24px;
+  }
+  header.top h1{
+    margin:0 0 6px;
+    font-size:1.85rem;
+    letter-spacing:-0.3px;
+    color:var(--accent);
+  }
+  header.top p{
+    margin:0;
+    color:var(--muted);
+    font-size:0.95rem;
+  }
+  .highlight{
+    background:#eaf3fb;
+    border-left:6px solid var(--accent);
+    border-radius:8px;
+    padding:18px 22px;
+    margin-bottom:32px;
+    box-shadow:0 1px 3px rgba(11,79,138,0.08);
+  }
+  .highlight h2{
+    margin:0 0 10px;
+    font-size:1.15rem;
+    color:var(--accent);
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+  }
+  .highlight p{margin:0 0 10px;}
+  .highlight p:last-child{margin-bottom:0;}
+  section{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:20px 24px 24px;
+    margin-bottom:26px;
+    box-shadow:0 1px 2px rgba(27,36,48,0.04);
+  }
+  section h2{
+    margin:0 0 14px;
+    font-size:1.25rem;
+    color:var(--accent);
+    border-bottom:1px solid var(--line);
+    padding-bottom:8px;
+  }
+  section h3{
+    margin:22px 0 8px;
+    font-size:1.02rem;
+    color:var(--text);
+  }
+  section h3:first-of-type{margin-top:6px;}
+  p{margin:0 0 12px;}
+  table{
+    width:100%;
+    border-collapse:collapse;
+    margin:6px 0 4px;
+    font-size:0.95rem;
+  }
+  caption{
+    text-align:left;
+    font-weight:600;
+    color:var(--muted);
+    padding:4px 0 8px;
+    font-size:0.9rem;
+    text-transform:uppercase;
+    letter-spacing:0.4px;
+  }
+  th,td{
+    padding:9px 10px;
+    border-bottom:1px solid var(--line);
+    text-align:left;
+    vertical-align:middle;
+  }
+  th{
+    background:#f0f4f8;
+    font-size:0.85rem;
+    text-transform:uppercase;
+    letter-spacing:0.4px;
+    color:var(--muted);
+    font-weight:600;
+  }
+  td.num,th.num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums;}
+  td.status{font-size:0.85rem;color:var(--muted);white-space:nowrap;}
+  a{color:var(--accent);text-decoration:none;border-bottom:1px dotted #9db8d2;}
+  a:hover{color:#062f52;border-bottom-style:solid;}
+  .up{color:var(--up);font-weight:600;}
+  .down{color:var(--down);font-weight:600;}
+  .note{
+    font-size:0.88rem;
+    color:var(--muted);
+    margin-top:10px;
+    padding-top:10px;
+    border-top:1px dashed var(--line);
+  }
+  ul{margin:0 0 12px;padding-left:22px;}
+  li{margin-bottom:7px;}
+  footer{
+    text-align:center;
+    color:var(--muted);
+    font-size:0.82rem;
+    padding-top:8px;
+  }
+  @media (max-width:640px){
+    header.top h1{font-size:1.45rem;}
+    section{padding:16px 14px 18px;}
+    th,td{padding:8px 6px;font-size:0.88rem;}
+    td.status{display:none;}
+    th.status{display:none;}
+  }
+</style>
+</head>
+<body>
+<div style="background:#f1f5f9;border-bottom:1px solid #cbd5e1;color:#475569;font:14px/1.4 Arial,sans-serif;padding:8px 16px;text-align:center;">Raportti luotu: keskiviikko 18.11.2026 klo 09:41:22</div>
+<div class="wrap">
+
+<header class="top">
+  <h1>Wall Street ja Eurooppa – markkinakatsaus</h1>
+  <p>Osakeindeksit, korot, raaka-aineet ja valuutat</p>
+</header>
+
+<div class="highlight">
+  <h2>Alkuillan tärkein markkina-ajuri</h2>
+  <p>Wall Street sulkeutui tiistaina jyrkkään laskuun: <strong>Dow Jones menetti 3,03&nbsp;%</strong>, <strong>S&amp;P 500 laski 2,92&nbsp;%</strong> ja <strong>Nasdaq Composite 3,21&nbsp;%</strong>. Laskun taustalla olivat tekoälyosakkeiden myyntiaalto ja odotus Nvidian tulosjulkistuksesta sekä St. Louisin Fed-johtajan Alberto Musalemin vaatimus uusista koronnostoista. Kaikki S&amp;P 500 -indeksin 11 sektoria päätyivät laskuun – viidennen kerran tänä vuonna.</p>
+  <p>Euroopan pörssit kirjasivat tiistaina kahdeksan kuukauden huonoimman päivänsä. <strong>STOXX Europe 600 laski 1,75&nbsp;%</strong> ja eurooppalaiset teknologiaosakkeet 3,9&nbsp;%, kun taas Deutsche Bank painui 6,0&nbsp;% vuodettujen pankkiasiakirjojen vuoksi. Keskiviikon futuurit viittaavat kuitenkin varovaiseen nousuun: <strong>S&amp;P 500 -futuurit ovat 0,26&nbsp;%</strong> ja <strong>Nasdaq 100 -futuurit 0,72&nbsp;%</strong> plussalla. Euroopan ja Helsingin pörssit avautuvat kello 10 Suomen aikaa.</p>
+</div>
+
+<section>
+  <h2>Markkinataulukko</h2>
+
+  <h3>USA:n indeksit</h3>
+  <table>
+    <caption>Osakeindeksit ja futuurit</caption>
+    <thead>
+      <tr>
+        <th>Indeksi</th>
+        <th class="num">Taso</th>
+        <th class="num">Muutos</th>
+        <th class="status">Tila</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="https://finance.yahoo.com/quote/%5EGSPC/" target="_blank" rel="noopener noreferrer">S&amp;P 500</a></td>
+        <td class="num">7&nbsp;340,53</td>
+        <td class="num down">−2,92&nbsp;%</td>
+        <td class="status">Suljettu – päätös 17.11.2026</td>
+      </tr>
+      <tr>
+        <td><a href="https://finance.yahoo.com/quote/%5EIXIC/" target="_blank" rel="noopener noreferrer">Nasdaq Composite</a></td>
+        <td class="num">24&nbsp;328,38</td>
+        <td class="num down">−3,21&nbsp;%</td>
+        <td class="status">Suljettu – päätös 17.11.2026</td>
+      </tr>
+      <tr>
+        <td><a href="https://finance.yahoo.com/quote/%5EDJI/" target="_blank" rel="noopener noreferrer">Dow Jones</a></td>
+        <td class="num">50&nbsp;759,42</td>
+        <td class="num down">−3,03&nbsp;%</td>
+        <td class="status">Suljettu – päätös 17.11.2026</td>
+      </tr>
+      <tr>
+        <td><a href="https://finance.yahoo.com/quote/ES%3DF/" target="_blank" rel="noopener noreferrer">S&amp;P 500 -futuurit</a></td>
+        <td class="num">7&nbsp;378,25</td>
+        <td class="num up">+0,26&nbsp;%</td>
+        <td class="status">Avoinna tänään</td>
+      </tr>
+      <tr>
+        <td><a href="https://finance.yahoo.com/quote/NQ%3DF/" target="_blank" rel="noopener noreferrer">Nasdaq 100 -futuurit</a></td>
+        <td class="num">27&nbsp;270,00</td>
+        <td class="num up">+0,72&nbsp;%</td>
+        <td class="status">Avoinna tänään</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Euroopan indeksit</h3>
+  <table>
+    <caption>Päätöslukemat 17.11.2026</caption>
+    <thead>
+      <tr>
+        <th>Indeksi</th>
+        <th class="num">Taso</th>
+        <th class="num">Muutos</th>
+        <th class="status">Tila</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="https://finance.yahoo.com/quote/%5ESTOXX/" target="_blank" rel="noopener noreferrer">STOXX Europe 600</a></td>
+        <td class="num">650,72</td>
+        <td class="num down">−1,75&nbsp;%</td>
+        <td class="status">Suljettu – päätös 17.11.2026</td>
+      </tr>
+      <tr>
+        <td><a href="https://finance.yahoo.com/quote/%5EGDAXI/" target="_blank" rel="noopener noreferrer">DAX (Saksa)</a></td>
+        <td class="num">26&nbsp;045,37</td>
+        <td class="num down">−2,63&nbsp;%</td>
+        <td class="status">Suljettu – päätös 17.11.2026</td>
+      </tr>
+      <tr>
+        <td><a href="https://finance.yahoo.com/quote/%5EFTSE/" target="_blank" rel="noopener noreferrer">FTSE 100 (UK)</a></td>
+        <td class="num">10&nbsp;689,87</td>
+        <td class="num down">−1,95&nbsp;%</td>
+        <td class="status">Suljettu – päätös 17.11.2026</td>
+      </tr>
+      <tr>
+        <td><a href="https://finance.yahoo.com/quote/%5EOMXH25/" target="_blank" rel="noopener noreferrer">OMX Helsinki 25</a></td>
+        <td class="num">6&nbsp;174,05</td>
+        <td class="num down">−1,84&nbsp;%</td>
+        <td class="status">Suljettu – päätös 17.11.2026</td>
+      </tr>
+      <tr>
+        <td><a href="https://finance.yahoo.com/quote/%5EOMX/" target="_blank" rel="noopener noreferrer">OMX Stockholm 30</a></td>
+        <td class="num">3&nbsp;287,48</td>
+        <td class="num down">−1,63&nbsp;%</td>
+        <td class="status">Suljettu – päätös 17.11.2026</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Aasian indeksit</h3>
+  <table>
+    <caption>Käynnissä oleva kaupankäynti</caption>
+    <thead>
+      <tr>
+        <th>Indeksi</th>
+        <th class="num">Taso</th>
+        <th class="num">Muutos</th>
+        <th class="status">Tila</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="https://finance.yahoo.com/quote/%5EN225/" target="_blank" rel="noopener noreferrer">Nikkei 225</a></td>
+        <td class="num">59&nbsp;024,28</td>
+        <td class="num up">+0,28&nbsp;%</td>
+        <td class="status">Avoinna tänään</td>
+      </tr>
+      <tr>
+        <td><a href="https://finance.yahoo.com/quote/%5EKS11/" target="_blank" rel="noopener noreferrer">KOSPI</a></td>
+        <td class="num">5&nbsp;067,44</td>
+        <td class="num down">−0,65&nbsp;%</td>
+        <td class="status">Avoinna tänään</td>
+      </tr>
+      <tr>
+        <td><a href="https://finance.yahoo.com/quote/%5EHSI/" target="_blank" rel="noopener noreferrer">Hang Seng</a></td>
+        <td class="num">23&nbsp;296,27</td>
+        <td class="num down">−1,93&nbsp;%</td>
+        <td class="status">Avoinna tänään</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Korot</h3>
+  <table>
+    <caption>Valtionlainojen tuotot</caption>
+    <thead>
+      <tr>
+        <th>Korko</th>
+        <th class="num">Tuotto</th>
+        <th class="num">Muutos</th>
+        <th class="status">Tila</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="https://finance.yahoo.com/quote/%5ETNX/" target="_blank" rel="noopener noreferrer">US 10Y Treasury Yield</a></td>
+        <td class="num">5,103&nbsp;%</td>
+        <td class="num down">−0,35&nbsp;%</td>
+        <td class="status">Suljettu – päätös 17.11.2026</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Raaka-aineet</h3>
+  <table>
+    <caption>Futuurihinnat</caption>
+    <thead>
+      <tr>
+        <th>Hyödyke</th>
+        <th class="num">Hinta</th>
+        <th class="num">Muutos</th>
+        <th class="status">Tila</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="https://finance.yahoo.com/quote/BZ%3DF/" target="_blank" rel="noopener noreferrer">Brent-raakaöljy</a></td>
+        <td class="num">91,62&nbsp;USD</td>
+        <td class="num down">−1,63&nbsp;%</td>
+        <td class="status">Avoinna tänään</td>
+      </tr>
+      <tr>
+        <td><a href="https://finance.yahoo.com/quote/CL%3DF/" target="_blank" rel="noopener noreferrer">WTI-raakaöljy</a></td>
+        <td class="num">83,95&nbsp;USD</td>
+        <td class="num down">−2,40&nbsp;%</td>
+        <td class="status">Avoinna tänään</td>
+      </tr>
+      <tr>
+        <td><a href="https://finance.yahoo.com/quote/GC%3DF/" target="_blank" rel="noopener noreferrer">Kulta</a></td>
+        <td class="num">3&nbsp;773,10&nbsp;USD</td>
+        <td class="num down">−2,36&nbsp;%</td>
+        <td class="status">Avoinna tänään</td>
+      </tr>
+      <tr>
+        <td><a href="https://finance.yahoo.com/quote/HG%3DF/" target="_blank" rel="noopener noreferrer">Kupari</a></td>
+        <td class="num">5,792&nbsp;USD</td>
+        <td class="num down">−3,08&nbsp;%</td>
+        <td class="status">Avoinna tänään</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Valuutat ja kryptovaluutta</h3>
+  <table>
+    <caption>Valuuttakurssit</caption>
+    <thead>
+      <tr>
+        <th>Valuuttapari</th>
+        <th class="num">Kurssi</th>
+        <th class="num">Muutos</th>
+        <th class="status">Tila</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="https://finance.yahoo.com/quote/EURUSD%3DX/" target="_blank" rel="noopener noreferrer">EUR/USD</a></td>
+        <td class="num">1,0978</td>
+        <td class="num down">−0,18&nbsp;%</td>
+        <td class="status">Avoinna tänään</td>
+      </tr>
+      <tr>
+        <td><a href="https://finance.yahoo.com/quote/EURSEK%3DX/" target="_blank" rel="noopener noreferrer">EUR/SEK</a></td>
+        <td class="num">11,1373</td>
+        <td class="num up">+0,28&nbsp;%</td>
+        <td class="status">Avoinna tänään</td>
+      </tr>
+      <tr>
+        <td><a href="https://finance.yahoo.com/quote/USDJPY%3DX/" target="_blank" rel="noopener noreferrer">USD/JPY</a></td>
+        <td class="num">159,237</td>
+        <td class="num down">−0,18&nbsp;%</td>
+        <td class="status">Avoinna tänään</td>
+      </tr>
+      <tr>
+        <td><a href="https://finance.yahoo.com/quote/BTC-USD/" target="_blank" rel="noopener noreferrer">Bitcoin</a></td>
+        <td class="num">64&nbsp;499,99&nbsp;USD</td>
+        <td class="num down">−0,61&nbsp;%</td>
+        <td class="status">Avoinna tänään</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p class="note">Suljetuiksi merkityt markkinat eivät käy kauppaa parhaillaan, ja niiden luvut ovat 17.11.2026 kirjattuja päätösarvoja. Avoinna olevien markkinoiden luvut ovat viimeisimpiä saatavilla olevia noteerauksia; tarkkaa noteerausaikaa ei ole saatavilla, joten lukuja ei tule pitää reaaliaikaisina. Klikkaamalla instrumentin nimeä voit tarkistaa ajantasaisen kurssin uudessa välilehdessä.</p>
+</section>
+
+<section>
+  <h2>Wall Streetin pörssiavaus ja USA:n uutiset</h2>
+  <p>Wall Streetin osakeindeksit sulkeutuivat tiistaina selvästi miinukselle. Dow Jones menetti 3,03&nbsp;% ja laski saatavilla olevan tiedon mukaan noin 850 pistettä, S&amp;P 500 heikkeni 2,92&nbsp;% ja Nasdaq Composite 3,21&nbsp;%. Kyseessä oli laaja-alainen lasku: kaikki S&amp;P 500 -indeksin 11 sektoria olivat matkalla miinukselle, mikä olisi saatavilla olevan tiedon mukaan vasta viides kerta tänä vuonna. Heikkous on painottunut erityisesti puolijohde- ja teknologiayhtiöihin, ja S&amp;P 500 -indeksin kerrotaan testaavan keskeistä teknistä tukitasoaan.</p>
+  <p>Keskiviikon futuurit viittaavat kuitenkin varovaiseen nousuavaukseen: S&amp;P 500 -futuurit noteerataan 0,26&nbsp;% ja Nasdaq 100 -futuurit 0,72&nbsp;% plussalla. USA:n pörssi on parhaillaan suljettu ja avautuu myöhemmin tänään.</p>
+
+  <h3>Makrotalous ja keskuspankki</h3>
+  <ul>
+    <li>USA:n vähittäismyynti kasvoi lokakuussa 0,2&nbsp;% edelliskuukaudesta, kun syyskuun luku tarkistettiin 0,8&nbsp;%:iin. Kasvu oli hieman odotettua 0,1&nbsp;%:n nousua suurempi, mutta selvästi edelliskuukautta hitaampaa. Ilman autojen ja polttoaineiden myyntiä vähittäismyynti kasvoi 0,5&nbsp;%.</li>
+    <li>St. Louisin Fed-johtaja Alberto Musalem sanoi saatavilla olevan tiedon mukaan, että uusi koronnosto tarvitaan pian.</li>
+    <li>Inflaatio- ja työllisyysluvut sekä Fedin toimet mainitaan keskeisiksi S&amp;P 500 -indeksin ajureiksi. Odotuksia korkeampi inflaatio voi lisätä odotuksia lisäkoronnostoista ja painaa osakeindeksiä, kun taas odotuksia matalampi inflaatio antaisi Fedille tilaa laskea korkoja.</li>
+    <li>Kymmenen vuoden valtionlainan tuotto on noussut yli 5&nbsp;%:n, mikä on osaltaan kiristänyt rahoitusoloja ja painanut erityisesti korkoherkkiä teknologiayhtiöitä.</li>
+  </ul>
+
+  <h3>Nvidian tulosjulkistus</h3>
+  <p>Markkinoiden keskeinen odotettu tapahtuma oli Nvidian tulosjulkistus, jonka odotettiin tulevan tiistain kaupankäynnin jälkeen. Tulosjulkistuksen ajankohta on jo ohitettu, mutta vahvistettua tietoa tuloksesta ei ole saatavilla, eikä sen vaikutusta markkinoihin voi siksi vielä arvioida. Myöskään tuoretta kurssitietoa tapahtuman jälkeisestä reaktiosta ei ole saatavilla. Sijoittajat ovat odottaneet tuloksen kertovan, jatkuvatko tekoälyinfrastruktuurin investoinnit ennallaan vai hidastuvatko ne – mahdollinen investointien väheneminen heijastuisi suoraan datakeskus- ja laskentakapasiteetin kysyntään.</p>
+
+  <h3>Taustalla vaikuttavat tekijät</h3>
+  <ul>
+    <li>USA on kiristänyt rajoituksia, joilla Kiinan pääsyä kehittyneisiin tekoälysiruihin rajoitetaan. Tämä on lisännyt epävarmuutta teknologiasektorilla.</li>
+    <li>Saatavilla olevan tiedon mukaan vuoden 2026 aikana markkinoita ovat koetelleet muun muassa tekoälyyn liittyvä myyntiaalto, energian hinnannousu kesällä, yli 5&nbsp;%:n kymmenen vuoden korko sekä Fedin koronnostosyklin käynnistyminen. Tuloskasvu ja marginaalien paraneminen ovat kuitenkin kannatelleet kursseja.</li>
+    <li>Markkinajohtajuus on laajentunut: arvoyhtiöiden on kerrottu päihittäneen kasvuyhtiöt selvästi kuluvan vuoden aikana marraskuun 10. päivään mennessä, ja tasapainotetun S&amp;P 500 -indeksin on kerrottu johtavan markkina-arvopainotettua indeksiä.</li>
+    <li>Geopoliittiset riskit ja nousevat rahoituskustannukset mainitaan mahdollisina uhkina tulevalle kasvulle.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Helsingin ja Euroopan pörssien päätöstunnelmat</h2>
+  <p>Euroopan pörssit kirjasivat tiistaina kahdeksan kuukauden huonoimman päivänsä. STOXX Europe 600 sulkeutui 1,75&nbsp;%:n laskuun 650,72 pisteeseen, mikä oli suurin yhden päivän lasku sitten 20. maaliskuun. Indeksi on nyt 2,5&nbsp;% viime viikon ennätystasojensa alapuolella, kun sarja jyrkkiä myyntejä tekoälyyn kytkeytyvissä osakkeissa on heikentänyt sijoittajien mielialaa. Kaikki keskeiset alueelliset indeksit laskivat.</p>
+  <ul>
+    <li><strong>Teknologiaosakkeet</strong> laskivat 3,9&nbsp;%, mikä oli jyrkin päivälasku sitten 3. helmikuuta. ASML menetti 5,3&nbsp;% ja SAP 5,6&nbsp;%.</li>
+    <li><strong>Deutsche Bank</strong> painui 6,0&nbsp;% vuodettujen pankkiasiakirjojen pohjalta tehtyjen uutisten jälkeen.</li>
+    <li><strong>DAX</strong> laski 2,63&nbsp;% ja <strong>FTSE 100</strong> 1,95&nbsp;%. Britannian työttömyysaste laski 4,6&nbsp;%:iin ja palkkojen kasvu hidastui.</li>
+    <li><strong>OMX Helsinki 25</strong> päätyi 1,84&nbsp;%:n laskuun 6&nbsp;174,05 pisteeseen ja <strong>OMX Stockholm 30</strong> 1,63&nbsp;%:n laskuun. Saatavilla olevan tiedon mukaan Helsingin pörssin tiistain päätöksestä ei ole erillisiä uutisia; kurssilasku noudatteli laajaa Euroopan markkinoiden heikkoutta.</li>
+  </ul>
+  <p>Laskun taustalla oli riskin vähentäminen ennen Nvidian tulosjulkistusta sekä uutiset tiukemmista rajoituksista Kiinan pääsylle kehittyneisiin tekoälysiruihin. Myös Aasian markkinoilla Etelä-Korean ja Taiwanin osakkeet olivat paineessa, ja lasku jatkui Euroopassa maanantain heikkouden jälkeen.</p>
+  <p>Euroopan ja Helsingin pörssit ovat parhaillaan suljettuina, ja kaupankäynti jatkuu tänään kello 10 Suomen aikaa. Taulukon eurooppalaiset luvut ovat tiistain 17.11.2026 päätösarvoja, eivät kuluvan päivän noteerauksia.</p>
+</section>
+
+<section>
+  <h2>Korot, raaka-aineet ja valuutat</h2>
+
+  <h3>Korot</h3>
+  <p>USA:n kymmenen vuoden valtionlainan tuotto oli viimeisimmässä päätöksessään 5,103&nbsp;%, laskua 0,35&nbsp;%. Tuotto on pysytellyt 5&nbsp;%:n yläpuolella, mitä on pidetty yhtenä kuluvan vuoden keskeisistä markkinoita kiristäneistä tekijöistä. Korkea pitkän aikavälin korko nostaa diskonttokorkoa ja painaa erityisesti korkoherkkien teknologiayhtiöiden arvostuksia. USA:n korkomarkkina on parhaillaan suljettu.</p>
+
+  <h3>Raaka-aineet</h3>
+  <p>Öljyn hinta laski selvästi: Brent-raakaöljy noteerattiin 91,62 dollariin (−1,63&nbsp;%) ja WTI-raakaöljy 83,95 dollariin (−2,40&nbsp;%). Myös metallit olivat laskussa – kulta heikkeni 2,36&nbsp;% 3&nbsp;773,10 dollariin ja kupari 3,08&nbsp;% 5,792 dollariin. Raaka-aineiden ja metallien lasku kertoo varovaisuudesta talouskasvun ja teollisuuskysynnän näkymien suhteen. Saatavilla olevan tiedon mukaan öljyn hinnannousu voisi puolestaan uudelleen kiihdyttää inflaatiopaineita ja vaikeuttaa keskuspankin tehtävää.</p>
+
+  <h3>Valuutat</h3>
+  <p>Euro heikkeni hieman suhteessa dollariin: EUR/USD oli 1,0978 (−0,18&nbsp;%). Euro vahvistui kruunua vastaan, EUR/SEK 11,1373 (+0,28&nbsp;%). Dollari heikkeni hieman jeniä vastaan, USD/JPY 159,237 (−0,18&nbsp;%). Bitcoin noteerattiin 64&nbsp;499,99 dollariin (−0,61&nbsp;%). Valuuttamarkkinat ovat parhaillaan avoinna, ja luvut ovat viimeisimpiä saatavilla olevia noteerauksia.</p>
+</section>
+
+<footer>
+  Markkinakatsaus – kurssitiedot voivat viivästyä, ja suljettujen markkinoiden luvut ovat edellisen kaupankäyntipäivän päätösarvoja.
+</footer>
+
+</div>
+</body>
+</html>
