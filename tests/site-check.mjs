@@ -111,12 +111,21 @@ check('feeds.json luetaan', urls.includes('feeds.json'), urls.join(' | '));
 check('yksi syöte rekisteristä', sandbox.state.feeds.length === 1, String(sandbox.state.feeds.length));
 check('oletussyöte markkina', sandbox.state.activeFeed === 'markkina', sandbox.state.activeFeed);
 check('paikallinen manifesti valittu', urls.includes('../data/markkina/index.json'), urls.join(' | '));
-check('kolme raporttia', sandbox.state.reports.length === 3, String(sandbox.state.reports.length));
-check('uusin ensin', sandbox.state.reports[0].file === '2026-11-13-1200-paivan-yhteenveto.html',
+// Odotettu sisältö luetaan data/markkina/index.json-tiedostosta, jotta testi ei
+// riipu yksittäisistä raporteista (raportteja tulee ja poistetaan jatkuvasti).
+const manifest = JSON.parse(fs.readFileSync(path.join(root, 'data', 'markkina', 'index.json'), 'utf8'));
+const expectedFiles = manifest.files.slice().sort().reverse();
+const newest = expectedFiles[0];
+
+check('raportit luettu manifestista', sandbox.state.reports.length === expectedFiles.length,
+  sandbox.state.reports.length + ' / ' + expectedFiles.length);
+check('manifestin tiedostot löytyvät levyltä',
+  expectedFiles.every(f => fs.existsSync(path.join(root, 'data', 'markkina', f))));
+check('uusin ensin', sandbox.state.reports[0].file === newest,
   sandbox.state.reports[0] && sandbox.state.reports[0].file);
-check('uusin valittu', sandbox.state.selectedId === '2026-11-13-1200-paivan-yhteenveto.html', sandbox.state.selectedId);
-check('hash sisältää syötteen', location.hash === '#markkina/2026-11-13-1200-paivan-yhteenveto.html', location.hash);
-check('raportin runko haettu', urls.includes('../data/markkina/2026-11-13-1200-paivan-yhteenveto.html'));
+check('uusin valittu', sandbox.state.selectedId === newest, sandbox.state.selectedId);
+check('hash sisältää syötteen', location.hash === '#markkina/' + newest, location.hash);
+check('raportin runko haettu', urls.includes('../data/markkina/' + newest));
 
 // Raportin runko haetaan erikseen, joten odotetaan hetki ennen sen tarkistusta.
 await new Promise(resolve => setTimeout(resolve, 50));
@@ -125,7 +134,7 @@ check('iframe ei piilossa', elements['report-frame'].hidden === false);
 check('srcdoc sisältää raportin', /<html/i.test(elements['report-frame'].srcdoc));
 check('srcdoc kieli fi', /lang="fi"/i.test(elements['report-frame'].srcdoc));
 check('valikko piilossa yhdellä syötteellä', elements['feed-list'].hidden === true);
-check('otsikko syötteestä', elements['report-title'].textContent === 'Päivän yhteenveto',
+check('raportin otsikko asetettu', elements['report-title'].textContent.length > 0,
   elements['report-title'].textContent);
 check('aikaleima päivitetty', /Lista päivitetty klo/.test(elements['last-updated'].textContent),
   elements['last-updated'].textContent);
