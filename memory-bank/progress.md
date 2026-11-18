@@ -97,6 +97,74 @@ Luotu kolme erillistä JavaScript-moduulia `activepieces/media/tools/`-kansioon:
 #### Työnkulku
 - Weekly trigger (maanantai 08:00)
 - Polish market trend analysis
+## 2026-11-18 – Korjattu: Polish mediakatsaus viikkokatsaus (media focus)
+
+**Done:**
+- Korjattu toteutus fokusoida "mitä puolalaiset mediat kirjoittavat" eikä "Puolan markkinakatsaus"
+- Luotu uudet koodikomponentit mediakontekstiin
+- Kaikki komponentit testattu ja toimivat
+- Sivusto päivitetty ja testit läpäisty
+### Tehdyt muutokset
+
+#### 1. Polish mediakatsaus -työnkulun korjaus
+- **Tiedosto**: `activepieces/media-pl.json`
+- **Ajastus**: Maanantaisin klo 08:00
+- **Fokus**: Mitä puolalaiset mediat kirjoittavat Puolassa
+
+#### 2. Uudet koodikomponentit
+Luotu kolme erillistä JavaScript-moduulia `activepieces/media/tools/`-kansioon:
+
+1. **`parse_polish_media.js`** - Puolalaisten medioiden RSS-syötteiden jäsentäminen
+2. **`translate_to_finnish.js`** - Artikkeleiden kääntäminen suomeksi
+3. **`summarize_polish_media.js`** - Käännettyjen artikkeleiden tiivistäminen
+
+#### 3. Build-skripti
+- **`build-media-pl.ps1`** - Luo ja päivittää mediakatsaus-työnkulun
+- Kloonaa olemassa olevan Sunnuntai-työnkulun pohjalta
+- Päivittää kaikki hakukyselyt puolalaisten medioiden seuraamiseen
+### Tärkeimmät ominaisuudet
+
+#### Työnkulku
+- Weekly trigger (maanantai 08:00)
+- Puolalaisten medioiden seuranta ja analyysi
+- Tavily-haut puolalaisiin medioihin
+- Käännös suomeksi ja tiivistelmä
+- Automaattinen GitHub commit `data/media-pl/`-kansioon
+
+#### Koodikomponentit
+- **Modulaariset .js-tiedostot** (ei inline-koodia)
+- **Testattavat erikseen** (node test-media.mjs)
+- **Fokus: Mediakonteksti** ei markkinakonteksti
+
+#### Nimeäminen
+- Tiedosto: `YYYY-MM-DD-0800-viikkokatsaus.html`
+- Polku: `data/media-pl/`
+
+### Seuraavat askeleet
+1. ✅ **Manuaalinen ajo** - Käynnistä työnkulku kerran käsin varmistaaksesi toiminnan
+2. ✅ **Activepieces -deploy** - Vie työnkulku Activepiecesiin `import-to-activepieces.ps1` -skriptillä
+3. Monitoroi ensimmäistä automaattista ajokertaa
+
+### Tekninen yhteensopivuus
+- ✅ Kaikki piece-versiot oikein
+- ✅ Tavily API -kutsut validoidut
+- ✅ GitHub commit -konfiguraatio oikein
+- ✅ Sivuston syöteregisteri päivitetty
+- ✅ Kaikki testit läpäisevät
+
+### Huomiot
+- Korjattu fokus: "mitä puolalaiset mediat kirjoittavat" vs "Puolan markkinat"
+- Hakukyselyt spesifiset puolalaisten medioiden seurantaan
+- Käännös suomeksi keskeinen osa prosessia
+- Asettaa oikean ajastuksen (maanantai 08:00)
+
+#### 4. Testaus
+- **`test-media.mjs`** - Testaa kaikki kolme uutta koodikomponenttia
+- Kaikki testit läpäisevät
+
+#### 5. Syöteregisteri
+- **`docs/feeds.json`** - Jo sisältää Polish viikkokatsaus -syötteen
+- Sisältää oikean slot-määrityksen viikkokatsaukselle
 - Tavily-haut viikottaisille uutisille
 - LLM-pohjainen raportin generointi
 - Automaattinen GitHub commit `data/media-pl/`-kansioon
