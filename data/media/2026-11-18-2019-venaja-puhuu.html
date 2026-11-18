@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Venäjä puhuu – mistä Venäjällä ja Valko-Venäjällä keskustellaan nyt</title>
+<style>
+  :root{
+    --bg:#f6f7f9;
+    --card:#ffffff;
+    --text:#1f2430;
+    --muted:#5b6472;
+    --line:#e3e6ec;
+    --ru:#1f5fa8;
+    --ru-soft:#eaf1fa;
+    --by:#8a1f2b;
+    --by-soft:#f3ecec;
+    --by-green:#2f6b3a;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    line-height:1.65;
+    font-size:17px;
+  }
+  .wrap{max-width:900px;margin:0 auto;padding:28px 18px 60px;}
+  header.top{
+    background:linear-gradient(135deg,#1f5fa8,#2f6b3a);
+    color:#fff;
+    border-radius:16px;
+    padding:30px 26px;
+    margin-bottom:26px;
+  }
+  header.top h1{
+    margin:0 0 10px;
+    font-size:1.75rem;
+    line-height:1.25;
+  }
+  header.top .period{
+    font-size:.95rem;
+    opacity:.92;
+    margin:0;
+  }
+  .highlight{
+    background:#fff8e6;
+    border:1px solid #f0dca6;
+    border-left:6px solid #e0a800;
+    border-radius:12px;
+    padding:18px 20px;
+    margin-bottom:30px;
+  }
+  .highlight h2{
+    margin:0 0 8px;
+    font-size:1.1rem;
+    color:#7a5a00;
+  }
+  .highlight p{margin:0;font-size:.98rem;}
+  section.country{
+    background:var(--card);
+    border-radius:16px;
+    padding:24px 22px;
+    margin-bottom:28px;
+    border:1px solid var(--line);
+    box-shadow:0 1px 3px rgba(20,30,50,.04);
+  }
+  section.country.ru{border-top:6px solid var(--ru);}
+  section.country.by{border-top:6px solid var(--by);}
+  section.country h2.country-title{
+    margin:0 0 6px;
+    font-size:1.4rem;
+  }
+  .ru h2.country-title{color:var(--ru);}
+  .by h2.country-title{color:var(--by);}
+  .country-sub{
+    color:var(--muted);
+    font-size:.92rem;
+    margin:0 0 18px;
+  }
+  h3{
+    font-size:1.08rem;
+    margin:22px 0 8px;
+    padding-bottom:6px;
+    border-bottom:1px solid var(--line);
+  }
+  .ru h3{color:var(--ru);}
+  .by h3{color:var(--by-green);}
+  p{margin:0 0 12px;}
+  .tag{
+    display:inline-block;
+    font-size:.72rem;
+    font-weight:600;
+    letter-spacing:.02em;
+    padding:2px 8px;
+    border-radius:999px;
+    vertical-align:middle;
+    margin-left:4px;
+  }
+  .tag.state{background:#fdeaea;color:#a12626;}
+  .tag.indep{background:#e8f2ea;color:#2f6b3a;}
+  .tag.exile{background:#eaeaf7;color:#3b3b8f;}
+  .tag.civic{background:#fdf3e0;color:#8a5a00;}
+  .sources{
+    background:var(--card);
+    border-radius:16px;
+    padding:24px 22px;
+    border:1px solid var(--line);
+  }
+  .sources h2{margin-top:0;font-size:1.3rem;}
+  .sources h3{margin-top:24px;}
+  .sources ul{list-style:none;padding:0;margin:0;}
+  .sources li{
+    padding:12px 0;
+    border-bottom:1px solid var(--line);
+    font-size:.92rem;
+  }
+  .sources li:last-child{border-bottom:none;}
+  .sources .orig{font-weight:600;display:block;margin-bottom:2px;}
+  .sources .meta{color:var(--muted);font-size:.85rem;display:block;margin-bottom:3px;}
+  .sources a{color:var(--ru);word-break:break-all;text-decoration:none;}
+  .sources a:hover{text-decoration:underline;}
+  .note{
+    background:#f0f2f5;
+    border-radius:10px;
+    padding:12px 16px;
+    font-size:.88rem;
+    color:var(--muted);
+    margin:14px 0;
+  }
+  footer{
+    text-align:center;
+    color:var(--muted);
+    font-size:.82rem;
+    margin-top:30px;
+  }
+  @media(max-width:560px){
+    body{font-size:16px;}
+    header.top h1{font-size:1.4rem;}
+    .wrap{padding:18px 12px 44px;}
+    section.country{padding:18px 15px;}
+  }
+</style>
+</head>
+<body>
+<div style="background:#f1f5f9;border-bottom:1px solid #cbd5e1;color:#475569;font:14px/1.4 Arial,sans-serif;padding:8px 16px;text-align:center;">Raportti luotu: keskiviikko 18.11.2026 klo 20:19:08</div>
+<div class="wrap">
+
+  <header class="top">
+    <h1>Venäjä puhuu – mistä Venäjällä ja Valko-Venäjällä keskustellaan nyt</h1>
+    <p class="period">Katsaus kattaa ajanjakson 4.11.2026–18.11.2026 (viimeiset 14 vuorokautta).</p>
+  </header>
+
+  <div class="highlight">
+    <h2>Kahden viikon polttavimmat puheenaiheet</h2>
+    <p>
+      Venäjällä arjen kovin puheenaihe on raha: eläkkeiden ja sosiaalietuuksien indeksointi, ruoan osuus
+      pienituloisten budjetista (yli 39 %) sekä se, että virallinen inflaatio ei vastaa kaupassa koettua
+      hintojen nousua. Politiikassa katseet ovat Aasian–Tyynenmeren huippukokouksessa, jossa Putin tapasi
+      sekä Trumpin että Xin. Valko-Venäjällä keskustelua hallitsevat asumisen ja kunnallisten palvelujen
+      (ЖКХ) hinnankorotukset: ihmiset laskevat, että palkka ei riitä, kun sähkö, lämpö ja vesi kallistuvat.
+      Molemmissa maissa valtiollinen media korostaa myönteisiä uutisia, kun taas riippumattomat ja
+      maanpaossa toimivat mediat nostavat esiin toimeentulon ja hintojen arkea.
+    </p>
+  </div>
+
+  <!-- ================= VENÄJÄ ================= -->
+  <section class="country ru">
+    <h2 class="country-title">Osa 1 – Venäjä</h2>
+    <p class="country-sub">Venäläisen mediakentän ääniä 4.–18.11.2026.</p>
+
+    <h3>Arki, perhe ja yhteiskunta</h3>
+    <p>
+      Tavallisten ihmisten arjessa näkyvät sekä valtion tarjoamat tukimuodot että niiden riittämättömyys.
+      Valtiollinen viranomaissivu (Voronežin alueen Annan piirin МФЦ-palvelu) kertoo, että
+      <strong>eläkeikää lähestyvät</strong> voivat vahvistaa asemansa ja saada kiinteistöverovapautuksia, ja että
+      <strong>monilapsiset ja sijaisperheet</strong> voivat hakea korvausta koulu- ja urheiluvälineistä
+      (4 980,28 ruplaa koulupuvusta ja 2 489,56 ruplaa urheilupuvusta). Tämä on arkinen esimerkki siitä,
+      millaista tukea perheille tarjotaan.
+    </p>
+    <p>
+      Toisaalta riippumaton Kavkazski Uzel -sivusto kertoo, että Kabardi-Balkarian johtajan Kазбек Коковin
+      väitteet alueen keskiansioista (55 000 ruplaa) ja kunnallisten palvelujen kuluista (7 000 ruplaa/kk)
+      herättivät sosiaalisessa mediassa <strong>voimakasta epäluuloa</strong>. Asukkaat huomauttivat, etteivät ole
+      huomanneet luvattuja palkankorotuksia ja että ruoan, lääkkeiden ja kunnallispalvelujen hinnat ovat
+      nousseet. Tämä kuvaa hyvin sitä kuilua, joka vallitsee virallisten tilastojen ja koetun arjen välillä.
+    </p>
+    <p>
+      Valtavirran uutisvirrassa (News Mailin yhteiskuntaosio) näkyvät kevyemmät puheenaiheet: muun muassa
+      pelaajien toiveet saada vapaata GTA VI:n julkaisun takia, terveysaiheiset jutut sekä työnantajien
+      joustavuus lumipyryissä. Nämä kertovat siitä, että arjen puheenaiheet eivät ole pelkkää politiikkaa.
+    </p>
+
+    <h3>Toimeentulo, hinnat ja talous</h3>
+    <p>
+      Selvästi suurin talousaihe on <strong>hintojen nousu ja indeksointi</strong>. Uutissivusto news.ru kertoo,
+      että KPRF-puolueen kansanedustaja Juri Afonin ehdotti erillisen kuluttajahintaindeksin luomista
+      pienituloisille. Hänen mukaansa tammikuussa 2026 <strong>ruoan osuus venäläisten budjetista ylitti 39 %</strong>,
+      ja pienituloisilla osuus on vielä selvästi suurempi. Afoninin mukaan Rosstatin nykyinen 558 tuotteen
+      indeksi ei kuvaa sitä, miten köyhimmät kokevat hintojen nousun – ja koska indeksiä käytetään eläkkeiden
+      ja sosiaalietuuksien indeksointiin, vääristymä vaikuttaa suoraan ihmisten tuloihin.
+    </p>
+    <p>
+      Moskovski Komsomolets -lehti (MK) puolestaan käsittelee eläkkeitä otsikolla
+      <em>”Täytyy työskennellä niin kauan kuin terveys sallii”</em>. Jutussa kerrotaan, että eläkemaksut ovat
+      kymmenessä vuodessa lähes kaksinkertaistuneet, mutta inflaatio on syönyt korotuksen. Keskieläke on
+      jutun mukaan <strong>25 838,5 ruplaa</strong> ja ruokakori 8 868,5 ruplaa. Alueelliset erot ovat suuria:
+      Tšukotkalla eläke on 44 066,8 ruplaa mutta ruoka maksaa 19 946,6 ruplaa, kun taas Dagestanissa eläke on
+      19 265,9 ruplaa ja ruokakori 8 466,2 ruplaa. Asiantuntija Aleksei Zubetsin mukaan eläkkeiden todellinen
+      ostovoima on kasvanut vuodesta 2016 vain noin 15 %, ja noin <strong>85 % vanhuksista elää köyhästi</strong>.
+    </p>
+    <p>
+      Talousuutisissa (Expert-lehti) kerrotaan myös, että <strong>vakuutuseläkkeitä indeksoidaan vuonna 2027
+      kahdesti</strong>. Lisäksi esillä ovat muun muassa digitaalinen rupla ja se, miksi ihmiset kokevat hintojen
+      nousevan nopeammin kuin viralliset luvut näyttävät.
+    </p>
+
+    <h3>Politiikka ja julkiset kiistat</h3>
+    <p>
+      Politiikan ykkösaihe on <strong>Aasian–Tyynenmeren talousyhteistyön (ATEC) huippukokous</strong>. Valtiollinen
+      RIA Novosti ja talouslehti Vedomosti kertovat, että Putin tapasi kokouksen yhteydessä sekä
+      <strong>Donald Trumpin</strong> että <strong>Xi Jinpingin</strong>. Vedomostin mukaan Putin totesi, että
+      kolmenvälinen tapaaminen Venäjän, Kiinan ja Yhdysvaltojen johtajien kesken toisi suurta hyötyä, ja
+      korosti maiden välisten suhteiden pysyvyyttä. RIA Novostin politiikan osiossa esillä ovat myös
+      budjettikäsittely ja Medvedevin rooli Jhtenäisen Venäjän budjettipuheenvuoroissa.
+    </p>
+    <p>
+      Maanpaossa toimiva Novaja Gazeta Baltia puolestaan uutisoi Reutersiin viitaten, että
+      <strong>Putin on sanonut Suomen presidentille ja Norjan pääministerille, ettei suostu kompromissiin
+      Donbassin suhteen</strong>. Tämä on esimerkki siitä, miten riippumaton maanpakomedia nostaa esiin
+      ulkopoliittisia jännitteitä, joita valtiollinen media käsittelee toisin painotuksin.
+    </p>
+
+    <h3>Mediakentän äänet</h3>
+    <p>
+      Venäjän mediakenttä on jakautunut. <strong>Valtiolliset ja valtiomyönteiset mediat</strong> (RIA Novosti,
+      AiF, News.ru, Vedomosti) keskittyvät virallisiin tapahtumiin, talouslukuihin ja myönteisiin
+      yhteiskuntauutisiin. <strong>Riippumattomat mediat</strong> (Kavkazski Uzel, Expert) tuovat esiin
+      alueellisia eroja ja asiantuntija-arvioita. <strong>Maanpaossa toimivat riippumattomat mediat</strong>
+      (Novaja Gazeta Baltia, Važnyje istorii) keskittyvät tutkivaan journalismiin ja kriittisiin näkökulmiin.
+      Važnyje istorii -sivuston tuoreimmissa jutuissa käsitellään muun muassa mobilisaatioon varautumista ja
+      Krimin tilannetta. Lisäksi venäläinen IVBG.ru uutisoi, että ”ulkomaisten agenttien” listalle on lisätty
+      lukuisia riippumattomia medioita ja toimittajia – mikä kertoo siitä, että riippumattoman tiedonvälityksen
+      tila on edelleen ahtaalla.
+    </p>
+  </section>
+
+  <!-- ================= VALKO-VENÄJÄ ================= -->
+  <section class="country by">
+    <h2 class="country-title">Osa 2 – Valko-Venäjä</h2>
+    <p class="country-sub">Valkovenäläisen mediakentän ääniä 4.–18.11.2026.</p>
+
+    <h3>Arki, perhe ja yhteiskunta</h3>
+    <p>
+      Valtiollinen uutissivusto News.by kertoo myönteisestä arkiuutisesta: Dятlovskin piirissä avattiin uusi
+      modulaarinen <strong>FAP-terveysasema</strong> (feldsheri-synnytyspiste), joka palvelee seitsemän kylän
+      asukkaita. Uudessa 50 neliömetrin rakennuksessa voi mitata verenpainetta ja silmänpainetta, ostaa
+      lääkkeitä ja varata ajan piirin poliklinikalle. Asukkaat kiittävät, että palvelu on nyt kylän keskustassa
+      aiemman kahden kilometrin kävelymatkan sijaan. Tämä on tyypillinen valtiollisen median tapa korostaa
+      maaseudun palvelujen parantamista.
+    </p>
+    <p>
+      Riippumaton Nasha Niva puolestaan nostaa esiin toisenlaisen arjen: se on kerännyt lukijoidensa
+      (Ex-press.by:n kautta) kokemuksia <strong>kunnallisten palvelujen hinnankorotuksista</strong>. Yksi
+      haastateltava, kahden lapsen yksinhuoltaja, kertoo maksavansa talvella 173,15 ruplaa kuukaudessa
+      48 neliömetrin kaksiosta ja kesällä 132,86 ruplaa – palkkansa ollessa 900 ruplaa. Toinen kertoo
+      maksavansa kolmesta asunnosta (omansa ja sukulaistensa) ja kolmannen toteavan, että suurin osa
+      äidin eläkkeestä menee kalliisiin lääkkeisiin. Nämä kertomukset kuvaavat sitä, miten hinnankorotukset
+      koetaan konkreettisesti.
+    </p>
+
+    <h3>Toimeentulo, hinnat ja talous</h3>
+    <p>
+      Kunnallispalvelujen hinnat ovat selvästi Valko-Venäjän kuumin arkipuheenaihe. Riippumaton Reform.news
+      kertoo, että <strong>asumis- ja kunnallispalveluministeriön laskelmien mukaan valkovenäläiset maksavat
+      noin 83 % kunnallispalvelujen omakustannushinnasta</strong> ja että nämä kulut muodostavat noin 4,5 %
+      keskimääräisestä perhebudjetista. Virallinen näkemys korostaa siis, että valtio tukee loppuosaa.
+    </p>
+    <p>
+      Riippumaton Zerkalo puolestaan on käsitellyt muun muassa sitä, että yksi valkovenäläinen maksoi
+      yksiöstään <strong>1 624,35 ruplaa</strong> lokakuun kunnallislaskussa (”työttömyysveron” eli
+      täysimääräisen hinnan mukaan). Zerkalo on myös raportoinut, että kansalaiset ovat lähettäneet
+      viranomaisille valituksia ЖКХ-muutoksista, ja että viranomaiset katsovat ihmisten ”ymmärtävän väärin”
+      uudistukset. Nämä jutut eivät kuitenkaan sisällä selkeää julkaisupäivämäärää katsausjaksolla, joten
+      niitä käsitellään tässä taustatietona.
+    </p>
+    <div class="note">
+      Huomio lähteistä: Valko-Venäjän riippumattomien medioiden (Nasha Niva, Reform.news, Zerkalo) hakutuloksissa
+      ei ollut luotettavasti vahvistettavissa olevaa julkaisupäivämäärää 4.–18.11.2026 väliseltä ajalta.
+      Niiden sisältöä on käytetty vain siltä osin kuin se kuvaa käynnissä olevaa keskustelua, ja tämä rajoite
+      tuodaan avoimesti esiin.
+    </div>
+
+    <h3>Politiikka ja julkiset kiistat</h3>
+    <p>
+      Poliittisella puolella valtiollinen SB.by julkaisi <strong>”Republikaanisen luettelon ekstremistisistä
+      materiaaleista 2026”</strong>, johon on lisätty muun muassa Reform.news-kanavan Telegram-tilejä,
+      ”Rodnaja historyja” -kanava sekä muita riippumattomia sisältöjä. Luettelo kertoo siitä, että
+      riippumattoman tiedonvälityksen rajoittaminen jatkuu: esimerkiksi Pinskin alueen tuomioistuin on
+      määrännyt sisällöt poistettaviksi. Tämä on keskeinen julkisen keskustelun aihe, sillä se vaikuttaa
+      suoraan siihen, mitä tietoa valkovenäläiset voivat vapaasti seurata.
+    </p>
+
+    <h3>Mediakentän äänet</h3>
+    <p>
+      Valko-Venäjän mediakenttä on voimakkaasti jakautunut. <strong>Valtiolliset mediat</strong> (News.by, SB.by,
+      BELTA) keskittyvät myönteisiin arkiuutisiin ja virallisiin kannanottoihin. <strong>Riippumattomat ja
+      maanpaossa toimivat mediat</strong> (Nasha Niva, Reform.news, Zerkalo) nostavat esiin toimeentulon,
+      hintojen ja kansalaisoikeuksien kysymyksiä. Juuri nyt näkyvin ero liittyy siihen, miten kunnallisten
+      palvelujen hinnankorotukset tulkitaan: valtio korostaa tukiosuutta, riippumattomat mediat taas
+      kansalaisten kokemaa taloudellista painetta.
+    </p>
+  </section>
+
+  <!-- ================= LÄHTEET ================= -->
+  <div class="sources">
+    <h2>Käytetyt lähteet</h2>
+
+    <h3>Venäjä</h3>
+    <ul>
+      <li>
+        <span class="orig">«Афонин предложил создать отдельный индекс цен для малообеспеченных граждан» (Afonin ehdotti erillistä hintaindeksiä pienituloisille)</span>
+        <span class="meta">18.11.2026 · valtiomyönteinen · <a href="https://news.ru/vlast/v-rossii-mogut-izmenit-podhod-k-indeksacii-cen-na-edu" target="_blank" rel="noopener noreferrer">https://news.ru/vlast/v-rossii-mogut-izmenit-podhod-k-indeksacii-cen-na-edu</a></span>
+      </li>
+      <li>
+        <span class="orig">«Придется работать, пока позволяет здоровье»: двукратный рост пенсионных выплат съела инфляция (”Täytyy työskennellä niin kauan kuin terveys sallii”: eläkkeiden kaksinkertaistumisen söi inflaatio)</span>
+        <span class="meta">08.11.2026 · valtiomyönteinen · <a href="https://www.mk.ru/economics/2026/11/08/pridetsya-rabotat-poka-pozvolyaet-zdorove-dvukratnyy-rost-pensionnykh-vyplat-sela-inflyaciya.html" target="_blank" rel="noopener noreferrer">https://www.mk.ru/economics/2026/11/08/pridetsya-rabotat-poka-pozvolyaet-zdorove-dvukratnyy-rost-pensionnykh-vyplat-sela-inflyaciya.html</a></span>
+      </li>
+      <li>
+        <span class="orig">Коков Казбек Валерьевич (Kokov Kazbek Valerjevitš – juttu keskiansioista ja ЖКХ-hinnoista)</span>
+        <span class="meta">04.11.2026 · riippumaton · <a href="https://www.kavkaz-uzel.eu/articles/222572" target="_blank" rel="noopener noreferrer">https://www.kavkaz-uzel.eu/articles/222572</a></span>
+      </li>
+      <li>
+        <span class="orig">Новости Общества (Yhteiskuntauutiset)</span>
+        <span class="meta">18.11.2026 · valtiomyönteinen · <a href="https://news.mail.ru/society" target="_blank" rel="noopener noreferrer">https://news.mail.ru/society</a></span>
+      </li>
+      <li>
+        <span class="orig">Новости рубрики «Общество» за 18 ноября 2026 (Yhteiskuntaosion uutiset 18.11.2026)</span>
+        <span class="meta">18.11.2026 · riippumaton · <a href="https://www.vedomosti.ru/society/news/2026/11/18" target="_blank" rel="noopener noreferrer">https://www.vedomosti.ru/society/news/2026/11/18</a></span>
+      </li>
+      <li>
+        <span class="orig">Новости политики (Politiikan uutiset)</span>
+        <span class="meta">07.11.2026 · valtiollinen · <a href="https://ria.ru/politics" target="_blank" rel="noopener noreferrer">https://ria.ru/politics</a></span>
+      </li>
+      <li>
+        <span class="orig">Новости сегодня (Uutiset tänään – mm. eläkkeiden indeksointi 2027)</span>
+        <span class="meta">15.11.2026 · riippumaton · <a href="https://expert.ru/news" target="_blank" rel="noopener noreferrer">https://expert.ru/news</a></span>
+      </li>
+      <li>
+        <span class="orig">Свежие новости и события дня (Tuoreimmat uutiset ja päivän tapahtumat)</span>
+        <span class="meta">11.11.2026 · valtiomyönteinen · <a href="https://aif.ru/news" target="_blank" rel="noopener noreferrer">https://aif.ru/news</a></span>
+      </li>
+      <li>
+        <span class="orig">СМАРТ-МФЦ в пгт Анна (SMART-МФЦ Annan taajamassa – tukimuodot)</span>
+        <span class="meta">06.11.2026 · valtiollinen · <a href="https://annaraionadm.gosuslugi.ru/ofitsialno/territorialnye-organy-i-predstavitelstva/smart-mfts-v-pgt-anna" target="_blank" rel="noopener noreferrer">https://annaraionadm.gosuslugi.ru/ofitsialno/territorialnye-organy-i-predstavitelstva/smart-mfts-v-pgt-anna</a></span>
+      </li>
+      <li>
+        <span class="orig">Новости — Новая газета. Балтия (Uutiset – Novaja Gazeta Baltia)</span>
+        <span class="meta">16.11.2026 · maanpaossa toimiva riippumaton · <a href="https://novayagazeta.ee/news" target="_blank" rel="noopener noreferrer">https://novayagazeta.ee/news</a></span>
+      </li>
+      <li>
+        <span class="orig">Важные истории (Važnyje istorii – tutkivaa journalismia)</span>
+        <span class="meta">06.11.2026 · maanpaossa toimiva riippumaton · <a href="https://istories.media" target="_blank" rel="noopener noreferrer">https://istories.media</a></span>
+      </li>
+      <li>
+        <span class="orig">Минцифры приближается к техническому пределу «белого списка» сервисов (Mintsifry lähestyy palvelujen ”valkoisen listan” teknistä rajaa – sisältää ulkomaisten agenttien luettelon)</span>
+        <span class="meta">12.11.2026 · riippumaton · <a href="https://ivbg.ru/8431374-mintsifry-priblizhaetsya-k-tehnicheskomu-predelu-belogo-spiska-servisov.html" target="_blank" rel="noopener noreferrer">https://ivbg.ru/8431374-mintsifry-priblizhaetsya-k-tehnicheskomu-predelu-belogo-spiska-servisov.html</a></span>
+      </li>
+    </ul>
+
+    <h3>Valko-Venäjä</h3>
+    <ul>
+      <li>
+        <span class="orig">Современный ФАП для жителей семи деревень открылся в Дятловском районе (Nykyaikainen FAP-terveysasema seitsemän kylän asukkaille avattiin Djatlovskin piirissä)</span>
+        <span class="meta">05.11.2026 · valtiollinen · <a href="https://news.by/news/obshchestvo/sovremenniy-fap-dlya-zhiteley-semi-dereven-otkrylsya-v-dyatlovskom-rayone" target="_blank" rel="noopener noreferrer">https://news.by/news/obshchestvo/sovremenniy-fap-dlya-zhiteley-semi-dereven-otkrylsya-v-dyatlovskom-rayone</a></span>
+      </li>
+      <li>
+        <span class="orig">Республиканский список экстремистских материалов 2026 г. (Republikaaninen luettelo ekstremistisistä materiaaleista 2026)</span>
+        <span class="meta">16.11.2026 · valtiollinen · <a href="https://www.sb.by/articles/respublikanskiy-spisok-ekstremistskikh-materialov-2026-g.html" target="_blank" rel="noopener noreferrer">https://www.sb.by/articles/respublikanskiy-spisok-ekstremistskikh-materialov-2026-g.html</a></span>
+      </li>
+      <li>
+        <span class="orig">«Нас «выжимают» понемногу, но очень четко…». Белорусы рассказали, как лично их затрагивает увеличение коммуналки (”Meitä puristetaan vähitellen mutta hyvin tarkasti…” Valkovenäläiset kertoivat, miten kunnallislaskujen korotus koskettaa heitä henkilökohtaisesti)</span>
+        <span class="meta">julkaisupäivä ei vahvistettavissa katsausjaksolla · riippumaton · <a href="https://nashaniva.com/335924?lang=ru" target="_blank" rel="noopener noreferrer">https://nashaniva.com/335924?lang=ru</a></span>
+      </li>
+      <li>
+        <span class="orig">Министр ЖКХ: беларусы оплачивают 83% себестоимости ЖКУ (ЖКХ-ministeri: valkovenäläiset maksavat 83 % kunnallispalvelujen omakustannushinnasta)</span>
+        <span class="meta">julkaisupäivä ei vahvistettavissa katsausjaksolla · riippumaton · <a href="https://reform.news/287568-ministr-zhkh-belarusy-oplachivajut-83-sebestoimosti-zhku" target="_blank" rel="noopener noreferrer">https://reform.news/287568-ministr-zhkh-belarusy-oplachivajut-83-sebestoimosti-zhku</a></span>
+      </li>
+      <li>
+        <span class="orig">Беларус заплатил за однушку 1600 рублей по «тунеядскому» (Valkovenäläinen maksoi yksiöstään 1600 ruplaa ”työttömyysveron” mukaan)</span>
+        <span class="meta">julkaisupäivä ei vahvistettavissa katsausjaksolla · riippumaton · <a href="https://news.zerkalo.io/economics/113957.html" target="_blank" rel="noopener noreferrer">https://news.zerkalo.io/economics/113957.html</a></span>
+      </li>
+    </ul>
+  </div>
+
+  <footer>
+    Katsaus laadittu 18.11.2026 Tavily-hakutulosten pohjalta. Vain venäjän- ja valkovenäjänkielisiä,
+    Venäjää ja Valko-Venäjää käsitteleviä lähteitä on käytetty. Valtiollisten medioiden väitteet on
+    merkitty sellaisiksi, eikä niitä ole esitetty riippumattomina faktoina.
+  </footer>
+
+</div>
+</body>
+</html>
