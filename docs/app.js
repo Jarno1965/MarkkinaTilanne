@@ -498,6 +498,38 @@ function setError(message) {
     escapeHtml(message) + '</p>');
 }
 
+/* Vaihtaa katsauksen: hakee listan vain valitulle syötteelle, jolloin
+   GitHub-pyyntöjä tulee yksi per katsaus eikä yksi per sivulataus. */
+function selectReportFile(file) {
+  if (!file) return;
+
+  var report = state.reports.find(function (r) { return r.file === file; });
+  if (!report) {
+    setError('Raporttia ei löydy: ' + file);
+    return;
+  }
+
+  state.selectedId = file;
+  var info = slotInfo(report.slug);
+
+  $('report-title').textContent = info.label;
+  $('report-meta').textContent = formatDateLong(report.date) + ' klo ' + report.time + ' (Suomen aika)';
+  document.title = info.label + ' – ' + feedTitle();
+  $('open-new-tab').disabled = false;
+  $('print-btn').disabled = false;
+  setStatus('');
+
+  renderList();
+  closeNav();
+
+  // Päivitä osoitteen hash, jotta raporttiin voi linkittää suoraan.
+  if (window.location.hash !== '#' + state.activeFeed + '/' + file) {
+    history.replaceState(null, '', '#' + state.activeFeed + '/' + file);
+  }
+
+  loadReportContent(report);
+}
+
 function loadReportContent(report) {
   var frame = $('report-frame');
   showPlaceholder('<p class="viewer__icon" aria-hidden="true">⏳</p><h3>Ladataan raporttia…</h3><p>' +
