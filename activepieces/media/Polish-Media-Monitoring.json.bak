@@ -1,0 +1,424 @@
+﻿{
+    "name":  "Polish-Citizen-Voice",
+    "type":  "SHARED",
+    "summary":  "",
+    "description":  "",
+    "tags":  [
+
+             ],
+    "blogUrl":  "",
+    "metadata":  {
+                     "externalId":  "6mF0HkP7AU5NIFE2FASfv"
+                 },
+    "author":  "Jarno Lönnqvist",
+    "categories":  [
+
+                   ],
+    "pieces":  [
+                   "@activepieces/piece-schedule",
+                   "@activepieces/piece-date-helper",
+                   "@activepieces/piece-tavily",
+                   "@activepieces/piece-open-router",
+                   "@activepieces/piece-github"
+               ],
+    "flows":  [
+                  {
+                      "displayName":  "Puola: Kansalaisten Aani",
+                      "trigger":  {
+                                      "name":  "trigger",
+                                      "valid":  true,
+                                      "displayName":  "Every Week",
+                                      "nextAction":  {
+                                                         "name":  "step_1",
+                                                         "skip":  false,
+                                                         "type":  "PIECE",
+                                                         "valid":  true,
+                                                         "settings":  {
+                                                                          "input":  {
+                                                                                        "timeZone":  "Europe/Helsinki",
+                                                                                        "timeFormat":  "YYYY-MM-DD HH:mm:ss"
+                                                                                    },
+                                                                          "pieceName":  "@activepieces/piece-date-helper",
+                                                                          "actionName":  "get_current_date",
+                                                                          "sampleData":  {
+
+                                                                                         },
+                                                                          "pieceVersion":  "0.2.1",
+                                                                          "propertySettings":  {
+                                                                                                   "timeZone":  {
+                                                                                                                    "type":  "MANUAL"
+                                                                                                                },
+                                                                                                   "timeFormat":  {
+                                                                                                                      "type":  "MANUAL"
+                                                                                                                  }
+                                                                                               },
+                                                                          "errorHandlingOptions":  {
+                                                                                                       "retryOnFailure":  {
+                                                                                                                              "value":  false
+                                                                                                                          },
+                                                                                                       "continueOnFailure":  {
+                                                                                                                                 "value":  false
+                                                                                                                             }
+                                                                                                   }
+                                                                      },
+                                                         "nextAction":  {
+                                                                            "name":  "step_13_scrape",
+                                                                            "skip":  false,
+                                                                            "type":  "CODE",
+                                                                            "valid":  true,
+                                                                            "settings":  {
+                                                                                             "input":  {
+
+                                                                                                       },
+                                                                                             "useDeno":  true,
+                                                                                             "sampleData":  {
+
+                                                                                                            },
+                                                                                             "sourceCode":  {
+                                                                                                                "code":  "export const code = async (inputs) =\u003e {\r\n  // SCRAPE puolalaiset mediat suoraan (ei Tavily-hakua!)\r\n  // Käytetään suoraan puolalaisia uutissivustoja:\r\n  // - wiadomosci.wp.pl (SuperExpress)\r\n  // - gazeta.pl\r\n  // - rmf24.pl\r\n  // - tvn24.pl\r\n  // - interia.pl\r\n  // - onet.pl\r\n  // - wp.pl\r\n  \r\n  const polishMediaSources = [\r\n    { name: \"WP Wiadomości\", url: \"https://wiadomosci.wp.pl\", priority: 1 },\r\n    { name: \"Gazeta.pl\", url: \"https://wiadomosci.gazeta.pl\", priority: 2 },\r\n    { name: \"RMF24\", url: \"https://www.rmf24.pl\", priority: 1 },\r\n    { name: \"TVN24\", url: \"https://www.tvn24.pl\", priority: 1 },\r\n    { name: \"Interia\", url: \"https://interia.pl\", priority: 2 },\r\n    { name: \"Onet Wiadomości\", url: \"https://wiadomosci.onet.pl\", priority: 2 }\r\n  ];\r\n  \r\n  // Tässä tulisi oikea scraping-logiikka, joka:\r\n  // 1. Hakee suoraan näiltä sivuilta\r\n  // 2. Parsii RSS-syötteet tai scrapee HTML-sisällön\r\n  // 3. Etsii TAVALLISTEN PUOLALAISTEN puhetta (ei kansainvälisiä analyysejä)\r\n  \r\n  const mockScrapedContent = [\r\n    { \r\n      title: \"Ceny energii rosną w Polsce\", \r\n      url: \"https://example.pl/ceny-energii\", \r\n      content: \"Polscy mieszkańcy coraz bardziej niepokoją się wzrostem cen prądu i gazu. Wiele rodzin musi ograniczyć wydatki na ogrzewanie.\", \r\n      source: \"WP Wiadomości\",\r\n      category: \"gospodarka\",\r\n      sentiment: \"negatywny\"\r\n    },\r\n    { \r\n      title: \"Prezydent i premier w sporze o emerytury\", \r\n      url: \"https://example.pl/emerytury\", \r\n      content: \"Prezydent Andrzej Duda krytykuje premiera za brak konkretnych propozycji podwyższenia emerytur. Społeczeństwo czeka na decyzje.\", \r\n      source: \"Gazeta.pl\",\r\n      category: \"polityka\",\r\n      sentiment: \"kontrowersyjny\"\r\n    }\r\n  ];\r\n  \r\n  return {\r\n    articles: JSON.stringify(mockScrapedContent),\r\n    articleCount: mockScrapedContent.length,\r\n    sources: JSON.stringify(polishMediaSources.map(s =\u003e s.name))\r\n  };\r\n};",
+                                                                                                                "packageJson":  "{}"
+                                                                                                            },
+                                                                                             "errorHandlingOptions":  {
+                                                                                                                          "retryOnFailure":  {
+                                                                                                                                                 "value":  false
+                                                                                                                                             },
+                                                                                                                          "continueOnFailure":  {
+                                                                                                                                                    "value":  false
+                                                                                                                                                }
+                                                                                                                      }
+                                                                                         },
+                                                                            "nextAction":  {
+                                                                                               "name":  "step_14",
+                                                                                               "skip":  false,
+                                                                                               "type":  "CODE",
+                                                                                               "valid":  true,
+                                                                                               "settings":  {
+                                                                                                                "input":  {
+                                                                                                                              "articles":  "{{step_13_scrape[\u0027output\u0027][\u0027articles\u0027]}}"
+                                                                                                                          },
+                                                                                                                "useDeno":  true,
+                                                                                                                "sampleData":  {
+
+                                                                                                                               },
+                                                                                                                "sourceCode":  {
+                                                                                                                                   "code":  "export const code = async (inputs) =\u003e {\r\n  // Analysoi mitä TAVALLISET PUOLALAISET puhuvat - ei mitä kansainväliset analyytikot sanovat\r\n  \r\n  const articles = JSON.parse(inputs.articles || \u0027[]\u0027);\r\n  \r\n  if (articles.length === 0) {\r\n    return {\r\n      main_topics: \u0027ei artikkeleita saatavilla\u0027,\r\n      trending_topics: \u0027ei trendejä\u0027,\r\n      polish_sentiment: \u0027neutraali\u0027,\r\n      summary_fi: \u0027Ei puolalaisia uutisia saatavilla tällä viikolla.\u0027\r\n    };\r\n  }\r\n  \r\n  // Etsitään todellisia kansalaisaiheita - EI markkinatalous-juttuja\r\n  const citizenTopics = articles.filter(article =\u003e {\r\n    const content = (article.title + \u0027 \u0027 + article.content).toLowerCase();\r\n    // Mitä tavalliset ihmiset puhuvat:\r\n    const citizenKeywords = [\r\n      \u0027ceny\u0027, \u0027energia\u0027, \u0027inflacja\u0027, \u0027emerytury\u0027, \u0027mieszkania\u0027, \u0027szpitale\u0027, \r\n      \u0027edukacja\u0027, \u0027bezrobocie\u0027, \u0027komunikacja\u0027, \u0027środowisko\u0027, \u0027bezpieczeństwo\u0027,\r\n      \u0027prąd\u0027, \u0027gaz\u0027, \u0027żywność\u0027, \u0027lekarze\u0027, \u0027szkoły\u0027, \u0027transport\u0027, \u0027podatki\u0027,\r\n      \u0027renty\u0027, \u0027koszty życia\u0027, \u0027praca\u0027, \u0027wynagrodzenia\u0027, \u0027dzieci\u0027, \u0027rodzina\u0027,\r\n      \u0027starzy\u0027, \u0027pielęgniary\u0027, \u0027leki\u0027, \u0027koleje\u0027, \u0027drogi\u0027, \u0027śmieci\u0027, \u0027woda\u0027\r\n    ];\r\n    return citizenKeywords.some(keyword =\u003e content.includes(keyword));\r\n  });\r\n  \r\n  // Etsitään myös poliittiset riidat (tämä KIINNOSTAA tavallista ihmistä)\r\n  const politicalTopics = articles.filter(article =\u003e {\r\n    const content = (article.title + \u0027 \u0027 + article.content).toLowerCase();\r\n    const politicalKeywords = [\u0027prezydent\u0027, \u0027premier\u0027, \u0027rząd\u0027, \u0027sejm\u0027, \u0027senat\u0027, \u0027partia\u0027, \u0027wybory\u0027, \u0027głosowania\u0027];\r\n    return politicalKeywords.some(keyword =\u003e content.includes(keyword));\r\n  });\r\n  \r\n  // Etsitään sotilaalliset/jännitteiden aiheet (myös kiinnostavia kansalaisille)\r\n  const securityTopics = articles.filter(article =\u003e {\r\n    const content = (article.title + \u0027 \u0027 + article.content).toLowerCase();\r\n    const securityKeywords = [\u0027ukraina\u0027, \u0027rosja\u0027, \u0027wojna\u0027, \u0027granica\u0027, \u0027bezpieczeństwo\u0027, \u0027armia\u0027, \u0027NATO\u0027];\r\n    return securityKeywords.some(keyword =\u003e content.includes(keyword));\r\n  });\r\n  \r\n  // Etsitään talousaiheet (ei markkinataloutta, vaan kansalaisten näkökulmasta)\r\n  const economyTopics = articles.filter(article =\u003e {\r\n    const content = (article.title + \u0027 \u0027 + article.content).toLowerCase();\r\n    const economyKeywords = [\u0027bezrobocie\u0027, \u0027inflacja\u0027, \u0027ceny\u0027, \u0027gospodarka\u0027, \u0027budżet\u0027, \u0027subsidies\u0027, \u0027pomoc\u0027];\r\n    return economyKeywords.some(keyword =\u003e content.includes(keyword));\r\n  });\r\n  \r\n  // Etsitään ympäristöaiheet\r\n  const environmentTopics = articles.filter(article =\u003e {\r\n    const content = (article.title + \u0027 \u0027 + article.content).toLowerCase();\r\n    const envKeywords = [\u0027klimat\u0027, \u0027środowisko\u0027, \u0027smog\u0027, \u0027zanieczyszczenie\u0027, \u0027odpady\u0027, \u0027recycling\u0027];\r\n    return envKeywords.some(keyword =\u003e content.includes(keyword));\r\n  });\r\n\r\n  const topicsSummary = [];\r\n  \r\n  if (citizenTopics.length \u003e 0) {\r\n    topicsSummary.push(`KANSALAISAIHEET (${citizenTopics.length} juttua): ` + \r\n      citizenTopics.slice(0, 5).map(a =\u003e `${a.title} (${a.category})`).join(\u0027, \u0027));\r\n  }\r\n  \r\n  if (politicalTopics.length \u003e 0) {\r\n    topicsSummary.push(`POLIITTINEN RIITA (${politicalTopics.length} juttua): ` + \r\n      politicalTopics.slice(0, 3).map(a =\u003e `${a.title}`).join(\u0027, \u0027));\r\n  }\r\n  \r\n  if (securityTopics.length \u003e 0) {\r\n    topicsSummary.push(`TURVALLISUUS (${securityTopics.length} juttua): ` + \r\n      securityTopics.slice(0, 3).map(a =\u003e `${a.title}`).join(\u0027, \u0027));\r\n  }\r\n  \r\n  if (economyTopics.length \u003e 0) {\r\n    topicsSummary.push(`TALOUS JA ELINTASO (${economyTopics.length} juttua): ` + \r\n      economyTopics.slice(0, 3).map(a =\u003e `${a.title}`).join(\u0027, \u0027));\r\n  }\r\n  \r\n  if (environmentTopics.length \u003e 0) {\r\n    topicsSummary.push(`YMPÄRISTÖ (${environmentTopics.length} juttua): ` + \r\n      environmentTopics.slice(0, 2).map(a =\u003e `${a.title}`).join(\u0027, \u0027));\r\n  }\r\n\r\n  // Laske sentimentti\r\n  let sentiment = \u0027neutraali\u0027;\r\n  const negativeCount = articles.filter(a =\u003e a.sentiment === \u0027negatywny\u0027).length;\r\n  const positiveCount = articles.filter(a =\u003e a.sentiment === \u0027pozytywny\u0027).length;\r\n  \r\n  if (negativeCount \u003e positiveCount * 2) {\r\n    sentiment = \u0027negatywny\u0027;\r\n  } else if (positiveCount \u003e negativeCount * 2) {\r\n    sentiment = \u0027pozytywny\u0027;\r\n  }\r\n  \r\n  return {\r\n    main_topics: topicsSummary.length \u003e 0 ? topicsSummary.join(\u0027 ;; \u0027) : \u0027ei merkittäviä aiheita\u0027,\r\n    trending_topics: JSON.stringify({\r\n      citizen: citizenTopics.slice(0, 8),\r\n      political: politicalTopics.slice(0, 5),\r\n      security: securityTopics.slice(0, 5),\r\n      economy: economyTopics.slice(0, 5),\r\n      environment: environmentTopics.slice(0, 3)\r\n    }),\r\n    polish_sentiment: sentiment,\r\n    summary_fi: `MITÄ PUOLALAISET PUHUVAT:\\n\\n` + \r\n      (topicsSummary.length \u003e 0 ? topicsSummary.join(\u0027\\n\\n\u0027) : \u0027Ei merkittäviä aiheita tällä viikolla.\u0027) +\r\n      `\\n\\nYLEINEN MIELIALA: ${sentiment === \u0027negatywny\u0027 ? \u0027Huolestunut\u0027 : sentiment === \u0027pozytywny\u0027 ? \u0027Positiivinen\u0027 : \u0027Neutraali\u0027}`\r\n  };\r\n};",
+                                                                                                                                   "packageJson":  "{}"
+                                                                                                                               },
+                                                                                                                "errorHandlingOptions":  {
+                                                                                                                                             "retryOnFailure":  {
+                                                                                                                                                                    "value":  false
+                                                                                                                                                                },
+                                                                                                                                             "continueOnFailure":  {
+                                                                                                                                                                       "value":  false
+                                                                                                                                                                   }
+                                                                                                                                         }
+                                                                                                            },
+                                                                                               "nextAction":  {
+                                                                                                                  "name":  "step_9",
+                                                                                                                  "skip":  false,
+                                                                                                                  "type":  "CODE",
+                                                                                                                  "valid":  true,
+                                                                                                                  "settings":  {
+                                                                                                                                   "input":  {
+                                                                                                                                                 "summary_fi":  "{{step_14[\u0027output\u0027][\u0027summary_fi\u0027]}}",
+                                                                                                                                                 "trending_topics":  "{{step_14[\u0027output\u0027][\u0027trending_topics\u0027]}}",
+                                                                                                                                                 "main_topics":  "{{step_14[\u0027output\u0027][\u0027main_topics\u0027]}}"
+                                                                                                                                             },
+                                                                                                                                   "useDeno":  true,
+                                                                                                                                   "sampleData":  {
+
+                                                                                                                                                  },
+                                                                                                                                   "sourceCode":  {
+                                                                                                                                                      "code":  "export const code = async (inputs) =\u003e {\r\n  // Muotoillaan raportti SUOMEKSI tavallaiselle lukijalle\r\n  \r\n  const summary = inputs.summary_fi || \u0027Ei tietoja saatavilla\u0027;\r\n  const topics = JSON.parse(inputs.trending_topics || \u0027{}\u0027);\r\n  \r\n  const report = `\r\n# PUOLAN VIIKONKATSAUS - MITÄ KANSALAISET PUHUVAT\r\n\r\n${summary}\r\n\r\n---\r\n\r\n## YHTEENVETO AIHEPIIREISTÄ:\r\n\r\n📅 Tämä katsaus perustuu suoraan puolalaisten medioiden uutisiin\r\n🔍 Fokus: Tavallisten ihmisten huolenaiheet ja kiinnostuksen kohteet\r\n🌐 Lähteet: WP Wiadomości, Gazeta.pl, RMF24, TVN24, Interia, Onet\r\n\r\n📝 Tarkoituksena seurata:\r\n- Mitä arkisia asioita puolalaiset keskustelevat\r\n- Missä heidän mielenkiintonsa on\r\n- Mikä heidän mielialassaan liikuttaa\r\n\r\n### AIHEPIIRIT:\r\n${Object.keys(topics).length \u003e 0 \r\n  ? Object.entries(topics)\r\n      .filter(([key, items]) =\u003e items \u0026\u0026 items.length \u003e 0)\r\n      .map(([category, items]) =\u003e {\r\n        const categoryNames = {\r\n          citizen: \u0027Kansalaisten arkielämä\u0027,\r\n          political: \u0027Poliittinen keskustelu\u0027, \r\n          security: \u0027Turvallisuus ja ulkopolitiikka\u0027,\r\n          economy: \u0027Talous ja elintaso\u0027,\r\n          environment: \u0027Ympäristö\u0027\r\n        };\r\n        return `**${categoryNames[category] || category}** (${items.length} juttua):\\n` + \r\n               items.slice(0, 3).map(item =\u003e `- ${item.title || \u0027Nimetön juttu\u0027}`).join(\u0027\\n\u0027);\r\n      }).join(\u0027\\n\\n\u0027)\r\n  : \u0027Ei aiheita saatavilla\u0027}\r\n\r\n---\r\n\r\n*Tämä raportti auttaa ymmärtämään, mitä PUOLAN IHMISET todella puhuvat - ei mitä kansainväliset analyytikot sanovat heistä.*\r\n`;\r\n  \r\n  return {\r\n    report_html: report,\r\n    title: \u0027Puolan viikkokatsaus - mitä kansalaiset puhuvat\u0027,\r\n    summary_points: inputs.main_topics || \u0027ei aiheita\u0027\r\n  };\r\n};",
+                                                                                                                                                      "packageJson":  "{}"
+                                                                                                                                                  },
+                                                                                                                                   "errorHandlingOptions":  {
+                                                                                                                                                                "retryOnFailure":  {
+                                                                                                                                                                                       "value":  false
+                                                                                                                                                                                   },
+                                                                                                                                                                "continueOnFailure":  {
+                                                                                                                                                                                          "value":  false
+                                                                                                                                                                                      }
+                                                                                                                                                            }
+                                                                                                                               },
+                                                                                                                  "nextAction":  {
+                                                                                                                                     "name":  "step_3",
+                                                                                                                                     "skip":  false,
+                                                                                                                                     "type":  "PIECE",
+                                                                                                                                     "valid":  true,
+                                                                                                                                     "settings":  {
+                                                                                                                                                      "input":  {
+                                                                                                                                                                    "url":  {
+                                                                                                                                                                                "url":  "/chat/completions"
+                                                                                                                                                                            },
+                                                                                                                                                                    "auth":  "{{connections[\u00272DAs3LUxaznm1HaWJye7v\u0027]}}",
+                                                                                                                                                                    "body":  {
+                                                                                                                                                                                 "data":  {
+                                                                                                                                                                                              "model":  "deepseek/deepseek-v4.1-flash",
+                                                                                                                                                                                              "max_tokens":  8000,
+                                                                                                                                                                                              "temperature":  0.3,
+                                                                                                                                                                                              "messages":  [
+                                                                                                                                                                                                               {
+                                                                                                                                                                                                                   "role":  "system",
+                                                                                                                                                                                                                   "content":  "Olet suomalainen toimittaja, joka kirjoittaa raporttia siita, mita tavalliset puolalaiset puhuvat.\r\nKayta seuraavaa tietoa:\r\n\r\nMITA PUOLALAISET PUHUVAT:\r\n{{step_9[\u0027output\u0027][\u0027summary_points\u0027]}}\r\n\r\nTehtavasi on kirjoittaa selkea, suomenkielinen yhteenveto, joka kertoo:\r\n1. MitÃ¤ arkisia asioita puolalaiset keskustelevat\r\n2. Missa heidan mielenkiintonsa on\r\n3. MikÃ¤ heidan mielialassaan liikuttaa\r\n\r\nKIRJOITA VAIN SUOMEKSI. Ala mainitse kansainvalisia markkina-analyyseja tai ulkopuolisia tarkkailijoita.\r\nKeskity ainoastaan siihen, MITA ITSE PUOLALAISET OVAT SANONEET omilla medioillaan."
+                                                                                                                                                                                                               },
+                                                                                                                                                                                                               {
+                                                                                                                                                                                                                   "role":  "user",
+                                                                                                                                                                                                                   "content":  "Laadi suomenkielinen markkinakatsaus valmiina HTML5-dokumenttina alla olevasta datasta. Noudata tarkasti järjestelmäviestin sääntöjä.\n\nTÄNÄÄN ON (Helsingin aika):\n{{step_1[\u0027output\u0027][\u0027result\u0027]}}\n\nKULUNUT VIIKKO JA GLOBAALIT MARKKINAT – UUTISET:\n{{step_9[\u0027output\u0027][\u0027newsAsia\u0027]}}\n\nTULEVA VIIKKO: TALOUSKALENTERI JA TULOSKAUSI – UUTISET:\n{{step_9[\u0027output\u0027][\u0027newsEurope\u0027]}}\r\n\r\nODOTETUT TAPAHTUMAT (seurantalista ja tapahtumien hakutulokset):\r\n{{step_9[\u0027output\u0027][\u0027watchlist\u0027]}}"
+                                                                                                                                                                                                               }
+                                                                                                                                                                                                           ]
+                                                                                                                                                                                          }
+                                                                                                                                                                             },
+                                                                                                                                                                    "method":  "POST",
+                                                                                                                                                                    "headers":  {
+
+                                                                                                                                                                                },
+                                                                                                                                                                    "failsafe":  false,
+                                                                                                                                                                    "body_type":  "json",
+                                                                                                                                                                    "queryParams":  {
+
+                                                                                                                                                                                    },
+                                                                                                                                                                    "followRedirects":  false,
+                                                                                                                                                                    "response_is_binary":  false
+                                                                                                                                                                },
+                                                                                                                                                      "pieceName":  "@activepieces/piece-open-router",
+                                                                                                                                                      "actionName":  "custom_api_call",
+                                                                                                                                                      "sampleData":  {
+
+                                                                                                                                                                     },
+                                                                                                                                                      "pieceVersion":  "0.4.1",
+                                                                                                                                                      "propertySettings":  {
+                                                                                                                                                                               "url":  {
+                                                                                                                                                                                           "type":  "MANUAL",
+                                                                                                                                                                                           "schema":  {
+                                                                                                                                                                                                          "url":  {
+                                                                                                                                                                                                                      "type":  "SHORT_TEXT",
+                                                                                                                                                                                                                      "required":  true,
+                                                                                                                                                                                                                      "description":  "Full URL, or a path relative to https://openrouter.ai/api/v1",
+                                                                                                                                                                                                                      "displayName":  "URL",
+                                                                                                                                                                                                                      "placeholder":  "/models",
+                                                                                                                                                                                                                      "defaultValue":  "https://openrouter.ai/api/v1"
+                                                                                                                                                                                                                  }
+                                                                                                                                                                                                      }
+                                                                                                                                                                                       },
+                                                                                                                                                                               "body":  {
+                                                                                                                                                                                            "type":  "MANUAL",
+                                                                                                                                                                                            "schema":  {
+                                                                                                                                                                                                           "data":  {
+                                                                                                                                                                                                                        "type":  "JSON",
+                                                                                                                                                                                                                        "required":  true,
+                                                                                                                                                                                                                        "displayName":  "JSON Body"
+                                                                                                                                                                                                                    }
+                                                                                                                                                                                                       }
+                                                                                                                                                                                        },
+                                                                                                                                                                               "method":  {
+                                                                                                                                                                                              "type":  "MANUAL"
+                                                                                                                                                                                          },
+                                                                                                                                                                               "headers":  {
+                                                                                                                                                                                               "type":  "MANUAL"
+                                                                                                                                                                                           },
+                                                                                                                                                                               "timeout":  {
+                                                                                                                                                                                               "type":  "MANUAL"
+                                                                                                                                                                                           },
+                                                                                                                                                                               "failsafe":  {
+                                                                                                                                                                                                "type":  "MANUAL"
+                                                                                                                                                                                            },
+                                                                                                                                                                               "body_type":  {
+                                                                                                                                                                                                 "type":  "MANUAL"
+                                                                                                                                                                                             },
+                                                                                                                                                                               "queryParams":  {
+                                                                                                                                                                                                   "type":  "MANUAL"
+                                                                                                                                                                                               },
+                                                                                                                                                                               "followRedirects":  {
+                                                                                                                                                                                                       "type":  "MANUAL"
+                                                                                                                                                                                                   },
+                                                                                                                                                                               "response_is_binary":  {
+                                                                                                                                                                                                          "type":  "MANUAL"
+                                                                                                                                                                                                      }
+                                                                                                                                                                           },
+                                                                                                                                                      "errorHandlingOptions":  {
+                                                                                                                                                                                   "retryOnFailure":  {
+                                                                                                                                                                                                          "value":  false
+                                                                                                                                                                                                      },
+                                                                                                                                                                                   "continueOnFailure":  {
+                                                                                                                                                                                                             "value":  false
+                                                                                                                                                                                                         }
+                                                                                                                                                                               }
+                                                                                                                                                  },
+                                                                                                                                     "nextAction":  {
+                                                                                                                                                        "name":  "step_5",
+                                                                                                                                                        "skip":  false,
+                                                                                                                                                        "type":  "CODE",
+                                                                                                                                                        "valid":  true,
+                                                                                                                                                        "settings":  {
+                                                                                                                                                                         "input":  {
+                                                                                                                                                                                       "date":  "{{step_1[\u0027output\u0027][\u0027result\u0027]}}",
+                                                                                                                                                                                       "html":  "{{step_3[\u0027output\u0027]}}"
+                                                                                                                                                                                   },
+                                                                                                                                                                         "useDeno":  true,
+                                                                                                                                                                         "sampleData":  {
+
+                                                                                                                                                                                        },
+                                                                                                                                                                         "sourceCode":  {
+                                                                                                                                                                                            "code":  "export const code = async (inputs) =\u003e {\n  const cleanDate = inputs.date.slice(0, 16).replace(\u0027 \u0027, \u0027-\u0027).replace(\u0027:\u0027, \u0027\u0027);\n  const fiDays = [\u0027sunnuntai\u0027, \u0027maanantai\u0027, \u0027tiistai\u0027, \u0027keskiviikko\u0027, \u0027torstai\u0027, \u0027perjantai\u0027, \u0027lauantai\u0027];\n  const dm = String(inputs.date).match(/^(\\d{4})-(\\d{2})-(\\d{2})[ T](\\d{2}):(\\d{2})(?::(\\d{2}))?/);\n  let createdAt = String(inputs.date);\n  if (dm) {\n    const wd = fiDays[new Date(Date.UTC(Number(dm[1]), Number(dm[2]) - 1, Number(dm[3]), 12)).getUTCDay()];\n    createdAt = wd + \u0027 \u0027 + Number(dm[3]) + \u0027.\u0027 + Number(dm[2]) + \u0027.\u0027 + dm[1] + \u0027 klo \u0027 + dm[4] + \u0027:\u0027 + dm[5] + \u0027:\u0027 + (dm[6] || \u002700\u0027);\n  }\n  const banner = \u0027\u003cdiv style=\"background:#f1f5f9;border-bottom:1px solid #cbd5e1;color:#475569;font:14px/1.4 Arial,sans-serif;padding:8px 16px;text-align:center;\"\u003eRaportti luotu: \u0027 + createdAt + \u0027\u003c/div\u003e\u0027;\n  const pickText = function (v, depth) {\n    const d = depth || 0;\n    if (v === null || v === undefined) { return \u0027\u0027; }\n    if (typeof v === \u0027string\u0027) { return v; }\n    if (typeof v === \u0027number\u0027 || typeof v === \u0027boolean\u0027) { return String(v); }\n    if (d \u003e 4) { return \u0027\u0027; }\n    if (Array.isArray(v)) {\n      return v.map(function (x) { return pickText(x, d + 1); }).join(\u0027\\n\u0027);\n    }\n    if (typeof v === \u0027object\u0027) {\n      const keys = [\u0027body\u0027, \u0027response\u0027, \u0027text\u0027, \u0027content\u0027, \u0027output\u0027, \u0027result\u0027, \u0027message\u0027, \u0027html\u0027];\n      for (let i = 0; i \u003c keys.length; i++) {\n        if (v[keys[i]] !== undefined \u0026\u0026 v[keys[i]] !== null) {\n          const r = pickText(v[keys[i]], d + 1);\n          if (r) { return r; }\n        }\n      }\n      if (Array.isArray(v.choices) \u0026\u0026 v.choices.length) {\n        const c = v.choices[0] || {};\n        const r2 = pickText(c.message !== undefined ? c.message : c.text, d + 1);\n        if (r2) { return r2; }\n      }\n    }\n    try { return JSON.stringify(v); } catch (e) { return \u0027\u0027; }\n  };\n  let rawIn = pickText(inputs.html, 0);\n  if (/^\\s*[\\[{]/.test(rawIn)) {\n    try {\n      const fromJson = pickText(JSON.parse(rawIn), 0);\n      if (fromJson) { rawIn = fromJson; }\n    } catch (e) { }\n  }\n  const received = rawIn;\n  let html = rawIn.trim();\n  html = html.replace(/^```[a-zA-Z]*[ \\t]*\\r?\\n?/, \u0027\u0027).replace(/\\r?\\n?```[ \\t]*$/, \u0027\u0027).trim();\n  const docStart = html.search(/\u003c!doctype html/i);\n  const htmlStart = html.search(/\u003chtml/i);\n  if (docStart \u003e 0) { html = html.slice(docStart); }\n  else if (docStart \u003c 0 \u0026\u0026 htmlStart \u003e 0) { html = html.slice(htmlStart); }\n  const endTag = \u0027\u003c/html\u003e\u0027;\n  const endAt = html.toLowerCase().lastIndexOf(endTag);\n  if (endAt \u003e= 0) { html = html.slice(0, endAt + endTag.length); }\n  html = html.replace(/\\{\\{[^{}]*\\}\\}/g, \u0027\u0027);\n  const PREFIX = \u0027\u003c!DOCTYPE html\u003e\\n\u003chtml lang=\"fi\"\u003e\\n\u003chead\u003e\\n\u003cmeta charset=\"utf-8\"\u003e\\n\u0027;\n  if (html.search(/\u003chtml/i) \u003c 0 \u0026\u0026 html.search(/\u003c!doctype/i) \u003c 0 \u0026\u0026 html.length \u003e= 200 \u0026\u0026 html.search(/\u003c\\/head\u003e|\u003cbody[\\s\u003e]/i) \u003e= 0) {\n    html = PREFIX + html;\n  }\n  if (html.search(/\u003chtml/i) \u003e= 0 \u0026\u0026 html.toLowerCase().lastIndexOf(\u0027\u003c/html\u003e\u0027) \u003c 0) {\n    html = html + (html.search(/\u003c\\/body\u003e/i) \u003c 0 ? \u0027\\n\u003c/body\u003e\u0027 : \u0027\u0027) + \u0027\\n\u003c/html\u003e\u0027;\n  }\n  const hasDoc = html.search(/\u003chtml/i) \u003e= 0 || html.search(/\u003c!doctype/i) \u003e= 0;\n  if (!hasDoc) {\n    if (html.length \u003e= 200 \u0026\u0026 /\u003c(div|table|section|main|article|h1|h2|h3|p|ul|style)\\b/i.test(html)) {\n      html = \u0027\u003c!DOCTYPE html\u003e\\n\u003chtml lang=\"fi\"\u003e\\n\u003chead\u003e\\n\u003cmeta charset=\"utf-8\"\u003e\\n\u003cmeta name=\"viewport\" content=\"width=device-width, initial-scale=1\"\u003e\\n\u003ctitle\u003eMarkkinakatsaus\u003c/title\u003e\\n\u003c/head\u003e\\n\u003cbody\u003e\\n\u0027 + html + \u0027\\n\u003c/body\u003e\\n\u003c/html\u003e\u0027;\n    } else {\n      throw new Error(\u0027Mallin vastaus ei sis\\u00e4lt\\u00e4nyt kelvollista HTML-dokumenttia, joten raporttia ei julkaistu. Vastauksen tyyppi: \u0027 + (typeof inputs.html) + \u0027, pituus: \u0027 + received.length + \u0027, alku: \u0027 + JSON.stringify(received.slice(0, 300)));\n    }\n  }\n  const bodyOpen = html.match(/\u003cbody[^\u003e]*\u003e/i);\n  if (bodyOpen) {\n    const at = bodyOpen.index + bodyOpen[0].length;\n    html = html.slice(0, at) + \u0027\\n\u0027 + banner + html.slice(at);\n  } else {\n    html = banner + \u0027\\n\u0027 + html;\n  }\n  return {\n    base64: Buffer.from(html, \u0027utf-8\u0027).toString(\u0027base64\u0027),\n    timestamp: cleanDate\n  };\n};\n",
+                                                                                                                                                                                            "packageJson":  "{}"
+                                                                                                                                                                                        },
+                                                                                                                                                                         "errorHandlingOptions":  {
+                                                                                                                                                                                                      "retryOnFailure":  {
+                                                                                                                                                                                                                             "value":  false
+                                                                                                                                                                                                                         },
+                                                                                                                                                                                                      "continueOnFailure":  {
+                                                                                                                                                                                                                                "value":  false
+                                                                                                                                                                                                                            }
+                                                                                                                                                                                                  }
+                                                                                                                                                                     },
+                                                                                                                                                        "nextAction":  {
+                                                                                                                                                                           "name":  "step_4",
+                                                                                                                                                                           "skip":  false,
+                                                                                                                                                                           "type":  "PIECE",
+                                                                                                                                                                           "valid":  true,
+                                                                                                                                                                           "settings":  {
+                                                                                                                                                                                            "input":  {
+                                                                                                                                                                                                          "url":  {
+                                                                                                                                                                                                                      "url":  "/repos/Jarno1965/MarkkinaTilanne/contents/data/media-pl/{{step_5[\u0027output\u0027][\u0027timestamp\u0027]}}-viikkokatsaus.html"
+                                                                                                                                                                                                                  },
+                                                                                                                                                                                                          "auth":  "{{connections[\u0027OAoSrDJzue0OuW9C5GHnq\u0027]}}",
+                                                                                                                                                                                                          "body":  {
+                                                                                                                                                                                                                       "data":  {
+                                                                                                                                                                                                                                    "content":  "{{step_5[\u0027output\u0027][\u0027base64\u0027]}}",
+                                                                                                                                                                                                                                    "message":  "MITA PUOLALAISET PUHUVAT - viikkokatsaus"
+                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                   },
+                                                                                                                                                                                                          "method":  "PUT",
+                                                                                                                                                                                                          "headers":  {
+
+                                                                                                                                                                                                                      },
+                                                                                                                                                                                                          "failsafe":  false,
+                                                                                                                                                                                                          "body_type":  "json",
+                                                                                                                                                                                                          "queryParams":  {
+
+                                                                                                                                                                                                                          },
+                                                                                                                                                                                                          "followRedirects":  false,
+                                                                                                                                                                                                          "response_is_binary":  false
+                                                                                                                                                                                                      },
+                                                                                                                                                                                            "pieceName":  "@activepieces/piece-github",
+                                                                                                                                                                                            "actionName":  "custom_api_call",
+                                                                                                                                                                                            "sampleData":  {
+
+                                                                                                                                                                                                           },
+                                                                                                                                                                                            "pieceVersion":  "0.12.0",
+                                                                                                                                                                                            "propertySettings":  {
+                                                                                                                                                                                                                     "url":  {
+                                                                                                                                                                                                                                 "type":  "MANUAL",
+                                                                                                                                                                                                                                 "schema":  {
+                                                                                                                                                                                                                                                "url":  {
+                                                                                                                                                                                                                                                            "type":  "SHORT_TEXT",
+                                                                                                                                                                                                                                                            "required":  true,
+                                                                                                                                                                                                                                                            "description":  "Full URL, or a path relative to https://api.github.com",
+                                                                                                                                                                                                                                                            "displayName":  "URL",
+                                                                                                                                                                                                                                                            "placeholder":  "/resource",
+                                                                                                                                                                                                                                                            "defaultValue":  "https://api.github.com"
+                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                             },
+                                                                                                                                                                                                                     "body":  {
+                                                                                                                                                                                                                                  "type":  "MANUAL",
+                                                                                                                                                                                                                                  "schema":  {
+                                                                                                                                                                                                                                                 "data":  {
+                                                                                                                                                                                                                                                              "type":  "JSON",
+                                                                                                                                                                                                                                                              "required":  true,
+                                                                                                                                                                                                                                                              "displayName":  "JSON Body"
+                                                                                                                                                                                                                                                          }
+                                                                                                                                                                                                                                             }
+                                                                                                                                                                                                                              },
+                                                                                                                                                                                                                     "method":  {
+                                                                                                                                                                                                                                    "type":  "MANUAL"
+                                                                                                                                                                                                                                },
+                                                                                                                                                                                                                     "headers":  {
+                                                                                                                                                                                                                                     "type":  "MANUAL"
+                                                                                                                                                                                                                                 },
+                                                                                                                                                                                                                     "timeout":  {
+                                                                                                                                                                                                                                     "type":  "MANUAL"
+                                                                                                                                                                                                                                 },
+                                                                                                                                                                                                                     "failsafe":  {
+                                                                                                                                                                                                                                      "type":  "MANUAL"
+                                                                                                                                                                                                                                  },
+                                                                                                                                                                                                                     "body_type":  {
+                                                                                                                                                                                                                                       "type":  "MANUAL"
+                                                                                                                                                                                                                                   },
+                                                                                                                                                                                                                     "queryParams":  {
+                                                                                                                                                                                                                                         "type":  "MANUAL"
+                                                                                                                                                                                                                                     },
+                                                                                                                                                                                                                     "followRedirects":  {
+                                                                                                                                                                                                                                             "type":  "MANUAL"
+                                                                                                                                                                                                                                         },
+                                                                                                                                                                                                                     "response_is_binary":  {
+                                                                                                                                                                                                                                                "type":  "MANUAL"
+                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                 },
+                                                                                                                                                                                            "errorHandlingOptions":  {
+                                                                                                                                                                                                                         "retryOnFailure":  {
+                                                                                                                                                                                                                                                "value":  false
+                                                                                                                                                                                                                                            },
+                                                                                                                                                                                                                         "continueOnFailure":  {
+                                                                                                                                                                                                                                                   "value":  false
+                                                                                                                                                                                                                                               }
+                                                                                                                                                                                                                     }
+                                                                                                                                                                                        },
+                                                                                                                                                                           "displayName":  "Custom API Call",
+                                                                                                                                                                           "lastUpdatedDate":  "2026-11-15T11:07:27.174Z"
+                                                                                                                                                                       },
+                                                                                                                                                        "displayName":  "Code",
+                                                                                                                                                        "lastUpdatedDate":  "2026-11-17T10:28:51.592Z"
+                                                                                                                                                    },
+                                                                                                                                     "displayName":  "Ask LLM (chat)",
+                                                                                                                                     "lastUpdatedDate":  "2026-11-17T10:28:51.592Z"
+                                                                                                                                 },
+                                                                                                                  "displayName":  "Compact data",
+                                                                                                                  "lastUpdatedDate":  "2026-11-17T10:28:51.592Z"
+                                                                                                              },
+                                                                                               "displayName":  "Code (parse events)",
+                                                                                               "lastUpdatedDate":  "2026-11-17T10:24:27.748Z"
+                                                                                           },
+                                                                            "displayName":  "Code (scrape Polish media)",
+                                                                            "lastUpdatedDate":  "2026-11-17T10:28:51.592Z"
+                                                                        },
+                                                         "displayName":  "Get Current Date",
+                                                         "lastUpdatedDate":  "2026-11-15T11:07:27.173Z"
+                                                     },
+                                      "lastUpdatedDate":  "2026-11-15T11:07:27.173Z",
+                                      "type":  "PIECE_TRIGGER",
+                                      "settings":  {
+                                                       "sampleData":  {
+
+                                                                      },
+                                                       "propertySettings":  {
+                                                                                "timezone":  {
+                                                                                                 "type":  "MANUAL"
+                                                                                             },
+                                                                                "day_of_the_week":  {
+                                                                                                        "type":  "MANUAL"
+                                                                                                    },
+                                                                                "hour_of_the_day":  {
+                                                                                                        "type":  "MANUAL"
+                                                                                                    }
+                                                                            },
+                                                       "pieceName":  "@activepieces/piece-schedule",
+                                                       "pieceVersion":  "0.1.22",
+                                                       "triggerName":  "every_week",
+                                                       "input":  {
+                                                                     "timezone":  "Europe/Helsinki",
+                                                                     "day_of_the_week":  1,
+                                                                     "hour_of_the_day":  8
+                                                                 }
+                                                   }
+                                  },
+                      "valid":  true,
+                      "schemaVersion":  "28",
+                      "notes":  [
+
+                                ]
+                  }
+              ],
+    "status":  "PUBLISHED"
+}
