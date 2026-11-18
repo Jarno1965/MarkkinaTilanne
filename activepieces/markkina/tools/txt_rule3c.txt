@@ -1,0 +1,1 @@
+ODOTETTUJEN TAPAHTUMIEN SEURANTALISTA. Raportissa on seurantalista odotetuista tapahtumista ja niiden hakutuloksista. K\u00E4yt\u00E4 sit\u00E4 apuna. Jos seurantalista on tyhj\u00E4 tai sanoo, ettei tapahtumia tunnistettu, \u00E4l\u00E4 mainitse sit\u00E4 raportissa \u00E4l\u00E4k\u00E4 kirjoita seurantalistasta tai hakutuloksista kertovaa teksti\u00E4.

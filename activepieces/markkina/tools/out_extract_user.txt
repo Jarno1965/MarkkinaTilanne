@@ -1,0 +1,9 @@
+Poimi alla olevista uutisartikkeleista enintaan kolme markkinoille merkittävää odotettua tai juuri toteutunutta tapahtumaa ja palauta ne pelkkänä JSON-taulukkona.
+
+YÖN MARKKINA-AJURIT (viimeiset 24 tuntia):
+{{step_11['output']['answer']}}
+{{step_11['output']['results']}}
+
+ODOTETUT TAPAHTUMAT (tulevat päivät):
+{{step_12['output']['answer']}}
+{{step_12['output']['results']}}
