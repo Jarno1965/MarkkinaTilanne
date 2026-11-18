@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Markkinakatsaus – Wall Street ja Eurooppa</title>
+<style>
+  :root {
+    --bg: #f5f7fa;
+    --card: #ffffff;
+    --text: #1c2430;
+    --muted: #5b6673;
+    --line: #e2e7ee;
+    --up: #0a7d3c;
+    --down: #c0392b;
+    --accent: #123a6b;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0 16px 48px;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .wrap { max-width: 940px; margin: 0 auto; }
+  header.top {
+    padding: 28px 0 12px;
+    border-bottom: 3px solid var(--accent);
+    margin-bottom: 24px;
+  }
+  header.top h1 {
+    margin: 0 0 6px;
+    font-size: 1.9rem;
+    letter-spacing: -0.4px;
+    color: var(--accent);
+  }
+  header.top p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+  .highlight {
+    background: #eef4fb;
+    border-left: 6px solid var(--accent);
+    border-radius: 6px;
+    padding: 18px 22px;
+    margin-bottom: 30px;
+  }
+  .highlight h2 {
+    margin: 0 0 8px;
+    font-size: 1.15rem;
+    color: var(--accent);
+  }
+  .highlight p { margin: 0 0 8px; }
+  .highlight p:last-child { margin-bottom: 0; }
+  h2.section {
+    font-size: 1.3rem;
+    margin: 34px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--line);
+    color: var(--accent);
+  }
+  h3.sub {
+    font-size: 1.02rem;
+    margin: 22px 0 8px;
+    color: #2b3a4d;
+  }
+  p { margin: 0 0 12px; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--card);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(20,35,60,0.08);
+    margin-bottom: 22px;
+    font-size: 0.95rem;
+  }
+  caption {
+    caption-side: top;
+    text-align: left;
+    font-weight: 600;
+    padding: 10px 12px 8px;
+    color: var(--muted);
+    font-size: 0.88rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  th, td {
+    padding: 9px 12px;
+    text-align: right;
+    border-bottom: 1px solid var(--line);
+  }
+  th:first-child, td:first-child { text-align: left; }
+  thead th {
+    background: #f0f3f8;
+    color: var(--muted);
+    font-weight: 600;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover { background: #fafbfd; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .up { color: var(--up); font-weight: 600; }
+  .down { color: var(--down); font-weight: 600; }
+  .closed {
+    display: inline-block;
+    font-size: 0.72rem;
+    color: #8a5a00;
+    background: #fdf3e0;
+    border-radius: 3px;
+    padding: 1px 6px;
+    margin-left: 6px;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+  .open {
+    display: inline-block;
+    font-size: 0.72rem;
+    color: #0a6b3c;
+    background: #e6f5ec;
+    border-radius: 3px;
+    padding: 1px 6px;
+    margin-left: 6px;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+  .note {
+    font-size: 0.88rem;
+    color: var(--muted);
+    background: #f0f3f8;
+    border-radius: 5px;
+    padding: 10px 14px;
+    margin-bottom: 22px;
+  }
+  ul { margin: 0 0 14px; padding-left: 22px; }
+  li { margin-bottom: 6px; }
+  footer {
+    margin-top: 40px;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+</style>
+</head>
+<body>
+<div style="background:#f1f5f9;border-bottom:1px solid #cbd5e1;color:#475569;font:14px/1.4 Arial,sans-serif;padding:8px 16px;text-align:center;">Raportti luotu: keskiviikko 18.11.2026 klo 11:49:02</div>
+<div class="wrap">
+
+<header class="top">
+  <h1>Markkinakatsaus: Wall Street ja Eurooppa</h1>
+  <p>Keskiviikko 18.11.2026 – alkuillan tilannekatsaus</p>
+</header>
+
+<div class="highlight">
+  <h2>Alkuillan tärkein markkina-ajuri: Nvidian tulos ylitti odotukset – USA:n futuurit kääntyivät nousuun</h2>
+  <p>Yhdysvaltain osakemarkkinat olivat tiistaina 17.11. voimakkaassa laskussa, kun sijoittajat myivät puolijohdeosakkeita ennen Nvidian odotettua tulosjulkistusta. Dow Jones Industrial Average painui yli 800 pistettä, S&amp;P 500 kirjasi heikoimman päätöksensä sitten heinäkuun ja Nasdaq Composite laski noin seitsemän kuukauden pohjalukemiin. Tunnelmaa heikensi lisäksi uutinen kansallisen turvallisuusviraston verkkoviasta.</p>
+  <p>Nvidian tilikauden kolmannen neljänneksen tulos on nyt julkaistu, ja yhtiö raportoi 115,8 miljardin dollarin liikevaihdon. Tulos toi helpotusta teknologiaosakkeisiin: Nasdaq 100 -futuurit ovat nousseet 1,22 % ja S&amp;P 500 -futuurit 0,67 %. Euroopan pörssit sen sijaan jatkavat laskussa, kun Washington kiristi tekoälysirujen vientirajoituksia Kiinaan – DAX on 1,88 % ja FTSE 100 1,99 % miinuksella.</p>
+</div>
+
+<h2 class="section">Markkinataulukko</h2>
+
+<table>
+  <caption>Yhdysvaltain indeksit ja futuurit</caption>
+  <thead>
+    <tr><th>Indeksi</th><th>Taso</th><th>Muutos</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://finance.yahoo.com/quote/%5EGSPC/" target="_blank" rel="noopener noreferrer">S&amp;P 500</a><span class="closed">suljettu – viimeisin päätös 17.11.2026</span></td>
+      <td>7 340,53</td>
+      <td class="down">−2,92 %</td>
+    </tr>
+    <tr>
+      <td><a href="https://finance.yahoo.com/quote/%5EIXIC/" target="_blank" rel="noopener noreferrer">Nasdaq Composite</a><span class="closed">suljettu – viimeisin päätös 17.11.2026</span></td>
+      <td>24 328,383</td>
+      <td class="down">−3,21 %</td>
+    </tr>
+    <tr>
+      <td><a href="https://finance.yahoo.com/quote/%5EDJI/" target="_blank" rel="noopener noreferrer">Dow Jones</a><span class="closed">suljettu – viimeisin päätös 17.11.2026</span></td>
+      <td>50 759,42</td>
+      <td class="down">−3,03 %</td>
+    </tr>
+    <tr>
+      <td><a href="https://finance.yahoo.com/quote/ES%3DF/" target="_blank" rel="noopener noreferrer">S&amp;P 500 -futuuri</a><span class="open">käynnissä</span></td>
+      <td>7 408,5</td>
+      <td class="up">+0,67 %</td>
+    </tr>
+    <tr>
+      <td><a href="https://finance.yahoo.com/quote/NQ%3DF/" target="_blank" rel="noopener noreferrer">Nasdaq 100 -futuuri</a><span class="open">käynnissä</span></td>
+      <td>27 405</td>
+      <td class="up">+1,22 %</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <caption>Euroopan ja Helsingin indeksit</caption>
+  <thead>
+    <tr><th>Indeksi</th><th>Taso</th><th>Muutos</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://finance.yahoo.com/quote/%5EOMXH25/" target="_blank" rel="noopener noreferrer">OMX Helsinki 25</a><span class="open">käynnissä</span></td>
+      <td>6 170,924</td>
+      <td class="down">−0,05 %</td>
+    </tr>
+    <tr>
+      <td><a href="https://finance.yahoo.com/quote/%5EOMX/" target="_blank" rel="noopener noreferrer">OMX Stockholm 30</a><span class="open">käynnissä</span></td>
+      <td>3 287,7673</td>
+      <td class="up">+0,01 %</td>
+    </tr>
+    <tr>
+      <td><a href="https://finance.yahoo.com/quote/%5ESTOXX/" target="_blank" rel="noopener noreferrer">STOXX Europe 600</a><span class="open">käynnissä</span></td>
+      <td>651,27</td>
+      <td class="up">+0,08 %</td>
+    </tr>
+    <tr>
+      <td><a href="https://finance.yahoo.com/quote/%5EGDAXI/" target="_blank" rel="noopener noreferrer">DAX (Saksa)</a><span class="open">käynnissä</span></td>
+      <td>26 099,18</td>
+      <td class="down">−1,88 %</td>
+    </tr>
+    <tr>
+      <td><a href="https://finance.yahoo.com/quote/%5EFTSE/" target="_blank" rel="noopener noreferrer">FTSE 100 (Britannia)</a><span class="open">käynnissä</span></td>
+      <td>10 665,28</td>
+      <td class="down">−1,99 %</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <caption>Aasian indeksit</caption>
+  <thead>
+    <tr><th>Indeksi</th><th>Taso</th><th>Muutos</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://finance.yahoo.com/quote/%5EN225/" target="_blank" rel="noopener noreferrer">Nikkei 225</a><span class="open">käynnissä</span></td>
+      <td>59 024,28</td>
+      <td class="up">+0,28 %</td>
+    </tr>
+    <tr>
+      <td><a href="https://finance.yahoo.com/quote/%5EKS11/" target="_blank" rel="noopener noreferrer">KOSPI</a><span class="open">käynnissä</span></td>
+      <td>5 067,44</td>
+      <td class="down">−0,65 %</td>
+    </tr>
+    <tr>
+      <td><a href="https://finance.yahoo.com/quote/%5EHSI/" target="_blank" rel="noopener noreferrer">Hang Seng</a><span class="open">käynnissä</span></td>
+      <td>23 294,75</td>
+      <td class="down">−1,93 %</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <caption>Korot, raaka-aineet ja valuutat</caption>
+  <thead>
+    <tr><th>Kohde</th><th>Taso</th><th>Muutos</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://finance.yahoo.com/quote/%5ETNX/" target="_blank" rel="noopener noreferrer">Yhdysvaltain 10 vuoden korko</a><span class="closed">suljettu – viimeisin päätös 17.11.2026</span></td>
+      <td>5,103 %</td>
+      <td class="down">−0,35 %</td>
+    </tr>
+    <tr>
+      <td><a href="https://finance.yahoo.com/quote/BZ%3DF/" target="_blank" rel="noopener noreferrer">Brent-raakaöljy</a><span class="open">käynnissä</span></td>
+      <td>89,41 USD</td>
+      <td class="down">−4,00 %</td>
+    </tr>
+    <tr>
+      <td><a href="https://finance.yahoo.com/quote/CL%3DF/" target="_blank" rel="noopener noreferrer">WTI-raakaöljy</a><span class="open">käynnissä</span></td>
+      <td>83,31 USD</td>
+      <td class="down">−3,14 %</td>
+    </tr>
+    <tr>
+      <td><a href="https://finance.yahoo.com/quote/GC%3DF/" target="_blank" rel="noopener noreferrer">Kulta</a><span class="open">käynnissä</span></td>
+      <td>3 784,4 USD</td>
+      <td class="down">−2,07 %</td>
+    </tr>
+    <tr>
+      <td><a href="https://finance.yahoo.com/quote/HG%3DF/" target="_blank" rel="noopener noreferrer">Kupari</a><span class="open">käynnissä</span></td>
+      <td>5,741 USD</td>
+      <td class="down">−3,93 %</td>
+    </tr>
+    <tr>
+      <td><a href="https://finance.yahoo.com/quote/EURUSD%3DX/" target="_blank" rel="noopener noreferrer">EUR/USD</a><span class="open">käynnissä</span></td>
+      <td>1,0976</td>
+      <td class="down">−0,20 %</td>
+    </tr>
+    <tr>
+      <td><a href="https://finance.yahoo.com/quote/EURSEK%3DX/" target="_blank" rel="noopener noreferrer">EUR/SEK</a><span class="open">käynnissä</span></td>
+      <td>11,1436</td>
+      <td class="up">+0,33 %</td>
+    </tr>
+    <tr>
+      <td><a href="https://finance.yahoo.com/quote/USDJPY%3DX/" target="_blank" rel="noopener noreferrer">USD/JPY</a><span class="open">käynnissä</span></td>
+      <td>159,279</td>
+      <td class="down">−0,15 %</td>
+    </tr>
+    <tr>
+      <td><a href="https://finance.yahoo.com/quote/BTC-USD/" target="_blank" rel="noopener noreferrer">Bitcoin</a><span class="open">käynnissä</span></td>
+      <td>64 544,1 USD</td>
+      <td class="down">−0,54 %</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 class="section">Wall Street ja Yhdysvaltain uutiset</h2>
+
+<p>Yhdysvaltain osakepörssi on suljettu, ja viimeisin päätös on tiistailta 17.11.2026. Päätös oli selvästi miinuksella: S&amp;P 500 päätyi 7 340,53 pisteeseen (−2,92 %), Nasdaq Composite 24 328,383 pisteeseen (−3,21 %) ja Dow Jones 50 759,42 pisteeseen (−3,03 %). Kyseessä oli S&amp;P 500:n heikoin päätös sitten heinäkuun, ja Nasdaq Composite painui noin seitsemän kuukauden pohjalukemiin.</p>
+
+<p>Laskun taustalla oli puolijohdeosakkeiden myyntiaalto ennen Nvidian tulosjulkistusta. Lisäksi uutiset kansallisen turvallisuusviraston verkkoviasta lisäsivät huolta teknologiainfrastruktuurin vakaudesta. Myös lasku oli poikkeuksellisen laaja-alainen: kaikki S&amp;P 500 -indeksin 11 sektoria olivat matkalla miinukselle, mikä olisi vasta viides kerta tänä vuonna. S&amp;P 500 ja Dow Jones kävivät molemmat 200 päivän liukuvan keskiarvonsa alapuolella.</p>
+
+<p>Makrotaloudesta saatiin ristiriitaista kuvaa. Yhdysvaltain vähittäismyynti kasvoi lokakuussa 0,2 % edelliskuusta ja oli 748,2 miljardia dollaria, kun syyskuun kasvu oli tarkistettuna 0,8 %. Ilman autoja ja polttoaineita myynti kasvoi 0,6 %, mikä ylitti selvästi odotukset. Kuluttajakysyntä on siis edelleen kestävällä pohjalla, joskin kasvuvauhti hidastui.</p>
+
+<p>Yksittäisistä yhtiöistä Home Depot oli esillä: osake laski lähes 2 % johdon vaihdoksen vuoksi, vaikka yhtiön neljännesvuositulos ylitti odotukset. St. Louisin Fedin johtaja Alberto Musalem puolestaan totesi, että uusi koronnosto tarvitaan pian.</p>
+
+<p>Wall Streetin avaus on vielä edessä. Futuurit viittaavat kuitenkin selvästi eilistä vahvempaan avaukseen: S&amp;P 500 -futuuri on 7 408,5 pistettä (+0,67 %) ja Nasdaq 100 -futuuri 27 405 pistettä (+1,22 %).</p>
+
+<h2 class="section">Helsingin ja Euroopan pörssit</h2>
+
+<p>Euroopan pörssit ovat käynnissä ja laskussa. DAX on 26 099,18 pistettä (−1,88 %) ja FTSE 100 10 665,28 pistettä (−1,99 %). Laajempi STOXX Europe 600 on sen sijaan hienoisesti plussalla 651,27 pisteessä (+0,08 %), mikä kertoo laskun painottuvan teknologiapainotteisiin ja suuriin indekseihin.</p>
+
+<p>Euroopan tunnelmaa on painanut erityisesti teknologia-ala, kun Washington kiristi tekoälysirujen vientirajoituksia Kiinaan. Tämä lisäsi riskin karttamista maailmanlaajuisesti. Taustalla vaikuttaa myös tiistain Yhdysvaltain lasku, joka heijastui Euroopan avaukseen.</p>
+
+<p>Helsingissä OMX Helsinki 25 on 6 170,924 pisteessä (−0,05 %) eli käytännössä eilisen tasolla. Tukholman OMX 30 on 3 287,7673 pisteessä (+0,01 %). Pohjoismaiset markkinat ovat siis selvinneet Euroopan suurindeksejä selvästi vähemmällä. Saatavilla olevan tiedon mukaan Helsingin pörssin päätöslukemista ei ole vielä erillisiä uutisia.</p>
+
+<h2 class="section">Korot, raaka-aineet ja valuutat</h2>
+
+<p>Yhdysvaltain 10 vuoden valtionlainan korko on 5,103 % ja laski 0,35 %. Korkotaso on edelleen korkea, ja se on ollut yksi osakemarkkinoita painava tekijä. Korko on merkitty suljetuksi, ja viimeisin päätös on 17.11.2026.</p>
+
+<p>Raaka-aineissa lasku on ollut poikkeuksellisen jyrkkää. Brent-raakaöljy on 89,41 dollaria (−4,00 %) ja WTI 83,31 dollaria (−3,14 %). Kulta on 3 784,4 dollaria (−2,07 %) ja kupari 5,741 dollaria (−3,93 %). Kuparin ja öljyn yhtäaikainen lasku kertoo kasvaneista kysyntähuolista, kun taas kullan lasku viittaa siihen, että turvasatamiin ei ole hakeuduttu tässä vaiheessa.</p>
+
+<p>Valuutoissa EUR/USD on 1,0976 (−0,20 %) ja EUR/SEK 11,1436 (+0,33 %). USD/JPY on 159,279 (−0,15 %). Bitcoin on 64 544,1 dollaria (−0,54 %).</p>
+
+<h2 class="section">Odotetut tapahtumat ja niiden toteutuminen</h2>
+
+<h3 class="sub">Nvidian Q3-tulos – TOTEUTUNUT</h3>
+<p>Nvidian tilikauden kolmannen neljänneksen tulos oli yksi markkinoiden seuratuimmista tapahtumista. Odotukset olivat jännitteiset: puolijohdeosakkeita oli myyty voimakkaasti juuri ennen julkistusta, ja huoli tekoälyarvostuksista oli kasvanut. Yhtiö raportoi 115,8 miljardin dollarin liikevaihdon, mikä toi helpotusta markkinoille. Reaktiona teknologiafutuurit nousivat 1,5 % ja Nasdaq 100 -futuuri on nyt 1,22 % plussalla. Euroopan ja Helsingin avaukseen vaikutus on ollut kaksijakoinen: tekoälymyönteinen uutinen tukee teknologiasektoria, mutta Kiinan vientirajoitukset ja eilinen laaja lasku pitävät Euroopan suurindeksejä yhä miinuksella.</p>
+
+<h3 class="sub">Yhdysvaltain keskuspankin lokakuun kokouksen pöytäkirja – TULOSSA</h3>
+<p>Federal Reserven lokakuun kokouksen pöytäkirja julkaistaan kuluvan viikon aikana. Sijoittajat seuraavat erityisesti merkkejä siitä, kuinka yhtenäisesti korkopolitiikasta on päätetty. St. Louisin Fedin johtajan tuore kommentti uuden koronnostotarpeen puolesta lisää jännitettä pöytäkirjan ympärille.</p>
+
+<h3 class="sub">Anthropicin listautuminen – TULOSSA</h3>
+<p>Tekoälykehittäjä Anthropicin listautumisanti on tulossa 17.–20.11. välisenä aikana. Listautuminen on yksi syksyn seuratuimmista markkinatapahtumista ja antaa osviittaa tekoälysektorin arvostustasosta.</p>
+
+<h3 class="sub">Sandiskin osakejako – TULOSSA</h3>
+<p>Muistivalmistaja Sandisk valmistautuu toteuttamaan 8:1-osakejaon. Järjestely on tekninen, mutta se voi lisätä osakkeen kaupankäyntiä.</p>
+
+<h3 class="sub">Tulosjulkistukset: Home Depot ja Disney – TOTEUTUNEET</h3>
+<p>Home Depot julkisti tuloksensa, joka ylitti odotukset, mutta osake laski 1,92 % johdon vaihdoksen vuoksi. Disney ylitti neljännen neljänneksen odotukset, ja osake nousi noin 2 %. Saatavilla olevan tiedon mukaan muista seurantalistan tapahtumista ei ole vahvistettua tietoa tuloksesta.</p>
+
+<footer>
+  Katsaus kokoaa yhteen Yhdysvaltain, Euroopan ja Helsingin markkinoiden tilanteen sekä keskeiset korko-, raaka-aine- ja valuuttaliikkeet. Kurssitiedot ovat viimeisimpiä saatavilla olevia lukuja, eivätkä ne ole reaaliaikaisia. Suluissa olevat merkinnät kertovat, onko markkina käynnissä vai suljettu.
+</footer>
+
+</div>
+</body>
+</html>
