@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Markkinatilanne – AI-generoidut markkinakatsaukset</title>
-<meta name="description" content="Suomenkielinen arkisto AI-generoiduista markkinakatsauksista. Raportit uusimmasta vanhimpaan.">
+<title>Markkinatilanne – AI-generoidut katsaukset</title>
+<meta name="description" content="Arkisto AI-generoiduista katsauksista: markkina-analyysi ja mediatiedot. Raportit uusimmasta vanhimpaan.">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -21,8 +21,10 @@
       <div class="sidebar__inner">
         <header class="sidebar__head">
           <h1 class="brand">Markkinatilanne</h1>
-          <p class="brand__sub">AI-generoidut markkinakatsaukset</p>
+          <p class="brand__sub" id="brand-subtitle">AI-generoidut katsaukset</p>
         </header>
+
+        <nav class="feed-nav" id="feed-list" aria-label="Katsaukset" hidden></nav>
 
         <div class="sidebar__actions">
           <button class="btn btn--ghost" id="refresh-btn" type="button" title="Hae raporttilista uudelleen">Päivitä lista</button>
@@ -33,7 +35,7 @@
         <nav class="report-nav" id="report-list" aria-label="Raportit uusimmasta vanhimpaan"></nav>
 
         <footer class="sidebar__foot">
-          <p>Raportit tallennetaan <code>data/</code>-kansioon ja ne haetaan GitHubista.</p>
+          <p>Raportit tallennetaan kansioon <code>data/&lt;katsaus&gt;/</code> ja ne haetaan GitHubista.</p>
           <p id="last-updated" class="muted"></p>
         </footer>
       </div>
@@ -59,7 +61,7 @@
           <h3>Ei valittua raporttia</h3>
           <p>Valitse raportti vasemman reunan listasta. Uusin raportti avautuu automaattisesti.</p>
         </div>
-        <iframe class="viewer__frame" id="report-frame" title="Valittu markkinakatsaus"
+        <iframe class="viewer__frame" id="report-frame" title="Valittu raportti"
                 sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-forms"
                 referrerpolicy="no-referrer" hidden></iframe>
       </div>
