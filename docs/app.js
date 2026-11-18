@@ -695,8 +695,8 @@ function selectFeed(feedId, options) {
         return;
       }
 
-      var wanted = opts.file || '';
-      var exists = reports.some(function (r) { return r.file === wanted; });
+      var wanted = opts.file || (state.activeFeed !== feed.id ? '' : state.selectedId) || '';
+      var exists = wanted && reports.some(function (r) { return r.file === wanted; });
       selectReportFile(exists ? wanted : reports[0].file);
     })
     .catch(function (err) {
