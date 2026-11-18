@@ -17,8 +17,8 @@
    tähän suoraan. */
 
 var CONFIG = {
-  owner: '',
-  repo: '',
+  owner: 'jarno1965',
+  repo: 'MarkkinaTilanne',
   branch: 'main',
 
   // Raportit ovat syötekohtaisissa kansioissa muotoa data/<syöte>/.
@@ -205,54 +205,8 @@ function loadFeeds() {
 }
 
 function renderFeeds() {
-  var container = $('feed-list');
-  container.textContent = '';
-
-  // Valintaa ei näytetä, jos katsauksia on vain yksi.
-  if (state.feeds.length < 2) {
-    container.hidden = true;
-    return;
-  }
-  container.hidden = false;
-
-  state.groups.forEach(function (group) {
-    var section = document.createElement('div');
-    section.className = 'feed-group';
-
-    if (group.title) {
-      var heading = document.createElement('p');
-      heading.className = 'feed-group__label';
-      heading.textContent = group.title;
-      section.appendChild(heading);
-    }
-
-    group.feeds.forEach(function (feed) {
-      var active = feed.id === state.activeFeed;
-
-      var button = document.createElement('button');
-      button.type = 'button';
-      button.className = 'feed-item' + (active ? ' is-active' : '');
-      button.setAttribute('data-feed', feed.id);
-      if (active) button.setAttribute('aria-current', 'true');
-
-      var icon = document.createElement('span');
-      icon.className = 'feed-item__icon';
-      icon.setAttribute('aria-hidden', 'true');
-      icon.textContent = feed.icon;
-
-      var label = document.createElement('span');
-      label.className = 'feed-item__label';
-      label.textContent = feed.title;
-
-      button.appendChild(icon);
-      button.appendChild(label);
-      section.appendChild(button);
-    });
-
-    container.appendChild(section);
-  });
+  // Vanha valikko on poistettu, yksinkertainen valikko korvaa sen.
 }
-
 function parseHash() {
   var raw = window.location.hash.replace(/^#/, '');
   if (!raw) return { feed: '', file: '' };
@@ -303,7 +257,7 @@ function saveToCache(feedId, reports) {
 }
 
 function fetchLocalManifest(feedId) {
-  return fetch('../' + CONFIG.dataPath + '/' + feedId + '/index.json', { cache: 'no-store' })
+  return fetch(CONFIG.dataPath + '/' + feedId + '/index.json', { cache: 'no-store' })
     .then(function (res) {
       if (!res.ok) throw new Error('Paikallista listaa ei löytynyt (' + res.status + ')');
       return res.json();
@@ -466,8 +420,8 @@ function buildReportButton(report) {
 
 function reportSourceUrl(report) {
   if (report.downloadUrl) return report.downloadUrl;
-  // Paikallinen kehitys: docs/ ja data/ ovat saman repositorion juuressa.
-  return '../' + CONFIG.dataPath + '/' + state.activeFeed + '/' + report.file;
+  // Paikallinen kehitys: data/ on docs/:n alikansio
+  return CONFIG.dataPath + '/' + state.activeFeed + '/' + report.file;
 }
 
 function setStatus(message, isError) {
@@ -584,11 +538,7 @@ function closeNav() {
 /* -------------------------------------------------------------- tapahtumat */
 
 function bindEvents() {
-  $('feed-list').addEventListener('click', function (event) {
-    var button = event.target.closest('.feed-item');
-    if (button) selectFeed(button.getAttribute('data-feed'));
-  });
-
+  // Vanha feed-list valikko on poistettu, yksinkertainen valikko korvaa sen.
   $('report-list').addEventListener('click', function (event) {
     var button = event.target.closest('.report-item');
     if (button) selectReportFile(button.getAttribute('data-file'));

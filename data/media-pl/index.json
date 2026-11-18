@@ -1,4 +1,0 @@
-{
-  "_comment": "Vain paikalliseen kehitykseen. Sisältää data/media-pl/-kansion tiedostonimet, jotta sivustoa voi testata ennen kuin repositorio on julkaistu GitHubissa. Tämä tiedosto ei ole käytössä tuotannossa.",
-  "files": []
-}
