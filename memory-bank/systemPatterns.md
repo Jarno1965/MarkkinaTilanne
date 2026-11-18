@@ -46,17 +46,26 @@ The Contents API lists at most 1000 entries per directory (~11 months at 3 repor
     systemPatterns.md
     techContext.md
     progress.md
+  README.md                                 (site + workflow contract, feeds)
   data/
-    2026-11-13-0600-aamukatsaus.html        (AI-generated reports)
-    index.json                              (local-dev filename manifest only)
-  prompts/
-    morning-us-asia.md
-    europe-open.md
-    midday-summary.md
+    markkina/                               (one folder per feed)
+      2026-11-13-0600-aamukatsaus.html      (AI-generated reports)
+      index.json                            (local-dev filename manifest only)
+  prompts/                                  (planned, not created yet)
   docs/                                     (GitHub Pages source)
     index.html
     style.css
     app.js
+    feeds.json                              (feed registry)
   activepieces/
-    (exported Activepieces flows, optional)
+    Raporttien-ohje.md                      (workflow maintenance guide)
+    markkina/                               (flow JSON files)
+      tools/                                (build/decode/check scripts, step*.js, tests)
+    tools/
+      import-to-activepieces.ps1            (shared import script)
+  tests/
+    site-check.mjs                          (site smoke test)
+    parse-check.ps1                         (PowerShell syntax check)
 ```
+
+Note: report paths are `data/<feed>/YYYY-MM-DD-HHMM-slug.html`. The workflows currently commit to `data/markkina/`.

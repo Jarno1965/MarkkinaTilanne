@@ -42,3 +42,19 @@
 **Next:**
 - Build the Activepieces workflow for the 06:00 morning report and run a test commit.
 - Create `prompts/` and move the three prompts there.
+
+## 2026-11-18 – Projektien yhdistäminen viimeistelty
+**Done:**
+- Yhdistettiin Activepieces-projekti (`ActivePieces/.build`) ja markkinasivusto yhteen repositorioon `MarkkinaTilanne`. Työnkulut ovat nyt kansiossa `activepieces/markkina/`, apuskriptit `activepieces/markkina/tools/` ja yhteinen vientiskripti `activepieces/tools/`.
+- `activepieces/Raporttien-ohje.md` päivitettiin uuteen rakenteeseen: poistettiin vanhat `.build`-, `c:\Omia ohjelmia\ActivePieces`- ja `.bak`-viittaukset, yhdistettiin kaksi päällekkäistä johdantoa, ja kaikki skriptipolut ovat nyt suhteessa repositorion juureen (`activepieces\markkina\tools\...`, `activepieces\tools\import-to-activepieces.ps1`).
+- Poistettiin juuresta kaksoiskappale `Raporttien-ohje.md` ja kertakäyttöiset `tmp-fix-ohje*`-skriptit. `tmp-check.mjs` siirrettiin nimellä `tests/site-check.mjs` (README viittaa siihen).
+- `build2.ps1` ei enää luo `.bak`-varmuuskopioita (git hoitaa versionhallinnan).
+- README:n vientiohje korjattiin: `import-to-activepieces.ps1` ajetaan kansiosta `activepieces\tools`.
+
+**Verification:** `node tests/site-check.mjs` 20/20, `node --check docs/app.js`, `check.ps1` "Kaikki liitokset kunnossa", `test14.mjs` kaikki OK, `import-to-activepieces.ps1 -Offline` löytää 4 työnkulkua, `tests/parse-check.ps1` ei jäsennysvirheitä.
+
+**Next / avoimet asiat:**
+- Muutokset ovat vielä committoimatta (git status näyttää poistetut vanhat `data/*.html`, uuden `data/markkina/`, `activepieces/`, `docs/feeds.json`, `README.md`, `tests/`).
+- Activepieces-työnkulkujen JSON:t on viety instanssiin vasta, kun `import-to-activepieces.ps1 -Apply` on ajettu.
+- `prompts/` puuttuu yhä.
+
