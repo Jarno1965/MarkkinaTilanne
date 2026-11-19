@@ -284,3 +284,23 @@ Luotu kolme erillistä JavaScript-moduulia `activepieces/media/tools/`-kansioon:
 
 
 
+## 2026-11-19 – "Kello 11 Eurooppa": reasoning-vastauksen JSON-roska korjattu
+
+**Done:**
+- Diagnosoitu tuotantoajon `0MgsuKP7hSMUaDwWnea30` (322,8 s) vika: `step_10` (OpenRouter `deepseek/deepseek-v4.1-flash`, `reasoning_effort: high`, `max_tokens: 20000`) palautti `content: null` ja koko valmis HTML-fragmentti oli `reasoning`-kentässä. `step_5` sarjoitti viestin JSONiksi raporttiin ja katkaisi sen viimeiseen `>`-merkkiin.
+- `step_10`: `reasoning_effort` → `low`, `max_tokens` → `32000` (samat kuin toimivassa `step_3`:ssa). Koko input annettiin `ap_update_step`-työkalulle, koska työkalu validoi kentät eikä tue osittaista input-päivitystä.
+- `step_5`: uusi koodi (myös `activepieces/markkina/tools/step5_eurooppa.js`): content vain jos tekstiä, muuten viimeinen ehjä `<section>…</section>` reasoning-kentästä; viestiobjekteja ei koskaan sarjoiteta JSONiksi; raaka JSON ja vajaa fragmentti hylätään; lopullinen osio validoidaan.
+- Uusi testi `tools/test5_eurooppa.mjs` → 14/14 (content=null, choices-rakenne, JSON-merkkijono, ei sectionia, katkennut pää-HTML).
+- Testiajo `fvdimEuknwPMViMlmMK5y` SUCCEEDED 123,3 s → `data/markkina/2026-11-19-1702-euroopan-avaus.html` (27,1 kB, 1 `<section>`, 0 `<script>`, ei JSONia). Testiraportti poistettu.
+- Julkaistu rikkinäinen `data/markkina/2026-11-19-1100-euroopan-avaus.html` korjattu paikallisesti (143 107 B → 26 521 B): JSON-roskan tilalle reasoningista kaivettu spekulaatio-osio. Git-diff vain 10 lisäystä / 1 poisto.
+- Paikallinen `activepieces/markkina/Kello 11 Eurooppa.json` synkronoitu (step_5-koodi + step_10-asetukset).
+- Ohje päivitetty: `activepieces/Raporttien-ohje.md` → "Korjatut virheet" ja "Tarkistus ajon jälkeen".
+
+**Verification:**
+- `ap_validate_flow` → 18/18 askelta valid.
+- Testiraportin lataus GitHubista: ei `"role"`/`"reasoning"`-merkkijonoja, loppuu `</html>`, 0 `<script>`.
+- Korjatun 1100-raportin tarkistus: 26 521 merkkiä, 1 `<section>`, 18 `<p>`, ei JSONia, loppuu `</html>`.
+
+**Next:**
+- Seuraa seuraavaa arkiaamun 11:00-automaattiajoa ja varmista, ettei raportissa ole JSONia.
+- Harkitse saman `reasoning_effort`-tarkistuksen tekemistä muille reasoning-malleja käyttäville työnkuluille.

@@ -1,5 +1,34 @@
 # Active Context
 
+## Update 2026-11-19: "Kello 11 Eurooppa" – reasoning-vastauksen JSON-roskan korjaus
+
+**Ongelma:** Kello 11:n tuotantoajo (`0MgsuKP7hSMUaDwWnea30`) tuotti 143 kB raportin, jonka loppuun
+liitettiin `{"role":"assistant","content":null,"refusal":null,"reasoning":"Here's a thinking process ..."}`.
+OpenRouterin `deepseek/deepseek-v4.1-flash` kirjoitti koko vastauksen `reasoning`-kenttään ja jätti
+`content`:n `null`iksi: `reasoning_effort: high` ja `max_tokens: 20000` kuluivat pohdintaan.
+`step_5`:n `pickText` ei löytänyt contentia, joten se sarjoitti koko viestiobjektin JSONiksi, ja lopun
+"viimeinen `>`"-siistintä katkaisi JSONin kesken.
+
+**Korjaus (draft → julkaistu):**
+
+| Askel | Muutos |
+|---|---|
+| `step_10` | `reasoning_effort` `high` → `low`, `max_tokens` 20000 → 32000 (samat kuin toimivassa `step_3`:ssa) |
+| `step_5` | `content` otetaan vain jos se on tekstiä; muuten viimeinen ehjä `<section>…</section>` poimitaan `reasoning`-kentästä. Viestiobjektia ei enää koskaan sarjoiteta JSONiksi, raaka JSON ja vajaa fragmentti hylätään, ja osio validoidaan. |
+
+**Tiedostot:** `activepieces/markkina/tools/step5_eurooppa.js` (uusi lähdetiedosto),
+`activepieces/markkina/tools/test5_eurooppa.mjs` (14/14 testiä), `activepieces/markkina/Kello 11 Eurooppa.json`
+synkronoitu. Ohje: `activepieces/Raporttien-ohje.md` → "Korjatut virheet".
+
+**Verifiointi:** `ap_validate_flow` 18/18. Testiajo `fvdimEuknwPMViMlmMK5y` SUCCEEDED 123,3 s
+(ennen 322,8 s) → `data/markkina/2026-11-19-1702-euroopan-avaus.html` (27,1 kB): 1 `<section>`,
+0 `<script>`, ei merkkijonoja `"role"`/`"reasoning"`, loppuu `</html>`. Testiraportti poistettu.
+Julkaistu `data/markkina/2026-11-19-1100-euroopan-avaus.html` korjattu 143 107 B → 26 521 B:
+JSON-roskan tilalla on reasoning-kentästä kaivettu oikea spekulaatio-osio.
+
+**Opiksi:** reasoning-malleilla `reasoning_effort` kannattaa pitää `low`-tasolla ja tokenibudjetti
+riittävänä. Ajon jälkeen kannattaa tarkistaa, ettei raportissa ole merkkijonoa `"role"`.
+
 ## Update 2026-11-19: "Aamuraportti NEW" – etusivujen kärkiteemat ja vaikutus avaukseen
 
 Uusi **erillinen** työnkulku `Aamuraportti NEW` (Activepieces id `LXNbIZEZQmW5wkUA7KHyZ`, 22 askelta),

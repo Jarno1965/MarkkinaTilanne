@@ -301,10 +301,24 @@ Katso Activepiecesin historiasta nämä kaksi asiaa. Ne kertovat, toimiko tapaht
 |---|---|
 | step_14 | `parsed_count`. Jos se on 0, poimija ei tuottanut tapahtumia ja `raw_preview` näyttää, mitä malli vastasi. Silloin `q1` on varahaku eikä raportti käsittele tapahtumia. |
 | step_9 | `watchlist` ja `eventQuotes`. Niiden pitää olla raportissa mukana. Jos `eventQuotes` on tyhjä, tikkereitä ei löytynyt. |
+| step_5 | Raportissa saa olla vain yksi `<section>`-lohko eikä lainkaan merkkijonoa `"role"` tai `"reasoning"`. Jos niitä on, spekulaation vastaus tuli reasoning-kenttänä ja vanha koodi sarjoitti viestin JSONiksi. |
 
 Jos `parsed_count` on toistuvasti 0, vika on joko step_13:n kehotteessa tai vastauksen luvussa. Katso `raw_preview` ja vertaa sitä kehotteessa pyydettyyn JSON-muotoon.
 
 ## Korjatut virheet
+
+### 19.11.2026: spekulaatio-osion tilalle tulostui JSON-raakadata
+
+Kello 11:n raportti (143 kB) päättyi lohkoon `{"role":"assistant","content":null,"refusal":null,"reasoning":"Here's a thinking process ..."}`. Syy: OpenRouterin reasoning-malli (`deepseek/deepseek-v4.1-flash`) kirjoitti koko vastauksen `reasoning`-kenttään ja jätti `content`-kentän `null`iksi, koska `reasoning_effort: high` ja `max_tokens: 20000` kuluivat pohdintaan. `step_5`:n `pickText` ei löytänyt sisältöä, joten se sarjoitti koko viestiobjektin JSONiksi ja liitti sen raporttiin. Lopun "viimeinen `>`"-siistintä katkaisi JSONin kesken.
+
+Korjaus:
+
+- **step_10:** `reasoning_effort` `high` → `low` ja `max_tokens` 20 000 → 32 000 (samat arvot kuin step_3:ssa, joka toimi).
+- **step_5:** `content`-kenttä otetaan vain, jos se on oikeasti tekstiä. Muuten viimeinen ehjä `<section>…</section>` poimitaan `reasoning`-kentästä. Viestiobjekteja ei enää koskaan sarjoiteta JSONiksi, raaka JSON hylätään ja lopullinen osio validoidaan (alkaa `<`-merkillä, päättyy `>`-merkkiin, enintään yksi section).
+- **Testi:** `activepieces\markkina\tools\test5_eurooppa.mjs` (14/14) kattaa `content = null`-, `choices`-, JSON-merkkijono- ja katkennut-HTML-tapaukset.
+- **Jo julkaistu raportti korjattu:** `data/markkina/2026-11-19-1100-euroopan-avaus.html` (143 kB → 26,5 kB) sisältää nyt oikean spekulaatio-osion ilman JSON-roskia.
+
+Vastaava riski on kaikissa reasoning-malleissa: pidä `reasoning_effort` matalana ja tokenibudjetti riittävänä, ja tarkista ajon jälkeen, ettei raportissa ole merkkijonoa `"role"`.
 
 ### 18.11.2026: Tavily hylkäsi tyhjän time_range-arvon
 
