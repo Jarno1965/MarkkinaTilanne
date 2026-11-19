@@ -1,6 +1,6 @@
 ﻿$ErrorActionPreference = 'Stop'
 $root = (Split-Path -Parent $PSScriptRoot)
-$files = @('Aamuraportti.json','Kello 11 Eurooppa.json','Kello 18 raportti.json','Sunnuntai.json')
+$files = @('Aamuraportti.json','Aamuraportti NEW.json','Kello 11 Eurooppa.json','Kello 18 raportti.json','Sunnuntai.json')
 $problems = 0
 
 function Read-Utf8 { param([string]$File) return [System.IO.File]::ReadAllText($File, [System.Text.Encoding]::UTF8) }

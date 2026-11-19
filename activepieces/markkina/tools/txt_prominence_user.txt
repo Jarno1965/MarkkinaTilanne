@@ -1,0 +1,19 @@
+Laadi osio "Etusivujen kärkiteemat ja niiden vaikutus pörssiavaukseen" pelkkänä HTML-fragmenttina järjestelmäviestin sääntöjen mukaisesti.
+
+TÄNÄÄN ON (Helsingin aika):
+{{step_1['output']['result']}}
+
+ETUSIVUJEN KÄRKITEEMAT (mitattu näkyvyys, esimerkit ja välittyminen):
+{{step_21['output']['prominenceBlock']}}
+
+KURSSILUVUT JA LINKIT:
+{{step_9['output']['marketData']}}
+
+TAPAHTUMIEN KURSSIT:
+{{step_9['output']['eventQuotes']}}
+
+AASIA JA USA YÖMARKKINAT – UUTISET:
+{{step_9['output']['newsAsia']}}
+
+HELSINKI JA EUROOPPA AAMU – UUTISET:
+{{step_9['output']['newsEurope']}}

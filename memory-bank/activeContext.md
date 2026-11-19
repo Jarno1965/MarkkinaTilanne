@@ -1,7 +1,96 @@
 # Active Context
 
+## Update 2026-11-19: "Aamuraportti NEW" – etusivujen kärkiteemat ja vaikutus avaukseen
+
+Uusi **erillinen** työnkulku `Aamuraportti NEW` (Activepieces id `LXNbIZEZQmW5wkUA7KHyZ`, 22 askelta),
+kopio vanhasta `Aamuraportista`. Vanha `Aamuraportti` (`r6YBOd0I2lTEyMz9vOIwf`) jätettiin ennalleen
+(draft, pois käytöstä), jotta sitä voi verrata ja ottaa tarvittaessa takaisin käyttöön.
+
+**Mitä uusi tekee:** mittaa, mistä uutisvirta puhuu ja kuinka näkyvästi, ja johtaa siitä arvion
+Helsingin ja Euroopan pörssiavaukseen. Uudet askeleet:
+
+| Askel | Tyyppi | Sisältö |
+|---|---|---|
+| `step_2` | RSS `rss_read_multiple_feeds` (piece 0.8.1) | Google News Business (US + FI), Google News Technology, MarketWatch Top Stories, Nasdaq Markets, FT Home, Yle Pääuutiset. Ilmainen. |
+| `step_19` | Tavily `search` (advanced, `time_range: day`) | `include_domains`: wsj.com, bloomberg.com, reuters.com, ft.com, cnbc.com. 2 krediittiä. |
+| `step_20` | Code (`tools/step21.js`) | Näkyvyyspisteet: 13 teemaa, normalisoitu 0–100, duplikaattien poisto, tuoreusraja 30 h, suorat linkit. |
+| `step_21` | OpenRouter `custom_api_call` | Kirjoittaa osion "Etusivujen kärkiteemat ja niiden vaikutus pörssiavaukseen" (`tools/txt_prominence_system.txt` + `txt_prominence_user.txt`). |
+| `step_5` | Code | Liittää uuden osion HTML:ään ennen spekulaatio-osiota; tiedostonimi `...-aamu-new.html`. |
+
+**Löydökset lähteistä:** WSJ:n oma RSS (`feeds.a.dj.com`) on kuollut (jutut 27.1.2025), CNBC:n RSS
+palauttaa HTTP 403 Activepiecesin IP:stä, MarketWatch MarketPulse on jäässä. Toimivat: Google News
+-topic-syötteet, MarketWatch Top Stories, Nasdaq Markets, FT Home, Yle. Siksi WSJ/CNBC haetaan
+Google Newsin kautta (lähde otsikon perässä, esim. "… - WSJ") ja Tavilylla suoraan.
+
+**Pisteytys:** `100 × (0,55·min(1, mediat/12) + 0,20·min(1, syötteet/4) + 0,15·min(1, uutiset/20) +
+0,10·tuoreus)`. Luokat: vahva ≥ 60, kohtalainen ≥ 40, heikko ≥ 25. Ensimmäinen versio (painot 8/6/3
+pistettä) kyllääntyi sataan liian helposti, minkä vuoksi normalisointi tehtiin.
+
+**Raportin osio:** taulukko (teema, näkyvyys, tuoreus, välittyminen, arvio avausvaikutuksesta, mitä
+avauksessa pitää nähdä), kappaleet kärkiajureista, "Onko jo hinnoiteltu?" -kappale, "Mitä avauksessa
+pitää nähdä" -lista ja pakollinen lähdeluettelo. Kehote kieltää päättelemästä suuntaa uutisen sävystä:
+suunnan ratkaisee kurssiluku.
+
+**Korjattu virhe:** `ap_add_step` loi OpenRouterin Custom API Call -askeleelle
+`propertySettings.body.schema = {}`, jolloin pyyntö lähti ilman viestejä → `400 Input required:
+specify "prompt" or "messages"`. Korjaus: aseta `actionName` ja `body_type: json`, anna
+`body.data`-rakenne, jonka jälkeen skeema tallentuu oikein. Tarkista sama, jos vastaava askel
+rakennetaan joskus uudelleen.
+
+**Ajo:** `m4pvOt28n4g3WFlOaTeb2` SUCCEEDED (160,6 s) → committoi
+`data/markkina/2026-11-19-0758-torstai-aamu-new.html` (26,6 kB, 0 `<script>`-tagia). Teemat menivät
+oikein: tekoäly 14 mediaa / 8 syötettä / 24 uutista, listautumiset 6 mediaa, korot 4 mediaa. LLM yhdisti
+päällekkäiset teemat yhdeksi riviksi ja käsitteli Anthropicin annin toteutuneena tapahtumana.
+
+**Paikalliset tiedostot:** `activepieces/markkina/Aamuraportti NEW.json` (rakennetaan skriptillä
+`tools/build4_new.ps1`), `tools/step21.js`, `tools/step5_new.js`, `tools/txt_prominence_system.txt`,
+`tools/txt_prominence_user.txt`, testi `tools/test21.mjs` (12/12). `docs/app.js`: uusi slotti
+`'aamu-new'` (🆕 Aamuraportti NEW).
+
+**Avoin havainto:** vanha `step_9` tuottaa tapahtumahakujen tuloksista `[object Object],…` -roskaa
+(`flatten` ei käsittele objektitaulukoita). Vika on peritty vanhasta työnkulusta eikä estä toimintaa,
+mutta se kuluttaa tokeneita ja kannattaa korjata molemmista.
+
+**Avoin havainto 2:** uuden osion lähdeluettelo ei tullut raporttiin, vaikka blokki sisältää suorat
+linkit ja käskyn näyttää ne. Kiristetty sääntö 9 on valmiina `tools/txt_prominence_system.txt`:ssä,
+mutta sitä ei ole viety Activepiecesin `step_21`-kehotteeseen (ison kehotteen vienti MCP:llä on
+virhealtis). Seuraava askel: joko päivitä kehote huolellisesti UI:ssa tai liitä lista mekaanisesti
+`step_5`:ssä.
+
+**Julkaisu:** `ap_lock_and_publish` → Aamuraportti NEW on julkaistu ja ENABLED (arkisin 06:00
+Europe/Helsinki). Vanha Aamuraportti on edelleen draft ja pois käytöstä.
+
 ## Current State (as of 2026-11-14)
 The **frontend is published and live**. The repository is at https://github.com/Jarno1965/MarkkinaTilanne (public, branch `main`), and GitHub Pages serves the site from `docs/` at https://jarno1965.github.io/MarkkinaTilanne/. The first commit is `c9fa1a0`. What remains is the Activepieces automation.
+
+## Update 2026-11-18: Activepieces MCP connected & "Puola puhuu" flow published
+- Connected Activepieces official MCP server (`https://cloud.activepieces.com/mcp`, `streamableHttp`, OAuth, timeout 180s) to Cline.
+- Built, tested, validated, and published the **"Puola puhuu"** workflow (`id: Hzyd1EzsgqnwkPf1bhQsW`) directly into the **`Media`** folder (`id: BQoUk5xxI9N7FWMQxkW7d`) on Activepieces Cloud via MCP.
+- Workflow schedule: Mondays at 08:00 `Europe/Helsinki`. Calculates `-14 day` (`YYYY-MM-DD`) via Date Helper, queries Tavily `POST /search` (`language: "pl"`, `filter_by_language: true`, `start_date`, `include_published_date: true`, `filter_by_published_date: true`, `topic: "news"`, `search_depth: "advanced"`), synthesizes a standalone Finnish HTML5 report via OpenRouter (`deepseek/deepseek-v4.1-flash`) with verified Polish sources, dates, and URLs, and commits to `data/media/YYYY-MM-DD-HHMM-puola-puhuu.html` with commit message `"Puola puhuu"`.
+
+## Update 2026-11-18: "Venäjä puhuu" flow published (Media folder)
+- Built, tested and published the **"Venäjä puhuu"** workflow (`id: c7CM8wDdl4ij1MME4Z7Aj`) in the **`Media`** folder via Activepieces MCP, modelled on "Puola puhuu" but covering two countries.
+- Schedule: Mondays 09:00 `Europe/Helsinki` (Poland runs at 08:00 so the two runs do not overlap).
+- Five Tavily `POST /search` calls, all `language: "ru"`, `filter_by_language: true`, `search_depth: "advanced"`, `max_results: 15`:
+  `step_3` Russia mainstream (`topic: news`, `start_date` = -14 d); `step_4` Russia independent/exile outlets named in the query (Meduza, Novaja Gazeta Europe, Radio Svoboda, Važnyje istorii, Verstka, Proekt, The Insider); `step_5` Belarus local media (`topic: news`); `step_9` Belarus independent/opposition outlets named in the query; `step_10` Belarus independent outlets via `topic: general` + `include_domains` (zerkalo.io, nashaniva.com, svaboda.org, reform.news, euroradio.fm, nn.by).
+- One OpenRouter step (`deepseek/deepseek-v4.1-flash`) produces a standalone Finnish HTML5 report with two country sections, a "top topics" box, a media-landscape section per country, and a source list that labels every outlet as state/state-aligned, independent, exile-independent or NGO. Code step re-used unchanged from "Puola puhuu"; GitHub commit goes to `data/media/YYYY-MM-DD-HHMM-venaja-puhuu.html` with message `Venäjä puhuu`.
+- Lessons baked into the design: `include_domains` + `topic: "news"` returns **zero** results for these outlets; `topic: "general"` returns good Russian-language content but no `published_date`; Tavily rejects `country: "by"` and has no Belarusian `language` value, so Belarus is searched in Russian (second official language, dominant in Belarusian media).
+- Run `ofVqfD98nOQcydFDDt1hO` SUCCEEDED (134.6 s) and committed the sample report `data/media/2026-11-18-2019-venaja-puhuu.html` (17 sources: RIA, AiF, News.ru, MK, Vedomosti, Expert, Mail.ru, Kavkaz-Uzel, iStories, Novaja Gazeta Baltia, News.by, SB.by, Reform.news, Zerkalo, Naša Niva). Two weaker intermediate test reports (2010, 2015) were deleted from the repository.
+- Final prompt adds a blog/forum/UGC exclusion (e.g. smart-lab.ru, LiveJournal, Telegram) and a ban on citing section front pages. A re-test with it (`LqO04KbK3NHyhhzJWaEeY`, 80.5 s) returned a thinner source set, so that 2025 report was deleted and the richer 2019 report stays as the sample. Published draft = final prompt version (11/11 valid, published & ENABLED).
+- Local repo: `data/media/index.json` lists both media reports; maintenance guide added as `activepieces/media/Venaja-puhuu-OHJEET.md`.
+
+## Update 2026-11-18: "Saksa/Ranska/Ruotsi/Viro puhuvat" flows published (Media folder)
+- Built four single-country weekly flows in the **`Media`** folder via Activepieces MCP, all modelled on "Venäjä puhuu" (Date Helper ×2 → 2 Tavily searches → OpenRouter → Code → GitHub commit):
+  `Saksa puhuu` (`1rupk7xKt3Cf1tFkMcQD2`, Mon 10:00, `de`), `Ranska puhuu` (`H94npyNLno8P53BP0dZRe`, Mon 11:00, `fr`), `Ruotsi puhuu` (`GrfJLcVyE01gxBZiqXGqU`, Mon 12:00, `sv`), `Viro puhuu` (`6Qz8lfbtXFVBl7Ljkqz5N`, Mon 13:00, `et`). Schedules are staggered one hour apart after Poland 08:00 and Venäjä 09:00.
+- Reports commit to `data/media/YYYY-MM-DD-HHMM-<maa>-puhuu.html` with commit message `<Maa> puhuu`; all four are published & ENABLED and folder validation passes (6 flows, connections OK).
+- Search strategies differ per market because Tavily behaves differently (probed with direct `ap_run_action` calls):
+  - **Saksa:** short concrete news query (long "what people talk about" phrasing returned associations/foundations); independent outlets by name in the query.
+  - **Ranska:** the general news query works as-is (mainstream + Mediapart).
+  - **Ruotsi:** `include_domains` + `topic: "news"` returns **zero**; `general` + `include_domains` on mainstream outlets hits the election compass. So mainstream is queried by outlet names (`«Dagens Nyheter» … «SVT»`), independents via `topic: "general"` + `include_domains` (etc.se, arbetet.se, flamman.se, syre.se, dagensarena.se, kvartal.se) with a "date must be visible in the text" rule.
+  - **Viro:** `include_domains` + `topic: "news"` works well but the query must stay narrow (`hinnad palgad pensionid tervishoid`); adding words returns zero.
+- **Length guard is mandatory:** `deepseek/deepseek-v4.1-flash` truncated the German report twice (~17–20k chars) and the Code step correctly refused to publish (run FAILED). Prompt now caps the report at ~700–800 words, 2–3 paragraphs per section, ≤10 sources and ≤45 CSS lines; the re-run finished in 23.8 s with a complete document. The same cap was added to Ranska and Viro.
+- Sample reports committed: `2026-11-18-2034-ranska-puhuu.html` (11 sources incl. Mediapart, franceinfo, TF1, Les Échos), `…-2059-viro-puhuu.html` (11 sources: Äripäev, Postimees, ERR), `…-2100-ruotsi-puhuu.html` (SVT, nyheter24, dagensps), `…-2104-saksa-puhuu.html` (10 sources: Focus, SZ, taz, fr.de, moz.de). The weak first German test report (2033) was deleted.
+- Repo: `data/media/index.json` lists all six media reports; guide `activepieces/media/Saksa-Ranska-Ruotsi-Viro-OHJEET.md` documents schedules, search strategies, length guard and maintenance.
 
 ## Update 2026-11-18: projects merged
 The Activepieces project and the site now live in one repository. Flows: `activepieces/markkina/*.json` (they commit to `data/markkina/`), helper scripts: `activepieces/markkina/tools/`, shared import script: `activepieces/tools/import-to-activepieces.ps1`, guide: `activepieces/Raporttien-ohje.md`. Feeds are registered in `docs/feeds.json`; reports live in `data/<feed>/`. The merge is **not committed yet**. Note: the real filename slugs produced by the flows (`<weekday>-aamu`, `<weekday>-ilta`, `euroopan-avaus`, `viikkoennakko`) differ from the example slugs above; they still match the filename regex, so the site shows them.

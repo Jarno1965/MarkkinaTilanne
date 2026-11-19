@@ -38,6 +38,7 @@ var CONFIG = {
   // mutta tähän lisäämällä se saa oman nimen ja kuvakkeen.
   slots: {
     'aamukatsaus':        { icon: '🌅', label: 'Aamukatsaus' },
+    'aamu-new':           { icon: '🆕', label: 'Aamuraportti NEW' },
     'eurooppa-avaus':     { icon: '🇪🇺', label: 'Euroopan avaus' },
     'paivan-yhteenveto':  { icon: '📊', label: 'Päivän yhteenveto' },
     'iltakatsaus':        { icon: '🌆', label: 'Iltakatsaus' }

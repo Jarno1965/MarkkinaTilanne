@@ -19,6 +19,7 @@ juureen (`MarkkinaTilanne/`), ellei toisin mainita.
 | Tiedosto | Raportti | Ajoaika (Europe/Helsinki) |
 |---|---|---|
 | `Aamuraportti.json` | Aamuraportti | joka päivä klo 06:00, ei viikonloppuisin |
+| `Aamuraportti NEW.json` | Aamuraportti NEW | arkisin klo 06:00 (sama aika, eri työnkulku, ks. oma luku) |
 | `Kello 11 Eurooppa.json` | Kello 11 Eurooppa | arkisin klo 11:00 |
 | `Kello 18 raportti.json` | Kello 18 raportti | arkisin klo 18:00 |
 | `Sunnuntai.json` | Sunnuntai | sunnuntaisin klo 07:00 |
@@ -74,7 +75,109 @@ Korjaus koostuu kolmesta osasta:
 - **Tilalogiikka.** Jokainen tapahtuma saa tilan: TOTEUTUNUT, TULOSSA tai EI VAHVISTETTU. Tila päätellään julkaisuajasta ja nykyhetkestä, ei uutisen sanamuodosta. Paljon ennakkopuhetta saanut ja jo toteutunut tapahtuma nousee raportin kärkeen.
 - **Tuoreus.** Uutiset merkitään iän mukaan (TUORE alle 3 h, VANHEMPI muuten), uusin tulee ensin, ja kurssiluvut ratkaisevat markkinareaktion. Tapahtuman kurssi haetaan erikseen numeroina.
 
-## Tavily-krediitit
+## Aamuraportti NEW: etusivujen kärkiteemat ja avausvaikutus
+
+`Aamuraportti NEW` on erillinen työnkulku, joka jättää vanhan `Aamuraportti`-työnkulun ennalleen.
+Sen tarkoitus on mitata, **mistä uutisvirta puhuu ja kuinka näkyvästi**, ja johtaa siitä arvio
+siitä, miten tilanne vaikuttaa Helsingin ja Euroopan pörssiavaukseen. Vanha työnkulku vastaa
+kysymykseen "mitä tapahtui", uusi lisäksi kysymykseen "kuinka moni tästä puhuu ja mitä se tarkoittaa avaukselle".
+
+### Uudet askeleet
+
+Ketju on sama kuin vanhassa, mutta `step_8`:n jälkeen tulee kolme uutta askelta ja `step_10`:n
+jälkeen yksi uusi LLM-askel:
+
+```
+step_8    Search Helsinki & Europe (Tavily, vanha)
+step_2    Front pages (RSS)                 7 etusivu-/uutissyotetta, ilmainen
+step_19   Quality press front page (Tavily) WSJ, Bloomberg, Reuters, FT, CNBC, 2 krediittia
+step_20   Prominence score (Code)           laskee teemojen näkyvyyden
+step_11   ... (vanha ketju jatkuu)
+step_10   Ask LLM (analysis & speculation)  vanha spekulaatio-osio
+step_21   Ask LLM (front-page themes & opening impact)   uusi osio
+step_5    Code                              liittaa uuden osion ennen spekulaatiota
+```
+
+### Miksi juuri nämä lähteet
+
+- **WSJ:n oma RSS on kuollut.** `feeds.a.dj.com` palauttaa juttuja tammikuulta 2025, joten sitä ei voi käyttää. WSJ:n sisältö saadaan Google Newsin kautta (jutuissa on lähdeliite, esim. "… - WSJ") ja Tavilylla, joka hakee suoraan wsj.comista tuoreet jutut julkaisupäivineen.
+- **CNBC:n RSS palauttaa HTTP 403** Activepiecesin palvelimilta. Siksi CNBC tulee Google Newsin kautta ja Tavilyn kautta.
+- **Google News** antaa ilmaiseksi sen, mitä tarvitaan: kuinka moni eri media toistaa samaa aihetta. Google Newsin linkit ovat uudelleenohjauksia, joten niitä **ei koskaan** käytetä raportin lähteinä; ne lasketaan vain näkyvyydeksi. Klikattavat lähteet tulevat suorista osoitteista (Tavily ja julkaisijoiden omat RSS-syötteet).
+
+### Näkyvyyspisteytys (step_20)
+
+Jokainen otsikko ryhmitellään teemaan 13 kiinteän teeman joukosta (tekoäly, listautumiset, korot,
+tulokset, öljy, kulta, tullit, Kiina, valuutat, pankit, puolustus, makro, Helsinki). Teeman pisteet
+ovat 0–100 ja ne lasketaan neljästä normalisoidusta osasta:
+
+```
+pisteet = 100 × ( 0,55 × min(1, eri mediat / 12)
+                + 0,20 × min(1, eri syötteet / 4)
+                + 0,15 × min(1, uutiset / 20)
+                + 0,10 × max(0, 1 − tuoreimman ikä tunteina / 24) )
+```
+
+Sanallinen luokka: **vahva** ≥ 60, **kohtalainen** ≥ 40, **heikko** ≥ 25, muuten vähäinen (vähäisiä ei
+näytetä kärkiteemoina). Normalisointi on tarkoituksella: ilman sitä jo viisi lähdettä tuoreen uutisen
+kanssa tuotti sata pistettä, jolloin suuri ja pieni teema näyttivät samalta.
+
+Duplikaatit poistetaan otsikon kuuden ensimmäisen sanan perusteella, ja yli 30 tuntia vanhat uutiset
+jätetään pois. Teemat voivat mennä päällekkäin (sama uutinen voi olla sekä tekoälyä että
+listautumista), ja LLM saa ohjeen yhdistää päällekkäiset teemat yhdeksi riviksi. Suorat linkit ovat
+blokissa pakollinen lähdeluettelo, jotta jokainen väite on tarkistettavissa.
+
+Blokin kokonaispituus on rajattu noin 6 600 merkkiin, ja **linkkiosio säilytetään aina**: jos teemaosuus
+on liian pitkä, `step_20` lyhentää teemaosaa, ei linkkejä. Tämä tehtiin siksi, että ensimmäisessä
+versiossa pitkä teemalista söi koko budjetin ja lähdeluettelo katosi ennen kuin LLM näki sen.
+
+Painoarvo **ei ole suunta**: se kertoo huomiosta. Suunnan ratkaisee aina kurssiluku (step_6 ja step_18).
+Tämä on kirjoitettu sekä koodiin että kehotteeseen, koska muuten malli alkaisi päätellä nousua uutisten sävystä.
+
+### Raportin uusi osio
+
+`step_21` kirjoittaa osion "Etusivujen kärkiteemat ja niiden vaikutus pörssiavaukseen": taulukko
+(teema, näkyvyys, tuoreus, välittyminen, arvio avausvaikutuksesta, mitä avauksessa pitää nähdä),
+kappaleet kärkiajureista, **hinnoittelutesti** ("onko jo hinnoiteltu") ja lista siitä, mitä avauksessa
+pitää nähdä, jotta tulkinta pitää. Kehote käsittelee erikseen toteutuneet tapahtumat: esimerkiksi
+hinnoiteltu anti ei ole tuleva tapahtuma vaan toteutunut tieto, jonka vaikutus mitataan avauskurssista
+ja verrokeista.
+
+`step_5` liittää osion HTML:ään ennen spekulaatio-osiota ja committoi tiedoston
+`data/markkina/YYYY-MM-DD-HHMM-<viikonpäivä>-aamu-new.html`. Tunniste `aamu-new` on tarkoituksella eri
+kuin vanhassa työnkulussa, jotta molemmat voivat olla käytössä samaan aikaan. Kun uusi työnkulku
+korvaa vanhan, vaihda `step_5`:n tiedostonimestä `-aamu-new` pois ja poista `aamu-new` `docs/app.js`:n
+`CONFIG.slots`-listasta.
+
+### Tunnetut rajoitukset
+
+- **Lähdeluettelo ei ole vielä pakollinen itse kehotteessa.** Blokki sisältää suorat linkit ja käskyn
+  näyttää ne, mutta testiajoissa malli jätti lähdeluettelon pois. Kiristetty sääntö 9 on valmiina
+  tiedostossa `tools/txt_prominence_system.txt` ("osion loppuun tulee lähdeluettelo"), mutta sitä ei ole
+  vielä viety Activepiecesin `step_21`-askeleeseen. Jos lähdeluettelo halutaan varmasti, joko päivitä
+  kehote tai liitä lista mekaanisesti `step_5`:ssä.
+- **Näkyvyys ei ole suunta.** Pisteet mittaavat huomiota; nousu ja lasku tulevat aina kurssiluvuista.
+- **Google Newsin linkit ovat uudelleenohjauksia**, joten niitä ei koskaan käytetä lähteinä.
+
+### Kustannukset ja ajoaika
+
+Uusi työnkulku maksaa **2 Tavily-krediittiä enemmän** kuin vanha (yksi advanced-haku laatulehtiin), eli
+noin 14 krediittiä ajoa kohti. RSS on ilmainen. Ajoaika kasvaa noin 15–25 sekuntia. LLM-kutsuja on yksi
+enemmän.
+
+### Rakentaminen ja tarkistus
+
+```powershell
+cd activepieces\markkina\tools
+
+.\build4_new.ps1          # rakentaa Aamuraportti NEW.json -tiedoston vanhasta + uusista osista
+.\check.ps1               # liitokset ja käyttäjäviestien osiot
+node test21.mjs           # step_20:n pisteytys 12 tarkistuksella
+```
+
+Jos pisteytys ei tuota teemoja, katso Activepiecesin historiasta `step_20`-askeleen `diagnostics`
+(esim. `etusivut=100, laatulehdet=10, kaytetyt=57, teemoja=9`). Jos `etusivut` on 0, RSS-syötteet eivät
+latautuneet ja `topThemes` on tyhjä.
+
 
 | Ajo | Krediittejä |
 |---|---|
