@@ -247,8 +247,10 @@ Luotu kolme erillistä JavaScript-moduulia `activepieces/media/tools/`-kansioon:
 - Korjattiin MCP-rakentamisen sudenkuoppa: OpenRouterin Custom API Call tarvitsee `actionName`-kentän ja `body_type: json`, muuten `body.data`-skeema jää tyhjäksi ja pyyntö lähtee ilman viestejä (400).
 
 **Verification:**
-- `ap_validate_flow` → 22/22 askelta valid. `node test21.mjs` → 12/12. `check.ps1` → kaikki liitokset kunnossa (myös uusi tiedosto).
-- Ajo `m4pvOt28n4g3WFlOaTeb2` SUCCEEDED (160,6 s) → committoi `data/markkina/2026-11-19-0758-torstai-aamu-new.html` (26,6 kB), 0 `<script>`-tagia, loppuu `</html>`, ei mallipohjavuotoja.
+- `ap_validate_flow` → 23/23 askelta valid (step_22 mukana). `node test21.mjs` → 12/12. `check.ps1` → kaikki liitokset kunnossa.
+- Ajo `mHqzd8gdW0EKKvSSgbfCQ` SUCCEEDED → committoi `data/markkina/2026-11-19-0825-torstai-aamu-new.html` (21,6 kB), 0 `<script>`-tagia, loppuu `</html>`, pisteytyksen selitys (`<details>`) mukana.
+- Raportin uusi osio: taulukko 6 rivillä, teemapisteet mitattuina (tekoäly 14 mediaa / 8 syötettä / 24 uutista), päällekkäiset teemat yhdistetty, Anthropicin anti käsitelty toteutuneena tapahtumana ja avausreaktio jätetty avoimeksi.
+- Raportin loppuun lisätty `step_22` (kiinteä selitys pisteytyksestä, taitettava `<details>`), jotta satunnainen lukija ymmärtää pisteet. Selitys ei ole LLM:n varassa.
 - Raportin uusi osio: taulukko 6 rivillä, teemapisteet mitattuina (tekoäly 14 mediaa / 8 syötettä / 24 uutista), päällekkäiset teemat yhdistetty, Anthropicin anti käsitelty toteutuneena tapahtumana ja avausreaktio jätetty avoimeksi.
 
 **Next:**

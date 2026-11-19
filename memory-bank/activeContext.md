@@ -16,6 +16,7 @@ Helsingin ja Euroopan pörssiavaukseen. Uudet askeleet:
 | `step_20` | Code (`tools/step21.js`) | Näkyvyyspisteet: 13 teemaa, normalisoitu 0–100, duplikaattien poisto, tuoreusraja 30 h, suorat linkit. |
 | `step_21` | OpenRouter `custom_api_call` | Kirjoittaa osion "Etusivujen kärkiteemat ja niiden vaikutus pörssiavaukseen" (`tools/txt_prominence_system.txt` + `txt_prominence_user.txt`). |
 | `step_5` | Code | Liittää uuden osion HTML:ään ennen spekulaatio-osiota; tiedostonimi `...-aamu-new.html`. |
+| `step_22` | Code | Liittää osion perään kiinteän, taitettavan selityksen näkyvyyspisteistä (`tools/step22_legend.js`). |
 
 **Löydökset lähteistä:** WSJ:n oma RSS (`feeds.a.dj.com`) on kuollut (jutut 27.1.2025), CNBC:n RSS
 palauttaa HTTP 403 Activepiecesin IP:stä, MarketWatch MarketPulse on jäässä. Toimivat: Google News

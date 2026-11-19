@@ -95,8 +95,17 @@ step_20   Prominence score (Code)           laskee teemojen näkyvyyden
 step_11   ... (vanha ketju jatkuu)
 step_10   Ask LLM (analysis & speculation)  vanha spekulaatio-osio
 step_21   Ask LLM (front-page themes & opening impact)   uusi osio
+step_22   Add scoring legend (Code)         liittaa pisteytyksen selityksen osion perään
 step_5    Code                              liittaa uuden osion ennen spekulaatiota
 ```
+
+### Pisteytyksen selitys lukijalle (step_22)
+
+Osion perässä on pieni, yhteen taitettava selitys ("Mistä näkyvyyspisteet muodostuvat?"), joka kertoo
+osien painot, täysien pisteiden rajat, sanalliset luokat ja sen, että pisteet mittaavat huomiota eikä
+suuntaa. Selitys on **kiinteää tekstiä koodissa**, joten se tulee raporttiin riippumatta siitä, mitä
+LLM kirjoittaa. Jos painotusta muutetaan `step_20`:ssä, myös `tools/step22_legend.js` on päivitettävä,
+muuten selitys ja laskenta eroavat toisistaan: sama tieto on kahdessa paikassa.
 
 ### Miksi juuri nämä lähteet
 

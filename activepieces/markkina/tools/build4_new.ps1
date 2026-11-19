@@ -98,20 +98,30 @@ $llm.settings.input.body.data.messages = @(
 $llm.settings.errorHandlingOptions.retryOnFailure.value = $true
 $llm.settings.errorHandlingOptions.continueOnFailure.value = $true
 
+# --- 4b. Pisteytyksen selitys raportin loppuun (Code) ---
+$legend = Clone $code
+$legend.name = 'step_22'
+$legend.displayName = 'Add scoring legend (Code)'
+$legend.settings.sourceCode.code = Read-Utf8 -File "$build\step22_legend.js"
+$legend.settings.input = [pscustomobject][ordered]@{
+  fragment = "{{step_21['output']}}"
+}
+
 # --- 5. Ketjutus ---
 $map['step_8'].nextAction = $rss
 $rss.nextAction = $quality
 $quality.nextAction = $code
 $code.nextAction = $map['step_11']
 $map['step_10'].nextAction = $llm
-$llm.nextAction = $map['step_5']
+$llm.nextAction = $legend
+$legend.nextAction = $map['step_5']
 
 # --- 6. step_5 liittaa karkiteemaosion ennen spekulaatiota ---
 $map['step_5'].settings.sourceCode.code = Read-Utf8 -File "$build\step5_new.js"
 $map['step_5'].settings.input = [pscustomobject][ordered]@{
   date       = "{{step_1['output']['result']}}"
   html       = "{{step_3['output']}}"
-  prominence = "{{step_21['output']}}"
+  prominence = "{{step_22['output']['html']}}"
   analysis   = "{{step_10['output']}}"
 }
 

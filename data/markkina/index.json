@@ -1,7 +1,7 @@
 {
   "_comment": "Vain paikalliseen kehitykseen. Sisältää data/<syöte>/-kansion tiedostonimet, jotta sivustoa voi testata ennen kuin repositorio on julkaistu GitHubissa. Tämä tiedosto ei ole käytössä tuotannossa. Jokaisella syötteellä on oma index.json.",
   "files": [
-    "2026-11-19-0810-torstai-aamu-new.html",
+    "2026-11-19-0825-torstai-aamu-new.html",
     "2026-11-19-0631-torstai-aamu.html",
     "2026-11-18-1543-keskiviikko-aamu.html",
     "2026-11-18-1522-keskiviikko-aamu.html",
