@@ -1,5 +1,42 @@
 # Active Context
 
+## Update 2026-11-19: Kello 11 ja Kello 18 – ei osakelistaa, merkittävät yhtiötiedotteet tilalle
+
+**Tavoite (käyttäjän pyyntö):** Raporteista pois kaikkien osakkeiden ja kurssien luettelo. Sen sijaan
+vain merkittävät suomalaisten yhtiöiden tiedotteet Nasdaqin yritystiedotesivulta, linkki mukaan.
+Mitätöntä ainesta ei mainita. Jos yhtiö on Arvopaperin tai Kauppalehden etusivulla, se on todennäköisesti
+kiinnostava.
+
+**Uusi askel `step_2` ("Code (company news)") molemmissa työnkuluissa** (kello 11: `wjAQ4F3wSRVcgmMP40k2H`,
+kello 18: `TR0JVsYppLuOlRMEjadTI`), sijoitettu `step_18` → `step_2` → `step_9`.
+- Hakee Nasdaq Nordic CNS -rajapinnan kautta Helsingin tiedotteet 24 h ajalta (JSONP, enintään 4 sivua).
+- Hakee Arvopaperin ja Kauppalehden etusivujen otsikot ristiintarkistusta varten.
+- Pisteyttää merkittävyyden (kategoria + otsikkoavainsanat + isot yhtiöt + etusivuosuma) ja hylkää
+  rutiinit kovalla poissululla (johdon liiketoimet, omien osakkeiden omistus, tulosjulkistamisen
+  aikataulu, yhtiökokouskutsu, listalleottoesite, substanssiarvo).
+- Palauttaa `companyNews`-tekstilohkon (enintään 5 ehdokasta + linkki "Kaikki tiedotteet") ja `stats`.
+
+**Kehotteet uusittu** (`txt_eurooppa_system.txt` 5,4 kB, `txt_ilta_system.txt` 5,3 kB):
+- Kello 11: ei enää osaketaulukkoa eikä kaikkien osakkeiden luetteloa; kärkilaatikossa OMXH25 ja
+  enintään 3 + 3 suurinta liikkujaa.
+- Kello 18: markkinataulukossa vain indeksit, korot, raaka-aineet ja valuutat.
+- Molemmissa uusi osio "Merkittävät yhtiötiedotteet": enintään 3 kappaletta, lyhyt perustelu ja linkki.
+- Pituustavoite 450–650 sanaa.
+
+**Verifiointi:** `ap_validate_flow` 19/19 (kello 11) ja 18/18 (kello 18). Testiajot:
+- Kello 11 `abLrZGx92bsGuYvfwpMRt` SUCCEEDED 247,1 s → `2026-11-19-1730-euroopan-avaus.html`
+  (17,5 kB): 0 taulukkoa, 3 tiedotetta (Componenta, Enersense, LeadDesk) + 3 tiedotelinkkiä +
+  "Kaikki tiedotteet" -linkki.
+- Kello 18 `0yPreukN4mx3nCuBQhg2h` SUCCEEDED 90,8 s → `2026-11-19-1732-torstai-ilta.html`
+  (12,0 kB): 1 markkinataulukko, samat 3 tiedotetta linkkeineen.
+
+Molemmat työnkulut julkaistu ja käytössä. Testiraportit jätettiin repoon esimerkkinä uudesta
+muodosta; ne voi poistaa vapaasti.
+
+**Tiedostot:** `activepieces/markkina/tools/company_news.js` (lähde), `test_company_news.mjs`,
+`txt_eurooppa_*.txt`, `txt_ilta_*.txt`; paikalliset flow-JSONit synkronoitu (`step_2` + uudet kehotteet).
+Ohje: `activepieces/Raporttien-ohje.md` → "Yhtiötiedotteet (step_2)".
+
 ## Update 2026-11-19: "Kello 11 Eurooppa" – reasoning-vastauksen JSON-roskan korjaus
 
 **Ongelma:** Kello 11:n tuotantoajo (`0MgsuKP7hSMUaDwWnea30`) tuotti 143 kB raportin, jonka loppuun

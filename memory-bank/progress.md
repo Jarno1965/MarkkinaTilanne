@@ -304,3 +304,25 @@ Luotu kolme erillistä JavaScript-moduulia `activepieces/media/tools/`-kansioon:
 **Next:**
 - Seuraa seuraavaa arkiaamun 11:00-automaattiajoa ja varmista, ettei raportissa ole JSONia.
 - Harkitse saman `reasoning_effort`-tarkistuksen tekemistä muille reasoning-malleja käyttäville työnkuluille.
+## 2026-11-19 – Kello 11 ja Kello 18: osakelistat pois, merkittävät yhtiötiedotteet tilalle
+
+**Done:**
+- Kartoitettu Nasdaqin yritystiedotesivun taustalla oleva CNS-rajapinta (`api.news.eu.nasdaq.com/news/query.action`, JSONP) ja varmistettu, että se toimii myös koodiaskeleesta ilman erityisotsakkeita.
+- Uusi `step_2` "Code (company news)" molempiin työnkulkuihin (`step_18` → `step_2` → `step_9`):
+  - hakee Helsingin tiedotteet 24 h ajalta (enintään 4 sivua × 100),
+  - hakee Arvopaperin ja Kauppalehden etusivujen otsikot,
+  - pisteyttää merkittävyyden (kategoria + avainsanat + isot yhtiöt + etusivuosuma) ja hylkää rutiinit kovalla poissululla,
+  - palauttaa enintään 5 ehdokasta tekstilohkona + linkin "Kaikki tiedotteet".
+- Kehotteet uusittu: `txt_eurooppa_system.txt` (5,4 kB), `txt_eurooppa_user.txt`, `txt_ilta_system.txt` (5,3 kB), `txt_ilta_user.txt`. Kello 11:stä poistettu osaketaulukko ja kaikkien osakkeiden luettelo; kello 18:n taulukossa vain indeksit, korot, raaka-aineet ja valuutat. Molemmissa uusi osio "Merkittävät yhtiötiedotteet" (enintään 3, linkki mukaan).
+- Paikalliset flow-JSONit synkronoitu: uusi `step_2`, uudet kehotteet, ketju tarkistettu.
+
+**Verification:**
+- `node test_company_news.mjs` → 200 tiedotetta, 4 merkittävää; Componentan 155 M€ puolustustilaus, Enersensen tulosvaroitus, LeadDeskin liiketoimintamyynti, Auroora (Arvopaperin etusivulla).
+- `ap_validate_flow` 19/19 ja 18/18.
+- Testiajo kello 11: 247,1 s, 17,5 kB, 0 taulukkoa, 3 tiedotetta + 3 tiedotelinkkiä + "Kaikki tiedotteet".
+- Testiajo kello 18: 90,8 s, 12,0 kB, 1 markkinataulukko, samat 3 tiedotetta linkkeineen.
+- Molemmat julkaistu ja ENABLED.
+
+**Next:**
+- Seuraa ensimmäiset automaattiajot (11:00 ja 18:00) ja tarkista, ettei mukaan tule rutiinitiedotteita.
+- Säädä pisteytyskerrointa, jos kynnys 6 tuottaa liikaa tai liian vähän osumia eri päivinä.

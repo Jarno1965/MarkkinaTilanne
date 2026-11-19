@@ -197,6 +197,36 @@ Advanced-haku maksaa 2 krediittiä ja basic-haku 1 krediitin. Ilmaisessa tilauks
 
 Jos kulutusta pitää pienentää, vaihda step_15–17:n `search_depth` arvosta `advanced` arvoon `basic`. Se säästää noin 170 krediittiä kuussa.
 
+## Yhtiötiedotteet (step_2)
+
+Kello 11:n ja kello 18:n raporteissa on `step_2` ("Code (company news)"). Se hakee Nasdaq Helsingin
+yritystiedotteet, poimii merkittävät ja antaa LLM:lle valmiiksi seulotun listan. Raportti ei enää
+luettele kaikkia osakkeita ja niiden kursseja, vaan kertoo enintään kolme merkittävintä tiedotetta
+lyhyesti ja linkittää ne.
+
+**Lähde:** Nasdaq Nordic CNS -rajapinta `https://api.news.eu.nasdaq.com/news/query.action` (JSONP).
+Haetaan 24 tunnin ajalta enintään 4 sivua (400 tiedotetta) ja suodatetaan markkinan perusteella
+Helsinki / First North Finland. Sama sisältö selattavana:
+`https://www.nasdaq.com/fi/european-market-activity/news/company-news`.
+
+**Merkittävyyden pisteytys (kynnys 6 pistettä):**
+
+- Kategoriapainot: sisäpiiritieto +5, pääomatapahtuma ja osavuosikatsaus/tilinpäätös +4,
+  yhtiötiedote ja sijoittajauutiset +1.
+- Otsikkoavainsanat: tulosvaroitus ja saneeraus +6, yrityskaupat ja osingot +5, toimitusjohtaja-,
+  henkilöstö- ja alaskirjausuutiset +4, ohjeistus +3, tilaukset ja investoinnit +2.
+- Isot yhtiöt (Nokia, Nordea, Sampo, Kone, Neste, Fortum, UPM, Stora Enso, Wärtsilä, Metso ym.) +2.
+- Ristiintarkistus: jos yhtiö näkyy Arvopaperin tai Kauppalehden etusivulla, +4.
+- Kova poissulku: johdon liiketoimet, omien osakkeiden omistus, tulosjulkistamisen aikataulu,
+  yhtiökokouskutsu, listalleottoesite ja substanssiarvo.
+- Enintään 5 tiedotetta, joista raporttiin otetaan enintään 3. Sama yhtiö ja kategoria samana päivänä
+  yhdistetään (esim. alkuperäinen tiedote ja sen korjaus).
+
+Jos haku epäonnistuu, `companyNews` kertoo sen eikä raportti keksi tiedotteita. Testi:
+`activepieces\markkina\tools\test_company_news.mjs` (kirjoittaa tuloksen `_company_news_result.json`).
+Kehotteet: `txt_eurooppa_system.txt`, `txt_eurooppa_user.txt`, `txt_ilta_system.txt`,
+`txt_ilta_user.txt`.
+
 ## Yleisimmät muutokset
 
 Voit tehdä nämä suoraan `*.json`-tiedostoon tai Activepiecesin käyttöliittymässä.

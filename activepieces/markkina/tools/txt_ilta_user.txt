@@ -1,0 +1,22 @@
+Laadi suomenkielinen markkinakatsaus valmiina HTML5-dokumenttina alla olevasta aineistosta. Noudata järjestelmäviestin sääntöjä.
+
+TÄNÄÄN ON (Helsingin aika):
+{{step_1['output']['result']}}
+
+MERKITTÄVÄT YHTIÖTIEDOTTEET (Nasdaq Helsinki, valmiiksi seulottu):
+{{step_2['output']['companyNews']}}
+
+USA:N MARKKINAT – UUTISET:
+{{step_9['output']['newsAsia']}}
+
+EUROOPPA JA HELSINKI PÄÄTTÖ – UUTISET:
+{{step_9['output']['newsEurope']}}
+
+KURSSILUVUT JA LINKIT:
+{{step_9['output']['marketData']}}
+
+ODOTETUT TAPAHTUMAT (seurantalista ja tapahtumien hakutulokset):
+{{step_9['output']['watchlist']}}
+
+TAPAHTUMIEN KURSSIT (käytä näitä lukuja markkinareaktiosta):
+{{step_9['output']['eventQuotes']}}
