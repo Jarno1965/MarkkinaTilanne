@@ -35,13 +35,14 @@ param(
     [switch]$Apply,
     [switch]$CreateMissing,
     [switch]$NoPublish,
-    [switch]$Offline
+    [switch]$Offline,
+    [string]$Flow
 )
 
 $ErrorActionPreference = 'Stop'
 $folder = Split-Path -Parent (Split-Path -Parent $MyInvocation.MyCommand.Path)
 $excluded = @('Kello 22 raportti.json')
-$files = Get-ChildItem -LiteralPath $folder -Filter '*.json' -Recurse | Where-Object { $excluded -notcontains $_.Name } | Sort-Object Name
+$files = Get-ChildItem -LiteralPath $folder -Filter '*.json' -Recurse | Where-Object { $excluded -notcontains $_.Name } | Sort-Object @{ Expression = { if ($_.FullName -match '\\markkina\\') { 0 } else { 1 } } }, Name
 if ($files.Count -eq 0) { throw "Kansiosta $folder ei löytynyt yhtään json-tiedostoa." }
 
 function Read-FlowFile {
@@ -61,15 +62,30 @@ function Read-FlowFile {
 }
 
 $items = @()
+$seenExternalIds = @{}
 foreach ($f in $files) {
     $it = Read-FlowFile -Path $f.FullName
-    if (-not $it.DisplayName) { throw "$($it.File): työnkulun displayName puuttuu." }
-    if (-not $it.Trigger) { throw "$($it.File): trigger puuttuu." }
+    if (-not $it.DisplayName) { Write-Warning "$($it.File): työnkulun displayName puuttuu - ohitetaan."; continue }
+    if (-not $it.Trigger) { Write-Warning "$($it.File): trigger puuttuu - ohitetaan."; continue }
+    if ($it.ExternalId) {
+        if ($seenExternalIds.ContainsKey($it.ExternalId)) {
+            Write-Warning "$($it.File): externalId $($it.ExternalId) on jo tiedostossa $($seenExternalIds[$it.ExternalId]) - ohitetaan, jotta oikea työnkulku ei ylikirjoitu."
+            continue
+        }
+        $seenExternalIds[$it.ExternalId] = $it.File
+    }
     $items += $it
 }
 
 Write-Host "Löytyi $($items.Count) tiedostoa:" -ForegroundColor Cyan
 $items | Format-Table File, DisplayName, ExternalId, SchemaVersion -AutoSize | Out-String -Width 200 | Write-Host
+
+if ($Flow) {
+    $items = @($items | Where-Object { $_.DisplayName -like "*$Flow*" })
+    if ($items.Count -eq 0) { throw "Yhtään työnkulkua ei vastaa suodatinta '$Flow'." }
+    Write-Host "Suodatin '$Flow' -> $($items.Count) työnkulku(a):" -ForegroundColor Cyan
+    $items | Format-Table File, DisplayName -AutoSize | Out-String -Width 200 | Write-Host
+}
 
 if ($Offline) {
     Write-Host 'Offline-tarkistus valmis. Tiedostot ovat luettavissa ja rakenne on kunnossa.' -ForegroundColor Green
