@@ -42,7 +42,7 @@ saman sopimuksen kaksi päätä ja ne on pidettävä samassa versiossa.
 
 **Katsaus** on yksi raporttivirta. Sen tunnus on kansioiden nimi:
 
-- `markkina` – markkina-analyysi (Aamuraportti, Kello 11, Kello 18, Sunnuntai)
+- `markkina` – markkina-analyysi (Aamuraportti, Kello 11, Kello 18, Sunnuntai, Lauantai)
 - `media-se`, `media-de`, … – maakohtaiset mediakatsaukset
 
 Tiedostot ovat aina muotoa `data/<katsaus>/YYYY-MM-DD-HHMM-slug.html`. Aika on Suomen
@@ -98,12 +98,16 @@ kirjaimia, numeroita ja tavuviivaa.
 
 - Katsauksen tunnus: `markkina`, `media-se`, `media-de` (pienet kirjaimet, tavuviiva).
 - Raportin tiedosto: `YYYY-MM-DD-HHMM-slug.html`, esim. `2026-11-13-0600-aamukatsaus.html`.
-- Slugi: `aamukatsaus`, `eurooppa-avaus`, `paivan-yhteenveto`, `media-aamu`, `media-ilta`.
+- Slugi: `aamukatsaus`, `eurooppa-avaus`, `paivan-yhteenveto`, `viikkokatsaus` (la),
+  `viikkoennakko` (su), `media-aamu`, `media-ilta`.
 - Kehotteet: `prompts/<katsaus>/<aikaväli>.md`.
 
 ## Paikallinen testaus
 
 ```powershell
+# Paikallisten manifestien päivitys (aja kun raportteja on lisätty tai poistettu)
+node tests/make-manifests.mjs
+
 # Sivuston savutesti (lukee docs/feeds.json ja data/markkina/index.json)
 node tests/site-check.mjs
 
@@ -111,9 +115,19 @@ node tests/site-check.mjs
 node --check docs/app.js
 ```
 
-Sivusto kannattaa avata VS Coden Live Serverillä. Localhostissa se lukee ensisijaisesti
-`data/<katsaus>/index.json`-tiedostoa ja vasta toissijaisesti GitHubin Contents API:a.
-Tuotannossa järjestys on päinvastainen. `index.json` on siis vain kehitystä varten.
+Sivusto kannattaa avata VS Coden Live Serverillä **repositorion juuresta** (`/docs/index.html`).
+Localhostissa se lukee ensisijaisesti juuren `data/<katsaus>/index.json`-tiedostoa (polku
+`../data/...`) ja vasta toissijaisesti GitHubin Contents API:a. Tuotannossa järjestys on
+päinvastainen ja raportin runko tulee aina GitHubin `download_url`-osoitteesta.
+
+`data/<katsaus>/index.json` on siis vain kehitystä varten ja se pitää päivittää
+`node tests/make-manifests.mjs`-komennolla, muuten paikallinen lista jää vanhentuneeksi.
+
+> **Historia:** `docs/data/`-kansio (13 näyteraporttia + 2 manifestia) **poistettiin 21.11.2026.**
+> Se oli jäänne 18.11.2026 kokeilusta, jossa `docs/` oli sivuston juuri. Mikään koodi ei lukenut
+> sitä, ja `docs/app.js` hakee raportit juuren `data/`-kansiosta. Vanhat tiedostot löytyvät
+> git-historiasta. `docs/` sisältää nyt vain sivuston omat tiedostot: `index.html`, `style.css`,
+> `app.js` ja `feeds.json`.
 
 ## Työnkulkujen muuttaminen ja vienti
 
@@ -123,12 +137,16 @@ cd activepieces\markkina\tools
 .\check.ps1                     # liitokset ja käyttäjäviestien osiot
 node test3.mjs                  # step_9, step_14, step_18
 node test14.mjs                 # step_14 eri vastausrakenteilla
+node test_lauantai.mjs          # Lauantai-työnkulun 46 tarkistusta
+node test_sunnuntai.mjs         # Sunnuntai-työnkulun 75 tarkistusta
+node test_step13_compact.mjs    # molempien tiivistyskoodien yksikkötesti (22)
 
 cd ..\..\tools                  # activepieces\tools
 
-.\import-to-activepieces.ps1 -ProjectId '<id>' -Offline   # vain tiedostot
-.\import-to-activepieces.ps1 -ProjectId '<id>'            # kuiva-ajo
-.\import-to-activepieces.ps1 -ProjectId '<id>' -Apply     # vienti ja julkaisu
+.\import-to-activepieces.ps1 -ProjectId '<id>' -Offline        # vain tiedostot
+.\import-to-activepieces.ps1 -ProjectId '<id>'                 # kuiva-ajo
+.\import-to-activepieces.ps1 -ProjectId '<id>' -Flow 'Lauantai' -Apply   # vain yksi työnkulku
+.\import-to-activepieces.ps1 -ProjectId '<id>' -Apply          # vienti ja julkaisu
 ```
 
 Tarkemmat ohjeet: `activepieces/Raporttien-ohje.md`.

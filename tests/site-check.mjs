@@ -139,15 +139,75 @@ check('raportin otsikko asetettu', elements['report-title'].textContent.length >
 check('aikaleima päivitetty', /Lista päivitetty klo/.test(elements['last-updated'].textContent),
   elements['last-updated'].textContent);
 
-// Kaksi syötettä: valinnan pitää näkyä ja ryhmittyä.
-sandbox.applyFeeds([
-  { id: 'markkina', title: 'Markkina-analyysi', feeds: [{ id: 'markkina', title: 'Markkinakatsaukset' }] },
-  { id: 'media', title: 'Mediakatsaukset', feeds: [{ id: 'media-pl', title: 'Puola', icon: '🇵🇱' }] }
-], 'markkina');
-sandbox.renderFeeds();
-check('valikko näkyy kahdella syötteellä', elements['feed-list'].hidden === false);
-check('valikossa kaksi ryhmää', elements['feed-list'].children.length === 2,
-  String(elements['feed-list'].children.length));
+// Yksinkertainen valikko: syoterekisteri on tyhja (groups: []), joten applyFeeds
+// kayttaa kovakoodattuja oletussyotteita markkina ja media. Vanha dynaaminen
+// feed-list-valikko on poistettu, joten renderFeeds ei enaa rakenna sita.
+sandbox.applyFeeds([], 'markkina');
+check('kaksi oletussyotetta', sandbox.state.feeds.length === 2,
+  String(sandbox.state.feeds.length));
+check('oletussyote markkina sailyy', sandbox.state.defaultFeed === 'markkina', sandbox.state.defaultFeed);
+
+// Viikonloppuslugit saavat oman nimen ja kuvakkeen.
+const slotWk = sandbox.slotInfo('viikkokatsaus');
+const slotWe = sandbox.slotInfo('viikkoennakko');
+check('viikkokatsaus-nimike', slotWk.label === 'Viikkokatsaus' && slotWk.icon === '📅', JSON.stringify(slotWk));
+check('viikkoennakko-nimike', slotWe.label === 'Viikkoennakko' && slotWe.icon === '🔮', JSON.stringify(slotWe));
+check('tuntematon slug muotoillaan', sandbox.slotInfo('joku-uusi').label === 'Joku uusi',
+  sandbox.slotInfo('joku-uusi').label);
+
+// Paikallinen kehitys lukee juuren data/-kansiota (../data) eika vanhentunutta
+// docs/data-kopiota. Tuotannossa kaytetaan aina GitHubin download_url-osoitetta.
+check('paikallinen raporttipolku ../data',
+  sandbox.reportSourceUrl({ file: 'x.html', downloadUrl: null }) === '../data/markkina/x.html',
+  sandbox.reportSourceUrl({ file: 'x.html', downloadUrl: null }));
+check('download_url voittaa paikallisen polun',
+  sandbox.reportSourceUrl({ file: 'x.html', downloadUrl: 'https://example.com/x.html' }) === 'https://example.com/x.html');
+
+// Yksinkertainen valikko on index.html:ssa (kaksi paakategoriaa).
+const indexHtml = fs.readFileSync(path.join(docsDir, 'index.html'), 'utf8');
+check('valikossa markkina-nappi', indexHtml.includes('id="markkina-btn"'));
+check('valikossa media-nappi', indexHtml.includes('id="media-btn"'));
+
+// VALIMUISTIPOLKU (sivun uudelleenlataus): toinen haku luetaan sessionStorage-
+// valimuistista, jossa Date-oliot ovat muuttuneet merkkijonoiksi, koska
+// JSON.stringify ei sailyta tyyppia. Tama kaatoi aiemmin sivun virheeseen
+// "date.getTime is not a function" ja naytti "Raporttilistaa ei voitu hakea".
+elements['viewer-placeholder'].innerHTML = '';
+elements['list-status'].textContent = '';
+sandbox.state.selectedId = null;
+await sandbox.selectFeed('markkina', { force: false });
+
+const cachedReports = sandbox.state.reports;
+check('valimuistista luettu lista', cachedReports.length > 0, String(cachedReports.length));
+check('valimuistin date kelpaa Date-oliona',
+  cachedReports.length > 0 && typeof cachedReports[0].date.getTime === 'function',
+  cachedReports.length ? Object.prototype.toString.call(cachedReports[0].date) : '(tyhja)');
+check('raportti valittiin valimuistista', !!sandbox.state.selectedId, String(sandbox.state.selectedId));
+
+let fmtResult = '';
+let fmtError = '';
+try {
+  fmtResult = sandbox.formatDateLong(cachedReports[0].date);
+} catch (e) {
+  fmtError = e.message;
+}
+check('formatDateLong toimii valimuistin datalla',
+  fmtError === '' && fmtResult !== 'Virheellinen päivämäärä', fmtError || fmtResult);
+let fmtStrResult = '';
+let fmtStrError = '';
+try {
+  fmtStrResult = sandbox.formatDateLong(String(cachedReports[0].date));
+} catch (e) {
+  fmtStrError = e.message;
+}
+check('formatDateLong sietaa myos merkkijonon',
+  fmtStrError === '' && fmtStrResult !== 'Virheellinen päivämäärä', fmtStrError || fmtStrResult);
+check('list-status ei sisalla virhetta',
+  String(elements['list-status'].textContent).indexOf('date.getTime') === -1,
+  String(elements['list-status'].textContent));
+check('placeholder ei sisalla virhetta',
+  String(elements['viewer-placeholder'].innerHTML).indexOf('date.getTime') === -1,
+  String(elements['viewer-placeholder'].innerHTML).slice(0, 160));
 
 // Hash-muodot.
 location.hash = '#2026-11-13-0600-aamukatsaus.html';

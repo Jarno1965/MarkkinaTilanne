@@ -41,7 +41,9 @@ var CONFIG = {
     'aamu-new':           { icon: '🆕', label: 'Aamuraportti NEW' },
     'eurooppa-avaus':     { icon: '🇪🇺', label: 'Euroopan avaus' },
     'paivan-yhteenveto':  { icon: '📊', label: 'Päivän yhteenveto' },
-    'iltakatsaus':        { icon: '🌆', label: 'Iltakatsaus' }
+    'iltakatsaus':        { icon: '🌆', label: 'Iltakatsaus' },
+    'viikkokatsaus':      { icon: '📅', label: 'Viikkokatsaus' },
+    'viikkoennakko':      { icon: '🔮', label: 'Viikkoennakko' }
   }
 };
 
@@ -83,10 +85,14 @@ function parseReportName(name) {
 }
 
 function formatDateLong(date) {
-  if (isNaN(date.getTime())) return 'Virheellinen päivämäärä';
+  // sessionStorage-valimuistista luettu pvm on merkkijono, koska JSON.stringify
+  // muuttaa Date-olion tekstiksi. Muunnetaan se takaisin Date-olioksi, jotta
+  // sivu ei kaadu virheeseen "date.getTime is not a function".
+  var d = (date instanceof Date) ? date : new Date(date);
+  if (isNaN(d.getTime())) return 'Virheellinen päivämäärä';
   return new Intl.DateTimeFormat('fi-FI', {
     timeZone: TIME_ZONE, weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'
-  }).format(date);
+  }).format(d);
 }
 
 function dateKeyFor(date) {
@@ -153,7 +159,11 @@ function applyFeeds(groups, defaultFeed) {
   // Jos groups on tyhjä (yksinkertainen valikko käytössä), käytä oletusarvoja
   if (!groups || groups.length === 0) {
     state.feeds = [
-      { id: 'markkina', title: 'Markkinakatsaukset', icon: '📈', groupTitle: '', slots: null },
+      { id: 'markkina', title: 'Markkinakatsaukset', icon: '📈', groupTitle: '',
+        slots: {
+          'viikkokatsaus': { icon: '📅', label: 'Viikkokatsaus' },
+          'viikkoennakko': { icon: '🔮', label: 'Viikkoennakko' }
+        } },
       { id: 'media', title: 'Mediakatsaukset', icon: '📰', groupTitle: '', 
         slots: { 'viikkokatsaus': { icon: '🗞️', label: 'Viikkokatsaus' } } }
     ];
@@ -258,6 +268,16 @@ function listFromCache(feedId) {
     var parsed = JSON.parse(raw);
     if (!parsed || !parsed.time || !Array.isArray(parsed.reports)) return null;
     if (Date.now() - parsed.time > CONFIG.listCacheSeconds * 1000) return null;
+
+    // JSON.stringify muuttaa Date-oliot merkkijonoiksi eika JSON.parse palauta
+    // niita. Muunnetaan date-kentta takaisin Date-olioksi, muuten sivun
+    // uudelleenlataus kaatuu virheeseen "date.getTime is not a function".
+    parsed.reports.forEach(function (report) {
+      if (report && report.date !== undefined && !(report.date instanceof Date)) {
+        report.date = new Date(report.date);
+      }
+    });
+
     return parsed.reports;
   } catch (e) { return null; }
 }
@@ -269,7 +289,7 @@ function saveToCache(feedId, reports) {
 }
 
 function fetchLocalManifest(feedId) {
-  return fetch(CONFIG.dataPath + '/' + feedId + '/index.json', { cache: 'no-store' })
+  return fetch('../' + CONFIG.dataPath + '/' + feedId + '/index.json', { cache: 'no-store' })
     .then(function (res) {
       if (!res.ok) throw new Error('Paikallista listaa ei löytynyt (' + res.status + ')');
       return res.json();
@@ -432,8 +452,10 @@ function buildReportButton(report) {
 
 function reportSourceUrl(report) {
   if (report.downloadUrl) return report.downloadUrl;
-  // Paikallinen kehitys: data/ on docs/:n alikansio
-  return CONFIG.dataPath + '/' + state.activeFeed + '/' + report.file;
+  // Paikallinen kehitys: docs/ ja data/ ovat saman repositorion juuressa, joten
+  // polku menee docs/:n ulkopuolelle (../data). Tuotannossa kaytetaan aina
+  // GitHubin download_url-osoitetta, joten tama haara on vain localhostille.
+  return '../' + CONFIG.dataPath + '/' + state.activeFeed + '/' + report.file;
 }
 
 function setStatus(message, isError) {

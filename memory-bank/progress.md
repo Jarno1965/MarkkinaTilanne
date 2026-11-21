@@ -1,4 +1,137 @@
-# Progress Log
+﻿# Progress Log
+
+## 2026-11-21 – Korjattu: sivun uudelleenlataus kaatoi raporttilistan (date.getTime)
+**Done:**
+- Käyttäjä raportoi: raporttia katsoessa selaimen "Lataa tämä sivu uudelleen" tuotti virheen
+  `date.getTime is not a function` ja ilmoituksen "Raporttilistaa ei voitu hakea".
+- Juurisyy: `docs/app.js`:n `saveToCache`/`listFromCache` käyttävät `sessionStorage`-välimuistia,
+  jossa `JSON.stringify` muuttaa `report.date`-olion merkkijonoksi eikä `JSON.parse` palauta
+  tyyppiä. `sessionStorage` säilyy uudelleenlatauksen yli, joten `formatDateLong` teki
+  `date.getTime()` merkkijonolle ja heitti `TypeError`in, joka päätyi `selectFeed`-ketjun
+  `.catch`-haaraan.
+- "Päivitä lista" -nappi ei kaatunut, koska `refresh()` käyttää `force: true` ja ohittaa
+  välimuistin.
+- Korjaus: (1) `listFromCache` palauttaa `report.date`-kentät `Date`-olioina,
+  (2) `formatDateLong` sietää sekä `Date`-olion että merkkijonon.
+- Testi: `tests/site-check.mjs` sai välimuistipolun testin (hakee listan toisen kerran
+  peräkkäin kuten selaimen reload). Testi kaatui ennen korjausta samaan virheeseen ja menee
+  läpi korjauksen jälkeen: **34/34 OK**.
+
+**Next:**
+- Tarkista selaimessa (Live Server) että uudelleenlataus toimii myös oikealla sivulla.
+
+## 2026-11-21 – Sivuston paikallispolku, manifestit ja Lauantain renderResults
+**Done:**
+- Selvitettiin `tests/site-check.mjs`:n kaatuminen git-historiasta: commit `5266142` (18.11.)
+  poisti `../`-etuliitteen `docs/app.js`:n paikallisista poluista, kopioi `data/`-kansion `docs/`
+  alle ja korvasi dynaamisen valikon yksinkertaisella napilla – mutta testiä ei päivitetty.
+- `docs/app.js`: `fetchLocalManifest` ja `reportSourceUrl` lukevat taas juuren `data/`-kansiota
+  (`../data/...`); tuotanto käyttää edelleen GitHubin `download_url`-osoitetta. Lisäksi
+  `CONFIG.slots` ja `markkina`-syötteen slots saivat `viikkokatsaus` (📅) ja `viikkoennakko` (🔮).
+- `tests/site-check.mjs` päivitetty nykyiseen valikkorakenteeseen: **27/27 OK** (aiemmin 4 FAIL
+  ja kaatuminen).
+- **Uusi `tests/make-manifests.mjs`** pitää `data/<syöte>/index.json`-manifestit ajan tasalla
+  (markkina 26, media 13 raporttia). Aiemmin media-manifesti listasi 6 tiedostoa 13:sta.
+- **Lauantain `renderResults`-korjaus** (sama kuin Sunnuntaissa): `tools/step13_compact.js`,
+  `Lauantai.json`-peili, Activepieces-työnkulku ja julkaisu. Uusi
+  `tests/test_step13_compact.mjs` testaa molempien työnkulkujen tiivistyskoodin (22/22 OK) ja
+  `test_lauantai.mjs` sai oman tarkistuksen (46/46 OK). `ap_test_step step_13` SUCCEEDED.
+- **`build5_lauantai.ps1` sai vartion:** se lukee lähdetiedostonaan `Sunnuntai.json`:ia, joka
+  korvattiin uudella 17 askeleen versiolla, joten skripti olisi tuottanut hiljaa väärän tuloksen.
+  Nyt se heittää selkeän virheen. Uudelleennumerointia ei enää tarvita.
+- `docs/data/` (15 tiedostoa: 13 vanhaa näyteraporttia + 2 manifestia) todettiin käyttämättömäksi
+  jäänteeksi ja **poistettiin käyttäjän pyynnöstä**. Kohde varmistettiin tarkalla polulla, ja
+  kaikki tiedostot olivat git-seurattuja, joten ne löytyvät historiasta. `docs/` sisältää nyt vain
+  sivuston omat tiedostot. Savutesti edelleen 27/27.
+- Dokumentaatio päivitetty: `README.md` (paikallinen testaus, manifestit, docs/data-huomio,
+  testikomennot), `activepieces/Raporttien-ohje.md` (build5-vanhennusilmoitus, renderResults).
+
+**Verifiointi:** `site-check.mjs` 27/27 · `test_sunnuntai.mjs` 75/75 · `test_lauantai.mjs` 46/46 ·
+`test_step13_compact.mjs` 22/22 · `check.ps1` kunnossa · Lauantai julkaistu uudelleen.
+
+**Next:**
+- Harkitse `build5_lauantai.ps1`:n täyttä uudelleenkirjoitusta: "päivitä Lauantai.json
+  `tools/`-kansion tiedostoista" (vaatii Lauantain kehotteiden tallentamisen txt-tiedostoihin).
+- Seuraa ensimmäistä oikeaa sunnuntaiajoa klo 08:00.
+
+## 2026-11-21 – Sunnuntai-viikkoennakko (eteenpäin katsova spekulaatioraportti)
+**Done:**
+- Rakennettu Activepieces-työnkulku **Sunnuntai** (`yltf57XbPcRVIzKKBziRh`): eteenpäin katsova
+  viikkoennakko, joka kertoo mitä alkavalla viikolla tapahtuu, mitä markkina odottaa ja millaisia
+  skenaarioita viikosta voi rakentaa. Ajo sunnuntaisin klo 08:00, julkaistu ja ENABLED.
+- Toteutus **kloonaamalla toimiva Lauantai-työnkulku** (`ap_duplicate_flow`), jolloin kaikki
+  17 askelta, koodiaskeleet ja yhteydet (Tavily, OpenRouter, GitHub, Firecrawl) säilyivät.
+  Sen jälkeen muutettiin vain sisältö: haut, poimija, tiivistys, kehotteet ja tallennuspolku.
+- Raportin uusi rakenne: kärjessä "Alkavan viikon tärkein ajuri ja maanantain avaus", sitten
+  talouskalenteri, tuloskausi, USA, Eurooppa ja Helsinki, lähtötilanne-taulukko sekä **pakollinen
+  spekulaatio-osio** (kolme skenaariota, yllätyskortti, seurattavat kohteet) ja Lähteet.
+- Uudet tiedostot: `tools/build6_sunnuntai.ps1`, `tools/txt_sunnuntai_*.txt` (4 kpl),
+  `tools/step13_compact_sunnuntai.js`, `tools/step14_sunnuntai.js`,
+  `tools/step17_startpoint_quotes.js`, `tools/test_sunnuntai.mjs`,
+  `tools/test_step13_sunnuntai.mjs`, `prompts/markkina/viikkoennakko.md`.
+- **Korjattu bugi 1 (menneet päivät):** ensimmäinen testiajo esitti keskiviikon 18.11. tulevan
+  viikon kalenterissa. Kehotteeseen lisättiin sääntö alkavan viikon rajauksesta ja
+  päivämäärätarkistuksesta; korjauksen jälkeen kalenterissa oli vain 23.–27.11. tapahtumat.
+- **Korjattu bugi 2 (`[object Object]`, periytyi Lauantaista):** tiivistys liitti tapahtumahakujen
+  tulokset tekstiin suoralla liitoksella. Uusi `renderResults` purkaa listat ja JSON-merkkijonot
+  luettaviksi riveiksi. Sama bugi on yhä Lauantaissa (harmiton, korjattavissa samalla koodilla).
+- **Korjattu bugi 3 (PowerShell 5.1 + BOM):** ilman UTF-8-BOM:ia `build6_sunnuntai.ps1` luki
+  ääkköset väärin, jolloin `Lisätty` ja `NÄKYMÄ` vääristyivät tiedostoon.
+- `check.ps1` päivitetty hyväksymään sekä "ODOTETUT TAPAHTUMAT (seurantalista" että
+  "ALKAVAN VIIKON TAPAHTUMAT (seurantalista".
+- Dokumentaatio: `Raporttien-ohje.md` sai luvun "Sunnuntai (viikkoennakko)", README päivitettiin
+  (slugit, testikomennot) ja `prompts/markkina/viikkoennakko.md` luotiin.
+
+**Verifiointi:** testiajo SUCCEEDED 148,3 s → `data/markkina/2026-11-21-1313-viikkoennakko.html`
+(35,1 kB, 49 Yahoo-linkkiä, Lähteet-osio, spekulaatio-laatikko, ei roskaa). `test_sunnuntai.mjs`
+75/75 OK, `test_step13_sunnuntai.mjs` 11/11 OK, `test_lauantai.mjs` 45/45 OK, `check.ps1` kunnossa.
+
+**Next:**
+- Seuraa ensimmäistä oikeaa sunnuntaiajoa klo 08:00 ja tarkista
+  `data/markkina/...-viikkoennakko.html`.
+- Harkitse saman `renderResults`-korjauksen viemistä myös Lauantain `step13_compact.js`:ään.
+- Jos kalenteri joskus vielä näyttää menneitä päiviä, tiukenna sääntöä 6 tai rajaa `step_5`:n
+  hakua lyhyempään aikaikkunaan.
+
+## 2026-11-21 – Lauantai-viikkokatsaus ja ilmainen webscraper (Firecrawl)
+**Done:**
+- Rakennettu uusi Activepieces-työnkulku **Lauantai** (viikkokatsaus): kerää kuluneen viikon
+  merkittävimmät markkinatapahtumat ja markkinoihin vaikuttaneet asiat, ajo lauantaisin klo 09:00.
+- Webscraperiksi valittu **Firecrawl** (ilmainen taso: 1 000 krediittiä/kk, 1 sivu = 1 krediitti).
+  Uusi askel `step_19` (`search_web`, `includePageContent: true`) hakee viikon artikkelien
+  kokotekstit markdownina; `step_20` (Code) siistii tuloksen LLM:lle.
+- Firecrawl-kulutusarvio: n. 5–6 krediittiä/viikko eli alle 30 krediittiä kuukaudessa.
+- `step_19` ja `step_20` asetettu `continueOnFailure = true`: jos scraper ei vastaa, raportti
+  syntyy silti Tavily-hakujen pohjalta.
+- Tiedostot: `activepieces/markkina/Lauantai.json` (rakennettu `tools/build5_lauantai.ps1`:llä
+  `Sunnuntai.json`-pohjasta), `tools/step21_scrape.js`, `tools/test_lauantai.mjs`,
+  `prompts/markkina/viikkokatsaus.md`.
+- Kehotteet muutettu: "sunnuntain viikkoennakko" -> "lauantain viikkokatsaus", kärkilaatikko
+  "Viikon tärkein markkina-ajuri", uusi osio "VIIKON ARTIKKELIEN KOKOTEKSTIT".
+- Tallennus: `data/markkina/YYYY-MM-DD-HHMM-viikkokatsaus.html`.
+- Päivitetty `activepieces/Raporttien-ohje.md` (uusi luku "Lauantai (viikkokatsaus)" ja
+  Firecrawl-osio), `README.md` ja `tools/check.ps1`.
+
+**Verification:**
+- `node test_lauantai.mjs` 28/28 OK.
+- `check.ps1` kaikki liitokset kunnossa (myös Lauantai.json).
+- Build-skripti kirjoittaa tiedoston UTF-8 BOM -koodauksella.
+
+**Next:**
+- Työnkulku on julkaistu ja ENABLED (flowId `wuTvMpZibKnuSvwGv0Ex6`). Seuraa ensimmäistä
+  lauantaiajoa klo 09:00 ja tarkista `data/markkina/...-viikkokatsaus.html`.
+- Firecrawl pysyy vain Lauantaissa (ei arkiraporteissa): krediittiraja ja arkiraporteilla on jo
+  RSS, Nasdaq Nordic -tiedotteet ja Yahoo-kurssit. Katso perustelut `activeContext.md`:stä.
+- Viikkoluvut (step_17) ja Eurooppa-osio ovat nyt pakollisia; tarkista seuraavasta ajosta,
+  että taulukko ja värit säilyvät ja että uutisten päivälukuja ei esitetä viikon lukuna.
+- Linkit ja lähteet (step_13_compact.js + kehotteen sääntö): tarkista, että indeksit ovat linkkejä
+  myös leipätekstissä ja että "Lähteet"-osio syntyy joka ajossa.
+
+**Korjattu (ennalta olemassa oleva este):** vientiskripti `activepieces/tools/import-to-activepieces.ps1`
+kaatui tiedostoon `media/Polish-Media-Monitoring.json` (tyhjä `flows`), ja kaksi mediakansion
+luonnosta jakoi `externalId`:n `markkina/Aamuraportti.json`:n kanssa. Skripti ohittaa nyt
+varoituksella tiedostot, joilta puuttuu displayName tai joiden externalId on jo käytössä, ja
+käsittelee `markkina`-kansion ensin. `-Offline` läpäisee (6 työnkulkua, Lauantai mukana).
 
 ## 2026-11-13 – Planning Session
 **Done:**
@@ -326,3 +459,111 @@ Luotu kolme erillistä JavaScript-moduulia `activepieces/media/tools/`-kansioon:
 **Next:**
 - Seuraa ensimmäiset automaattiajot (11:00 ja 18:00) ja tarkista, ettei mukaan tule rutiinitiedotteita.
 - Säädä pisteytyskerrointa, jos kynnys 6 tuottaa liikaa tai liian vähän osumia eri päivinä.
+
+## 2026-11-19 – "Marokko puhuu" -mediakatsaus (ranska + arabia)
+
+**Done:**
+- Luotu uusi Activepieces-työnkulku `Marokko puhuu` (id `K9PIWWToDiTzrB7uIbeYD`) Media-kansioon, aikataulu maanantai 14:00 Europe/Helsinki.
+- Rakenne kopioitu työnkulusta "Ranska puhuu": Date Helper ×2, Tavily ×2, OpenRouter `deepseek/deepseek-v4.1-flash`, Code (HTML + Base64), GitHub PUT `data/media/{timestamp}-marokko-puhuu.html`.
+- Kaksi kielihaarukkaa: `step_3` ranskankieliset marokkolaiset mediat, `step_4` arabiankieliset mediat. Molemmissa `topic: "general"` + maakohtainen `include_domains`.
+- Kehote kirjoitettu suomeksi: hyväksyy ranskan ja arabian, hylkää englanninkieliset versiot ja naapurimaiden/kansainväliset mediat, sallii päivämäärän päättelyn sisällöstä/URL:stä.
+
+**Verification:**
+- `ap_validate_flow` 8/8.
+- Ensimmäinen testiajo tuotti vain 1 lähteen (jobsquare.ma) → raportti poistettu commitilla `13d2c03`.
+- Toinen testiajo `gviNU3cv7Z7MkWgs41zL7` SUCCEEDED 40,1 s → `data/media/2026-11-19-1935-marokko-puhuu.html` (12,4 kB), 10 lähdettä: fr.hespress.com, fr.le360.ma, barlamane.com/fr, lopinion.ma, al3omk.com, hespress.com, ahdath.info.
+- Flow julkaistu (LOCK_AND_PUBLISH) ja ENABLED.
+
+**Next:**
+- Seuraa ensimmäinen maanantain 14:00-automaattiajo ja tarkista lähdeluettelo.
+- Harkitse paikallisen flow-JSONin vientiä repoon, kun Activepieces-API-avain on käytettävissä.
+
+## 2026-11-19 – Mediakatsausten hakuikkuna kuukauteen (30 vrk)
+
+**Done:**
+- Kaikki 7 "…puhuu"-työnkulkua (Puola, Venäjä, Saksa, Ranska, Ruotsi, Viro, Marokko) päivitetty: `step_2` `- 14 day` → `- 30 day`.
+- Tavily-askelten nimet "(14 vrk)" → "(30 vrk)".
+- Kehotteet päivitetty: 14 vrk → 30 vrk, "Kahden viikon polttavimmat puheenaiheet" → "Kuukauden polttavimmat puheenaiheet"; Ruotsin ja Venäjän yleishakujen päivämääräpäättely 30 vrk:iin.
+- Marokon vanha 14 vrk:n testiraportti poistettu (commit 99a78b0).
+
+**Verification:**
+- ap_validate_flow 7/7, 11/11, 8/8, 8/8, 8/8, 8/8, 8/8.
+- Kaikki julkaistu ja ENABLED.
+- Testiajo SBGHcRbQw5BdTOc8Irh9f SUCCEEDED 62,5 s: step_2 = 2026-10-20, raportti data/media/2026-11-19-1949-marokko-puhuu.html (11,9 kB), otsikko 20.10.–19.11.2026, 10 lähdettä.
+
+**Next:**
+- Seuraa seuraavat maanantain ajot ja tarkista, ettei kuukausi-ikkuna tuo liikaa vanhentuneita aiheita.
+
+## 2026-11-19 – "Brasilia puhuu" ja "Argentiina puhuu" -mediakatsaukset
+
+**Done:**
+- Luotu kaksi uutta työnkulkua Media-kansioon: Brasilia puhuu (`rbCrjv7PYWAsZdPuwVn6L`, ma 15:00) ja Argentiina puhuu (`fZ2g3mAAdJa9Czu6K8PAO`, ma 16:00), 30 vrk ikkunalla.
+- Rakenne 1:1 Saksa/Ranska: Date Helper ×2, Tavily valtamedia + riippumattomat mediat, OpenRouter `deepseek/deepseek-v4.1-flash`, Code, GitHub PUT `data/media/`.
+- Hakustrategia: `topic: general` + `time_range: month` + `include_domains`. `start_date` jätetty pois, koska Tavily palauttaa 400:n jos `time_range` ja `start_date`/`end_date` ovat yhtä aikaa.
+- Promptit: portugali (Brasilia) / espanja (Argentiina); hylkää englanninkieliset versiot sekä Portugalin, Espanjan, Meksikon, Kolumbian, Chilen ja Uruguayn mediat.
+
+**Verification:**
+- `ap_validate_flow` 8/8 kummallekin; Media-kansio 9/9 ja yhteydet ok.
+- Testiajo Brasilia `weqLBK87fyTZGv71uGUQq` SUCCEEDED 56,9 s → `2026-11-19-2000-brasilia-puhuu.html` (12,3 kB), 10 lähdettä.
+- Testiajo Argentiina `LA2r7Jv7CrexDXuqqpy3C` SUCCEEDED 71,3 s → `2026-11-19-2002-argentiina-puhuu.html` (12,9 kB), 10 lähdettä.
+- Molemmat julkaistu ja ENABLED.
+
+**Next:**
+- Seuraa maanantain 15:00 ja 16:00 ajoja; tarkista erityisesti El Destapen lifestyle-osumien määrä.
+
+## 2026-11-19 – Mediakatsaukset kuukausiajoon
+
+**Done:**
+- Kaikki 9 Media-kansion "…puhuu"-työnkulkua vaihdettu triggeriin `every_month`, `day_of_the_month: 1`, Europe/Helsinki; porrastetut tunnit 08–16 säilytetty.
+- Triggerien nimeksi "Kuukausittain (1. päivä klo HH:00)".
+- Hakuikkuna säilyy 30 vrk:nä (`step_2` −30 day; Brasilia/Argentiina `time_range: month`).
+
+**Verification:**
+- `ap_validate_flow({folderName: "Media"})` → 9 työnkulkua, yhteydet ok.
+- Kaikki 9 julkaistu ja ENABLED.
+- Marokon trigger tarkistettu: `every_month`, day 1, hour 14, Europe/Helsinki.
+
+**Next:**
+- Ensimmäinen kuukausiajo 1.12.2026 klo 08–16; tarkista silloin, että kaikki 9 raporttia syntyvät.
+
+## 2026-11-20 – "Kiina puhuu" -mediakatsaus (kiina, manner-Kiina)
+
+**Done:**
+- Luotu uusi Activepieces-työnkulku `Kiina puhuu` (id `zbIbozMotgMxBmITVtQ3D`) Media-kansioon, aikataulu kuukauden 1. päivä klo 17:00 Europe/Helsinki (porrastus jatkuu Argentiinan 16:00 jälkeen).
+- Rakenne kopioitu `ap_duplicate_flow`-kutsulla työnkulusta "Saksa puhuu": Date Helper ×2, Tavily ×2, OpenRouter `deepseek/deepseek-v4.1-flash`, Code (HTML + Base64 + aikaleimapalkki), GitHub PUT `data/media/{timestamp}-kiina-puhuu.html`. Yhteydet säilyivät duplikaatissa.
+- `step_3` = uutisportaalit ja puolueen media (thepaper, sina, 163, qq, sohu, ifeng, chinanews, cctv, people, news.cn); `step_4` = talous-, aikakaus- ja teknologiamedia (caixin, yicai, jiemian, infzm, lifeweek, latepost, nbd, eeo, stcn, cls, caijing, 36kr, huxiu, tmtpost, 21jingji). Molemmissa `topic: general` + `time_range: month` + `language: zh`.
+- Kehote kirjoitettu suomeksi: vain manner-Kiinan kiinankieliset mediat; hylkää englanninkieliset versiot ja Hongkongin, Taiwanin, Singaporen sekä ulkomaisten toimittajien kiinankieliset palvelut, koonti- ja listasivut sekä vanhat uudelleenjulkaisut. Merkitsee lähdetyypin ja kertoo avoimesti valtion ohjauksesta.
+
+**Verification:**
+- `ap_validate_flow` 8/8 valid.
+- Tavily-testit: `topic: news` + `start_date` → vain 2 tulosta (puolueen tiedotteita); `topic: general` + `time_range: month` + `include_domains` → 10–15 käyttökelpoista tulosta. `guancha.cn` pudotettu, koska `user.guancha.cn` palautti itsejulkaisuja ilman päivämäärää (sisältöä vuodelta 2021).
+- `ap_test_flow` `6iItvhyaJWnJXHZNCXXAE` SUCCEEDED 119,4 s → `data/media/2026-11-20-0949-kiina-puhuu.html` (10,0 kB), 10 lähdettä (news.cn, finance.cctv.com, sc.people.com.cn, sohu, 163, finance.sina.com.cn ×2, huxiu ×2, 21jingji), aikaväli 21.10.–20.11.2026, ei `<script>`-tageja.
+- Julkaistu (LOCK_AND_PUBLISH) ja ENABLED.
+
+**Next:**
+- Seuraa 1.12.2026 klo 17:00 automaattiajo (kymmenes katsaus); tarkista lähdeluettelo ja ettei mukaan tule päiväämättömiä itsejulkaisuja.
+- Tarkista testiraportin yksittäiset luvut (esim. PPI) ja tiukenna kehotetta tarvittaessa.
+
+**Lisäys 20.11.2026 – Weibo mukaan, LIHKG pois:**
+- Lisätty `step_8` (Tavily, `include_domains`: weibo.com, weibo.cn) `step_4`:n ja `step_5`:n väliin; ketju on nyt `step_4` → `step_8` → `step_5` (`ap_validate_flow` 9/9).
+- Kehote: uusi sääntö 11 (Weibo enintään 3 lähdettä, aina anekdotaalisesti, ei faktoina; haku- ja koontisivut, mainosraportit ja päiväämättömät postaukset hylätään) sekä lähderaja "tasan 10, enintään 2 per media".
+- Syy kiristykseen: ensimmäinen Weibo-ajo (`Qa7ymRh9v69ae8X7wRAZg`) tuotti 12 lähdettä, joista 6 huxiu/21jingji-ketjusta.
+- Testiajo `muJ1SXI896mtRJtiB5c63` SUCCEEDED 63,6 s → `data/media/2026-11-20-1018-kiina-puhuu.html` (10,0 kB), tasan 10 lähdettä, 1 Weibo-lähde, max 2 per media.
+- **LIHKG (lihkg.com) jätettiin pois:** Hongkongin foorumi, kantonikiina; Tavily palautti 1–2 ketjua kuukaudessa ilman `published_date`-kenttää ja ilman aikarajausta vain vuosia vanhoja ketjuja (thread-ID 357k–386k). Jos Hongkong halutaan mukaan, tehdään oma "Hongkong puhuu" -katsaus.
+- Julkaistu uudelleen (LOCK_AND_PUBLISH) ja ENABLED.
+## 2026-11-20 – Markkinakatsausten linkit leipätekstiin
+**Done:**
+- Kello 18 (`TR0JVsYppLuOlRMEjadTI`) step_3 sääntö 9: linkit taulukon lisäksi korostuslaatikkoon ja kaikkeen leipätekstiin (Wall Street, Eurooppa/Helsinki, korot, raaka-aineet, valuutat).
+- Kello 11 (`wjAQ4F3wSRVcgmMP40k2H`) step_3 sääntö 9: linkit kaikkiin osioihin ja myös yksittäisiin osakkeisiin; step_10: uusi sääntö 7 (LINKIT), LOPETUS → 8.
+- Aamuraportti NEW (`LXNbIZEZQmW5wkUA7KHyZ`): step_3 sääntö 8 laajennettu leipätekstiin; step_10: uusi sääntö 7 (LINKIT), LOPETUS → 8.
+- Sääntöjen muoto: vain annetut Yahoo Finance -osoitteet, ei keksittyjä linkkejä; kunkin kohteen nimi linkitetään osiossa ensimmäisellä maininnalla.
+- Paikalliset JSON-tiedostot ja `tools/txt_eurooppa_system.txt` / `txt_ilta_system.txt` päivitetty vastaamaan julkaistuja kehotteita. `Raporttien-ohje.md`: uusi kohta "Kurssilinkit" + korjatut virheet 20.11.2026.
+
+**Verification:**
+- `ap_validate_flow` Kello 11: 19/19 valid, Kello 18: 18/18 valid; molemmat LOCK_AND_PUBLISH.
+- Kehotteet tarkistettu `ap_read_step_settings`-kutsulla (uusi sääntö näkyy julkaistussa versiossa).
+- `ap_test_step` Kello 18 step_3 SUCCEEDED, mutta testiajo käytti tyhjiä esimerkkitietoja, joten se ei todentanut linkkejä; oikea varmistus tulee klo 18:00 automaattiajosta.
+
+**Next:**
+- Tarkista 20.11.2026 klo 18:00 raportista (`data/markkina/…-ilta.html`), että indeksit/korot/raaka-aineet/valuutat ovat linkkejä myös leipätekstissä.
+- Jos malli jättää linkin pois jostain osiosta, kiristä kyseisen step_3:n sääntöä (esim. vaadi linkki jokaiseen kappaleeseen, jossa kohde mainitaan).

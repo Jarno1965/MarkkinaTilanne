@@ -1,6 +1,18 @@
 {
   "_comment": "Vain paikalliseen kehitykseen. Sisältää data/media/-kansion tiedostonimet, jotta sivustoa voi testata ennen kuin repositorio on julkaistu GitHubissa. Tämä tiedosto ei ole käytössä tuotannossa. Jokaisella syötteellä on oma index.json.",
   "files": [
-    "2026-11-18-1954-puola-puhuu.html"
+    "2026-11-18-1954-puola-puhuu.html",
+    "2026-11-18-2019-venaja-puhuu.html",
+    "2026-11-18-2034-ranska-puhuu.html",
+    "2026-11-18-2059-viro-puhuu.html",
+    "2026-11-18-2100-ruotsi-puhuu.html",
+    "2026-11-18-2104-saksa-puhuu.html",
+    "2026-11-19-1949-marokko-puhuu.html",
+    "2026-11-19-2000-brasilia-puhuu.html",
+    "2026-11-19-2002-argentiina-puhuu.html",
+    "2026-11-20-0949-kiina-puhuu.html",
+    "2026-11-20-1017-kiina-puhuu.html",
+    "2026-11-20-1018-kiina-puhuu.html",
+    "2026-11-20-1046-kiina-puhuu-gemini.html"
   ]
 }
