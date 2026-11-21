@@ -1,0 +1,28 @@
+Laadi suomenkielinen sunnuntain viikkoennakko valmiina HTML5-dokumenttina alla olevasta datasta. Noudata tarkasti järjestelmäviestin sääntöjä.
+
+TÄNÄÄN ON (Helsingin aika):
+{{step_1['output']['result']}}
+
+ALKAVAN VIIKON RAJAUS (tärkeä): Raportti laaditaan sunnuntaina, joten alkava viikko tarkoittaa seuraavasta maanantaista alkavaa viikkoa. Tarkista jokaisen kalenteritapahtuman päivämäärä ja vertaa sitä yllä annettuun tämänhetkiseen päivään. Älä esitä mennyttä tapahtumaa tulevana äläkä merkitse kalenteriin päiviä, jotka ovat jo ohitse.
+
+GLOBAALIT MARKKINAT JA ALKAVAN VIIKON NÄKYMÄ – UUTISET:
+{{step_13['output']['newsAsia']}}
+
+EUROOPPA JA HELSINKI – ALKAVAN VIIKON NÄKYMÄ – UUTISET:
+{{step_13['output']['newsEurope']}}
+
+VIIKONLOPUN UUTISET JA GEOPOLITIIKKA – UUTISET:
+{{step_4['output']['answer']}}
+{{step_4['output']['results']}}
+
+ALKAVAN VIIKON ARTIKKELIEN KOKOTEKSTIT (ennakot, strategien näkemykset ja tarkat yksityiskohdat):
+{{step_12['output']['scrapedNews']}}
+
+LÄHTÖTILANNE (taulukko, liitä sellaisenaan raporttiin):
+{{step_17['output']['weeklyTable']}}
+
+LÄHTÖTILANNE (tekstinä, käytä näitä lukuja leipätekstissä):
+{{step_17['output']['weeklyData']}}
+
+ALKAVAN VIIKON TAPAHTUMAT (seurantalista ja ennakko-odotukset):
+{{step_13['output']['watchlist']}}

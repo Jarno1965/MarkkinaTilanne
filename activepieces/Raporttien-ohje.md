@@ -22,7 +22,8 @@ juureen (`MarkkinaTilanne/`), ellei toisin mainita.
 | `Aamuraportti NEW.json` | Aamuraportti NEW | arkisin klo 06:00 (sama aika, eri työnkulku, ks. oma luku) |
 | `Kello 11 Eurooppa.json` | Kello 11 Eurooppa | arkisin klo 11:00 |
 | `Kello 18 raportti.json` | Kello 18 raportti | arkisin klo 18:00 |
-| `Sunnuntai.json` | Sunnuntai | sunnuntaisin klo 07:00 |
+| `Sunnuntai.json` | Sunnuntai (viikkoennakko) | sunnuntaisin klo 08:00 |
+| `Lauantai.json` | Lauantai (viikkokatsaus) | lauantaisin klo 09:00 |
 
 **Kello 22 raportti poistettiin käytöstä.** Se on yhä Activepieces-instanssissa, joten pysäytä tai poista se käyttöliittymässä. Tuontiskripti ohittaa sen tiedoston (`$excluded`), joten se ei enää päivity. Vanhat versiot löytyvät git-historiasta.
 
@@ -60,7 +61,265 @@ step_5  Code                      HTML + otsikkorivi tiedostoksi
 step_4  GitHub                    tallennus
 ```
 
-Sunnuntaissa ei ole step_6:ää eikä step_18:aa, koska markkinat ovat kiinni eikä raportissa ole kurssitaulukkoa.
+## Sunnuntai (viikkoennakko)
+
+`Sunnuntai.json` on **eteenpäin katsova** viikkoennakko: se kertoo, mitä alkavalla viikolla
+tapahtuu, mitä markkina odottaa ja millaisia skenaarioita viikosta voi rakentaa. Lauantain
+viikkokatsaus katsoo taaksepäin, Sunnuntai eteenpäin — sama runko, eri suunta.
+
+Työnkulku rakennettiin **kloonaamalla toimiva `Lauantai`-työnkulku** Activepiecesin MCP-työkaluilla
+(`ap_duplicate_flow`), joten kaikki 17 askelta, koodiaskeleet ja yhteydet (Tavily, OpenRouter,
+GitHub, Firecrawl) tulivat mukaan. Sen jälkeen vain sisältö muutettiin eteenpäin katsovaksi.
+Työnkulun id on `yltf57XbPcRVIzKKBziRh`.
+
+```
+step_1  Date Helper               pvm ja kellonaika
+step_2  Tavily                    globaali ja USA:n viikkonäkymä (week ahead)
+step_3  Tavily                    Euroopan ja Pohjoismaiden viikkonäkymä
+step_4  Tavily                    viikonlopun uutiset ja geopolitiikka (2 vrk)
+step_5  Tavily                    alkavan viikon kalenteri ja odotukset
+step_6  LLM                       poimii enintään 3 TULEVAA tapahtumaa JSON:na
+step_7  Code                      JSON -> hakulauseet, tikkerit ja seurantalista
+step_8  Tavily                    tapahtuman 1 ennakko-odotukset
+step_9  Tavily                    tapahtuman 2 ennakko-odotukset
+step_10 Tavily                    tapahtuman 3 ennakko-odotukset
+step_17 Code                      lähtötason kurssit (Yahoo: muutos viikon takaa + linkit + värit)
+step_11 Firecrawl                 alkavan viikon ennakot ja strategien näkemykset
+step_12 Code                      siistaa Firecrawl-tuloksen
+step_13 Code                      tiivistys LLM:lle (eteenpäin katsova sanamuoto)
+step_14 LLM                       HTML-raportti + spekulaatio-osio
+step_15 Code                      HTML + otsikkorivi tiedostoksi
+step_16 GitHub                    tallennus polkuun ...-viikkoennakko.html
+```
+
+Ajoaika on **sunnuntaisin klo 08:00** (Europe/Helsinki) ja raportti julkaistaan polkuun
+`data/markkina/YYYY-MM-DD-HHMM-viikkoennakko.html` (sama slug kuin vanhalla Sunnuntailla).
+
+### Raportin rakenne
+
+Kehote (`step_14`, tiedosto `tools/txt_sunnuntai_system.txt`) määrää osiot:
+
+a) Alkavan viikon tärkein ajuri ja maanantain avaus (korostuslaatikko)
+b) Alkavan viikon talouskalenteri ja keskuspankit
+c) Tuloskausi ja yritystapahtumat
+d) Yhdysvallat
+e) Eurooppa ja Helsingin pörssi
+f) Lähtötilanne: viimeisin päätös ja viikon muutos (kurssitaulukko sellaisenaan)
+g) **Spekulaatio: skenaariot ja pelikirja alkavalle viikolle**
+h) Lähteet
+
+### Spekulaatio-osio
+
+Osio on pakollinen ja se alkaa aina täsmälleen samalla HTML-rakenteella (keltainen katkoviivalaatikko,
+`background:#fffbeb`, `border:2px dashed #f59e0b`) ja samalla vastuuvapautuksella kuin Kello 11
+-raportin spekulaatio: *"Tämä osio on toimittajan spekulaatiota, ei sijoitusneuvontaa eikä ennuste."*
+Sisältö:
+
+- **Kolme skenaariota** alkavalle viikolle: positiivinen (helpotusralli), perusskenaario ja
+  negatiivinen (myyntiaallon jatkuminen), jokaisessa edellytykset, eniten liikkuvat indeksit ja
+  sektorit sekä kumoutumisehto. Muoto "Jos..., niin...".
+- **Yllätyskortti:** yksi alihinnoiteltu riski tai yllätysmahdollisuus.
+- **Seurattavat kohteet:** 2–3 spekulatiivista teemaa perusteluineen, aikajänteineen ja riskeineen.
+
+### Alkavan viikon rajaus (tärkeä)
+
+Koska uutishaut palauttavat viikon ajalta myös **menneen** viikon kalenterimerkintöjä, kehotteessa on
+erillinen sääntö: *"Alkava viikko tarkoittaa seuraavasta maanantaista alkavaa viikkoa. Tarkista
+jokaisen tapahtuman päivämäärä ja vertaa sitä annettuun tämänhetkiseen päivään. Älä koskaan esitä
+mennyttä tapahtumaa tulevana."* Sama muistutus on myös käyttäjäviestissä heti päivämäärän alla.
+
+Ilman tätä sääntöä ensimmäinen testiajo esitti keskiviikon 18.11. (mennyt) tulevan viikon
+kalenterissa. Korjauksen jälkeen raportti listasi vain 23.–27.11. tapahtumat.
+
+
+### Lähtötason kurssit (step_17)
+
+`step_17` (`tools/step17_startpoint_quotes.js`) hakee samat 19 instrumenttia kuin Lauantai, mutta
+laskee muutoksen **tasan viikon takaiseen päätökseen** aikaleiman perusteella (ei viittä
+kaupankäyntipäivää). Näin myös ympärivuorokautiset kohteet kuten Bitcoin antavat oikean viikon
+muutoksen. Taulukko liitetään raporttiin sellaisenaan osiossa "Lähtötilanne".
+
+### Linkit, lähteet ja eheys
+
+Samat säännöt kuin Lauantaissa: jokainen indeksi-, raaka-aine- ja valuuttamaininta on linkki Yahoo
+Financeen, jokainen uutisväite linkitetään lähteeseensä ja raportin lopussa on "Lähteet"-osio.
+`step_15` (`tools/step15_finalize.js`) sisältää katkeamistarkistuksen.
+
+### Sunnuntain omat kooditiedostot
+
+| Tiedosto | Tehtävä | Ero Lauantain vastaavaan |
+| --- | --- | --- |
+| `tools/step13_compact_sunnuntai.js` | tiivistys LLM:lle | seurantalista kertoo tulevista tapahtumista ja ennakko-odotuksista; `renderResults` muuntaa tapahtumahakujen listat luettavaksi tekstiksi (ei `[object Object]`) |
+| `tools/step14_sunnuntai.js` | tapahtumien JSON -> hakulauseet | varahakulauseet katsovat eteenpäin |
+| `tools/step17_startpoint_quotes.js` | lähtötason kurssit | viikon vertailu aikaleiman perusteella |
+
+Kehotteet ovat tiedostoissa `tools/txt_sunnuntai_system.txt`, `tools/txt_sunnuntai_user.txt`,
+`tools/txt_sunnuntai_extract_system.txt` ja `tools/txt_sunnuntai_extract_user.txt`.
+
+### Työnkulun muuttaminen
+
+Muutokset tehdään Activepiecesin käyttöliittymässä tai MCP-työkaluilla. Paikallinen `Sunnuntai.json`
+pidetään synkronissa ajamalla `tools/build6_sunnuntai.ps1`, joka rakentaa tiedoston `Lauantai.json`:stä
+ja lukee kehotteet ja koodit `tools/`-kansion tiedostoista. Skripti tarvitsee UTF-8-BOM:in, jotta
+PowerShell 5.1 lukee ääkköset oikein (muuten `Lisätty` ja `NÄKYMÄ` vääristyvät).
+
+**Huom `externalId`:** instanssin Sunnuntai on luotu kloonaamalla, joten sen `externalId` on uusi
+eikä tiedossa repossa. Tiedostossa on työnkulun historiallinen Sunnuntai-tunnus
+(`6mF0HkP7AU5NIFE2FASfv`), joten `import-to-activepieces.ps1` ei osu siihen `externalId`:llä vaan
+työnkulun nimellä "Sunnuntai".
+
+Testit: `node tools/test_sunnuntai.mjs` (75 tarkistusta) ja `node tools/test_step13_compact.mjs`
+(molempien viikonlopputyönkulkujen tiivistyskoodin yksikkötesti, 22 tarkistusta).
+
+## Lauantai (viikkokatsaus)
+
+`Lauantai.json` on lauantain viikkokatsaus: se kerää kuluneen viikon merkittävimmät
+markkinatapahtumat ja markkinoihin vaikuttaneet asiat ja julkaisee ne yhtenä HTML-raporttina.
+Rakenne on Sunnuntain kaltainen, mutta mukaan on lisätty ilmainen webscraper **Firecrawl**.
+
+Työnkulku on rakennettu **Activepiecesin MCP-työkaluilla** (kuten mediakatsaukset), joten sen
+askeleet on numeroitu juoksevasti `step_1`…`step_16`. Työnkulun id on `wuTvMpZibKnuSvwGv0Ex6`
+ja `metadata.externalId` on `d7K78m0VXNgIYpZrQtu8Q`.
+
+```
+step_1  Date Helper               pvm ja kellonaika
+step_2  Tavily                    viikon markkinayhteenveto (weekly wrap)
+step_3  Tavily                    viikon markkina-ajurit
+step_4  Tavily                    viikon merkittävimmät tapahtumat
+step_5  Tavily                    odotetut tapahtumat (tuleva viikko)
+step_6  LLM                       poimii enintään 3 tapahtumaa JSON:na
+step_7  Code                      JSON -> hakulauseet, tikkerit ja seurantalista
+step_8  Tavily                    tapahtuman 1 tulos ja reaktio
+step_9  Tavily                    tapahtuman 2 tulos ja reaktio
+step_10 Tavily                    tapahtuman 3 tulos ja reaktio
+step_17 Code                      viikon markkinaluvut (Yahoo: viikon muutos + linkit + värit)
+step_11 Firecrawl                 viikon artikkelien kokotekstit (search_web + markdown)
+step_12 Code                      siistaa Firecrawl-tuloksen
+step_13 Code                      tiivistys LLM:lle
+step_14 LLM                       HTML-raportti
+step_15 Code                      HTML + otsikkorivi tiedostoksi
+step_16 GitHub                    tallennus polkuun ...-viikkokatsaus.html
+```
+
+Ajoaika on lauantaisin klo 09:00 (Europe/Helsinki). Perjantain USA-kaupankäynti on silloin
+päättynyt, joten koko viikko on katsauksessa mukana. Raportissa ei ole erillistä kurssitaulukkoa,
+joten indeksien tasot ja prosentit esitetään vain jos ne mainitaan uutisissa.
+
+**Huom `step_13`:n syöteavaimista:** `step_7_answer`, `step_8_answer`, `step_15_answer`,
+`step_16_answer` ja `step_17_answer` ovat jaetun `tools/step9.js`-koodin vaatimia avainnimiä.
+Vain niiden arvot (viittaukset) noudattavat uutta numerointia.
+
+
+### Firecrawl: ilmainen webscraper
+
+`step_11` hakee viikon tärkeimmät artikkelit ja niiden **koko sivusisällön markdownina**
+yhdellä kutsulla (`search_web`, `includePageContent: true`). Näin LLM saa tiivistelmien
+lisäksi artikkelien tarkat yksityiskohdat.
+
+`step_12` (`tools/step12_scrape.js`) lukee Firecrawlin vastauksen **oikeasta polusta**
+(`data.news` / `data.web`, myös suora `news`/`web` varalla) ja siivoaa markdownista
+linkki- ja kuvasyntaksin sekä navigaatiorivit (valikot, "Skip to content", sisäänkirjautumis-
+kehotukset). Ilman tätä siivousta artikkelin alusta olisi tullut pelkkä sivustovalikko.
+
+- **Ilmainen taso:** 1 000 krediittiä/kuukausi, uusiutuu kuukausittain, ei luottokorttia.
+  Yksi haettu sivu = 1 krediitti. Lauantaiskatsaus kuluttaa noin 5–6 krediittiä/viikko
+  eli alle 30 krediittiä kuukaudessa.
+- **Yhteys:** Activepieces tarvitsee Firecrawl-yhteyden (API-avain). Maksuttomalla tasolla
+  yhteys luodaan työnkulun sisältä: avaa `step_11` → *Select a connection* →
+  *Create a connection* → liitä firecrawl.dev-sivulta kopioitu API-avain. Yhteyden
+  externalId on `Vdq5bftNVGbQ5xa1hEqxM` (projektikohtainen).
+- **Asetukset `step_11`:** `limit: 5`, `sources: ['news']`, `timeFilter: 'qdr:w'`
+  (viimeinen viikko), `includePageContent: true`, `timeout: 120000`.
+- **Vikasietoisuus:** `step_11` ja `step_12` on asetettu `continueOnFailure = true`, joten
+  jos Firecrawl ei vastaa (esim. krediitit loppuvat), raportti syntyy silti pelkkien
+  Tavily-hakujen pohjalta. Raportti ei siis koskaan jää syntymättä scraperin takia.
+- **Build-skripti:** `build5_lauantai.ps1` kirjoittaa `step_11`:lle yhteyden
+  `{{connections['Vdq5bftNVGbQ5xa1hEqxM']}}`. Yhteyden voi vaihtaa ympäristömuuttujalla
+  `FIRECRAWL_CONNECTION_ID` (piece-versio: `FIRECRAWL_PIECE_VERSION`, oletus `0.7.3`).
+
+### Työnkulun muuttaminen
+
+Koska työnkulku on rakennettu MCP:llä, muutokset tehdään Activepiecesin käyttöliittymässä
+tai MCP-työkaluilla (`ap_flow_structure`, `ap_read_step_settings`, `ap_update_step`,
+`ap_validate_flow`, `ap_test_flow`, `ap_lock_and_publish`). Paikallinen `Lauantai.json` pidetään
+synkronissa samalla tavalla (lue nykyinen asetus `ap_read_step_settings`-työkalulla, päivitä
+`ap_update_step`-työkalulla ja kopioi sama sisältö tiedostoon).
+
+> **`tools/build5_lauantai.ps1` on vanhentunut (21.11.2026).** Se rakensi `Lauantai.json`:n
+> vanhasta 14 askeleen `Sunnuntai.json`-pohjasta ja numeroi askeleet uudelleen. Sunnuntai
+> korvattiin samana päivänä uudella 17 askeleen eteenpäin katsovalla työnkululla, joten skriptin
+> lähde ei enää vastaa oletusta. Skripti heittää nyt virheen sen sijaan että tuottaisi hiljaa
+> väärän tuloksen. Uudelleennumerointi on jo tehty kertaalleen, joten sitä ei enää tarvita.
+> Sunnuntain puoli rakennetaan `tools/build6_sunnuntai.ps1`:llä, joka lukee `Lauantai.json`:n
+> ja kehotteet/koodit `tools/`-kansiosta.
+
+Vaihtoehtoinen vienti (REST) onnistuu `import-to-activepieces.ps1 -Flow 'Lauantai'`-komennolla,
+jos `ACTIVE_PIECES_API_KEY` on asetettu. Työnkulku tunnistetaan `metadata.externalId`-arvolla
+`d7K78m0VXNgIYpZrQtu8Q`.
+
+### Viikon markkinaluvut (step_17)
+
+`step_17` (`tools/step17_weekly_quotes.js`) hakee 19 instrumentin päiväkurssit Yahoo Financen
+chart-rajapinnasta (`range=1mo`, `interval=1d`) ja laskee **viikon muutoksen** = viimeisin päätös
+vs. noin viisi kaupankäyntipäivää aiemmin. Askel tuottaa kaksi kenttää:
+
+- `weeklyData` – tekstirivit LLM:lle (nimi, taso, viikon muutos, päiväys, linkki).
+- `weeklyTable` – valmis HTML-taulukko, jossa on klikattavat Yahoo-linkit ja värit
+  (nousu vihreä `#1a7f37`, lasku punainen `#c62828`).
+
+Kehote (`step_14`) vaatii, että taulukko liitetään raporttiin **sellaisenaan** ja että
+leipätekstin viikkoluvut otetaan vain tästä datasta – uutisista poimittuja päivälukuja ei saa
+esittää viikon lukuna. Tämä korjasi 21.11.2026 havaitun virheen, jossa raportti esitti DAXille
+1,06 % (päiväluku), vaikka viikon lasku oli 7,28 %.
+
+**Huom:** `step_17` sai nimensä Activepiecesin vapaan numeron mukaan, joten se on ajonumeroltaan
+`step_10`:n ja `step_11`:n välissä. Repon `build5_lauantai.ps1` käyttää siksi eksplisiittistä
+nimeämiskarttaa (ei juoksevaa numerointia).
+
+### Linkit ja lähteet
+
+Raportti on tarkoituksella **hyvin lähteistetty**, jotta lukija voi tarkistaa jokaisen luvun:
+
+- **Instrumenttilinkit:** jokainen maininta indeksistä, raaka-aineesta tai valuutasta on klikattava
+  Yahoo Finance -kurssisivu — myös leipätekstissä ja korostuslaatikossa, ei vain taulukossa.
+  Osoitteet tulevat `step_17`:n `weeklyData`-kentästä.
+- **Uutislähteet:** uutisrivit sisältävät lähde-URLin. Tämä vaati, että `step_12`
+  (`tools/step12_scrape.js`) ja `step_13` (`tools/step13_compact.js`, Lauantain oma kopio jaetusta
+  `step9.js`:stä) säilyttävät artikkelin osoitteen. Jaettu `step9.js` pudottaa sen, joten Lauantailla
+  on oma versio.
+- **Tapahtumahakujen tulokset:** `step_13`:n `renderResults` muuntaa tapahtumahakujen tulokset
+  (valmis lista objekteja tai JSON-merkkijono) luettaviksi riveiksi. Ilman sitä tekstissä näkyi
+  `[object Object],[object Object],...`. Sama korjaus on Sunnuntaissa.
+- **Lähteet-osio:** kehote vaatii raportin loppuun osion "Lähteet", joka listaa käytetyt artikkelit
+  otsikolla ja klikattavalla linkillä. Jos väitteelle ei ole suoraa kurssilinkkiä (esim. toimialan
+  liike), se linkitetään artikkeliin, josta väite on peräisin.
+
+### Eurooppa ja Suomi katsauksessa
+
+Katsauksessa on oltava **yhtä huolellinen oma pääosio sekä Yhdysvalloille että Euroopalle ja
+Helsingin pörssille**. Tämä varmistetaan kahdella tavalla:
+
+- **Haut:** `step_3` (Tavily) hakee nimenomaan Euroopan ja Pohjoismaiden viikkoyhteenvedon
+  (STOXX 600, DAX, FTSE 100, OMX Helsinki, EKP, euroalueen inflaatio) ja `step_11` (Firecrawl)
+  hakee sekä globaaleja että eurooppalaisia viikkokommentteja.
+- **Kehote:** `step_14`:n sääntö 3 vaatii eksplisiittisesti Euroopan ja Helsingin pörssin
+  käsittelyn (indeksit, EKP ja euroalueen makroluvut, eurooppalaiset toimialat ja yhtiöt).
+
+### Raportin eheys (katkeamistarkistus)
+
+`step_15` (`tools/step15_finalize.js`) sisältää **katkeamistarkistuksen**: jos LLM:n HTML
+katkeaa tokenirajan takia eikä sisällä `</html>`-lopputagia, työnkulku heittää virheen eikä
+julkaise rikkinäistä raporttia. Tämä havaittiin tarpeelliseksi 21.11.2026, kun ensimmäinen
+testiajo tuotti katkenneen raportin.
+
+### reasoning_effort ja tokenibudjetti
+
+`step_14` käyttää `reasoning_effort: "low"` ja `max_tokens: 32000`. Ilman matalaa
+reasoning-asetusta malli kirjoitti pitkän suunnitteluosion ja itse HTML katkesi kesken
+(`finish_reason: length`). Samat arvot ovat käytössä muiden raporttien LLM-askeleissa.
+
+
+
 
 ## Miksi tämä rakenne
 
@@ -246,6 +505,8 @@ Tekninen huomautus: askeleissa step_7, step_8 ja step_11 on sekä `days = 1` ett
 
 **Malli.** Step_13 ja step_3 käyttävät mallia `deepseek/deepseek-v4.1-flash` OpenRouterin kautta. Vaihda `model`-kentästä.
 
+**Kurssilinkit.** Kello 11, Kello 18 ja Aamuraportti NEW edellyttävät, että jokainen mainittu indeksi, raaka-aine, valuutta, korko ja yksittäinen osake on klikattava linkki **myös leipätekstissä**, ei vain taulukossa. Sääntö on Kello 11:ssä ja Kello 18:ssa step_3:n kohdassa 9, Aamuraportti NEW:ssä step_3:n kohdassa 8 ja spekulaatioaskeleessa step_10 kohdassa 7. Linkki tehdään vain kurssilohkossa annetulla Yahoo Finance -osoitteella muodossa `<a href="..." target="_blank" rel="noopener noreferrer">Nimi</a>`; jos osoitetta ei ole annettu, nimi kirjoitetaan ilman linkkiä. Sivusto näyttää raportin iframessa, jonka `sandbox` sallii `allow-popups`, joten linkit avautuvat uuteen välilehteen.
+
 ## Automaattiskriptit
 
 Älä muokkaa JSON-tiedostoja käsin suurissa muutoksissa. Käytä kansion `activepieces/markkina/tools/` skriptejä, koska ne pitävät rakenteen ehjänä. Skriptit päättelevät työnkulkutiedostojen kansion sijainnistaan (`$root = Split-Path -Parent $PSScriptRoot`, eli `activepieces/markkina/`), joten ne toimivat repositorion sijainnista riippumatta.
@@ -336,6 +597,17 @@ Katso Activepiecesin historiasta nämä kaksi asiaa. Ne kertovat, toimiko tapaht
 Jos `parsed_count` on toistuvasti 0, vika on joko step_13:n kehotteessa tai vastauksen luvussa. Katso `raw_preview` ja vertaa sitä kehotteessa pyydettyyn JSON-muotoon.
 
 ## Korjatut virheet
+
+### 20.11.2026: markkinakatsauksen leipätekstissä ei ollut linkkejä
+
+Kello 18 -raportin markkinayhteenveto kertoi indeksit, korot, raaka-aineet ja valuutat pelkkänä tekstinä, vaikka kurssilohkossa oli niille Yahoo Finance -osoitteet. Syy: step_3:n sääntö 9 käski tehdä linkit vain markkinataulukon soluista. Kello 11:n pääraportissa linkit olivat, mutta spekulaatio-osiossa (step_10) ei ollut linkkisääntöä lainkaan, joten STOXX 600, DAX ja FTSE 100 jäivät tekstiksi. Sama taulukkokohtainen sääntö oli Aamuraportti NEW:ssa (sääntö 8), jonka Aasia- ja futuuriosioissa indeksit olivat linkittömiä.
+
+Korjaus:
+
+- **Kello 11 step_3 (sääntö 9)** ja **Kello 18 step_3 (sääntö 9):** linkit kaikkiin osioihin, myös korostuslaatikkoon ja leipätekstiin. Linkitä kunkin kohteen nimi osiossa ensimmäisellä maininnalla, älä keksi osoitteita.
+- **Kello 11 step_10** ja **Aamuraportti NEW step_10:** uusi sääntö 7 (LINKIT); LOPETUS siirretty kohdaksi 8.
+- **Aamuraportti NEW step_3 (sääntö 8):** linkit myös leipätekstiin, ei vain taulukkoon.
+- Muutokset tehty sekä Activepiecesin julkaistuihin työnkulkuihin että kansion JSON-tiedostoihin ja kehotteiden tekstikopioihin `tools/txt_eurooppa_system.txt` ja `tools/txt_ilta_system.txt`.
 
 ### 19.11.2026: spekulaatio-osion tilalle tulostui JSON-raakadata
 

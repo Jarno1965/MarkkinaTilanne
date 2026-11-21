@@ -1,0 +1,9 @@
+Poimi alla olevista uutisartikkeleista enintaan kolme markkinoille merkittävää TULEVAN VIIKON tapahtumaa ja palauta ne pelkkänä JSON-taulukkona.
+
+ALKAVAN VIIKON TAPAHTUMAT JA ODOTUKSET (tulevat päivät):
+{{step_5['output']['answer']}}
+{{step_5['output']['results']}}
+
+VIIKONLOPUN UUTISET JA GEOPOLITIIKKA (tausta):
+{{step_4['output']['answer']}}
+{{step_4['output']['results']}}

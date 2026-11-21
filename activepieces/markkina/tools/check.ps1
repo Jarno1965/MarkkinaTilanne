@@ -1,6 +1,6 @@
 ﻿$ErrorActionPreference = 'Stop'
 $root = (Split-Path -Parent $PSScriptRoot)
-$files = @('Aamuraportti.json','Aamuraportti NEW.json','Kello 11 Eurooppa.json','Kello 18 raportti.json','Sunnuntai.json')
+$files = @('Aamuraportti.json','Aamuraportti NEW.json','Kello 11 Eurooppa.json','Kello 18 raportti.json','Sunnuntai.json','Lauantai.json')
 $problems = 0
 
 function Read-Utf8 { param([string]$File) return [System.IO.File]::ReadAllText($File, [System.Text.Encoding]::UTF8) }
@@ -72,11 +72,14 @@ foreach ($f in $files) {
   }
 
   # 5. Kayttajaviestien tarkistus
+  # Huom: LLM-askelten numerot vaihtelevat tyonkuluttain (Lauantaissa HTML-askel on step_14),
+  # joten tarkistetaan vain ne askeleet, joilla on messages-rakenne.
   $a = $json.flows[0].trigger.nextAction
   while ($a) {
-    if ($a.name -in 'step_3','step_10') {
+    $hasBody = ($a.settings.input.PSObject.Properties.Name -contains 'body')
+    if ($a.name -in 'step_3','step_10','step_14' -and $hasBody) {
       $u = $a.settings.input.body.data.messages[1].content
-      $hasWatch = $u.Contains('ODOTETUT TAPAHTUMAT (seurantalista')
+      $hasWatch = $u.Contains('(seurantalista')
       $hasQuotes = $u.Contains('TAPAHTUMIEN KURSSIT')
       $expectQuotes = ($order -contains 'step_18')
       if (-not $hasWatch) { Write-Host ('  PUUTTUU kayttajaviestista: seurantalista (' + $a.name + ')'); $problems++ }
