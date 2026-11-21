@@ -41,10 +41,16 @@ Three layers, no backend:
   `Sunnuntai` was created with `ap_duplicate_flow` from `Lauantai`, so code steps differ only in
   wording/constants; each flow keeps its own copies under `activepieces/markkina/tools/`
   (`*_sunnuntai.js` suffix).
-- **Forward-looking guard:** search results include the *previous* week's calendar entries, so the
-  Sunday prompt defines "the coming week" as the next Monday onwards and requires each event date to
-  be checked against the supplied current time. Without it the first test run listed a past
-  Wednesday as upcoming.
+- **Freshness guard (21.11.2026):** Tavily's `days` parameter is **not** a hard filter — a 5-day-old
+  article came through both with and without `time_range`. Both weekend flows therefore filter by
+  publication date in code: `step12_scrape.js` drops Firecrawl articles older than `max_age_hours`
+  (default 120 h) and `step13_compact.js` does the same for Tavily items, each labelling the item's
+  age (TUORE / VANHEMPI, N vrk sitten) so the LLM can weigh it. The Sunday prompt defines "the coming
+  week"; the Saturday prompt adds AJANTASAISUUS (newest figure wins, state its as-of date),
+  ALKUVIIKON KATSAUS KERTOO EDELLISESTÄ VIIKOSTA (a Monday "Weekly Market Recap" describes the
+  *previous* week) and MENNYT TAPAHTUMA EI OLE TULEVA (by Saturday the week's events have happened).
+- **Providers disagree on earnings figures** (FactSet 31.9 %/14.4 %, Zacks 28.9 %/14.6 %, U.S. Bank
+  27.4 %/13.4 %), so the Saturday report must name the source and the as-of date of each figure.
 
 ## Report Rendering (why srcdoc, not iframe src)
 - GitHub Pages publishes only `docs/`, so `../data/x.html` is not reachable from the published site.

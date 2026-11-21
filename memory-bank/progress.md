@@ -1,5 +1,35 @@
 ﻿# Progress Log
 
+## 2026-11-21 – Viikkokatsauksen ajantasaisuus: tuloskausiluvut ja aikasuodatus
+**Done:**
+- Käyttäjä huomasi, että viikkokatsauksen tuloskausiluvut olivat vanhentuneita (13,4 % / 27,4 % /
+  91 %). Tuorein tieto oli liikevaihdon osalta 14,4 % ja tuloksen 31,9 %.
+- Juurisyy jäljitettiin Activepiecesin ajolokiin asti: luvut tulivat **U.S. Bankin 16.11.**
+  julkaistusta katsauksesta, joka kertoi viikosta, joka päättyi **13.11.**
+- **Hakukokeet osoittivat**, että Tavilyn `days`-parametri ei rajaa hakua (5 vrk vanha artikkeli
+  tuli läpi sekä `time_range`-parametrin kanssa että ilman). Aikasuodatus tehtiin siksi omaan
+  koodiin.
+- `step12_scrape.js` ja `step13_compact.js`: julkaisuajan tulkinta, uusin ensin -järjestys,
+  ikämerkinnät ja yli 120 h vanhojen artikkelien pudotus (varalla uusimmat, jos lista muuten tyhjenisi).
+- `step_14`-kehotteeseen kolme uutta pakollista sääntöä: AJANTASAISUUS (tuorein luku voittaa ja
+  luvun ajankohta kerrotaan), ALKUVIIKON KATSAUS KERTOO EDELLISESTÄ VIIKOSTA ja MENNYT TAPAHTUMA
+  EI OLE TULEVA. Lisäksi uusi pakollinen osio TULOSKAUDEN TILANNE.
+- `step_2`: hakulauseeseen lisättiin tuloskausiluvut, jotta tuoreet luvut löytyvät.
+- Uudet tiedostot: `tools/txt_lauantai_system.txt`, `tools/txt_lauantai_user.txt`,
+  `tools/sync_lauantai.ps1` (pitää Lauantai.json-peilin ajan tasalla).
+- Vanhat virheelliset raportit `2026-11-21-1250-viikkokatsaus.html` ja `2026-11-21-1408-viikkokatsaus.html`
+  poistettu GitHubista.
+
+**Verifiointi:** testiajo SUCCEEDED 68,9 s → `data/markkina/2026-11-21-1412-viikkokatsaus.html`
+("Tuloskauden tilanne" -osio, oikeat otsikot Nvidian tuloksesta ja Anthropicin listautumisesta,
+ei vanhoja lukuja). `test_lauantai.mjs` 55/55 OK, `check.ps1` kunnossa, työnkulku julkaistu.
+
+**Next:**
+- Seuraa seuraavaa lauantain ajoa: tarkista että tuloskausiosio tulee joka kerta ja että luvut ovat
+  viikon lopulta.
+- Harkitse saman aikasuodatuksen ja ajantasaisuussääntöjen viemistä myös Sunnuntai-työnkulkuun
+  (viikkoennakossa sama riski: alkuviikon katsaus kertoo edellisestä viikosta).
+
 ## 2026-11-21 – Korjattu: sivun uudelleenlataus kaatoi raporttilistan (date.getTime)
 **Done:**
 - Käyttäjä raportoi: raporttia katsoessa selaimen "Lataa tämä sivu uudelleen" tuotti virheen

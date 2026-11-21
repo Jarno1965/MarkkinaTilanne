@@ -1,5 +1,53 @@
 # Active Context
 
+## Update 2026-11-21 (4): Viikkokatsauksen ajantasaisuus (tuloskausiluvut ja aikasuodatus)
+
+**Käyttäjän havainto:** Lauantain viikkokatsauksessa luki "91 % S&P 500 -yhtiöistä oli raportoinut.
+Myynti kasvoi 13,4 % ... mutta tulos kasvoi 27,4 %". Luvut olivat vanhentuneita - tuorein tieto oli
+liikevaihdon osalta 14,4 % ja tuloksen 31,9 %.
+
+**Juurisyy (kolme osaa):**
+1. **Luvut tulivat U.S. Bankin maanantain 16.11. katsauksesta**, joka kertoi viikosta, joka päättyi
+   perjantaina **13.11.** Artikkelissa lukee "Through Friday, 91% of S&P 500 companies had reported
+   results... Another 3% of the index reports this week". Raportti ajettiin lauantaina 21.11., joten
+   luvut olivat viikon vanhoja.
+2. **Hakuikkuna oli liian leveä.** Tavilyn `time_range: week` ja Firecrawlin `qdr:w` ottavat mukaan
+   edellisen viikonlopun ja maanantaiaamun "Weekly Market Recap" -katsaukset, jotka kuvaavat
+   edellistä viikkoa.
+3. **Tavilyn aikaparametrit eivät ole kovia suodattimia.** Kokeilin `days: 3` seka `time_range`-parametrin
+   kanssa etta ilman: kumpikin palautti silti 5 vrk vanhan artikkelin. Suodatus on siksi tehtava
+   omassa koodissa.
+
+**Korjaus:**
+- `step12_scrape.js`: tulkitsee artikkelin julkaisuajan (`date` / `metadata.publishedTime`, myos
+  "5 days ago" -muoto), järjestää uusin ensin, merkitsee iän (`TUORE` / `VANHEMPI, N vrk sitten`) ja
+  **pudottaa yli `max_age_hours` (120 h) vanhat artikkelit**. Jos pudotus tyhjentäisi listan,
+  uusimmat pidetään kuitenkin.
+- `step13_compact.js`: sama aikasuodatus ja ikämerkintä Tavilyn uutisille.
+- `step_14` (kehote `txt_lauantai_system.txt`): kolme uutta pakollista sääntöä:
+  **AJANTASAISUUS - TUOREIN LUKU VOITTAA** (käytä uusinta lukua ja kerro sen ajankohta),
+  **ALKUVIIKON KATSAUS KERTOO EDELLISESTÄ VIIKOSTA** ja **MENNYT TAPAHTUMA EI OLE TULEVA**.
+- `step_2`: hakulauseeseen lisättiin tuloskausiluvut, jotta tuoreet luvut löytyvät.
+- Kehote vaatii nyt oman osion **TULOSKAUDEN TILANNE** (raportoineiden osuus, liikevaihdon ja
+  tuloksen kasvu, odotukset ylittäneiden osuus) tuoreimmilla luvuilla ja niiden ajankohdalla.
+
+**Löydökset hakukokeiluista:** Tavilyn `days` ei rajaa hakua, kun `time_range` on asetettu, eikä
+kunnolla ilman sitä. Tuoreet tuloskausiluvut löytyvät, kun hakulauseeseen lisätään tuloskausisanat
+(FactSet/Corpusense 20.11., Zacks, FT Portfolios 19.11.). Eri lähteet antavat eri lukuja
+(FactSet 31,9 %/14,4 %, Zacks 28,9 %/14,6 %, U.S. Bank 27,4 %/13,4 %), joten raportin on kerrottava
+luvun lähde ja ajankohta.
+
+**Verifiointi:** testiajo SUCCEEDED 68,9 s → `data/markkina/2026-11-21-1412-viikkokatsaus.html`.
+Raportissa on nyt "Tuloskauden tilanne" -osio (28,9 % / 14,6 % / 84 % ja "noin 10 % oli vielä
+raportoimatta 18.11.2026", lahteet eritelty), otsikot "Nvidia: vahva tulos, mutta osake syöksyssä"
+ja "Anthropicin listautuminen: ennätys, joka kääntyi laskuun", eikä lainkaan vanhoja lukuja
+13,4 / 27,4 / 29,4. Vanhat raportit (1250 ja 1408) poistettu. `test_lauantai.mjs` 55/55 OK,
+`check.ps1` kunnossa.
+
+**Uudet tiedostot:** `tools/txt_lauantai_system.txt`, `tools/txt_lauantai_user.txt` ja
+`tools/sync_lauantai.ps1` (päivittää `Lauantai.json`-peilin tools/-kansion tiedostoista: step_2:n
+hakulause, step_12/13/17:n koodit ja step_14:n kehotteet).
+
 ## Update 2026-11-21 (3): Raporttilistan välimuisti kaatoi sivun (date.getTime)
 
 **Käyttäjän havainto:** Kun raporttia katsoi ja painoi selaimen "Lataa tämä sivu uudelleen",

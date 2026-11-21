@@ -17,6 +17,35 @@ export const code = async (inputs) => {
     return m ? m[1].replace(/^www\./i, '') : '';
   };
 
+  // Artikkelin julkaisuajan tulkinta. Firecrawl antaa ajan usein muodossa
+  // "5 days ago", "2026-11-16" tai ISO-aikaleimana.
+  const publishedTime = (raw) => {
+    const value = String(raw === null || raw === undefined ? '' : raw).trim();
+    if (!value) { return null; }
+    const direct = Date.parse(value);
+    if (!isNaN(direct)) { return direct; }
+    const rel = value.toLowerCase().match(/(\d+)\s*(minute|min|hour|h|day|d|week|wk)/);
+    if (rel) {
+      const amount = Number(rel[1]);
+      const unit = rel[2];
+      const hours = unit.startsWith('min') ? amount / 60
+        : (unit === 'hour' || unit === 'h') ? amount
+          : (unit === 'day' || unit === 'd') ? amount * 24
+            : amount * 24 * 7;
+      return Date.now() - hours * 3600000;
+    }
+    return null;
+  };
+
+  const ageLabel = (epoch) => {
+    if (epoch === null) { return ''; }
+    const hours = (Date.now() - epoch) / 3600000;
+    if (!isFinite(hours) || hours < 0) { return ''; }
+    if (hours < 1) { return 'TUORE, alle 1 h sitten'; }
+    if (hours < 48) { return 'TUORE, ' + Math.round(hours) + ' h sitten'; }
+    return 'VANHEMPI, ' + Math.round(hours / 24) + ' vrk sitten';
+  };
+
   const parse = (value) => {
     let v = value;
     if (typeof v === 'string') {
@@ -59,15 +88,44 @@ export const code = async (inputs) => {
 
   const seen = {};
   const lines = [];
-  const items = news.concat(web).filter((x) => x && (x.markdown || x.snippet || x.description));
-  for (let i = 0; i < items.length && lines.length < 6; i++) {
-    const it = items[i];
+  const items = news.concat(web)
+    .filter((x) => x && (x.markdown || x.snippet || x.description))
+    .map((x) => {
+      const md = x.metadata || {};
+      return {
+        it: x,
+        at: publishedTime(x.date || md.publishedTime || md.published_time || md.ogPublishedTime || x.publishedDate || '')
+      };
+    })
+    // Uusin ensin; ilman aikaleimaa olevat viimeiseksi.
+    .sort((a, b) => {
+      if (a.at === null && b.at === null) { return 0; }
+      if (a.at === null) { return 1; }
+      if (b.at === null) { return -1; }
+      return b.at - a.at;
+    });
+
+  // Aikasensuuri: viikkokatsaus kattaa kuluneen viikon. Tata vanhemmat artikkelit
+  // ovat edellisen viikon katsauksia - esimerkiksi maanantaina julkaistu
+  // "Weekly Market Recap" kertoo viikosta, joka paattyi edellisena perjantaina,
+  // ja sen tulosluvut ovat siksi vanhentuneita. Jos sensuuri tyhjentaisi koko
+  // listan, pidaan kuitenkin uusimmat, jotta raportti ei jaa tyhjaksi.
+  const maxAge = Number(inputs.max_age_hours);
+  const maxAgeHours = isFinite(maxAge) && maxAge > 0 ? maxAge : 120;
+  const fresh = items.filter((entry) => entry.at === null || (Date.now() - entry.at) / 3600000 <= maxAgeHours);
+  const use = fresh.length ? fresh : items;
+  const dropped = items.length - use.length;
+
+  for (let i = 0; i < use.length && lines.length < 6; i++) {
+    const entry = use[i];
+    const it = entry.it;
     const url = it.url || (it.metadata && it.metadata.sourceURL) || '';
     if (url && seen[url]) { continue; }
     if (url) { seen[url] = true; }
     const title = cut(it.title || '', 180);
     const src = domain(url);
     const date = cut(it.date || '', 40);
+    const age = ageLabel(entry.at);
     let body = cleanBody(it.markdown || '');
     if (body.length < 200) {
       const md = it.metadata || {};
@@ -75,7 +133,7 @@ export const code = async (inputs) => {
     } else {
       body = cut(body, 2000);
     }
-    const meta = [date, src].filter(Boolean).join(', ');
+    const meta = [date, age, src].filter(Boolean).join(', ');
     lines.push('- ' + (title || '(ei otsikkoa)') + (meta ? ' [' + meta + ']' : '') + (url ? ' (' + url + ')' : '') + (body ? ' : ' + body : ''));
   }
 
@@ -83,7 +141,8 @@ export const code = async (inputs) => {
   if (out.length > 16000) { out = out.slice(0, 16000) + ' ... (lyhennetty)'; }
 
   return {
-    scrapedNews: 'VIIKON ARTIKKELIEN KOKOTEKSTIT: ' + out,
+    scrapedNews: 'VIIKON ARTIKKELIEN KOKOTEKSTIT (uusin ensin, vain ' + Math.round(maxAgeHours / 24) +
+      ' vrk sisalla julkaistut' + (dropped > 0 ? '; ' + dropped + ' vanhempaa artikkelia jai pois' : '') + '): ' + out,
     scrapedCount: lines.length
   };
 };

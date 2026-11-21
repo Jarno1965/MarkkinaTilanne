@@ -294,6 +294,40 @@ Raportti on tarkoituksella **hyvin lähteistetty**, jotta lukija voi tarkistaa j
   otsikolla ja klikattavalla linkillä. Jos väitteelle ei ole suoraa kurssilinkkiä (esim. toimialan
   liike), se linkitetään artikkeliin, josta väite on peräisin.
 
+### Ajantasaisuus ja aikasuodatus (step_2, step_12, step_13, step_14)
+
+21.11.2026 havaittiin, että viikkokatsaus esitti **vanhentuneita tuloskausilukuja** (13,4 % / 27,4 %)
+tuoreina. Luvut tulivat pankin maanantaina 16.11. julkaistusta "Market Analysis" -katsauksesta, joka
+kertoi viikosta, joka päättyi perjantaina **13.11.** - raportti ajettiin lauantaina 21.11.
+
+**Tavilyn aikaparametrit eivät riitä.** Kokeet osoittivat, että `days: 3` palauttaa silti 5 vrk
+vanhan artikkelin, sekä `time_range`-parametrin kanssa että ilman. Aikasuodatus on siksi tehty omaan
+koodiin:
+
+- `step_12` (`tools/step12_scrape.js`): tulkitsee artikkelin julkaisuajan (`date`,
+  `metadata.publishedTime`, myös "5 days ago" -muoto), järjestää uusin ensin, merkitsee iän ja
+  **pudottaa yli `max_age_hours` (oletus 120 h) vanhat artikkelit**. Jos pudotus tyhjentäisi koko
+  listan, uusimmat pidetään kuitenkin.
+- `step_13` (`tools/step13_compact.js`): sama suodatus ja ikämerkintä Tavilyn uutisille.
+- `step_2`: hakulauseeseen lisättiin tuloskausiluvut
+  (`... earnings season results revenue growth S&P 500 companies reported`), jotta tuoreet luvut
+  löytyvät.
+
+**Kehotteen ajantasaisuussäännöt** (`tools/txt_lauantai_system.txt`):
+
+1. **AJANTASAISUUS - TUOREIN LUKU VOITTAA.** Käytä aina tuoreinta lukua, kerro sen ajankohta
+   tekstissä ("perjantain 20.11. tilanteen mukaan") ja sano selvästi, jos tuoreempaa lukua ei ole.
+2. **ALKUVIIKON KATSAUS KERTOO EDELLISESTÄ VIIKOSTA.** Maanantain "Weekly Market Recap" /
+   "Market Analysis" kuvaa edellistä viikkoa, ei kulunutta.
+3. **MENNYT TAPAHTUMA EI OLE TULEVA.** Lauantaina kuluneen viikon tapahtumat ovat jo toteutuneet;
+   älä toista ennakkouutisen sanamuotoa.
+4. Raportissa on oltava oma osio **TULOSKAUDEN TILANNE**: raportoineiden osuus, liikevaihdon ja
+   tuloksen kasvu sekä odotukset ylittäneiden osuus - tuoreimmilla luvuilla, lähde ja ajankohta
+   mainiten.
+
+**Huom eri lähteistä:** tuloskausiluvut vaihtelevat lähteittäin (FactSet 31,9 % / 14,4 %,
+Zacks 28,9 % / 14,6 %, U.S. Bank 27,4 % / 13,4 %). Siksi luvun lähde ja ajankohta on kerrottava.
+
 ### Eurooppa ja Suomi katsauksessa
 
 Katsauksessa on oltava **yhtä huolellinen oma pääosio sekä Yhdysvalloille että Euroopalle ja

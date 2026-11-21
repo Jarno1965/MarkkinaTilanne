@@ -73,8 +73,13 @@ export const code = async (inputs) => {
   const freshHours = Number(inputs.fresh_hours);
   const freshLimit = isFinite(freshHours) && freshHours > 0 ? freshHours : 3;
 
+  // Aikasensuuri (sama kuin step_12:ssa): viikkokatsaus kattaa kuluneen viikon,
+  // joten tata vanhemmat uutiset ovat edellisen viikon katsauksia.
+  const maxAge = Number(inputs.max_age_hours);
+  const maxAgeHours = isFinite(maxAge) && maxAge > 0 ? maxAge : 120;
+
   const compact = (label, resultsValue, answerValue, limit) => {
-    const items = parseResults(resultsValue)
+    const all = parseResults(resultsValue)
       .map((item) => {
         const i = item || {};
         return { item: i, at: publishedTime(i.published_date || i.publishedDate || i.published_at || i.date || '') };
@@ -84,8 +89,11 @@ export const code = async (inputs) => {
         if (a.at === null) { return 1; }
         if (b.at === null) { return -1; }
         return b.at - a.at;
-      })
-      .slice(0, 8);
+      });
+
+    // Pidä vain tuoreet; jos se tyhjentäisi listan, käytä kaikkia (uusin ensin).
+    const fresh = all.filter((entry) => entry.at === null || (Date.now() - entry.at) / 3600000 <= maxAgeHours);
+    const items = (fresh.length ? fresh : all).slice(0, 8);
 
     const lines = items.map((entry) => {
       const i = entry.item;

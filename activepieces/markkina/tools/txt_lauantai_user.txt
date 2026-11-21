@@ -1,0 +1,22 @@
+Laadi suomenkielinen markkinakatsaus valmiina HTML5-dokumenttina alla olevasta datasta. Noudata tarkasti järjestelmäviestin sääntöjä.
+
+TÄNÄÄN ON (Helsingin aika):
+{{step_1['output']['result']}}
+
+KULUNUT VIIKKO JA GLOBAALIT MARKKINAT – UUTISET:
+{{step_13['output']['newsAsia']}}
+
+EUROOPPA, VIIKON MARKKINA-AJURIT JA TULEVA VIIKKO – UUTISET:
+{{step_13['output']['newsEurope']}}
+
+VIIKON ARTIKKELIEN KOKOTEKSTIT (taustatieto ja tarkat yksityiskohdat):
+{{step_12['output']['scrapedNews']}}
+
+VIIKON MARKKINALUVUT (taulukko, liitä sellaisenaan raporttiin):
+{{step_17['output']['weeklyTable']}}
+
+VIIKON MARKKINALUVUT (tekstinä, käytä näitä lukuja leipätekstissä):
+{{step_17['output']['weeklyData']}}
+
+ODOTETUT TAPAHTUMAT (seurantalista ja tapahtumien hakutulokset):
+{{step_13['output']['watchlist']}}
