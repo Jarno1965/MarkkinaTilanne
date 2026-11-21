@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Viikkoennakko: markkinat viikolla 23.–29.11.2026</title>
+<style>
+  :root{
+    --bg:#f7f8fa;
+    --card:#ffffff;
+    --ink:#1c2430;
+    --muted:#5b6675;
+    --line:#e2e6ec;
+    --up:#1b7f4b;
+    --down:#c62828;
+    --accent:#0f4c81;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:900px;margin:0 auto;padding:28px 18px 70px;}
+  header.top{
+    border-bottom:3px solid var(--accent);
+    padding-bottom:16px;
+    margin-bottom:26px;
+  }
+  header.top .kicker{
+    text-transform:uppercase;
+    letter-spacing:.09em;
+    font-size:.75rem;
+    font-weight:700;
+    color:var(--accent);
+    margin:0 0 6px;
+  }
+  header.top h1{
+    font-size:1.85rem;
+    line-height:1.25;
+    margin:0 0 8px;
+  }
+  header.top p.sub{
+    margin:0;
+    color:var(--muted);
+    font-size:.95rem;
+  }
+  section{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:22px 24px;
+    margin:0 0 26px;
+  }
+  h2{
+    font-size:1.3rem;
+    margin:0 0 14px;
+    padding-bottom:10px;
+    border-bottom:1px solid var(--line);
+    color:var(--accent);
+  }
+  h3{
+    font-size:1.05rem;
+    margin:22px 0 8px;
+    color:var(--ink);
+  }
+  p{margin:0 0 14px;}
+  ul{margin:0 0 14px;padding-left:22px;}
+  li{margin-bottom:8px;}
+  a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(15,76,129,.28);}
+  a:hover{border-bottom-color:var(--accent);}
+  table{width:100%;border-collapse:collapse;font-size:.95rem;}
+  th,td{padding:9px 8px;border-bottom:1px solid var(--line);vertical-align:top;}
+  th{text-align:left;font-size:.82rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);}
+  .table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .up{color:var(--up);font-weight:600;}
+  .down{color:var(--down);font-weight:600;}
+  .lead-box{
+    background:#eef4fb;
+    border:2px solid #0f4c81;
+    border-radius:12px;
+    padding:22px 24px;
+    margin:0 0 26px;
+  }
+  .lead-box h2{
+    border:none;
+    padding:0;
+    margin:0 0 12px;
+    color:#0f4c81;
+    font-size:1.3rem;
+  }
+  .lead-box .tag{
+    display:inline-block;
+    background:#0f4c81;
+    color:#fff;
+    font-size:.72rem;
+    font-weight:700;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    padding:4px 10px;
+    border-radius:999px;
+    margin-bottom:12px;
+  }
+  .lead-box p:last-child{margin-bottom:0;}
+  .note{
+    font-size:.88rem;
+    color:var(--muted);
+    background:#f2f4f7;
+    border-left:3px solid #c3ccd8;
+    padding:10px 14px;
+    border-radius:0 8px 8px 0;
+    margin:0 0 16px;
+  }
+  footer{
+    font-size:.85rem;
+    color:var(--muted);
+    text-align:center;
+    padding-top:10px;
+  }
+  @media (max-width:640px){
+    body{font-size:16px;}
+    .wrap{padding:18px 12px 50px;}
+    section{padding:18px 16px;}
+    .lead-box{padding:18px 16px;}
+    header.top h1{font-size:1.5rem;}
+    h2{font-size:1.15rem;}
+  }
+</style>
+</head>
+<body>
+<div style="background:#f1f5f9;border-bottom:1px solid #cbd5e1;color:#475569;font:14px/1.4 Arial,sans-serif;padding:8px 16px;text-align:center;">Raportti luotu: lauantai 21.11.2026 klo 13:13:29</div>
+<div class="wrap">
+
+<header class="top">
+  <p class="kicker">Viikkoennakko</p>
+  <h1>Markkinat viikolla 23.–29.11.2026: tekoälykaupan purkautuminen, USA:n flash-PMI:t ja kiitospäivän lyhentämä viikko</h1>
+  <p class="sub">Raportti katsoo eteenpäin alkavaan viikkoon. Kurssiluvut ovat viimeisimpiä päätöslukuja, eivät reaaliaikaisia.</p>
+</header>
+
+<section class="lead-box">
+  <span class="tag">Alkavan viikon tärkein ajuri ja maanantain avaus</span>
+  <h2>Riskinottohalun palautuminen – tai sen puuttuminen – ratkaisee viikon</h2>
+  <p>Alkavan viikon tärkein yksittäinen ajuri on se, rauhoittuuko tekoälyteeman ympärillä käyty myyntiaalto vai jatkuuko se. Viime viikko oli poikkeuksellisen raju: <a href="https://finance.yahoo.com/quote/%5EGSPC/" target="_blank" rel="noopener noreferrer">S&amp;P 500</a> sulkeutui 6&nbsp;910,39 pisteeseen (−8,61&nbsp;% viikon takaa), <a href="https://finance.yahoo.com/quote/%5EIXIC/" target="_blank" rel="noopener noreferrer">Nasdaq Composite</a> 22&nbsp;617,73 pisteeseen (−10,02&nbsp;%) ja <a href="https://finance.yahoo.com/quote/%5EDJI/" target="_blank" rel="noopener noreferrer">Dow Jones</a> 48&nbsp;147,33 pisteeseen (−8,02&nbsp;%). Euroopassa <a href="https://finance.yahoo.com/quote/%5ESTOXX/" target="_blank" rel="noopener noreferrer">STOXX Europe 600</a> päätyi 625,65 pisteeseen (−5,80&nbsp;%) ja <a href="https://finance.yahoo.com/quote/%5EGDAXI/" target="_blank" rel="noopener noreferrer">DAX</a> 24&nbsp;802,78 pisteeseen (−7,28&nbsp;%).</p>
+  <p>Maanantaina 23.11. huomio kiinnittyy USA:n ja euroalueen flash-PMI-lukujen ympärille sekä siihen, avautuvatko markkinat helpotusrallissa vai jatkuuko riskin vähentäminen. Helsingin pörssin lähtötaso on <a href="https://finance.yahoo.com/quote/%5EOMXH25/" target="_blank" rel="noopener noreferrer">OMX Helsinki 25</a> -indeksissä 5&nbsp;905,12 pistettä (−6,75&nbsp;% viikon takaa). Euroopan ja Helsingin pörssi avautuu maanantaina klo 10 Suomen aikaa, USA:n pörssi noin klo 16.30.</p>
+  <p>Keskuspankkirintamalla viikko on rauhallinen: Federal Reserve ei kokousta, ja seuraava korkopäätös on luvassa 9.12.2026. Sitä taustaa vasten markkina joutuu hakemaan suuntaa lähinnä talousdatasta, tulosjulkistuksista ja uutisvirrasta.</p>
+</section>
+
+<section>
+  <h2>Alkavan viikon talouskalenteri ja keskuspankit</h2>
+  <p class="note">Ajat ovat Suomen aikaa. Tapahtumat ovat vielä edessä; alla kerrotaan odotuksista ja siitä, mikä yllättäisi markkinan. Vahvistettuja tuloksia ei esitetä.</p>
+  <div class="table-scroll">
+  <table>
+    <thead>
+      <tr>
+        <th style="width:16%;">Päivä</th>
+        <th style="width:30%;">Tapahtuma</th>
+        <th style="width:27%;">Mitä odotetaan</th>
+        <th style="width:27%;">Mikä yllättäisi markkinan</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Ma 23.11.</strong></td>
+        <td>S&amp;P Global -ostopäällikköindeksit (flash), palvelut ja teollisuus, USA. Lisäksi euroalueen ja Saksan flash-PMI:t sekä EKP:n virkamiesten puheenvuorot.</td>
+        <td>Markkina seuraa erityisesti sitä, osoittavatko luvut talouden pitävän pintansa korkeiden korkojen ja kohonneiden energiakustannusten oloissa. Saatavilla olevan tiedon mukaan viikon odotetaan olevan volatiliteetiltaan korkea.</td>
+        <td>Selvästi odotuksia heikompi teollisuusluku vahvistaisi pelkoa jyrkemmästä hidastumisesta ja painaisi syklisiä sektoreita. Odotuksia vahvempi palveluluku voisi puolestaan rauhoittaa korkopelkoa.</td>
+      </tr>
+      <tr>
+        <td><strong>Ti 24.11.</strong></td>
+        <td>ADP:n viikoittainen työllisyysmuutos, FHFA:n asuntohintaindeksi (USA). Tulosjulkistajia muun muassa Jacobs Solutions, Hewlett Packard Enterprise ja Agilent Technologies.</td>
+        <td>Työmarkkinasignaaleilta odotetaan viitteitä siitä, jäähtyykö kysyntä työvoimasta hallitusti. Asuntohintaindeksi kertoo korkotason vaikutuksesta asuntomarkkinaan.</td>
+        <td>Yllättävän vahva työllisyysluku tukisi lisää kiristystarpeita koskevia odotuksia ja nostaisi korkoja – mikä olisi myrkkyä korkealle arvostetuille kasvuosakkeille. Heikko luku taas voisi tukea osakkeita.</td>
+      </tr>
+      <tr>
+        <td><strong>Ke 25.11.</strong></td>
+        <td>USA:n kestokulutustavaroiden tilaukset (ennakko), BKT:n toinen ennakkotieto, Core PCE -deflaattori, yksityinen kulutus ja tulot, uusien asuntojen myynti sekä kuluttajaluottamus. Tulosjulkistajia muun muassa HP, Workday ja Dell Technologies.</td>
+        <td>Viikon painavin datapäivä. Core PCE on Fedin seuratuin inflaatiomittari, ja sen odotetaan kertovan, jääkö inflaatiopaine sitkeäksi. Kuluttajaluottamus kertoo kotitalouksien jaksamisesta.</td>
+        <td>Odotuksia korkeampi Core PCE vahvistaisi markkinoiden hinnoittelemaa joulukuun kiristystä ja painaisi sekä osakkeita että pitkiä korkoja. Odotuksia pehmeämpi luku olisi selkeä helpotus riskille.</td>
+      </tr>
+      <tr>
+        <td><strong>To 26.11.</strong></td>
+        <td>NYSE suljettu kiitospäivän (Thanksgiving) vuoksi. USA:n markkina ei käy kauppaa.</td>
+        <td>Kaupankäynti keskeytyy, joten uutisvirta ja otsikot voivat liikuttaa kursseja ohuemmalla vaihdolla. Euroopan pörssit käyvät normaalisti.</td>
+        <td>Ohuen vaihdon päivänä yksittäiset uutiset – geopolitiikka, kauppapolitiikka tai keskuspankkikommentit – voivat aiheuttaa tavanomaista suurempia liikkeitä.</td>
+      </tr>
+      <tr>
+        <td><strong>Pe 27.11.</strong></td>
+        <td>USA:n pörssi käy lyhennetun istunnon. Viikon aikana julkaistaan lisäksi viikoittaiset työttömyyskorvaushakemukset.</td>
+        <td>Lyhennetyn istunnon odotetaan jäävän vaihdoltaan vaisuksi, ja moni sijoittaja asemoituu jo joulukuun 9. päivän korkopäätöstä varten.</td>
+        <td>Yllättävä uutinen tai odotuksia suurempi asemoitumisen purku voisi näkyä korostuneina liikkeinä ohuessa kaupankäynnissä.</td>
+      </tr>
+      <tr>
+        <td><strong>Koko viikko</strong></td>
+        <td>Keskuspankit: Federal Reserve ei kokousta; seuraava korkopäätös 9.12.2026. EKP:n virkamiesten puheenvuorot jatkuvat. Geopoliittiset riskit ja energiakustannukset pysyvät taustalla.</td>
+        <td>Saatavilla olevan tiedon mukaan lähes kaikki Fedin lokakuun kokouksen osallistujat pitivät lisäkiristystä tarpeellisena, jos talous kehittyy odotetusti. Markkinat hinnoittelevat joulukuun 25 korkopisteen nostoa lähes varmana.</td>
+        <td>Jos keskuspankkiviestintä pehmenee tai inflaatioluvut yllättävät alaspäin, kiristysodotukset voivat laueta – se olisi osakkeille positiivinen yllätys. Päinvastainen viesti kiristäisi rahoitusoloja entisestään.</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section>
+  <h2>Tuloskausi ja yritystapahtumat</h2>
+  <p>Alkavan viikon tulosjulkistukset keskittyvät teknologiaan ja teollisuuteen. Saatavilla olevan tiedon mukaan tiistaina 24.11. tuloksensa julkistavat muun muassa Jacobs Solutions, Hewlett Packard Enterprise ja Agilent Technologies. Keskiviikkona 25.11. vuorossa ovat muun muassa HP, Workday ja Dell Technologies.</p>
+  <p>Dell on mielenkiintoinen seurattava, koska yhtiö on kytköksissä tekoälyinfrastruktuurin kysyntään. Saatavilla olevan tiedon mukaan Dellillä on yli 6&nbsp;600 muuta kuin hyperskaalaajaluokan tekoälyasiakasta, ja yhtiön tekninen asetelma on ollut esillä ennen tulosta. Jos tekoälylaitteiden kysyntänäkymä osoittautuu odotuksia vahvemmaksi, se voisi tukea koko teknologiasektoria; pettymys tilauskannassa tai katteissa voisi puolestaan syventää tekoälyteeman ympärillä käytävää keskustelua.</p>
+  <p>Viime viikolla huomio oli Nvidian tuloksessa ja Anthropicin listautumisessa, joiden toivottiin herättävän tekoälykaupan uudelleen henkiin. Saatavilla olevan tiedon mukaan markkinaliikkeet olivat kuitenkin jyrkästi laskusuuntaisia, ja tunnelma on nyt varovainen. Tulosjulkistusten osalta ei ole vielä vahvistettuja tuloksia, joten niitä ei tässä esitetä.</p>
+</section>
+
+<section>
+  <h2>Yhdysvallat: mitä alkavalla viikolla seurataan</h2>
+  <p>Yhdysvalloissa viikon tärkein yksittäinen tekijä on inflaatio- ja kasvudatan yhdistelmä keskiviikkona 25.11. Core PCE -deflaattori on Fedin seuratuin inflaatiomittari, ja sen lisäksi julkaistaan BKT:n toinen ennakkotieto, kestokulutustavaroiden tilaukset, henkilökohtainen kulutus ja tulot sekä uusien asuntojen myynti. Maanantain flash-PMI-luvut avaavat viikon suunnan.</p>
+  <p>Lähtökohta on poikkeuksellisen heikko. <a href="https://finance.yahoo.com/quote/%5EGSPC/" target="_blank" rel="noopener noreferrer">S&amp;P 500</a> on noin 8&nbsp;% lokakuun huipun alapuolella, ja saatavilla olevan tiedon mukaan indeksi sulkeutui ennätystasolle 7&nbsp;818,93 pistettä 6.10. ja laski sen jälkeen neljä viikkoa peräkkäin. <a href="https://finance.yahoo.com/quote/%5EIXIC/" target="_blank" rel="noopener noreferrer">Nasdaq Composite</a> on laskenut selvästi rajummin, ja teknologiasektorin heikkous on ollut laajaa. Historiallisesti vastaavat neljän viikon laskuputket ennätyshuipun jälkeen ovat olleet kuuden ja kahdentoista kuukauden tähtäimellä pikemminkin myönteinen kuin kielteinen signaali, mutta se ei kerro mitään alkavan viikon liikkeestä.</p>
+  <p>Korkomarkkinalla <a href="https://finance.yahoo.com/quote/%5ETNX/" target="_blank" rel="noopener noreferrer">US 10Y Treasury Yield</a> on 4,91&nbsp;% (−4,70&nbsp;% viikon takaa). Saatavilla olevan tiedon mukaan kahden ja kymmenen vuoden korot laskivat hieman, kun taas dollari piti viimeaikaiset voittonsa. Korkea korkotaso ja vahva dollari ovat olleet myrkkyä erityisesti pitkän duraation kasvuosakkeille.</p>
+  <p>Fed ei kokousta alkavalla viikolla. Seuraava korkopäätös on 9.12.2026. Saatavilla olevan tiedon mukaan markkinat hinnoittelevat joulukuun 25 korkopisteen nostoa lähes varmana, ja lokakuun kokouksen pöytäkirjan mukaan lähes kaikki päättäjät pitivät lisäkiristystä tarpeellisena, jos talous kehittyy odotetusti. Tämä tarkoittaa, että viikon datalla on tavallistakin suurempi painoarvo joulukuun odotusten kannalta.</p>
+  <p>Taustalla vaikuttavat myös geopoliittiset riskit ja kohonneet energiakustannukset, jotka saatavilla olevan tiedon mukaan pysyvät keskeisinä riskeinä markkinoille ja laajemmalle taloudelle.</p>
+</section>
+
+<section>
+  <h2>Eurooppa ja Helsingin pörssi</h2>
+  <p>Euroopan osalta alkava viikko on ennen kaikkea flash-PMI-lukujen ja EKP:n viestinnän viikko. Saksan ja koko euroalueen alustavat ostopäällikköindeksit julkaistaan maanantaina 23.11., ja EKP:n virkamiesten puheenvuorot jatkuvat pitkin viikkoa. Euroalueen inflaatiokehitys on ollut keskeinen teema: saatavilla olevan tiedon mukaan alustava arvio euroalueen HICP-inflaatiosta nousi 4,0&nbsp;%:iin vuositasolla 3,8&nbsp;%:sta energian hintojen vetämänä.</p>
+  <p>Lähtökohta on Euroopassa ollut Yhdysvaltoja vakaampi, mutta viime viikko oli silti raju. <a href="https://finance.yahoo.com/quote/%5ESTOXX/" target="_blank" rel="noopener noreferrer">STOXX Europe 600</a> sulkeutui 625,65 pisteeseen (−5,80&nbsp;% viikon takaa), mikä oli saatavilla olevan tiedon mukaan indeksin heikoin viikko yli vuoteen. <a href="https://finance.yahoo.com/quote/%5EGDAXI/" target="_blank" rel="noopener noreferrer">DAX</a> päätyi 24&nbsp;802,78 pisteeseen (−7,28&nbsp;%) ja <a href="https://finance.yahoo.com/quote/%5EFTSE/" target="_blank" rel="noopener noreferrer">FTSE 100</a> 10&nbsp;346,30 pisteeseen (−5,10&nbsp;%). <a href="https://finance.yahoo.com/quote/%5EFCHI/" target="_blank" rel="noopener noreferrer">CAC 40</a> laski 7&nbsp;927,75 pisteeseen (−5,27&nbsp;%).</p>
+  <p>Laskun kärjessä olivat saatavilla olevan tiedon mukaan ASML ja Infineon, eli puolijohdeketjun eurooppalaiset yhtiöt. Samalla puolustusmieliset sektorit pitivät pintansa: kulutustavarayhtiöt kuten Nestle, Unilever ja British American Tobacco nousivat yli prosentin, kun sijoittajat hakivat turvaa defensiivisistä osakkeista. Tämä kertoo siitä, että liike on ollut ennen kaikkea tekoäly- ja puolijohdekaupan purkamista, ei laajaa eurooppalaisen talouden romahdusta.</p>
+  <p>Pidemmän aikavälin taustakuva on Euroopan kannalta ollut myönteinen. Saatavilla olevan tiedon mukaan STOXX Europe 600 on edelleen 5,8&nbsp;% plussalla vuoden alusta, kun S&amp;P 500 on noussut noin 3&nbsp;%. Lisäksi Goldman Sachsin ennusteen mukaan STOXX Europe 600:n kokonaistuotto voisi olla 13&nbsp;% dollarimääräisenä seuraavan 12 kuukauden aikana. Nämä ovat ennusteita, eivät toteutuneita lukuja.</p>
+  <h3>Helsingin pörssi</h3>
+  <p><a href="https://finance.yahoo.com/quote/%5EOMXH25/" target="_blank" rel="noopener noreferrer">OMX Helsinki 25</a> sulkeutui 5&nbsp;905,12 pisteeseen, eli 6,75&nbsp;% viikon takaista tasoa alemmas. Lasku on ollut Helsingissä selvästi rajumpi kuin esimerkiksi <a href="https://finance.yahoo.com/quote/%5EOMX/" target="_blank" rel="noopener noreferrer">OMX Stockholm 30</a> -indeksissä, joka päätyi 3&nbsp;175,06 pisteeseen (−5,42&nbsp;%). Tämä viittaa siihen, että Helsingin pörssin painotus teollisuudessa ja syklisissä yhtiöissä on tehnyt siitä erityisen herkän globaalin riskinottohalun muutoksille.</p>
+  <p>Alkavalla viikolla Helsingin kannalta ratkaisevia ovat euroalueen flash-PMI-luvut maanantaina sekä se, rauhoittuuko puolijohde- ja tekoälyteeman ympärillä käytävä keskustelu. Jos eurooppalaiset ostopäällikköindeksit yllättävät positiivisesti, se voisi tarjota tukea syklisille yhtiöille. Jos taas USA:n inflaatioluvut keskiviikkona osoittautuvat odotuksia sitkeämmiksi, korkopelko leviäisi nopeasti myös Helsinkiin.</p>
+  <p>Saatavilla olevan tiedon mukaan Helsingin pörssin yksittäisistä yhtiötapahtumista ei ole vielä uutisia alkavalle viikolle.</p>
+</section>
+
+<section>
+  <h2>Lähtötilanne: viimeisin päätös ja viikon muutos</h2>
+  <p class="note">Alla olevat luvut ovat viimeisimpiä päätöslukuja ja niiden muutos noin viikon takaa. Ne eivät ole reaaliaikaisia. Kryptot käyvät kauppaa myös viikonloppuisin, joten niiden luku voi olla viikonlopun taso.</p>
+  <div class="table-scroll">
+  <table style="width:100%;border-collapse:collapse;"><caption style="caption-side:top;text-align:left;font-size:0.85rem;color:#5b6675;padding-bottom:8px;">Lähtötilanne alkavalle viikolle: viimeisin päätös ja muutos noin viikon takaa. Ei reaaliaikainen; kryptot käyvät kauppaa myös viikonloppuisin.</caption><thead><tr><th style="text-align:left;padding:8px;border-bottom:1px solid #e2e6ec;font-size:0.85rem;">Kohde</th><th style="text-align:right;padding:8px;border-bottom:1px solid #e2e6ec;font-size:0.85rem;">Taso</th><th style="text-align:right;padding:8px;border-bottom:1px solid #e2e6ec;font-size:0.85rem;">Muutos viikon takaa</th></tr></thead><tbody><tr><td><a href="https://finance.yahoo.com/quote/%5EOMXH25/" target="_blank" rel="noopener noreferrer">OMX Helsinki 25</a></td><td style="text-align:right;white-space:nowrap;">5 905,12</td><td style="text-align:right;white-space:nowrap;color:#c62828;font-weight:600;">−6,75 %</td></tr><tr><td><a href="https://finance.yahoo.com/quote/%5EOMX/" target="_blank" rel="noopener noreferrer">OMX Stockholm 30</a></td><td style="text-align:right;white-space:nowrap;">3 175,06</td><td style="text-align:right;white-space:nowrap;color:#c62828;font-weight:600;">−5,42 %</td></tr><tr><td><a href="https://finance.yahoo.com/quote/%5ESTOXX/" target="_blank" rel="noopener noreferrer">STOXX Europe 600</a></td><td style="text-align:right;white-space:nowrap;">625,65</td><td style="text-align:right;white-space:nowrap;color:#c62828;font-weight:600;">−5,80 %</td></tr><tr><td><a href="https://finance.yahoo.com/quote/%5EGDAXI/" target="_blank" rel="noopener noreferrer">DAX (Saksa)</a></td><td style="text-align:right;white-space:nowrap;">24 802,78</td><td style="text-align:right;white-space:nowrap;color:#c62828;font-weight:600;">−7,28 %</td></tr><tr><td><a href="https://finance.yahoo.com/quote/%5EFTSE/" target="_blank" rel="noopener noreferrer">FTSE 100 (UK)</a></td><td style="text-align:right;white-space:nowrap;">10 346,30</td><td style="text-align:right;white-space:nowrap;color:#c62828;font-weight:600;">−5,10 %</td></tr><tr><td><a href="https://finance.yahoo.com/quote/%5EFCHI/" target="_blank" rel="noopener noreferrer">CAC 40 (Ranska)</a></td><td style="text-align:right;white-space:nowrap;">7 927,75</td><td style="text-align:right;white-space:nowrap;color:#c62828;font-weight:600;">−5,27 %</td></tr><tr><td><a href="https://finance.yahoo.com/quote/%5EGSPC/" target="_blank" rel="noopener noreferrer">S&amp;P 500 (USA)</a></td><td style="text-align:right;white-space:nowrap;">6 910,39</td><td style="text-align:right;white-space:nowrap;color:#c62828;font-weight:600;">−8,61 %</td></tr><tr><td><a href="https://finance.yahoo.com/quote/%5EIXIC/" target="_blank" rel="noopener noreferrer">Nasdaq Composite</a></td><td style="text-align:right;white-space:nowrap;">22 617,73</td><td style="text-align:right;white-space:nowrap;color:#c62828;font-weight:600;">−10,02 %</td></tr><tr><td><a href="https://finance.yahoo.com/quote/%5EDJI/" target="_blank" rel="noopener noreferrer">Dow Jones</a></td><td style="text-align:right;white-space:nowrap;">48 147,33</td><td style="text-align:right;white-space:nowrap;color:#c62828;font-weight:600;">−8,02 %</td></tr><tr><td><a href="https://finance.yahoo.com/quote/%5EN225/" target="_blank" rel="noopener noreferrer">Nikkei 225</a></td><td style="text-align:right;white-space:nowrap;">56 436,65</td><td style="text-align:right;white-space:nowrap;color:#c62828;font-weight:600;">−7,70 %</td></tr><tr><td><a href="https://finance.yahoo.com/quote/%5EHSI/" target="_blank" rel="noopener noreferrer">Hang Seng</a></td><td style="text-align:right;white-space:nowrap;">22 410,80</td><td style="text-align:right;white-space:nowrap;color:#c62828;font-weight:600;">−5,19 %</td></tr><tr><td><a href="https://finance.yahoo.com/quote/%5EKS11/" target="_blank" rel="noopener noreferrer">KOSPI</a></td><td style="text-align:right;white-space:nowrap;">4 869,96</td><td style="text-align:right;white-space:nowrap;color:#c62828;font-weight:600;">−7,95 %</td></tr><tr><td><a href="https://finance.yahoo.com/quote/%5ETNX/" target="_blank" rel="noopener noreferrer">US 10Y Treasury Yield</a></td><td style="text-align:right;white-space:nowrap;">4,91</td><td style="text-align:right;white-space:nowrap;color:#c62828;font-weight:600;">−4,70 %</td></tr><tr><td><a href="https://finance.yahoo.com/quote/BZ%3DF/" target="_blank" rel="noopener noreferrer">Brent Crude Oil</a></td><td style="text-align:right;white-space:nowrap;">92,57</td><td style="text-align:right;white-space:nowrap;color:#c62828;font-weight:600;">−3,41 %</td></tr><tr><td><a href="https://finance.yahoo.com/quote/GC%3DF/" target="_blank" rel="noopener noreferrer">Gold Futures</a></td><td style="text-align:right;white-space:nowrap;">3 515,40</td><td style="text-align:right;white-space:nowrap;color:#c62828;font-weight:600;">−9,54 %</td></tr><tr><td><a href="https://finance.yahoo.com/quote/HG%3DF/" target="_blank" rel="noopener noreferrer">Copper Futures</a></td><td style="text-align:right;white-space:nowrap;">5,48</td><td style="text-align:right;white-space:nowrap;color:#c62828;font-weight:600;">−9,91 %</td></tr><tr><td><a href="https://finance.yahoo.com/quote/EURUSD%3DX/" target="_blank" rel="noopener noreferrer">EUR/USD</a></td><td style="text-align:right;white-space:nowrap;">1,10</td><td style="text-align:right;white-space:nowrap;color:#c62828;font-weight:600;">−0,73 %</td></tr><tr><td><a href="https://finance.yahoo.com/quote/USDJPY%3DX/" target="_blank" rel="noopener noreferrer">USD/JPY</a></td><td style="text-align:right;white-space:nowrap;">159,71</td><td style="text-align:right;white-space:nowrap;color:#c62828;font-weight:600;">−0,11 %</td></tr><tr><td><a href="https://finance.yahoo.com/quote/BTC-USD/" target="_blank" rel="noopener noreferrer">Bitcoin USD</a></td><td style="text-align:right;white-space:nowrap;">57 867,29</td><td style="text-align:right;white-space:nowrap;color:#c62828;font-weight:600;">−9,76 %</td></tr></tbody></table>
+  </div>
+  <p>Kokonaiskuva lähtötilanteesta on poikkeuksellisen synkkä: jokainen taulukon kohde on laskenut viikon takaisesta. Raaka-aineista <a href="https://finance.yahoo.com/quote/GC%3DF/" target="_blank" rel="noopener noreferrer">Gold Futures</a> on 3&nbsp;515,40 dollarissa (−9,54&nbsp;%) ja <a href="https://finance.yahoo.com/quote/HG%3DF/" target="_blank" rel="noopener noreferrer">Copper Futures</a> 5,48 dollarissa (−9,91&nbsp;%). Saatavilla olevan tiedon mukaan kulta painui 14 kuukauden alimmalle tasolleen noin 3&nbsp;575 dollariin unssilta korkeampien korko-odotusten ja vahvan dollarin painamana. <a href="https://finance.yahoo.com/quote/BZ%3DF/" target="_blank" rel="noopener noreferrer">Brent Crude Oil</a> on 92,57 dollarissa (−3,41&nbsp;%). Valuutoista <a href="https://finance.yahoo.com/quote/EURUSD%3DX/" target="_blank" rel="noopener noreferrer">EUR/USD</a> on 1,10 (−0,73&nbsp;%) ja <a href="https://finance.yahoo.com/quote/USDJPY%3DX/" target="_blank" rel="noopener noreferrer">USD/JPY</a> 159,71 (−0,11&nbsp;%). <a href="https://finance.yahoo.com/quote/BTC-USD/" target="_blank" rel="noopener noreferrer">Bitcoin</a> on 57&nbsp;867,29 dollarissa (−9,76&nbsp;%).</p>
+</section>
+
+<section style="background:#fffbeb;border:2px dashed #f59e0b;border-radius:12px;padding:22px 24px;margin:34px 0 10px;"><h2 style="margin:0 0 12px;border:none;padding:0;color:#92400e;font-size:1.3rem;">Spekulaatio: skenaariot ja pelikirja alkavalle viikolle</h2><div style="background:#fef3c7;border-radius:8px;padding:10px 14px;font-weight:600;color:#78350f;margin-bottom:16px;font-size:.95rem;">Tämä osio on toimittajan spekulaatiota, ei sijoitusneuvontaa eikä ennuste.</div>
+
+<h3 style="color:#92400e;">Kolme skenaariota alkavalle viikolle</h3>
+
+<p><strong>1) Positiivinen skenaario – helpotusralli.</strong> Jos USA:n flash-PMI-luvut maanantaina 23.11. osoittavat talouden pitävän pintansa ja keskiviikon Core PCE -deflaattori jää odotuksia pehmeämmäksi, kiristysodotukset voisivat laueta ja riskinottohalukkuus palata. Siinä tapauksessa eniten nousisivat ne indeksit ja sektorit, jotka ovat laskeneet rajuimmin: <a href="https://finance.yahoo.com/quote/%5EIXIC/" target="_blank" rel="noopener noreferrer">Nasdaq Composite</a>, puolijohdeketju sekä Euroopassa <a href="https://finance.yahoo.com/quote/%5EGDAXI/" target="_blank" rel="noopener noreferrer">DAX</a> ja <a href="https://finance.yahoo.com/quote/%5EOMXH25/" target="_blank" rel="noopener noreferrer">OMX Helsinki 25</a>, joiden sykliset yhtiöt ovat kärsineet eniten. Skenaarion kumoaisi yksittäinen tekijä: odotuksia sitkeämpi inflaatioluku, joka palauttaisi joulukuun kiristyspelon täysimittaisena.</p>
+
+<p><strong>2) Perusskenaario – hermostunut vaakaliike.</strong> Jos data tulee lähelle odotuksia eikä uusia shokkiuutisia tule, viikko voisi jäädä hakemaan suuntaa kapeassa vaihteluvälissä. Kiitospäivän lyhentämä kaupankäynti (torstai 26.11. suljettu, perjantai 27.11. lyhennetty) pitäisi vaihdon ohuena, mikä korostaisi yksittäisten otsikoiden vaikutusta. Tässä skenaariossa defensiiviset sektorit – kulutustavarat, terveydenhuolto ja energiayhtiöt – pärjäisivät suhteellisesti parhaiten, kun taas korkean arvostuksen kasvuosakkeet jäisivät jalkoihin. Skenaarion kumoaisi se, että joko inflaatio- tai työllisyysdata yllättää selvästi jompaankumpaan suuntaan.</p>
+
+<p><strong>3) Negatiivinen skenaario – myyntiaallon jatkuminen.</strong> Jos Core PCE -deflaattori yllättää ylöspäin ja samalla tekoälyteeman ympärillä tulee uusia pettymyksiä – esimerkiksi Dellin tai Hewlett Packard Enterprisen tilauskannassa – myyntiaalto voisi jatkua. Siinä tapauksessa lasku olisi todennäköisesti jyrkintä teknologiassa ja puolijohteissa, ja se leviäisi nopeasti Eurooppaan ASML:n ja Infineonin kaltaisten yhtiöiden kautta sekä Helsinkiin teollisuuspainotuksen vuoksi. Skenaarion kumoaisi yksittäinen tekijä: selkeästi odotuksia pehmeämpi inflaatioluku, joka poistaisi joulukuun kiristyspaineen.</p>
+
+<h3 style="color:#92400e;">Yllätyskortti</h3>
+<p>Alihinnoiteltu riski liittyy raaka-aineiden ja energian yhteyteen. Saatavilla olevan tiedon mukaan geopoliittinen epävarmuus ja kohonneet energiakustannukset pysyvät keskeisinä riskeinä, ja taustalla on mainintoja muun muassa Iraniin liittyvistä jännitteistä ja kauppapolitiikan kiristymisestä. Jos energian hinta lähtisi uudelleen nousuun samaan aikaan kun inflaatioluvut ovat jo valmiiksi koholla, markkina joutuisi hinnoittelemaan sekä korkeampaa inflaatiota että heikompaa kasvua yhtä aikaa. Se näkyisi todennäköisesti siten, että <a href="https://finance.yahoo.com/quote/BZ%3DF/" target="_blank" rel="noopener noreferrer">Brent Crude Oil</a> nousisi samalla kun osakeindeksit laskisivat – eli osake- ja öljypositioiden välinen hajautushyöty katoaisi juuri sillä hetkellä, kun sitä eniten tarvittaisiin. Tämä on spekulaatiota, ei ennuste.</p>
+
+<h3 style="color:#92400e;">Seurattavat kohteet</h3>
+<ul>
+  <li><strong>Euroopan sykliset ja Helsingin pörssi.</strong> Perustelu: <a href="https://finance.yahoo.com/quote/%5EOMXH25/" target="_blank" rel="noopener noreferrer">OMX Helsinki 25</a> laski 6,75&nbsp;% ja <a href="https://finance.yahoo.com/quote/%5EGDAXI/" target="_blank" rel="noopener noreferrer">DAX</a> 7,28&nbsp;% viikossa, eli lasku on ollut Euroopassa rajumpaa kuin Yhdysvalloissa suhteessa aiempaan tasoon. Aikajänne: 1–4 viikkoa. Riskit: jos USA:n inflaatioluvut yllättävät ylöspäin, korkopelko leviää Eurooppaan ja sykliset laskisivat lisää. Idean kumoaisi euroalueen flash-PMI-lukujen selvä pettymys maanantaina 23.11.</li>
+  <li><strong>Defensiiviset kulutustavarat Euroopassa.</strong> Perustelu: saatavilla olevan tiedon mukaan Nestle, Unilever ja British American Tobacco nousivat yli prosentin, kun sijoittajat hakivat turvaa defensiivisistä osakkeista. Aikajänne: 2–6 viikkoa. Riskit: jos riskinottohalu palaa nopeasti, defensiiviset jäävät jälkeen noususta. Idean kumoaisi selkeä helpotusralli, joka ohjaisi pääomat takaisin syklisiin ja teknologiaan.</li>
+  <li><strong>Jalometallit ja kupari.</strong> Perustelu: <a href="https://finance.yahoo.com/quote/GC%3DF/" target="_blank" rel="noopener noreferrer">Gold Futures</a> laski 9,54&nbsp;% ja <a href="https://finance.yahoo.com/quote/HG%3DF/" target="_blank" rel="noopener noreferrer">Copper Futures</a> 9,91&nbsp;% viikossa korkeampien korko-odotusten ja vahvan dollarin painamana. Aikajänne: 2–8 viikkoa. Riskit: jos korot jatkavat nousua ja dollari vahvistuu, lasku voi jatkua. Idean kumoaisi se, että Fedin kiristysodotukset laukeaisivat selvästi – silloin sekä kulta että kupari voisivat saada tukea.</li>
+</ul>
+
+<p>Kaikki edellä esitetty on spekulaatiota, ei sijoitusneuvontaa eikä ennuste. Toteutunut kehitys voi poiketa siitä merkittävästi.</p>
+</section>
+
+<section>
+  <h2>Lähteet</h2>
+  <ul>
+    <li><a href="https://www.ubs.com/global/en/wealthmanagement/insights/chief-investment-office/house-view/daily/2026/latest-20112026.html" target="_blank" rel="noopener noreferrer">Daily: Market volatility reinforces case for portfolio resilience – UBS Global</a></li>
+    <li><a href="https://www.theglobeandmail.com/investing/markets/markets-news/motley/8928383/the-sp-500-just-fell-4-straight-weeks-from-a-record-high-heres-why-im-buying-the-dip" target="_blank" rel="noopener noreferrer">The S&amp;P 500 Just Fell 4 Straight Weeks From a Record High – The Globe and Mail</a></li>
+    <li><a href="https://www.cnbc.com/2026/11/19/stock-market-today-live-updates.html" target="_blank" rel="noopener noreferrer">Stock market news for Nov. 20, 2026 – CNBC</a></li>
+    <li><a href="https://www.tastylive.com/news-insights/the-fed-sounds-hawkish-but-markets-don-t-believe-it-why-" target="_blank" rel="noopener noreferrer">The Fed Sounds Hawkish But Markets Don't Believe It. Why? – tastylive</a></li>
+    <li><a href="https://www.reuters.com/business/sp-500-nasdaq-futures-slide-nvidia-earnings-anthropic-debut-loom-2026-11-16" target="_blank" rel="noopener noreferrer">Wall Street ends sharply lower on AI jitters ahead of Nvidia results – Reuters</a></li>
+    <li><a href="https://finance.yahoo.com/markets/live/stock-market-today-tuesday-november-17-dow-sp-500-nasdaq-nvidia-earnings-retail-sales-143848454.html" target="_blank" rel="noopener noreferrer">Stock market today: Dow sinks 850 points, S&amp;P 500 and Nasdaq drop – Yahoo Finance</a></li>
+    <li><a href="https://www.reuters.com/markets/europe/european-shares-head-steepest-weekly-drop-since-march-2026-11-20" target="_blank" rel="noopener noreferrer">European shares post worst week in over a year as AI trade unravels – Reuters</a></li>
+    <li><a href="https://mlq.ai/news/european-stocks-close-down-2-to-cap-their-worst-week-since-march-as-asml-and-infineon-slump" target="_blank" rel="noopener noreferrer">European stocks close down 2% to cap their worst week since March as ASML and Infineon slump – MLQ.ai</a></li>
+    <li><a href="https://www.bradenton.com/news/nation-world/national/article318169952.html" target="_blank" rel="noopener noreferrer">European shares post worst week in over a year as AI trade unravels – Bradenton Herald</a></li>
+    <li><a href="https://www.xtb.com/int/market-analysis/news-and-research/economic-calendar-european-inflation-and-us-housing-market-data" target="_blank" rel="noopener noreferrer">Economic calendar: European inflation and US housing market data – XTB</a></li>
+    <li><a href="https://www.goldmansachs.com/insights/articles/global-stocks-expected-to-rally-in-2027-as-earnings-growth-slows" target="_blank" rel="noopener noreferrer">Global Stocks Are Expected to Rally in 2027 Even as Earnings Growth Slows – Goldman Sachs</a></li>
+    <li><a href="https://live.deutsche-boerse.com/news/weekly-outlook-strong-numbers-boost-the-dax" target="_blank" rel="noopener noreferrer">Weekly Outlook: Strong Numbers Boost the DAX – Deutsche Börse</a></li>
+    <li><a href="https://funds.deutsche-am.com/en-ch/inform/markets/market-outlook/market-and-macro" target="_blank" rel="noopener noreferrer">Market Outlook – November 2026 – DWS by Deutsche Asset Management</a></li>
+    <li><a href="https://www.briefs.co/author/nate" target="_blank" rel="noopener noreferrer">Nate Gregory – Briefs Finance</a></li>
+    <li><a href="https://www.blackrock.com/us/individual/insights/blackrock-investment-institute/weekly-commentary" target="_blank" rel="noopener noreferrer">Weekly market commentary – BlackRock Investment Institute</a></li>
+    <li><a href="https://www.youtube.com/watch?v=9gPThYbtVSM" target="_blank" rel="noopener noreferrer">The Market Just Cracked… Why Next Week Could Be the Exact Bottom</a></li>
+    <li><a href="https://www.facebook.com/edwardjones/videos/recent-market-swings-have-raised-questions-about-whats-driving-markets-and-what-/1372998865907104" target="_blank" rel="noopener noreferrer">Edward Jones: Recent market swings have raised questions – Facebook</a></li>
+  </ul>
+</section>
+
+<footer>
+  Viikkoennakko laadittu sunnuntaina 22.11.2026 alkavalle viikolle 23.–29.11.2026. Kurssiluvut ovat viimeisimpiä päätöslukuja, eivät reaaliaikaisia. Raportti ei ole sijoitusneuvontaa.
+</footer>
+
+</div>
+</body>
+</html>
