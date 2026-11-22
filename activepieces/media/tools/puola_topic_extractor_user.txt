@@ -1,0 +1,4 @@
+Alla on Puolan-mediakartoitus ajalta {{period}}. Tunnista siitä kuukauden todelliset puheenaiheet ja palauta JSON yllä annetun rakenteen mukaisesti.
+
+KARTOITUSAINEISTO:
+{{discovery}}

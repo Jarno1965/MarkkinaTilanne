@@ -6,6 +6,13 @@ itsenäisen HTML5-raportin `data/media/`-kansioon. Malli on kopioitu työnkuluis
 "Venäjä puhuu". **Hakuikkuna on 30 vrk (kuukausi)** ja katsaukset ajetaan **kerran kuukaudessa**
 (kuukauden 1. päivänä).
 
+> **Huom 22.11.2026:** Puola puhuu **ei enää noudata tätä kiinteää mallia**. Se rakennettiin uudelleen
+> dynaamiseksi: kartoitus (valtamedia + mielipide-/talousmedia + Wykop/Reddit) → AI:n tunnistamat
+> 5–7 kuukauden puheenaihetta → täsmähaut → raportti, jonka osio-otsikot tulevat datasta.
+> Katso `activepieces/media/Puola-puhuu-OHJEET.md`. Tämän tiedoston taulukko ja hakustrategiat
+> koskevat muita maita.
+
+
 | Työnkulku | Kieli | Aikataulu (Europe/Helsinki) | Tiedosto | Flow ID |
 | --- | --- | --- | --- | --- |
 | Saksa puhuu | `de` | 1. päivä klo 10:00 | `…-saksa-puhuu.html` | `1rupk7xKt3Cf1tFkMcQD2` |

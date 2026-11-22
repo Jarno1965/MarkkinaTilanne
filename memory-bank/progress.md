@@ -1,5 +1,51 @@
 ﻿# Progress Log
 
+## 2026-11-22 – "Puola puhuu" uudelleen dynaamiseksi (Media-kansio)
+**Done:**
+- Käyttäjän havainto: Media-kansion Puola puhuu oli väärin rakennettu – aiheet kovakoodattu, vaikka
+  niiden pitäisi syntyä dynaamisesti puolankielisistä lähteistä kuukauden ajalta. Tehtiin suunnitelma
+  ja toteutus.
+- **Löydös:** käytössä ollut flow `ULRjuv9GtUDQ7Y5OKjM2q` oli juuressa (Uncategorized), ei Media-
+  kansiossa; Media-kansiossa oli vanha `Puola puhuu (VANHA - ei ajossa)` (`Hzyd1EzsgqnwkPf1bhQsW`).
+- **Uusi työnkulku `Puola puhuu` (`c0MqQI410YdGCyHrJvB8v`)** Media-kansioon, 19 askelta, julkaistu
+  ja ENABLED (1. päivä klo 08:00 Europe/Helsinki):
+  kartoitus (uutisportaalit + mielipide-/talousmedia + Wykop/Reddit) → `step_7` Gemini 2.5 Flash
+  tunnistaa 5–7 teemaa ja 3 puolankielistä täsmähakua JSONina → `step_9`–`step_13` täsmähaut,
+  Tavily Extract ja Firecrawl-keskustelut → `step_14` yhdistää ja pudottaa yli 32 vrk vanhat →
+  `step_15` laadunvartija → `step_16` Claude Sonnet 4.6 kirjoittaa Markdownin dynaamisilla
+  otsikoilla → `step_17` HTML + Base64 → `step_18` GitHub.
+- **AI-mallit:** poimija `google/gemini-2.5-flash` (varalla `deepseek/deepseek-v4.1-flash`);
+  kirjoittaja `anthropic/claude-sonnet-4.6` (OpenRouter-fallbackit `google/gemini-2.5-pro`,
+  `openai/gpt-4.1`). Perustelut: nopea ja halpa JSON-poiminta + paras suomen kieli; 1×/kk-ajo
+  tekee laatuluokasta edullisen.
+- **Kehote kieltää vanhat vakio-otsikot** ja vaatii yhden `##`-osion jokaiselle aineistosta
+  nousevalle teemalle. Pudota teema ilman katetta, lisää aineiston paljastama teema.
+- **Kansiosiivous:** vanha `ULRjuv9GtUDQ7Y5OKjM2q` → `Puola puhuu (VANHA 22.11 - ei ajossa)` +
+  DISABLED; `Hzyd1EzsgqnwkPf1bhQsW` siirretty pois Media-kansiosta. Media-kansiossa yksi Puola-flow.
+- **Uudet tiedostot:** `activepieces/media/Puola-puhuu-OHJEET.md`,
+  `tools/puola_step6_discovery.js`, `puola_step8_queries.js`, `puola_step14_compact.js`,
+  `puola_step15_guard.js`, `puola_step17_markdown.js`, `puola_topic_extractor_system.txt` /
+  `_user.txt`, `puola_writer_system.txt` / `_user.txt`, `test_puola_dynamic.mjs`.
+  `Saksa-Ranska-Ruotsi-Viro-OHJEET.md` sai huomautuksen Puolan uudesta mallista.
+
+**Verifiointi:**
+- `ap_validate_flow` 19/19; `ap_validate_flow({ folderName: "Media" })` 11 flowta, yhteydet kunnossa.
+- Testiajo `WSx4D8SqbwTTpWi4fbyZU` SUCCEEDED 223,4 s → `data/media/2026-11-22-1750-puola-puhuu.html`
+  (22 671 B, 14 lähdettä, 14 895 merkkiä tekstiä). Dynaamiset otsikot: Trybunał Konstytucyjny
+  -kriisi, ulkomaalaisiin kohdistuva väkivalta, Andziaks-mikrovero, Kornelia Wieczorek -kohu,
+  Puolan talous 2030. 0 `[object Object]`, 0 `reasoning`, 0 `<script>`, päättyy `</html>`.
+- Yksikkötesti `node activepieces/media/tools/test_puola_dynamic.mjs` **29/29 OK**.
+- `node tests/make-manifests.mjs` → media 15 raporttia (uusi raportti haettu repoon ja listattu).
+
+**Next:**
+- Seuraa 1.12.2026 klo 08:00 automaattiajoa ja tarkista, että teemat ovat jälleen datasta eivätkä
+  toista marraskuun aiheita.
+- Jos Wykop/Reddit-aineisto jää usein ohueksi, harkitse `step_5`/`step_13` kyselyjen laajentamista
+  tai toista keskustelulähdettä.
+- Harkitse saman dynaamisen mallin soveltamista muihin "…puhuu"-katsauksiin (esim. Kiina, Brasilia),
+  joissa kiinteät teemat rajaavat kuukauden todellisia aiheita.
+
+
 ## 2026-11-21 – Viikkokatsauksen ajantasaisuus: tuloskausiluvut ja aikasuodatus
 **Done:**
 - Käyttäjä huomasi, että viikkokatsauksen tuloskausiluvut olivat vanhentuneita (13,4 % / 27,4 % /

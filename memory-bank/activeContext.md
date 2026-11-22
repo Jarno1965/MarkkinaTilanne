@@ -1,5 +1,75 @@
 # Active Context
 
+## Update 2026-11-22: "Puola puhuu" rakennettiin uudelleen dynaamiseksi (Media-kansio)
+
+**Käyttäjän havainto:** Media-kansion Puola puhuu oli väärin rakennettu – aiheet oli kovakoodattu,
+vaikka niiden pitäisi syntyä dynaamisesti puolankielisistä lähteistä kuluneen kuukauden ajalta.
+Pyyntö: suunnitelma halutusta rakenteesta ja AI-mallisuositus.
+
+**Löydökset Activepiecesistä:**
+- Käytössä ollut flow `ULRjuv9GtUDQ7Y5OKjM2q` oli **juuressa (Uncategorized)**, ei Media-kansiossa.
+  Media-kansiossa oli vanha `Puola puhuu (VANHA - ei ajossa)` (`Hzyd1EzsgqnwkPf1bhQsW`, DISABLED).
+- Vanha rakenne: 5 kiinteää teemahakua (arki/perhe, hinnat, talous/työ, politiikka, terveys) ja
+  kehote pakotti raportin 9 kiinteään väliotsikkoon kiinteillä sanamäärillä → kuukauden todellinen
+  kärkiaie jäi sivuun ja tyhjistä osioista tuli täytettä.
+
+**Ratkaisu – uusi dynaaminen työnkulku `Puola puhuu` (`c0MqQI410YdGCyHrJvB8v`, Media, julkaistu ja
+ENABLED, 1. päivä klo 08:00 Europe/Helsinki, 19 askelta):**
+```
+step_1-2  Date Helper: nyt + -30 vrk
+step_3    Tavily kartoitus 1/3: uutisportaalit ja päivälehdet (11 domainia, topic news, days 30)
+step_4    Tavily kartoitus 2/3: mielipide-, talous- ja aikakausmedia (11 domainia, general + month)
+step_5    Firecrawl kartoitus 3/3: Wykop, Reddit ja keskustelut (qdr:m, includePageContent)
+step_6    Code: kartoitus yhdeksi tekstiksi, duplikaatit/roskadomainit pois, ikämerkinnät
+step_7    OpenRouter google/gemini-2.5-flash: AIHEIDENPOIMIJA -> JSON (5-7 teemaa + 3 hakua + urlit)
+step_8    Code: JSON -> query_1..3, themesText, urls, socialQuery; varahaut jos JSON puuttuu
+step_9-11 Tavily täsmähaut AI:n hakulauseilla (news, days 30, pl)
+step_12   Tavily Extract: koko tekstit AI:n valitsemista artikkeleista (continueOnFailure)
+step_13   Firecrawl: keskustelut teemoista (socialQuery, continueOnFailure)
+step_14   Code: yhdistä + pudota yli 32 vrk vanhat + lähderekisteri + sourcesText
+step_15   Code: laadunvartija (teemoja >= 3, lähteitä >= 8, domaineja >= 5, merkkejä >= 6000)
+step_16   OpenRouter anthropic/claude-sonnet-4.6 (fallback gemini-2.5-pro, gpt-4.1): Markdown-katsaus
+step_17   Code: Markdown -> HTML + Base64 (lähdeluettelo vain jos LLM unohti sen)
+step_18   GitHub PUT data/media/<aikaleima>-puola-puhuu.html
+```
+
+**AI-mallivalinnat ja perustelut:**
+- **Poimija `google/gemini-2.5-flash`** (varalla `deepseek/deepseek-v4.1-flash`): nopea, halpa,
+  luotettava JSON, erinomainen puolan kieli. Testikutsu palautti 5 teemaa ja 3 hakua ~14 s (~0,004 $).
+- **Kirjoittaja `anthropic/claude-sonnet-4.6`**: projektin paras suomen kielen rytmi ja journalistinen
+  ote; ei tuhlaa tokeneita pohdintaan. Koska ajo on 1×/kk, kustannus on muutaman sentin luokkaa.
+  Varamallit `google/gemini-2.5-pro` ja `openai/gpt-4.1` OpenRouterin `models`-ketjussa.
+- **Mitattu huomio:** `google/gemini-2.5-pro` käyttää runsaasti reasoning-tokeneita (50 tokenin
+  testissä `finish_reason: length`), joten se sopii varamalliksi vain riittävällä `max_tokens`illa.
+
+**Kehoterakenne (dynaamisuuden ydin):** kirjoittajan kehote kieltää vakio-otsikot (Arki ja perhe,
+Toimeentulo/hinnat, Politiikka ja julkiset kiistat, Kulttuuri/urheilu, Alueelliset erot, Ennuste) ja
+vaatii yhden `##`-osion jokaiselle aineistosta nousevalle teemalle. Jos ehdotettu teema ei saa
+katetta, se pudotetaan; jos aineistosta nousee uusi teema, se otetaan mukaan.
+
+**Verifiointi:** `ap_validate_flow` 19/19 · testiajo `WSx4D8SqbwTTpWi4fbyZU` SUCCEEDED 223,4 s →
+`data/media/2026-11-22-1750-puola-puhuu.html` (22 671 B, 14 lähdettä, 14 895 merkkiä tekstiä).
+Otsikot olivat kuukauden oikeita aiheita (Trybunał Konstytucyjny -kriisi, ulkomaalaisiin kohdistuva
+väkivalta, Andziaks-mikrovero, Kornelia Wieczorek -kohu, Puolan talous 2030), 0 `[object Object]`,
+0 `reasoning`, 0 `<script>`, dokumentti päättyy `</html>`. Yksikkötesti
+`node activepieces/media/tools/test_puola_dynamic.mjs` **29/29 OK**.
+
+**Kansiosiivous:** vanha `ULRjuv9GtUDQ7Y5OKjM2q` nimettiin `Puola puhuu (VANHA 22.11 - ei ajossa)`
+ja DISABLED; `Hzyd1EzsgqnwkPf1bhQsW` siirrettiin pois Media-kansiosta (Uncategorized, DISABLED).
+Media-kansiossa on nyt yksi Puola-työnkulku.
+
+**Uudet tiedostot:** `activepieces/media/Puola-puhuu-OHJEET.md` (ylläpito-ohje),
+`activepieces/media/tools/puola_step6_discovery.js`, `puola_step8_queries.js`,
+`puola_step14_compact.js`, `puola_step15_guard.js`, `puola_step17_markdown.js`,
+`puola_topic_extractor_system.txt` / `_user.txt`, `puola_writer_system.txt` / `_user.txt`,
+`test_puola_dynamic.mjs`. `Saksa-Ranska-Ruotsi-Viro-OHJEET.md` sai huomautuksen, ettei Puola enää
+noudata kiinteää mallia.
+
+**Opiksi:** `ap_test_step` näyttää ajetut askeleet epäjärjestyksessä ja kohdeaskeleen viimeisenä,
+joten yksittäisen askeleen tulosta ei pidä tulkita ennen kuin koko ajo on valmis. Jos kohdeaskeleen
+syöte näyttää tyhjältä, aja `ap_test_flow` ja tarkista `ap_get_run`.
+
+
 ## Update 2026-11-21 (4): Viikkokatsauksen ajantasaisuus (tuloskausiluvut ja aikasuodatus)
 
 **Käyttäjän havainto:** Lauantain viikkokatsauksessa luki "91 % S&P 500 -yhtiöistä oli raportoinut.

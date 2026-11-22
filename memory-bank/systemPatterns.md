@@ -52,7 +52,41 @@ Three layers, no backend:
 - **Providers disagree on earnings figures** (FactSet 31.9 %/14.4 %, Zacks 28.9 %/14.6 %, U.S. Bank
   27.4 %/13.4 %), so the Saturday report must name the source and the as-of date of each figure.
 
-## Report Rendering (why srcdoc, not iframe src)
+## Dynamic Topic Discovery (Puola puhuu, 22.11.2026)
+
+The monthly media review for Poland no longer uses fixed topic searches. It follows a
+**discover → identify → deep-dive → write** pattern:
+
+1. **Discovery (no locked topics):** three independent sweeps over Polish sources —
+   news portals and dailies (Tavily, `topic: news`, `days: 30`), opinion/business/weekly media
+   (Tavily, `topic: general`, `time_range: month`) and citizen discussion (Firecrawl `search_web`,
+   `timeFilter: qdr:m`, `includePageContent`).
+2. **Topic identification (LLM 1):** a cheap, fast model (`google/gemini-2.5-flash`) reads the
+   compacted discovery text and returns JSON: 5–7 themes (specific phenomena, not categories),
+   exactly 3 Polish follow-up queries, and up to 6 article URLs. Code step `step_8` parses it and
+   falls back to three generic queries if the model does not return JSON.
+3. **Deep dive:** the three AI-written queries feed Tavily searches; Tavily Extract pulls full text
+   from the AI-selected URLs; a second Firecrawl call fetches discussion around the theme keywords.
+4. **Compaction + freshness:** `step_14` merges four blocks (`teemat`, `uutiset`, `artikkelit`,
+   `some`), drops items with a known publication date older than 32 days, labels undated items
+   `ei päivämäärää`, and builds a numbered source registry (`sources`, `sourcesText`).
+5. **Quality gate:** `step_15` aborts the run (no commit) when themes < 3, sources < 8,
+   domains < 5, non-empty blocks < 3 or material < 6 000 chars.
+6. **Writer (LLM 2):** `anthropic/claude-sonnet-4.6` (OpenRouter fallbacks
+   `google/gemini-2.5-pro`, `openai/gpt-4.1`) writes Markdown whose `##` headings are the themes
+   themselves. The prompt explicitly bans the old fixed headings and tells the model to drop themes
+   without evidence and add themes the material reveals.
+7. **Finalize:** `step_17` converts Markdown to a standalone HTML document (Polish-red accent),
+   appends the source list only if the model omitted it, and throws if the document is truncated.
+
+**Why two models:** topic extraction needs speed, a large context and strict JSON (Gemini Flash);
+report writing needs idiomatic Finnish and journalistic judgement (Claude Sonnet). Running monthly
+means the quality tier is affordable.
+
+**Model gotcha:** `google/gemini-2.5-pro` spends many tokens on internal reasoning (a 50-token
+probe ended with `finish_reason: length`), so it is only a fallback with a large `max_tokens`.
+
+
 - GitHub Pages publishes only `docs/`, so `../data/x.html` is not reachable from the published site.
 - `raw.githubusercontent.com` returns HTML as `text/plain` with `X-Content-Type-Options: nosniff`, so `<iframe src="raw-url">` would display source code.
 - Therefore `app.js` fetches the HTML as text and sets it via `iframe.srcdoc`, inside a sandbox with no `allow-scripts` (AI output cannot execute scripts). `<base target="_blank">` and `lang="fi"` are injected beforehand.

@@ -1,0 +1,23 @@
+Kirjoita suomenkielinen "Puola puhuu" -katsaus Markdown-muodossa alla olevasta aineistosta. Noudata järjestelmäviestin rakennetta ja sääntöjä tarkasti.
+
+NYKYHETKI (Suomen aika): {{now}}
+KATSAUKSEN AIKAVÄLI: {{period}}
+LÄHTEITÄ: {{sourceCount}} kpl / {{domainCount}} eri domainia
+KARTOITUKSESSA TUNNISTETUT TEEMAT: {{themeCount}} kpl
+
+=== KARTOITUSVAIHEESSA TUNNISTETUT TEEMAT (ehdotus, tarkista aineistosta) ===
+{{themes}}
+
+=== TÄSMÄHAUT: UUTISET JA TAUSTAT ===
+{{uutiset}}
+
+=== ARTIKKELIT KOKO TEKSTINÄ ===
+{{artikkelit}}
+
+=== KESKUSTELUT JA SOME ===
+{{some}}
+
+=== LÄHDELUETTELO (käytä näitä URL-osoitteita sellaisenaan) ===
+{{sources}}
+
+Kirjoita nyt kaikki osiot loppuun asti Markdown-muodossa.
