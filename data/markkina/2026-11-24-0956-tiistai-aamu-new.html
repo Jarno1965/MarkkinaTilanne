@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aamun markkinakatsaus</title>
+<style>
+  :root{
+    --bg:#f7f9fb;
+    --card:#ffffff;
+    --text:#1c2530;
+    --muted:#5b6b7c;
+    --line:#e3e9ef;
+    --up:#0f8a4d;
+    --down:#c0392b;
+    --accent:#0b5fa5;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    padding:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    line-height:1.6;
+    font-size:16px;
+  }
+  .wrap{
+    max-width:860px;
+    margin:0 auto;
+    padding:24px 18px 60px;
+  }
+  header.top{
+    border-bottom:3px solid var(--accent);
+    padding-bottom:14px;
+    margin-bottom:22px;
+  }
+  header.top h1{
+    font-size:1.7rem;
+    margin:0 0 6px;
+    letter-spacing:-0.02em;
+  }
+  header.top p{
+    margin:0;
+    color:var(--muted);
+    font-size:0.92rem;
+  }
+  .highlight{
+    background:linear-gradient(135deg,#0b5fa5,#0f8a4d);
+    color:#fff;
+    border-radius:14px;
+    padding:20px 22px;
+    margin-bottom:28px;
+    box-shadow:0 6px 18px rgba(11,95,165,0.18);
+  }
+  .highlight h2{
+    margin:0 0 10px;
+    font-size:1.12rem;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    font-weight:700;
+  }
+  .highlight p{
+    margin:0 0 10px;
+    font-size:1rem;
+  }
+  .highlight p:last-child{margin-bottom:0;}
+  .highlight a{color:#fff;text-decoration:underline;}
+  section{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:20px 22px;
+    margin-bottom:22px;
+    box-shadow:0 1px 3px rgba(20,40,60,0.04);
+  }
+  section h2{
+    font-size:1.18rem;
+    margin:0 0 14px;
+    padding-bottom:8px;
+    border-bottom:1px solid var(--line);
+    color:var(--accent);
+  }
+  section h3{
+    font-size:1rem;
+    margin:18px 0 8px;
+    color:var(--text);
+  }
+  p{margin:0 0 12px;}
+  ul{margin:0 0 12px;padding-left:20px;}
+  li{margin-bottom:6px;}
+  a{color:var(--accent);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  .up{color:var(--up);font-weight:600;}
+  .down{color:var(--down);font-weight:600;}
+  .flat{color:var(--muted);font-weight:600;}
+  table{
+    width:100%;
+    border-collapse:collapse;
+    margin:12px 0 6px;
+    font-size:0.94rem;
+  }
+  th,td{
+    text-align:left;
+    padding:8px 10px;
+    border-bottom:1px solid var(--line);
+  }
+  th{
+    background:#f0f4f8;
+    font-weight:600;
+    font-size:0.86rem;
+    text-transform:uppercase;
+    letter-spacing:0.03em;
+    color:var(--muted);
+  }
+  td.num{text-align:right;white-space:nowrap;}
+  .note{
+    font-size:0.85rem;
+    color:var(--muted);
+    font-style:italic;
+    margin-top:8px;
+  }
+  .tag{
+    display:inline-block;
+    font-size:0.72rem;
+    font-weight:700;
+    padding:2px 8px;
+    border-radius:20px;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    vertical-align:middle;
+    margin-left:6px;
+  }
+  .tag-done{background:#e3f5ea;color:var(--up);}
+  .tag-soon{background:#e6f0fa;color:var(--accent);}
+  footer{
+    text-align:center;
+    color:var(--muted);
+    font-size:0.8rem;
+    margin-top:30px;
+  }
+  @media(max-width:560px){
+    header.top h1{font-size:1.35rem;}
+    section{padding:16px 15px;}
+    table{font-size:0.86rem;}
+    th,td{padding:6px 6px;}
+  }
+</style>
+</head>
+<body>
+<div style="background:#f1f5f9;border-bottom:1px solid #cbd5e1;color:#475569;font:14px/1.4 Arial,sans-serif;padding:8px 16px;text-align:center;">Raportti luotu: tiistai 24.11.2026 klo 09:56:39</div>
+<div class="wrap">
+
+  <header class="top">
+    <h1>Aamun markkinakatsaus</h1>
+    <p>Tiistai 24.11.2026 &middot; Helsingin pörssi avautuu klo 10.00</p>
+  </header>
+
+  <div class="highlight">
+    <h2>Aamun tärkein markkina-ajuri</h2>
+    <p><strong>Jensen Huangin paluu <a href="https://finance.yahoo.com/quote/NVDA/" target="_blank" rel="noopener noreferrer">Nvidian</a> toimitusjohtajaksi</strong> on koko aamun keskeisin teema. Yhtiön hallitus kumosi aiemman päätöksensä ja palautti Huangin tehtävään välittömästi, mikä sytytti rajun nousun tekoälyosakkeissa. Nvidia nousi edellisessä Yhdysvaltain päätöksessä <span class="up">+31,48 %</span> 165,05 dollariin.</p>
+    <p>Reaktio levisi laajasti: <a href="https://finance.yahoo.com/quote/%5EIXIC/" target="_blank" rel="noopener noreferrer">Nasdaq Composite</a> sulkeutui <span class="up">+6,51 %</span> nousuun 24&nbsp;089,56 pisteeseen, ja <a href="https://finance.yahoo.com/quote/%5EGSPC/" target="_blank" rel="noopener noreferrer">S&amp;P 500</a> nousi edellisenä kauppapäivänä <span class="up">+4,73 %</span>. Aasiassa nousu oli vielä rajumpaa: <a href="https://finance.yahoo.com/quote/%5EKS11/" target="_blank" rel="noopener noreferrer">KOSPI</a> sulkeutui <span class="up">+6,32 %</span> ja <a href="https://finance.yahoo.com/quote/%5EN225/" target="_blank" rel="noopener noreferrer">Nikkei 225</a> <span class="up">+3,91 %</span>. Tunnelmaa kuvaa myös volatiliteettimittari <a href="https://finance.yahoo.com/quote/%5EVIX/" target="_blank" rel="noopener noreferrer">VIX</a>, joka laski edellisenä päivänä <span class="down">-25,83 %</span> 26,62:een.</p>
+    <p>Euroopan ja Helsingin avaukselle tämä merkitsee vahvaa riskinottohalukkuutta ja tekoälyteeman uudelleenarvostusta. Futuurit viittaavat kuitenkin maltillisempaan avaukseen kuin Aasian raju nousu antaisi odottaa.</p>
+  </div>
+
+  <section>
+    <h2>Helsingin pörssi ja kotimaiset yhtiöt</h2>
+    <p>Helsingin pörssi avautuu klo 10.00. Ennen avausta käytettävissä oleva <a href="https://finance.yahoo.com/quote/%5EOMXH25/" target="_blank" rel="noopener noreferrer">OMX Helsinki 25</a> -indeksin lukema <strong>6&nbsp;013,39 pistettä (<span class="up">+1,83 %</span>)</strong> on edellisen pörssipäivän 23.11. päätösluku, ei tämän aamun avausennuste.</p>
+    <p>Vastaavasti <a href="https://finance.yahoo.com/quote/%5EOMX/" target="_blank" rel="noopener noreferrer">OMX Stockholm 30</a> oli edellisen päivän päätöksessä <span class="up">+2,72 %</span> ja laajempi <a href="https://finance.yahoo.com/quote/%5ESTOXX/" target="_blank" rel="noopener noreferrer">STOXX Europe 600</a> <span class="up">+1,81 %</span>. Saksan <a href="https://finance.yahoo.com/quote/%5EGDAXI/" target="_blank" rel="noopener noreferrer">DAX</a> nousi <span class="up">+2,15 %</span> ja Britannian <a href="https://finance.yahoo.com/quote/%5EFTSE/" target="_blank" rel="noopener noreferrer">FTSE 100</a> <span class="up">+1,30 %</span>.</p>
+
+    <h3>Kotimaiset päivän liikkujat (edellinen kauppapäivä 23.11., tilanne klo 18.29)</h3>
+    <table>
+      <thead>
+        <tr><th>Osake</th><th class="num">Muutos</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><a href="https://finance.yahoo.com/quote/NOKIA.HE/" target="_blank" rel="noopener noreferrer">Nokia</a></td><td class="num up">+8,91 %</td></tr>
+        <tr><td><a href="https://finance.yahoo.com/quote/WRT1V.HE/" target="_blank" rel="noopener noreferrer">Wärtsilä</a></td><td class="num up">+5,89 %</td></tr>
+        <tr><td><a href="https://finance.yahoo.com/quote/METSO.HE/" target="_blank" rel="noopener noreferrer">Metso</a></td><td class="num up">+4,53 %</td></tr>
+        <tr><td><a href="https://finance.yahoo.com/quote/TYRES.HE/" target="_blank" rel="noopener noreferrer">Nokian Renkaat</a></td><td class="num down">-3,08 %</td></tr>
+        <tr><td><a href="https://finance.yahoo.com/quote/ELISA.HE/" target="_blank" rel="noopener noreferrer">Elisa</a></td><td class="num down">-2,66 %</td></tr>
+        <tr><td><a href="https://finance.yahoo.com/quote/NESTE.HE/" target="_blank" rel="noopener noreferrer">Neste</a></td><td class="num down">-2,35 %</td></tr>
+      </tbody>
+    </table>
+    <p class="note">Luvut ovat viimeisimmältä kauppapäivältä 23.11. Kaikilla 27 seuratulla yhtiöllä on luvut samalta päivältä; taulukossa ovat päivän kolme suurinta nousijaa ja kolme suurinta laskijaa.</p>
+    <p>Kotimaisista yhtiöistä ei ole saatavilla tuoreita pörssitiedotteita tai yhtiökohtaisia uutisia tämän aamun osalta. Saatavilla olevan tiedon mukaan asiasta ei ole vielä uutisia.</p>
+  </section>
+
+  <section>
+    <h2>Aasian pörssit</h2>
+    <p>Aasian markkinat nousivat yön aikana selvästi Yhdysvaltain teknologiaosakkeiden vedolla. Taiwanin Taiex nousi yli 9 %, ja siruvalmistajat olivat nousun kärjessä. Saatavilla olevan tiedon mukaan Taiwan Semiconductor Manufacturing ja Mediatek nousivat lähes 10 %.</p>
+    <table>
+      <thead>
+        <tr><th>Indeksi</th><th class="num">Taso</th><th class="num">Muutos</th><th>Tila</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><a href="https://finance.yahoo.com/quote/%5EN225/" target="_blank" rel="noopener noreferrer">Nikkei 225</a></td><td class="num">58&nbsp;644,63</td><td class="num up">+3,91 %</td><td>Sulkeutunut klo 08.45</td></tr>
+        <tr><td><a href="https://finance.yahoo.com/quote/%5EKS11/" target="_blank" rel="noopener noreferrer">KOSPI</a></td><td class="num">5&nbsp;006,03</td><td class="num up">+6,32 %</td><td>Sulkeutunut klo 08.30</td></tr>
+        <tr><td><a href="https://finance.yahoo.com/quote/%5EHSI/" target="_blank" rel="noopener noreferrer">Hang Seng</a></td><td class="num">22&nbsp;203,94</td><td class="num down">-0,80 %</td><td>Auki, klo 09.41</td></tr>
+        <tr><td><a href="https://finance.yahoo.com/quote/000001.SS/" target="_blank" rel="noopener noreferrer">Shanghai Composite</a></td><td class="num">3&nbsp;548,37</td><td class="num up">+0,27 %</td><td>Sulkeutunut klo 09.00</td></tr>
+        <tr><td><a href="https://finance.yahoo.com/quote/000300.SS/" target="_blank" rel="noopener noreferrer">CSI 300</a></td><td class="num">3&nbsp;963,82</td><td class="num up">+0,14 %</td><td>Sulkeutunut klo 09.00</td></tr>
+      </tbody>
+    </table>
+    <p>Japanissa sirulaitteiden valmistajat nousivat voimakkaasti: Tokyo Electron <span class="up">+10,5 %</span> ja testauslaitevalmistaja Advantest <span class="up">+14,1 %</span>. Etelä-Koreassa Samsung Electronics nousi <span class="up">+7,5 %</span> ja SK Hynix <span class="up">+8,6 %</span>.</p>
+    <p>Hongkongin osalta tuorein kurssilukema poikkeaa aamun uutiskuvasta: uutisissa Hang Sengin kerrottiin nousseen 0,2 %, mutta klo 09.41 kirjattu lukema osoittaa indeksin olevan <span class="down">-0,80 %</span> laskussa 22&nbsp;203,94 pisteessä. Hongkongin yöfutuurit päättyivät 156 pisteen nousuun 22&nbsp;527 pisteeseen, ja marraskuun Hang Seng -futuurit kävivät 22&nbsp;282 ja 22&nbsp;620 pisteen välillä.</p>
+  </section>
+
+  <section>
+    <h2>USA:n futuurit ja Wall Street</h2>
+    <p>Wall Streetin edellinen kauppapäivä oli poikkeuksellisen vahva. <a href="https://finance.yahoo.com/quote/%5EIXIC/" target="_blank" rel="noopener noreferrer">Nasdaq Composite</a> sulkeutui <span class="up">+6,51 %</span> nousuun 24&nbsp;089,56 pisteeseen, mikä oli sen suurin yksittäisen päivän nousu sitten huhtikuun 2025. <a href="https://finance.yahoo.com/quote/%5EGSPC/" target="_blank" rel="noopener noreferrer">S&amp;P 500</a> päätyi <span class="up">+4,73 %</span> ja <a href="https://finance.yahoo.com/quote/%5EDJI/" target="_blank" rel="noopener noreferrer">Dow Jones</a> <span class="up">+3,01 %</span>. Pienyhtiöiden <a href="https://finance.yahoo.com/quote/%5ERUT/" target="_blank" rel="noopener noreferrer">Russell 2000</a> nousi <span class="up">+3,40 %</span>.</p>
+    <p>Nyt käynnissä olevat futuurit viittaavat maltilliseen jatkoon:</p>
+    <table>
+      <thead>
+        <tr><th>Instrumentti</th><th class="num">Taso</th><th class="num">Muutos</th><th>Tila</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><a href="https://finance.yahoo.com/quote/ES%3DF/" target="_blank" rel="noopener noreferrer">S&amp;P 500 -futuuri</a></td><td class="num">7&nbsp;269,75</td><td class="num up">+0,21 %</td><td>Auki, klo 09.46</td></tr>
+        <tr><td><a href="https://finance.yahoo.com/quote/NQ%3DF/" target="_blank" rel="noopener noreferrer">Nasdaq 100 -futuuri</a></td><td class="num">26&nbsp;860,75</td><td class="num up">+0,20 %</td><td>Auki, klo 09.46</td></tr>
+      </tbody>
+    </table>
+    <h3>Teknologiajättien edellisen päivän päätökset</h3>
+    <table>
+      <thead>
+        <tr><th>Osake</th><th class="num">Päätös</th><th class="num">Muutos</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><a href="https://finance.yahoo.com/quote/NVDA/" target="_blank" rel="noopener noreferrer">Nvidia</a></td><td class="num">165,05</td><td class="num up">+31,48 %</td></tr>
+        <tr><td><a href="https://finance.yahoo.com/quote/TSLA/" target="_blank" rel="noopener noreferrer">Tesla</a></td><td class="num">385,46</td><td class="num up">+11,46 %</td></tr>
+        <tr><td><a href="https://finance.yahoo.com/quote/META/" target="_blank" rel="noopener noreferrer">Meta</a></td><td class="num">597,60</td><td class="num up">+6,55 %</td></tr>
+        <tr><td><a href="https://finance.yahoo.com/quote/GOOGL/" target="_blank" rel="noopener noreferrer">Alphabet</a></td><td class="num">282,10</td><td class="num up">+6,34 %</td></tr>
+        <tr><td><a href="https://finance.yahoo.com/quote/AMZN/" target="_blank" rel="noopener noreferrer">Amazon</a></td><td class="num">255,39</td><td class="num up">+3,47 %</td></tr>
+        <tr><td><a href="https://finance.yahoo.com/quote/AVGO/" target="_blank" rel="noopener noreferrer">Broadcom</a></td><td class="num">313,55</td><td class="num up">+3,00 %</td></tr>
+        <tr><td><a href="https://finance.yahoo.com/quote/AAPL/" target="_blank" rel="noopener noreferrer">Apple</a></td><td class="num">349,08</td><td class="num up">+1,90 %</td></tr>
+        <tr><td><a href="https://finance.yahoo.com/quote/MSFT/" target="_blank" rel="noopener noreferrer">Microsoft</a></td><td class="num">492,50</td><td class="num up">+1,65 %</td></tr>
+      </tbody>
+    </table>
+    <p class="note">Yhdysvaltain pörssi ei ole vielä avautunut; luvut ovat edellisen kauppapäivän 23.11. päätöslukuja.</p>
+    <p>Kymmenen vuoden <a href="https://finance.yahoo.com/quote/%5ETNX/" target="_blank" rel="noopener noreferrer">Yhdysvaltain valtionlainan korkotuotto</a> oli edellisen päivän päätöksessä 4,918 % (<span class="up">+0,12 %</span>).</p>
+  </section>
+
+  <section>
+    <h2>Raaka-aineet</h2>
+    <p>Aasian johdannaismarkkinoilla ja Globexissa raaka-aineet liikkuivat aamulla melko vakaasti. Öljyn hinnat olivat niukassa nousussa, kun taas jalometallit ja kupari olivat laskussa.</p>
+    <table>
+      <thead>
+        <tr><th>Hyödyke</th><th class="num">Taso</th><th class="num">Muutos</th><th>Tila</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><a href="https://finance.yahoo.com/quote/BZ%3DF/" target="_blank" rel="noopener noreferrer">Brent-raakaöljy</a></td><td class="num">86,83</td><td class="num up">+0,17 %</td><td>Auki, klo 09.46</td></tr>
+        <tr><td><a href="https://finance.yahoo.com/quote/CL%3DF/" target="_blank" rel="noopener noreferrer">WTI-raakaöljy</a></td><td class="num">80,30</td><td class="num up">+0,16 %</td><td>Auki, klo 09.46</td></tr>
+        <tr><td><a href="https://finance.yahoo.com/quote/GC%3DF/" target="_blank" rel="noopener noreferrer">Kultafutuuri</a></td><td class="num">3&nbsp;622,30</td><td class="num down">-0,80 %</td><td>Auki, klo 09.46</td></tr>
+        <tr><td><a href="https://finance.yahoo.com/quote/HG%3DF/" target="_blank" rel="noopener noreferrer">Kuparifutuuri</a></td><td class="num">5,534</td><td class="num down">-1,78 %</td><td>Auki, klo 09.46</td></tr>
+      </tbody>
+    </table>
+    <p>Saatavilla olevan tiedon mukaan öljyn hinnat laskivat Aasian kaupankäynnissä Irania koskevien diplomaattisten lausuntojen jälkeen, mutta tuoreimmat futuurilukemat osoittavat hinnan kääntyneen niukkaan nousuun.</p>
+  </section>
+
+  <section>
+    <h2>Valuutat ja päivän talouskalenteri</h2>
+    <p>Valuuttamarkkinoilla liikkeet olivat pieniä. <a href="https://finance.yahoo.com/quote/EURUSD%3DX/" target="_blank" rel="noopener noreferrer">EUR/USD</a> oli 1,0908 (<span class="up">+0,01 %</span>), <a href="https://finance.yahoo.com/quote/EURSEK%3DX/" target="_blank" rel="noopener noreferrer">EUR/SEK</a> 11,1971 (<span class="down">-0,09 %</span>) ja <a href="https://finance.yahoo.com/quote/USDJPY%3DX/" target="_blank" rel="noopener noreferrer">USD/JPY</a> 159,352 (<span class="up">+0,23 %</span>). Saatavilla olevan tiedon mukaan dollari on pysytellyt lähellä 20 kuukauden huippuaan tekoälyrallin ja Yhdysvaltain keskuspankin kiristysodotusten tukemana.</p>
+    <p>Kryptomarkkinoilla <a href="https://finance.yahoo.com/quote/BTC-USD/" target="_blank" rel="noopener noreferrer">Bitcoin</a> oli 60&nbsp;386,29 dollaria (<span class="down">-1,60 %</span>). Saatavilla olevan tiedon mukaan kryptovarat eivät ole toistaiseksi seuranneet osakemarkkinoiden rajua nousua.</p>
+
+    <h3>Odotetut tapahtumat</h3>
+    <ul>
+      <li><strong>Nvidian toimitusjohtajan vaihdos</strong> <span class="tag tag-done">Toteutunut</span> &mdash; Hallitus palautti Jensen Huangin toimitusjohtajaksi välittömästi. Osake nousi edellisessä päätöksessä <span class="up">+31,48 %</span> 165,05 dollariin (klo 21.00). Paluun taustalla olivat saatavilla olevan tiedon mukaan Yhdysvaltain presidentin ja useiden teknologia-alan vaikuttajien julkiset vetoomukset. Analyytikoiden mukaan paluu palautti luottamusta Nvidiaan ja laajemmin tekoälyinvestointeihin, mutta käynnissä olevat viranomaistutkinnat ja sääntelyhuolet pitävät epävarmuutta yllä.</li>
+      <li><strong>Anthropicin listautuminen</strong> <span class="tag tag-done">Toteutunut</span> &mdash; Yhtiö aloitti kaupankäynnin Nasdaqissa 83 dollarin listautumishinnalla, joka ylitti aiemman 70&ndash;78 dollarin vaihteluvälin. Anti tuotti 93,5 miljardia dollaria, mikä ylitti SpaceX:n 85,7 miljardin dollarin listautumisen. Osake sulkeutui ensimmäisenä kaupankäyntipäivänä <span class="up">+17 %</span> 97,17 dollariin, mutta laski toisena päivänä <span class="down">-8,5 %</span> 88,91 dollariin. Markkinavastaanotto jäi odotettua viileämmäksi.</li>
+      <li><strong>Nvidian tulosjulkistus</strong> <span class="tag tag-soon">Tulossa</span> &mdash; Tulos on odotettu tällä viikolla, ja sitä pidetään keskeisenä testinä tekoälykaupalle. Vahvistettua tietoa tuloksesta ei ole vielä saatavilla.</li>
+      <li><strong>Local Bountin Q3-tulos</strong> <span class="tag tag-done">Toteutunut</span> &mdash; Yhtiön kolmannen neljänneksen tulos osoitti kaventunutta tappiota, ja osake nousi <span class="up">+8,42 %</span>.</li>
+    </ul>
+    <p class="note">Muuta päivän makrotalouskalenteria ei ole saatavilla olevan tiedon perusteella vahvistettu.</p>
+  </section>
+
+  <footer>
+    Aamun markkinakatsaus &middot; Kurssitiedot voivat viivästyä. Tarkista reaaliaikaiset kurssit linkeistä.
+  </footer>
+
+<section style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:12px;padding:22px 24px;margin:34px 0 10px;">
+  <h2 style="margin:0 0 10px;border:none;padding:0;color:#0f172a;font-size:1.3rem;">Etusivujen kärkiteemat ja niiden vaikutus pörssiavaukseen</h2>
+  <p style="margin:0 0 16px;color:#475569;font-size:.95rem;">Näkyvyys on mitattu 24.11. klo 09.56 Helsingin aikaa: kuinka moni eri media toistaa teemaa, kuinka monessa syötteessä se esiintyy, kuinka monta uutista siitä on ja kuinka tuore se on. Näkyvyys kertoo huomiosta, ei kurssisuunnasta – suunnan ratkaisevat kurssiluvut.</p>
+  <div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;font-size:.92rem;">
+    <thead>
+      <tr style="background:#e2e8f0;text-align:left;">
+        <th style="padding:8px;border-bottom:1px solid #cbd5e1;">Teema</th>
+        <th style="padding:8px;border-bottom:1px solid #cbd5e1;">Näkyvyys</th>
+        <th style="padding:8px;border-bottom:1px solid #cbd5e1;">Tuoreus</th>
+        <th style="padding:8px;border-bottom:1px solid #cbd5e1;">Välittyminen</th>
+        <th style="padding:8px;border-bottom:1px solid #cbd5e1;">Arvio avausvaikutuksesta</th>
+        <th style="padding:8px;border-bottom:1px solid #cbd5e1;">Mitä avauksessa pitää nähdä</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="padding:8px;border-bottom:1px solid #e2e8f0;vertical-align:top;">Tekoäly ja Nvidian johtajavaihdos (sama uutinen kattaa tekoälyn rahoituksen ja puolijohdeliikkeen)</td>
+        <td style="padding:8px;border-bottom:1px solid #e2e8f0;vertical-align:top;">vahva, 100 p. – 15 mediaa, 5 syötettä, 21 uutista</td>
+        <td style="padding:8px;border-bottom:1px solid #e2e8f0;vertical-align:top;">tuorein alle 1 h sitten</td>
+        <td style="padding:8px;border-bottom:1px solid #e2e8f0;vertical-align:top;">Nasdaq 100- ja S&amp;P 500 -futuurit, puolijohteet, Helsingin teknologia ja Nokian alihankkijat</td>
+        <td style="padding:8px;border-bottom:1px solid #e2e8f0;vertical-align:top;">Vahva, mutta valtaosa uudelleenhinnoittelusta on jo tehty New Yorkissa ja Aasiassa, joten avauksen lisävaikutus on näkyvyyttä pienempi.</td>
+        <td style="padding:8px;border-bottom:1px solid #e2e8f0;vertical-align:top;">Futuurit pysyvät plussalla ja Nokia pitää eilisen nousunsa.</td>
+      </tr>
+      <tr>
+        <td style="padding:8px;border-bottom:1px solid #e2e8f0;vertical-align:top;">Puolustus ja geopolitiikka</td>
+        <td style="padding:8px;border-bottom:1px solid #e2e8f0;vertical-align:top;">kohtalainen, 52 p. – 4 mediaa, 4 syötettä, 6 uutista</td>
+        <td style="padding:8px;border-bottom:1px solid #e2e8f0;vertical-align:top;">tuorein 3 h sitten</td>
+        <td style="padding:8px;border-bottom:1px solid #e2e8f0;vertical-align:top;">puolustusteollisuus, Euroopan indeksit, öljyn riskipreemio</td>
+        <td style="padding:8px;border-bottom:1px solid #e2e8f0;vertical-align:top;">Kohtalainen, mutta öljyn lähes muuttumaton hinta kertoo, ettei riskipreemiota ole vielä rakennettu.</td>
+        <td style="padding:8px;border-bottom:1px solid #e2e8f0;vertical-align:top;">Brent pysyy 86–87 dollarin tuntumassa ja puolustusosakkeet avaavat indeksiä vahvempina.</td>
+      </tr>
+      <tr>
+        <td style="padding:8px;border-bottom:1px solid #e2e8f0;vertical-align:top;">Valuutat</td>
+        <td style="padding:8px;border-bottom:1px solid #e2e8f0;vertical-align:top;">kohtalainen, 46 p. – 4 mediaa, 3 syötettä, 4 uutista</td>
+        <td style="padding:8px;border-bottom:1px solid #e2e8f0;vertical-align:top;">tuorein 1 h sitten</td>
+        <td style="padding:8px;border-bottom:1px solid #e2e8f0;vertical-align:top;">EUR/USD, dollarimääräiset raaka-aineet, vientiyhtiöt</td>
+        <td style="padding:8px;border-bottom:1px solid #e2e8f0;vertical-align:top;">Heikko, sillä EUR/USD on käytännössä paikallaan eivätkä teeman otsikot juuri käsittele valuuttoja.</td>
+        <td style="padding:8px;border-bottom:1px solid #e2e8f0;vertical-align:top;">EUR/USD pysyy 1,09 tuntumassa eikä dollarin 20 kuukauden huippu enää vahvistu.</td>
+      </tr>
+      <tr>
+        <td style="padding:8px;border-bottom:1px solid #e2e8f0;vertical-align:top;">Helsingin pörssi ja Suomi, mukaan lukien Rainmakerin listautumisaie</td>
+        <td style="padding:8px;border-bottom:1px solid #e2e8f0;vertical-align:top;">heikko, 36 p. – 4 mediaa, 1 syöte, 4 uutista</td>
+        <td style="padding:8px;border-bottom:1px solid #e2e8f0;vertical-align:top;">tuorein 1 h sitten</td>
+        <td style="padding:8px;border-bottom:1px solid #e2e8f0;vertical-align:top;">OMX Helsinki 25 ja kotimaiset yhtiöt</td>
+        <td style="padding:8px;border-bottom:1px solid #e2e8f0;vertical-align:top;">Kohtalainen, koska Helsingin avaus seuraa eilistä 1,83 prosentin nousua ja Nokian 8,91 prosentin liikettä viiveellä.</td>
+        <td style="padding:8px;border-bottom:1px solid #e2e8f0;vertical-align:top;">OMXH25 avaa selvästi plussalle ja teknologia sekä konepajat johtavat nousua.</td>
+      </tr>
+    </tbody>
+  </table></div>
+
+  <h3 style="color:#0f172a;">Miten kärkiajurit vaikuttavat avaukseen</h3>
+  <p>Nvidian osake päätyi 165,05 dollariin eli 31,48 prosentin nousuun, kun Jensen Huang palasi yhtiön toimitusjohtajaksi. Nasdaq Composite sulkeutui 24 089,56 pisteeseen (+6,51 %), Kospi 5 006,03 pisteeseen (+6,32 %) ja Nikkei 225 58 644,63 pisteeseen (+3,91 %). Taiwanin Taiex nousi yli 9 prosenttia. Silti S&amp;P 500 -futuurit ovat 7 269,75 pisteessä (+0,21 %) ja Nasdaq 100 -futuurit 26 860,75 pisteessä (+0,20 %). Futuurien lähes paikallaan pysyvä taso kertoo, että suurin osa uutisesta on jo hinnoiteltu. Volatiliteettimittari VIX laski 26,62:een (−25,83 %), eli pelko hinnoiteltiin nopeasti ulos.</p>
+  <p>Helsingissä lähtökohta on eilisen päätöslukujen varassa: OMXH25 oli 6 013,39 (+1,83 %), Nokia 8,91 prosentin nousussa, Wärtsilä +5,89 % ja Metso +4,53 %. Laskijoita olivat Nokian Renkaat (−3,08 %), Elisa (−2,66 %) ja Neste (−2,35 %). Kotimainen avaus reagoi tekoälyuutiseen viiveellä, joten teknologia- ja konepajavetoiselle nousuavaukselle on tilaa. Hongkongin Hang Seng on kuitenkin juuri nyt 0,80 prosentin laskussa, mikä muistuttaa, ettei nousu ole kaikkialla yhtä suoraviivaista.</p>
+  <p>Puolustus- ja geopolitiikkateema ei näy raaka-aineissa: Brent on 86,83 dollaria (+0,17 %) ja WTI 80,30 dollaria (+0,16 %). Kulta laski 0,80 prosenttia ja kupari 1,78 prosenttia, mikä viittaa siihen, ettei kasvuhuolia ole kokonaan sivuutettu. Valuuttapuolella EUR/USD on 1,0908 (+0,01 %) ja USD/JPY 159,35 (+0,23 %); dollari on lähellä 20 kuukauden huippua tekoälyrallin ja keskuspankin kiristysodotusten tukemana. Rainmakerin aie listautua Helsingin pörssiin ankkurisijoittajanaan Asko Schrey on vasta ilmoitus: annin kokoa, hintahaarukkaa tai merkintätulosta ei ole saatavilla, joten sen vaikutus avaukseen on rajallinen.</p>
+
+  <h3 style="color:#0f172a;">Onko jo hinnoiteltu?</h3>
+  <p>Tekoälyteema on pitkälti hinnoiteltu. Se on kaikkialla, ja sekä Yhdysvaltain että Aasian kurssit ovat jo liikkuneet samaan suuntaan, joten jäljellä oleva avausvaikutus on pienempi kuin näkyvyys antaa ymmärtää. Puolustus- ja valuuttateemoissa tilanne on päinvastainen: ne ovat esillä, mutta kurssit eivät ole reagoineet. Markkina odottaa lisätietoa – öljyssä konkreettista häiriötä tuotantoon tai kuljetuksiin ja valuutoissa selvää siirtymää keskuspankkien korko-odotuksissa. Helsingin osalta ratkaisee, seuraako avaus eilistä nousua vai jääkö se odottamaan Euroopan indeksien suuntaa.</p>
+
+  <h3 style="color:#0f172a;">Mitä avauksessa pitää nähdä</h3>
+  <ul>
+    <li>Nokian avaus: pitääkö eilinen 8,91 prosentin nousu, vai syntyykö voittojen kotiutusta.</li>
+    <li>Nasdaq 100- ja S&amp;P 500 -futuurien suunta: kääntyvätkö ne miinukselle ennen Euroopan avausta.</li>
+    <li>Puolijohteiden ja teknologian leviäminen Helsingin muihin yhtiöihin, erityisesti alihankkijoihin.</li>
+    <li>Brentin pysyminen 86–87 dollarissa – selvä nousu kertoisi geopoliittisen riskin palaavan hintoihin.</li>
+    <li>EUR/USD:n pysyminen 1,09 tuntumassa; dollarin vahvistuminen kiristäisi vientiyhtiöiden asetelmaa.</li>
+    <li>OMXH25:n avaus suhteessa eiliseen 1,83 prosentin nousuun ja Euroopan indeksien ensireaktioon.</li>
+  </ul>
+
+  <p style="font-size:.85rem;color:#475569;">Lähteet: <a href="https://www.ft.com/content/c0cb932a-076e-4471-8009-91749fde5f47?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">FT: Tech stocks surge on Jensen Huang’s return</a> · <a href="https://www.ft.com/content/74408261-9cb4-41ae-8d4f-3a1a9ce72930?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">FT: The Jensen put</a> · <a href="https://www.nasdaq.com/articles/valneva-posts-wider-loss-9-month" target="_blank" rel="noopener noreferrer">Nasdaq: Valneva Posts Wider Loss In 9-month</a> · <a href="https://yle.fi/a/74-20257872?origin=rss" target="_blank" rel="noopener noreferrer">Yle: Postnord vei leppävirtalaisen Katja Tiitisen paketit 90 kilometrin päähän</a> · <a href="https://yle.fi/a/74-20227092?origin=rss" target="_blank" rel="noopener noreferrer">Yle: Matkustimme Tallinnaan lautan henkilökunnan kirjastossa</a></p>
+  <p style="font-size:.85rem;color:#64748b;">Tämä osio on markkina-arvio, ei sijoitusneuvonta. Luvut ovat viimeisimpiä saatavilla olevia ja voivat muuttua ennen kaupankäynnin alkua.</p>
+</section>
+<details style="max-width:1040px;margin:-22px auto 34px;padding:0 16px;font-size:.8rem;color:#64748b;line-height:1.55;"><summary style="cursor:pointer;color:#475569;font-weight:600;">Mistä näkyvyyspisteet muodostuvat?</summary><p style="margin:8px 0 0;">Näkyvyyspisteet (0–100) lasketaan neljästä osasta: kuinka moni eri media toistaa samaa teemaa (55 %), kuinka monessa eri uutissyötteessä se esiintyy (20 %), kuinka monta uutista siitä on (15 %) ja kuinka tuorein uutinen on (10 %).</p><p style="margin:6px 0 0;">Täydet osapisteet tulevat 12 eri mediasta, 4 eri syötteestä, 20 uutisesta ja alle vuorokauden tuoreudesta. Sanalliset luokat: <strong>vahva</strong> 60 p. tai enemmän, <strong>kohtalainen</strong> 40–59 p., <strong>heikko</strong> 25–39 p. Alle 25 pisteen teemoja ei näytetä.</p><p style="margin:6px 0 0;">Pisteet mittaavat huomiota, eivät kurssien suuntaa: nousun tai laskun ratkaisee aina kurssiluku. Saman otsikon toistot eri syötteissä on poistettu, ja yli 30 tuntia vanhat uutiset on jätetty laskennan ulkopuolelle. Jos kaksi kärkiteemaa kertoo samasta asiasta, ne on yhdistetty yhdeksi riviksi taulukossa.</p></details>
+<section style="background:#fffbeb;border:2px dashed #f59e0b;border-radius:12px;padding:22px 24px;margin:34px 0 10px;"><h2 style="margin:0 0 12px;border:none;padding:0;color:#92400e;font-size:1.3rem;">Spekulaatio: miten Eurooppa aukeaa ja miten kurssit kehittyvät avauksen jälkeen</h2><div style="background:#fef3c7;border-radius:8px;padding:10px 14px;font-weight:600;color:#78350f;margin-bottom:16px;font-size:.95rem;">Tämä osio on toimittajan spekulaatiota, ei sijoitusneuvontaa eikä ennuste.</div>
+
+<p>Aamun selkein ajuri on Jensen Huangin paluu <a href="https://finance.yahoo.com/quote/NVDA/" target="_blank" rel="noopener noreferrer">Nvidian</a> toimitusjohtajaksi. Osake nousi 31,48 prosenttia 165,05 dollariin, ja <a href="https://finance.yahoo.com/quote/%5EIXIC/" target="_blank" rel="noopener noreferrer">Nasdaq Composite</a> päätyi 6,51 prosentin nousuun 24 089,559 pisteeseen. <a href="https://finance.yahoo.com/quote/%5EGSPC/" target="_blank" rel="noopener noreferrer">S&amp;P 500</a> nousi 4,73 prosenttia, <a href="https://finance.yahoo.com/quote/%5EDJI/" target="_blank" rel="noopener noreferrer">Dow Jones</a> 3,01 prosenttia ja <a href="https://finance.yahoo.com/quote/%5ERUT/" target="_blank" rel="noopener noreferrer">Russell 2000</a> 3,40 prosenttia, kun <a href="https://finance.yahoo.com/quote/%5EVIX/" target="_blank" rel="noopener noreferrer">VIX-indeksi</a> laski 25,83 prosenttia 26,62:een. Aasia seurasi: <a href="https://finance.yahoo.com/quote/%5EN225/" target="_blank" rel="noopener noreferrer">Nikkei 225</a> sulkeutui 3,91 prosentin nousuun 58 644,63 pisteeseen ja <a href="https://finance.yahoo.com/quote/%5EKS11/" target="_blank" rel="noopener noreferrer">KOSPI</a> 6,32 prosentin nousuun 5 006,03 pisteeseen.</p>
+
+<p>Euroopan avauksesta ei kannata vetää yhtä suoria johtopäätöksiä. <a href="https://finance.yahoo.com/quote/ES%3DF/" target="_blank" rel="noopener noreferrer">S&amp;P 500 -futuurit</a> olivat klo 09:46 vain 0,21 prosenttia plussalla 7 269,75 pisteessä ja <a href="https://finance.yahoo.com/quote/NQ%3DF/" target="_blank" rel="noopener noreferrer">Nasdaq 100 -futuurit</a> 0,20 prosenttia plussalla 26 860,75 pisteessä. <a href="https://finance.yahoo.com/quote/%5EHSI/" target="_blank" rel="noopener noreferrer">Hang Seng</a> oli klo 09:41 laskenut 0,80 prosenttia 22 203,94 pisteeseen, vaikka aamun uutisvirta kertoi sen nousseen hieman – tuore kurssi on tässä ristiriidassa uutisen kanssa, ja jäsennän sen varovaisuudeksi. <a href="https://finance.yahoo.com/quote/000001.SS/" target="_blank" rel="noopener noreferrer">Shanghai Composite</a> sulkeutui 0,27 prosentin nousuun ja <a href="https://finance.yahoo.com/quote/000300.SS/" target="_blank" rel="noopener noreferrer">CSI 300</a> 0,14 prosentin nousuun. <a href="https://finance.yahoo.com/quote/HG%3DF/" target="_blank" rel="noopener noreferrer">Kupari</a> laski 1,78 prosenttia, <a href="https://finance.yahoo.com/quote/GC%3DF/" target="_blank" rel="noopener noreferrer">kulta</a> 0,80 prosenttia ja <a href="https://finance.yahoo.com/quote/BTC-USD/" target="_blank" rel="noopener noreferrer">Bitcoin</a> 1,60 prosenttia, kun <a href="https://finance.yahoo.com/quote/BZ%3DF/" target="_blank" rel="noopener noreferrer">Brent</a> oli 0,17 ja <a href="https://finance.yahoo.com/quote/CL%3DF/" target="_blank" rel="noopener noreferrer">WTI</a> 0,16 prosenttia plussalla. <a href="https://finance.yahoo.com/quote/EURUSD%3DX/" target="_blank" rel="noopener noreferrer">EUR/USD</a> oli 1,0908, <a href="https://finance.yahoo.com/quote/USDJPY%3DX/" target="_blank" rel="noopener noreferrer">USD/JPY</a> 159,352 ja <a href="https://finance.yahoo.com/quote/%5ETNX/" target="_blank" rel="noopener noreferrer">US 10-vuotinen korko</a> 4,918 prosenttia.</p>
+
+<p>Arvioni on, että Eurooppa avautuu lievästi plussalle, mutta avausgap jää selvästi Aasian nousua pienemmäksi. Lähtötaso on jo korkea: <a href="https://finance.yahoo.com/quote/%5EOMXH25/" target="_blank" rel="noopener noreferrer">OMX Helsinki 25</a> nousi edellisenä päivänä 1,83 prosenttia, <a href="https://finance.yahoo.com/quote/%5EOMX/" target="_blank" rel="noopener noreferrer">OMX Stockholm 30</a> 2,72 prosenttia, <a href="https://finance.yahoo.com/quote/%5ESTOXX/" target="_blank" rel="noopener noreferrer">STOXX Europe 600</a> 1,81 prosenttia, <a href="https://finance.yahoo.com/quote/%5EGDAXI/" target="_blank" rel="noopener noreferrer">DAX</a> 2,15 prosenttia ja <a href="https://finance.yahoo.com/quote/%5EFTSE/" target="_blank" rel="noopener noreferrer">FTSE 100</a> 1,30 prosenttia.</p>
+
+<p>Ensimmäisten 15–60 minuutin aikana pidän todennäköisimpänä, että gap täytetään ainakin osittain: ohut avauslikviditeetti ja korkea VIX-taso 26,62 tekevät avaushuutokaupasta epätasapainoisen, ja jos ostopaine ei ole laaja, ensimmäiset myynnit osuvat juuri niihin nimiin, jotka nousivat eniten. Puolijohde- ja tekoälyvetoiset nimet johtavat, jos suunta jatkuu; jos ei, johtoon nousevat defensiiviset ja matalan beetan osakkeet. Ensimmäiset makro- ja yhtiöuutiset alkavat vaikuttaa noin 15–30 minuutin kohdalla.</p>
+
+<p>Skenaariot: <em>positiivinen</em> – jos futuurit vahvistuvat selvästi plussalle ja puolijohdeuutisvirta jatkuu, gap ei täyty ja sykliset jatkavat. Tämän kumoaisi Hang Sengin laskun leviäminen ja kuparin 1,78 prosentin laskun jatkuminen. <em>neutraali</em> – gap täytetään aamun aikana ja indeksit päätyvät lähelle edellispäivän tasoja; kumoaisi odotettua suurempi vaihto jompaan kumpaan suuntaan. <em>negatiivinen</em> – jos Nvidiaan liittyvät viranomaistutkinnat nousevat otsikoihin, avausgap myydään kiinni; kumoaisi selkeä riskinottohalun paluu.</p>
+
+<p>Spekulatiiviset ideat: <a href="https://finance.yahoo.com/quote/NOKIA.HE/" target="_blank" rel="noopener noreferrer">Nokia</a> nousi edellisenä päivänä 8,91 prosenttia – jos teknologia-avaus pitää, momentum voi jatkua päivänsisäisesti, mutta gapin täyttö on selkeä riski. <a href="https://finance.yahoo.com/quote/METSO.HE/" target="_blank" rel="noopener noreferrer">Metso</a> (+4,53 %) ja <a href="https://finance.yahoo.com/quote/WRT1V.HE/" target="_blank" rel="noopener noreferrer">Wärtsilä</a> (+5,89 %) voivat jatkaa, mikäli kuparin lasku taittuu; muuten idea kumoutuu. Laskijoista <a href="https://finance.yahoo.com/quote/TYRES.HE/" target="_blank" rel="noopener noreferrer">Nokian Renkaat</a> (-3,08 %) ja <a href="https://finance.yahoo.com/quote/NESTE.HE/" target="_blank" rel="noopener noreferrer">Neste</a> (-2,35 %) voivat kuroa umpeen, jos riskinotto laajenee. Nvidian tulosjulkistus on odotettu tällä viikolla, mutta tulosta ei ole vahvistettu – se on päivän tärkein yksittäinen ajuri. Tämä on spekulaatiota, ja toteutunut kehitys voi poiketa siitä merkittävästi.</p>
+</section>
+</div>
+</body>
+</html>
